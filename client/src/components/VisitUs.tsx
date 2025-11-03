@@ -26,21 +26,6 @@ export default function VisitUs() {
           </div>
         </div>
         <p className="text-lg mb-8">Come by and enjoy a meal that feels like home.</p>
-        <Button
-          size="lg"
-          asChild
-          data-testid="button-facebook"
-        >
-          <a
-            href="https://www.facebook.com/Jackspizzahyannis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
-          >
-            <Facebook size={20} />
-            Follow Us on Facebook for Daily Specials
-          </a>
-        </Button>
       </div>
     </section>
   );
