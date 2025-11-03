@@ -107,6 +107,22 @@ All content can be edited directly in the HTML files. Look for:
 ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 ✅ Internet Explorer 11+ (with minor style differences)
 
+## Important: Update Image Paths Before Use
+
+⚠️ **CRITICAL:** The HTML files currently reference images with paths like `../attached_assets/`. These paths will NOT work when you host these files separately or embed them in Wix.
+
+**You MUST update all image paths to:**
+1. Absolute URLs (e.g., `https://your-site.com/images/photo.jpg`)
+2. Wix Media Library URLs if using Wix
+3. Image hosting service URLs (Imgur, Cloudinary, etc.)
+
+**Files containing image paths:**
+- `index.html` (multiple images in gallery, featured items, hero)
+- `menu.html` (if you add product images)
+- `contact.html` (minimal images)
+
+See `USAGE.md` for detailed instructions on hosting and updating paths.
+
 ## Notes
 
 - Contact form currently shows success message but doesn't send emails
