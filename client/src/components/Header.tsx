@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
-  const scrollToOrder = () => {
-    const element = document.getElementById("order");
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -16,26 +16,62 @@ export default function Header() {
             <img
               src="https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227&h=56&auto=format&dpr=1"
               alt="Jack's Lounge"
-              className="h-14"
+              className="h-14 cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               data-testid="img-logo"
             />
           </div>
 
-          <div className="flex items-center gap-6">
-            <a
-              href="https://olo.spoton.com/60c3b6829adef31f4442003e"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
-              data-testid="link-menu"
+          <nav className="hidden md:flex items-center gap-4">
+            <button
+              onClick={() => scrollToSection("featured")}
+              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+              data-testid="link-featured"
             >
-              Menu
-            </a>
+              Featured
+            </button>
+            <button
+              onClick={() => scrollToSection("italian-favorites")}
+              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+              data-testid="link-italian"
+            >
+              Italian Favorites
+            </button>
+            <button
+              onClick={() => scrollToSection("gallery")}
+              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+              data-testid="link-gallery"
+            >
+              Gallery
+            </button>
+            <button
+              onClick={() => scrollToSection("visit")}
+              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+              data-testid="link-visit"
+            >
+              Visit Us
+            </button>
+            <button
+              onClick={() => scrollToSection("testimonials")}
+              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+              data-testid="link-testimonials"
+            >
+              Reviews
+            </button>
             <Button
-              onClick={scrollToOrder}
+              onClick={() => scrollToSection("order")}
               data-testid="button-order-online"
             >
-              Order online
+              Order Online
+            </Button>
+          </nav>
+
+          <div className="flex md:hidden items-center">
+            <Button
+              onClick={() => scrollToSection("order")}
+              data-testid="button-order-online-mobile"
+            >
+              Order Online
             </Button>
           </div>
         </div>

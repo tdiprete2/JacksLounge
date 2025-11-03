@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function VisitUs() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+    <section id="visit" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-visit-title">
           Visit Us Today!

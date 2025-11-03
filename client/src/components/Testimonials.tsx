@@ -21,7 +21,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+    <section id="testimonials" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-base md:text-lg font-semibold text-center text-foreground mb-12" data-testid="text-testimonials-title">
           What our guests are saying
