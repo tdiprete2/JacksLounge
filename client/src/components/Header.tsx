@@ -70,6 +70,13 @@ export default function Header() {
               >
                 Reviews
               </button>
+              <a
+                href="/contact"
+                className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+                data-testid="link-contact-page"
+              >
+                Contact
+              </a>
               <Button
                 onClick={() => scrollToSection("order")}
                 data-testid="button-order-online"

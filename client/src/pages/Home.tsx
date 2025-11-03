@@ -7,6 +7,7 @@ import FoodGallery from "@/components/FoodGallery";
 import EventOrders from "@/components/EventOrders";
 import NeighborhoodSpot from "@/components/NeighborhoodSpot";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Features from "@/components/Features";
 import RewardsSection from "@/components/RewardsSection";
 import LocationHours from "@/components/LocationHours";
@@ -26,6 +27,7 @@ export default function Home() {
         <EventOrders />
         <NeighborhoodSpot />
         <Testimonials />
+        <FAQ />
         <Features />
         <RewardsSection />
         <LocationHours />
