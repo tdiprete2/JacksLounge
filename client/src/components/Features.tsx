@@ -11,11 +11,11 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl font-bold text-center text-foreground mb-12" data-testid="text-features-title">
+        <h3 className="text-lg md:text-xl font-semibold text-center text-foreground mb-12" data-testid="text-features-title">
           Featuring
-        </h2>
+        </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => (

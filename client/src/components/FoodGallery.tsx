@@ -16,14 +16,14 @@ const galleryImages = [
 
 export default function FoodGallery() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
+    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-gallery-title">
+          <h3 className="text-lg md:text-xl font-semibold text-foreground mb-4" data-testid="text-gallery-title">
             Satisfy Your Cravings: Freshly Made, Always Delicious!
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our food gallery showcases a wide variety of options that suit every appetite. Whether you're stopping by for a casual meal, celebrating with friends, or grabbing a quick bite at home, you'll find dishes made fresh and ready to enjoy.
+          </h3>
+          <p className="text-base text-foreground/70 max-w-3xl mx-auto">
+            Our food gallery showcases a wide variety of options that suit every appetite. Whether you're stopping by for a casual meal, celebrating with friends, or grabbing a quick bite at home, you'll find dishes made fresh and ready to enjoy. Each plate is thoughtfully prepared, keeping the flavors simple, satisfying, and approachable for everyone.
           </p>
         </div>
 

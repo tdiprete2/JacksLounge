@@ -14,17 +14,17 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 0 0% 98%;
+  --background: 0 0% 100%;
 
-  --foreground: 24 8% 15%;
+  --foreground: 0 0% 13%;
 
-  --border: 24 4% 88%;
+  --border: 0 0% 90%;
 
-  --card: 24 3% 96%;
+  --card: 0 0% 98%;
 
-  --card-foreground: 24 8% 15%;
+  --card-foreground: 0 0% 13%;
 
-  --card-border: 24 4% 91%;
+  --card-border: 0 0% 92%;
 
   --sidebar: 24 4% 94%;
 
