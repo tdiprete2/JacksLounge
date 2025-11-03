@@ -1,3 +1,5 @@
+import interiorImage from "@assets/20251029_102232_1762190095054.jpg";
+
 export default function NeighborhoodSpot() {
   return (
     <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
@@ -5,7 +7,7 @@ export default function NeighborhoodSpot() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <img
-              src="https://static-content.owner.com/funnel/images/7845d93b-daee-46a2-8b3b-557d56b9dd85?v=9782193032&w=1200&q=80&auto=format"
+              src={interiorImage}
               alt="Your Neighborhood Spot"
               className="rounded-lg shadow-xl w-full"
               loading="lazy"

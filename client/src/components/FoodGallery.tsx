@@ -1,10 +1,17 @@
+import wingsImage from "@assets/IMG_7117 (1)_1762190095052.jpg";
+import saladImage from "@assets/IMG_7550_1762190095052.jpg";
+import ribsImage from "@assets/IMG_8292_1762190095053.jpg";
+import quesadillaImage from "@assets/IMG_8582_1762190095053.jpg";
+import pizzaSpreadImage from "@assets/1761751831936_1762190095056.jpg";
+import pastaImage from "@assets/IMG_6715_1762190095057.jpg";
+
 const galleryImages = [
-  "https://static-content.owner.com/funnel/images/15b92713-bcef-448e-9208-a87150a675e8?v=2959572632&w=800&q=80&auto=format",
-  "https://static-content.owner.com/funnel/images/f0bffb1d-4edb-4acf-b39c-4e18c89b253b?v=7771038006&w=800&q=80&auto=format",
-  "https://static-content.owner.com/funnel/images/e5e45b66-980e-40bc-a113-9ced3d033d69?v=1599201131&w=800&q=80&auto=format",
-  "https://static-content.owner.com/funnel/images/ebb4ff00-afc5-4cdc-84bc-cc4ec36e2fed?v=5220625911&w=800&q=80&auto=format",
-  "https://static-content.owner.com/funnel/images/13ec33a2-8261-4e7e-af9c-7bdca7ef1e07?v=4765369682&w=800&q=80&auto=format",
-  "https://static-content.owner.com/funnel/images/d3b48274-0351-467f-84c1-a911560bfa56?v=1275882646&w=800&q=80&auto=format",
+  wingsImage,
+  ribsImage,
+  saladImage,
+  quesadillaImage,
+  pizzaSpreadImage,
+  pastaImage,
 ];
 
 export default function FoodGallery() {

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import favoritesImage from "@assets/Refrence_1762190095054.jpg";
 
 export default function ItalianFavorites() {
   const scrollToOrder = () => {
@@ -14,7 +15,7 @@ export default function ItalianFavorites() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <img
-              src="https://static-content.owner.com/funnel/images/a54ccce4-7f38-4fde-a20a-502129fa1f23?v=4139136935&w=1200&q=80&auto=format"
+              src={favoritesImage}
               alt="Hearty Italian and American Favorites"
               className="rounded-lg shadow-xl w-full"
               loading="lazy"
