@@ -1,15 +1,16 @@
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
 import FeaturedItems from "@/components/FeaturedItems";
+import WelcomeHero from "@/components/WelcomeHero";
 import ItalianFavorites from "@/components/ItalianFavorites";
 import OrderFromWebsite from "@/components/OrderFromWebsite";
 import FoodGallery from "@/components/FoodGallery";
-import ContactForm from "@/components/ContactForm";
+import EventOrders from "@/components/EventOrders";
 import NeighborhoodSpot from "@/components/NeighborhoodSpot";
-import LocationHours from "@/components/LocationHours";
+import VisitUs from "@/components/VisitUs";
 import Testimonials from "@/components/Testimonials";
 import Features from "@/components/Features";
-import AboutSection from "@/components/AboutSection";
+import RewardsSection from "@/components/RewardsSection";
+import LocationHours from "@/components/LocationHours";
 import OnlineOrdering from "@/components/OnlineOrdering";
 import Footer from "@/components/Footer";
 
@@ -18,17 +19,18 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <HeroSection />
         <FeaturedItems />
+        <WelcomeHero />
         <ItalianFavorites />
         <OrderFromWebsite />
         <FoodGallery />
-        <ContactForm />
+        <EventOrders />
         <NeighborhoodSpot />
-        <LocationHours />
+        <VisitUs />
         <Testimonials />
         <Features />
-        <AboutSection />
+        <RewardsSection />
+        <LocationHours />
         <OnlineOrdering />
       </main>
       <Footer />

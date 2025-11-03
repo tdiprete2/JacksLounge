@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import chiliImage from "@assets/IMG_7054_1762190095057.jpg";
 
 export default function OrderFromWebsite() {
   const scrollToOrder = () => {
@@ -30,7 +31,7 @@ export default function OrderFromWebsite() {
 
           <div className="relative">
             <img
-              src="https://static-content.owner.com/funnel/images/2028874c-5bf3-4b4f-83ac-68e8d11733a6?v=5197252429&w=1200&q=80&auto=format"
+              src={chiliImage}
               alt="Order From Our Website"
               className="rounded-lg shadow-xl w-full"
               loading="lazy"
