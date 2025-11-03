@@ -173,7 +173,7 @@ export default function Menu() {
                     {category.items.map((item, index) => (
                       <Card key={index} className="hover-elevate" data-testid={`menu-item-${category.id}-${index}`}>
                         <CardContent className="p-6">
-                          <div className="flex justify-between items-start gap-4 mb-2">
+                          <div className="flex justify-between items-start gap-4">
                             <h3 className="text-xl font-semibold text-foreground" data-testid={`text-item-name-${category.id}-${index}`}>
                               {item.name}
                             </h3>
@@ -188,9 +188,6 @@ export default function Menu() {
                               </span>
                             )}
                           </div>
-                          <p className="text-foreground/70 text-sm" data-testid={`text-item-desc-${category.id}-${index}`}>
-                            {item.description}
-                          </p>
                         </CardContent>
                       </Card>
                     ))}
