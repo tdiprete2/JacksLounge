@@ -2,38 +2,56 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock, Facebook } from "lucide-react";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertContactRequestSchema } from "@shared/schema";
+import { z } from "zod";
+
+const contactFormSchema = insertContactRequestSchema.extend({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().min(1, "Email is required").email("Invalid email address"),
+  subject: z.string().min(1, "Subject is required"),
+  message: z.string().min(1, "Message is required"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       phone: "",
       subject: "",
       message: "",
+    },
+  });
+
+  const onSubmit = (data: ContactFormData) => {
+    console.log("Contact form submitted:", data);
+    // TODO: Wire this through storage/interface layers for backend persistence
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We'll get back to you soon.",
     });
+    form.reset();
   };
 
   return (
@@ -137,92 +155,98 @@ export default function Contact() {
                   Fill out the form below and we'll get back to you as soon as possible.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                        First Name *
-                      </label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        required
-                        data-testid="input-first-name"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="firstName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>First Name *</FormLabel>
+                            <FormControl>
+                              <Input {...field} data-testid="input-first-name" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="lastName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Last Name *</FormLabel>
+                            <FormControl>
+                              <Input {...field} data-testid="input-last-name" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                        Last Name *
-                      </label>
-                      <Input
-                        id="lastName"
-                        value={formData.lastName}
-                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        required
-                        data-testid="input-last-name"
-                      />
-                    </div>
-                  </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email *
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      data-testid="input-email"
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email *</FormLabel>
+                          <FormControl>
+                            <Input type="email" {...field} data-testid="input-email" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      data-testid="input-phone"
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input type="tel" {...field} value={field.value || ""} data-testid="input-phone" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                      Subject *
-                    </label>
-                    <Input
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      required
-                      data-testid="input-subject"
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Subject *</FormLabel>
+                          <FormControl>
+                            <Input {...field} data-testid="input-subject" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      className="min-h-40"
-                      data-testid="input-message"
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea {...field} className="min-h-40" data-testid="input-message" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button type="submit" size="lg" className="w-full" data-testid="button-submit">
-                    Send Message
-                  </Button>
-                </form>
+                    <Button type="submit" size="lg" className="w-full" data-testid="button-submit">
+                      Send Message
+                    </Button>
+                  </form>
+                </Form>
               </div>
 
               {/* Map and Social */}

@@ -16,3 +16,20 @@ export const insertUserSchema = createInsertSchema(users).pick({
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+export const contactRequests = pgTable("contact_requests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone"),
+  subject: text("subject").notNull(),
+  message: text("message").notNull(),
+});
+
+export const insertContactRequestSchema = createInsertSchema(contactRequests).omit({
+  id: true,
+});
+
+export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
+export type ContactRequest = typeof contactRequests.$inferSelect;
