@@ -30,7 +30,7 @@ export default function OnlineOrdering() {
           </Button>
         </div>
 
-        <div className="w-full bg-white rounded-lg shadow-lg overflow-hidden border border-border" style={{ minHeight: "800px" }}>
+        <div className="w-full bg-card rounded-lg shadow-lg overflow-hidden border border-primary/20" style={{ minHeight: "800px" }}>
           <iframe
             src="https://olo.spoton.com/60c3b6829adef31f4442003e"
             width="100%"
