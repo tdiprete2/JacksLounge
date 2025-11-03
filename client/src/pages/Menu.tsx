@@ -54,7 +54,6 @@ const menuCategories = [
     name: "Grinders",
     description: "Grinders are Served with a Dill pickle & Chips - Add Fries/Onion Rings $1.50",
     items: [
-      { name: "Grilled Chicken Grinder", price: "$13.00", description: "Green Pepper, Onion, Mushroom, Spinach, Tomatoes, Jalapeños, Pickles, Black Olives, Hots, Mayo & Lettuce" },
       { name: "Veggie Grinder", price: "$13.00", description: "Sautéed Mushroom, Onion, Tomato, Green Pepper & Red Onions" },
       { name: "Italian Grinder", price: "$13.00", description: "Capicola, Salami, Provolone, Lettuce, Tomatoes & Onions" },
       { name: "Sautéed Steak & Cheese", price: "$13.00", description: "Your Choice of American, Provolone, or Swiss Cheese" },
