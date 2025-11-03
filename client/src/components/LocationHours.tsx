@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, Facebook, Star } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const hours = [
@@ -112,39 +112,21 @@ export default function LocationHours() {
         </div>
 
         <div className="text-center mt-12">
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              size="lg"
-              asChild
-              data-testid="button-facebook"
+          <Button
+            size="lg"
+            asChild
+            data-testid="button-facebook"
+          >
+            <a
+              href="https://www.facebook.com/Jackspizzahyannis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
             >
-              <a
-                href="https://www.facebook.com/Jackspizzahyannis"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <Facebook size={20} />
-                Follow Us on Facebook for Daily Specials
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              data-testid="button-review"
-            >
-              <a
-                href="https://www.google.com/search?q=Jack%27s+Lounge+Hyannis+reviews"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <Star size={20} />
-                Leave a Review on Google
-              </a>
-            </Button>
-          </div>
+              <Facebook size={20} />
+              Follow Us on Facebook for Daily Specials
+            </a>
+          </Button>
         </div>
       </div>
     </section>

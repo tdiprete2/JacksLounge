@@ -1,3 +1,6 @@
+import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 const testimonials = [
   {
     id: 1,
@@ -46,6 +49,24 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            asChild
+            data-testid="button-review"
+          >
+            <a
+              href="https://www.google.com/search?q=Jack%27s+Lounge+Hyannis+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Star size={20} />
+              Leave a Review on Google
+            </a>
+          </Button>
         </div>
       </div>
     </section>
