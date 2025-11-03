@@ -26,9 +26,9 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
-        <h3 className="text-base md:text-lg font-semibold text-center text-foreground mb-12" data-testid="text-testimonials-title">
+        <h2 className="text-base md:text-lg font-semibold text-center text-foreground mb-12" data-testid="text-testimonials-title">
           What our guests are saying
-        </h3>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {testimonials.map((testimonial) => (
