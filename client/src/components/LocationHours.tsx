@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const hours = [
   { day: "Sunday", hours: "12:00 PM - 9:30 PM" },
@@ -108,6 +109,24 @@ export default function LocationHours() {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            asChild
+            data-testid="button-facebook"
+          >
+            <a
+              href="https://www.facebook.com/Jackspizzahyannis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Facebook size={20} />
+              Follow Us on Facebook for Daily Specials
+            </a>
+          </Button>
         </div>
       </div>
     </section>
