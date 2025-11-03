@@ -10,20 +10,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Jack's Lounge, Hyannis pizza, Hyannis restaurant, Cape Cod pizza, BBQ ribs Hyannis, Italian food Hyannis, honey pizza, family restaurant Cape Cod, takeout Hyannis, delivery Hyannis" />
+    <meta name="author" content="Jack's Lounge" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://jackslounge.com" />
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Jack's Lounge - Hyannis, MA Pizza & Italian Restaurant" />
     <meta property="og:description" content="60+ years serving signature honey-topped pizzas, BBQ ribs, and Italian favorites in Hyannis, MA. Order online for pickup or delivery!" />
     <meta property="og:type" content="restaurant" />
     <meta property="og:url" content="https://jackslounge.com" />
+    <meta property="og:site_name" content="Jack's Lounge" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jack's Lounge Restaurant in Hyannis, MA" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jack's Lounge - Hyannis, MA Pizza & Italian Restaurant" />
+    <meta name="twitter:description" content="60+ years serving signature honey-topped pizzas, BBQ ribs, and Italian favorites in Hyannis, MA. Order online!" />
+    <meta name="twitter:image" content="https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format" />
+    
+    <!-- Business/Local SEO -->
+    <meta name="geo.region" content="US-MA" />
+    <meta name="geo.placename" content="Hyannis" />
+    <meta name="geo.position" content="41.6532;-70.2962" />
+    <meta name="ICBM" content="41.6532, -70.2962" />
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Restaurant",
+      "@id": "https://jackslounge.com/#restaurant",
       "name": "Jack's Lounge",
+      "alternateName": "Jack's Pizza",
       "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
-      "image": "https://jackslounge.com/og-image.jpg",
+      "image": [
+        "https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format",
+        "https://static-content.owner.com/funnel/images/7f5bdb2a-6e14-45ba-9aa5-10e3d6bdf67b?v=621699893&w=1200&q=80&auto=format",
+        "https://static-content.owner.com/funnel/images/dccd7aab-aa39-465f-9ef3-e1fce3a35963?v=2564014006&w=1200&q=80&auto=format"
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "373 West Main Street",
@@ -40,10 +70,16 @@
       "url": "https://jackslounge.com",
       "telephone": "+1-508-775-0612",
       "email": "jackspizza@comcast.net",
-      "servesCuisine": ["Italian", "American", "Pizza"],
+      "sameAs": [
+        "https://www.facebook.com/Jackspizzahyannis"
+      ],
+      "servesCuisine": ["Italian", "American", "Pizza", "BBQ"],
       "priceRange": "$$",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "currenciesAccepted": "USD",
       "acceptsReservations": "False",
       "hasMenu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+      "menu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
       "potentialAction": {
         "@type": "OrderAction",
         "target": {
@@ -69,7 +105,9 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "3"
+        "reviewCount": "3",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }
     </script>
