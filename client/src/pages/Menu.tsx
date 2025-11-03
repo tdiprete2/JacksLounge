@@ -7,82 +7,120 @@ import { ExternalLink } from "lucide-react";
 const menuCategories = [
   {
     id: 1,
-    name: "Signature Pizzas",
-    description: "Our famous thin-crust pizzas topped with honey",
+    name: "Appetizers",
+    description: "Start your meal right",
     items: [
-      { name: "Cheese Pizza", size: "10\"", description: "Classic mozzarella with our signature honey drizzle" },
-      { name: "Special Pizza", size: "10\"", description: "Loaded with pepperoni, sausage, mushrooms, peppers, and onions" },
-      { name: "Pepperoni Pizza", size: "10\"", description: "Generous portions of premium pepperoni" },
-      { name: "Veggie Pizza", size: "10\"", description: "Fresh vegetables with mozzarella" },
-      { name: "BBQ Chicken Pizza", size: "10\"", description: "Grilled chicken with BBQ sauce and red onions" },
+      { name: "Nacho Supreme", price: "$14.00", description: "House Chips or corn tortilla chips, topped with Cheese. Served with Lettuce, Tomatoes, Onions, Salsa, and Sour Cream on the side" },
+      { name: "Quesadillas", price: "$13.00", description: "Your choice of Chicken, Beef, Vegetarian or Cheese Quesadilla. Served with Lettuce, Onions, Tomatoes, Salsa, and Sour Cream on the side" },
+      { name: "BBQ Chicken Wings", price: "$12.00", description: "8 Piece Wings - Choose your Sauce: Plain, Buffalo, BBQ, Garlic Parmesan, Sweet Chili" },
+      { name: "Chicken Tenders", price: "$12.50", description: "Choose your Sauce: Plain, Buffalo, BBQ, or Sweet Chili" },
+      { name: "Stuffed Quahog", price: "$7.00", description: "Breaded clam mixed with veggies, and Chorizo Sausage. Linguica, or Chourico" },
+      { name: "Cheese Nachos", price: "$11.50", description: "Warm tortilla Chips and Jalapeños, served with salsa and sour cream" },
+      { name: "Cheesy Smothered Garlic Bread", price: "$7.00", description: "Our homemade Garlic bread with cheese, served with Marinara" },
+      { name: "Basket of Warm Nachos", price: "$5.50", description: "Served with Salsa" },
+      { name: "Mozzarella Sticks", price: "$10.00", description: "Cheesy goodness served with Marinara" },
+      { name: "Pretzel Sticks", price: "$10.00", description: "3 Baked Pretzels with Cheese Sauce, Honey mustard or Both" },
     ]
   },
   {
     id: 2,
-    name: "BBQ & Ribs",
-    description: "Slow-cooked to perfection",
+    name: "Pizza",
+    description: "All 10\" Pizzas can be Gluten Free Crust Add $4.00 - WE ONLY USE FRESH VEGETABLES",
     items: [
-      { name: "Full Rack of Ribs", description: "Fall-off-the-bone tender with our signature BBQ sauce" },
-      { name: "Half Rack of Ribs", description: "Perfect portion of our famous ribs" },
-      { name: "BBQ Chicken", description: "Grilled chicken smothered in BBQ sauce" },
-      { name: "BBQ Combo", description: "Half rack of ribs and BBQ chicken" },
+      { name: "Special Pizza", prices: "10\" $17.00 / 14\" $23.00", description: "Pepperoni, Sausage, Linguica, Meatballs, Mushrooms, Peppers & Onions" },
+      { name: "Meatlovers", prices: "10\" $17.00 / 14\" $23.00", description: "Pepperoni, Sausage, Linguica, Meatballs & Bacon" },
+      { name: "Vegetarian", prices: "10\" $15.00 / 14\" $19.00", description: "Mushrooms, Onions, Peppers, Red Onions, Tomatoes & Spinach" },
+      { name: "Chicken Bacon Ranch", prices: "10\" $16.00 / 14\" $22.00", description: "Grilled Chicken, Bacon, with ranch drizzled over the top" },
+      { name: "Buffalo Chicken Pizza", prices: "10\" $15.50 / 14\" $21.00", description: "Grilled Chicken tossed in Buffalo sauce. Served with Blue Cheese on the side" },
+      { name: "Mexican Pizza", prices: "10\" $16.00 / 14\" $22.00", description: "Beef, Olives, & Jalapeños, served with Salsa & Sour Cream on the side" },
+      { name: "Jack's Famous Honey Pizza", prices: "10\" $13.25 / 14\" $16.75", description: "Freshly shredded cheese with topped with Honey drizzle. A Kitchen Craft with Hyannis tradition" },
+      { name: "Build your Own Pizza", prices: "10\" $11.00 / 14\" $15.00", description: "Start with cheese and add your favorite toppings" },
+      { name: "Silver (Thin Crust) Pizza", prices: "10\" $10.00 / 14\" $14.00", description: "Our crispy thin crust pizza" },
     ]
   },
   {
     id: 3,
-    name: "Wings",
-    description: "Crispy and delicious",
+    name: "Calzones",
+    description: "Except where noted Calzones are Served with, Cheese & Spinach and Marinara",
     items: [
-      { name: "Buffalo Wings", description: "Classic hot wings with blue cheese or ranch" },
-      { name: "BBQ Wings", description: "Tossed in our signature BBQ sauce" },
-      { name: "Honey Garlic Wings", description: "Sweet and savory perfection" },
-      { name: "Plain Wings", description: "Crispy fried with your choice of sauce on the side" },
+      { name: "Vegetarian Calzone", price: "$13.00", description: "Mushroom, Onion, Tomato, Spinach, Green Pepper & Red Onions" },
+      { name: "Sautéed Steak Calzone", price: "$14.00", description: "Shaved Steak sautéed with Pea Pods" },
+      { name: "Burrito Calzone", price: "$13.50", description: "Homemade Chili, & Cheese. Served with Tomatoes, Black Olives, Lettuce, Salsa & Sour cream on the side" },
+      { name: "Build Your Own Calzone", price: "$12.00", description: "Start with Cheese and Spinach" },
     ]
   },
   {
     id: 4,
-    name: "Burgers & Sandwiches",
-    description: "Hearty and satisfying",
+    name: "Grinders",
+    description: "Grinders are Served with a Dill pickle & Chips - Add Fries/Onion Rings $1.50",
     items: [
-      { name: "1/2 Lb Burger", description: "Half-pound of fresh beef on a toasted bun" },
-      { name: "1/2 Lb Cheeseburger", description: "Half-pound burger topped with melted cheese" },
-      { name: "Bacon Cheeseburger", description: "Topped with crispy bacon and cheese" },
-      { name: "Italian Grinder", description: "Cold cuts, cheese, lettuce, tomato, and Italian dressing" },
-      { name: "Meatball Sub", description: "Homemade meatballs in marinara with melted cheese" },
+      { name: "Grilled Chicken Grinder", price: "$13.00", description: "Green Pepper, Onion, Mushroom, Spinach, Tomatoes, Jalapeños, Pickles, Black Olives, Hots, Mayo & Lettuce" },
+      { name: "Veggie Grinder", price: "$13.00", description: "Sautéed Mushroom, Onion, Tomato, Green Pepper & Red Onions" },
+      { name: "Italian Grinder", price: "$13.00", description: "Capicola, Salami, Provolone, Lettuce, Tomatoes & Onions" },
+      { name: "Sautéed Steak & Cheese", price: "$13.00", description: "Your Choice of American, Provolone, or Swiss Cheese" },
+      { name: "Meatball Grinder", price: "$13.00", description: "Homemade Meatballs topped with marinara & your choice of American, Swiss, Provolone, or Pizza Cheese" },
+      { name: "Linguica Grinder", price: "$13.00", description: "Grilled Linguica, Green Peppers & Marinara Sauce" },
+      { name: "Ham & Cheese Grinder", price: "$13.00", description: "Sliced Ham, your choice of American, Swiss, or Provolone" },
     ]
   },
   {
     id: 5,
-    name: "Calzones",
-    description: "Stuffed and baked to golden perfection",
+    name: "Grill",
+    description: "Served with a Dill pickle, Chips or Fries Included - Add Onion Rings $1.50",
     items: [
-      { name: "Pepperoni Calzone", description: "Pepperoni and mozzarella in our signature dough" },
-      { name: "Canadian Bacon Calzone", description: "Canadian bacon and cheese" },
-      { name: "Veggie Calzone", description: "Fresh vegetables and mozzarella" },
-      { name: "Meat Lovers Calzone", description: "Loaded with pepperoni, sausage, and bacon" },
+      { name: "1/2 Pound Hamburger", price: "$12.50", description: "1/2 Pound Burger served with Lettuce Tomato & Onion" },
+      { name: "Bacon Cheeseburger", price: "$14.50", description: "1/2 Pound Burger Served with Bacon Lettuce Tomato, Onion & your choice of American, Swiss or American Cheese" },
+      { name: "BLT", price: "$9.00", description: "Bacon, Lettuce, Tomato & Mayo, on Your Choice of White, Wheat, Rye or Gluten Free Bread" },
+      { name: "Grilled Cheese", price: "$6.50", description: "Grilled Cheese on Your Choice of White, Wheat, Rye or Gluten Free Bread" },
+      { name: "Grilled Frank", price: "$6.50", description: "Grilled Hot Dog Served with Chips or Fries & a Dill Pickle" },
+      { name: "Chili Dog", price: "$7.25", description: "Homemade Chili over a Grilled Hot Dog" },
     ]
   },
   {
     id: 6,
-    name: "Italian Favorites",
-    description: "Traditional recipes made fresh",
+    name: "Jack's Entrees",
+    description: "Slow-cooked to perfection",
     items: [
-      { name: "Spaghetti & Meatballs", description: "Homemade meatballs over spaghetti with marinara" },
-      { name: "Chicken Parmesan", description: "Breaded chicken breast with marinara and mozzarella" },
-      { name: "Pasta Alfredo", description: "Fettuccine in creamy alfredo sauce" },
-      { name: "Lasagna", description: "Layers of pasta, meat sauce, and cheese" },
+      { name: "1/2 Rack of Ribs (2 Pieces)", price: "$20.00", description: "Half Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
+      { name: "Full Rack of Ribs (4 Pieces)", price: "$26.00", description: "Full Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
+      { name: "Spaghetti & Sauce", price: "$9.00", description: "Spaghetti & Marinara w/ Garlic Bread" },
     ]
   },
   {
     id: 7,
-    name: "Appetizers & Sides",
-    description: "Start your meal right",
+    name: "Soup & Salad",
+    description: "Fresh and delicious",
     items: [
-      { name: "French Fries", description: "Crispy golden fries" },
-      { name: "Onion Rings", description: "Beer-battered and fried crispy" },
-      { name: "Mozzarella Sticks", description: "Breaded and fried with marinara" },
-      { name: "Garlic Bread", description: "Toasted with garlic butter and parmesan" },
-      { name: "Side Salad", description: "Fresh greens with your choice of dressing" },
+      { name: "Soup of the Day", price: "Cup $5.25 / Bowl $6.50", description: "Ask your server for today's selection" },
+      { name: "Chili with Garlic Bread", price: "Cup $5.25 / Bowl $7.75", description: "Homemade chili served with garlic bread" },
+      { name: "House Salad", price: "Small $6.95 / Large $9.95", description: "Freshly chopped Lettuce, tomatoes, cucumbers, red onions & peppers" },
+      { name: "Chef Salad", price: "$13.00", description: "A House salad topped with Chicken, Ham, & cheese. Served with a side of pita bread" },
+      { name: "Antipasto Salad", price: "$13.00", description: "A House salad with pepperoni, topped with salami, capicola, cheese & olives. Served with a side of pita bread" },
+      { name: "Spinach Salad", price: "$12.00", description: "Fresh Spinach, topped with mushrooms, bacon, & cheese" },
+      { name: "Caesar Salad", price: "$11.50", description: "Lettuce topped with croûtons, & parmesan cheese & Caesar dressing" },
+    ]
+  },
+  {
+    id: 8,
+    name: "Sides",
+    description: "Perfect additions to any meal",
+    items: [
+      { name: "Basket of Fries", price: "$6.00", description: "Crispy golden fries" },
+      { name: "Curly Fries", price: "$6.00", description: "Seasoned curly fries" },
+      { name: "Onion Rings", price: "$6.50", description: "Beer-battered onion rings" },
+      { name: "Sautéed Mushrooms & Onions", price: "$5.00", description: "Fresh sautéed vegetables" },
+      { name: "Bag of Chips (Cape Cod or Lay's)", price: "$1.00", description: "Your choice of chips" },
+      { name: "Side of Broccoli", price: "$3.50", description: "Steamed broccoli" },
+    ]
+  },
+  {
+    id: 9,
+    name: "Kid's Menu",
+    description: "For our younger guests",
+    items: [
+      { name: "Chicken Tenders & Fries", price: "$12.50", description: "Baked Chicken Tenders with our Oven Baked Fries" },
+      { name: "Kid's Spaghetti", price: "$9.00", description: "Spaghetti, with your choice of butter or Marinara Sauce, and a Piece of garlic bread" },
+      { name: "Slice of Cheese Pizza", price: "$4.00", description: "One slice of our famous cheese pizza" },
     ]
   },
 ];
@@ -135,17 +173,22 @@ export default function Menu() {
                     {category.items.map((item, index) => (
                       <Card key={index} className="hover-elevate" data-testid={`menu-item-${category.id}-${index}`}>
                         <CardContent className="p-6">
-                          <div className="flex justify-between items-start mb-2">
+                          <div className="flex justify-between items-start gap-4 mb-2">
                             <h3 className="text-xl font-semibold text-foreground" data-testid={`text-item-name-${category.id}-${index}`}>
                               {item.name}
                             </h3>
-                            {'size' in item && item.size && (
-                              <span className="text-sm text-primary font-medium" data-testid={`text-item-size-${category.id}-${index}`}>
-                                {item.size}
+                            {'price' in item && item.price && (
+                              <span className="text-base text-primary font-bold whitespace-nowrap" data-testid={`text-item-price-${category.id}-${index}`}>
+                                {item.price}
+                              </span>
+                            )}
+                            {'prices' in item && item.prices && (
+                              <span className="text-sm text-primary font-bold whitespace-nowrap" data-testid={`text-item-prices-${category.id}-${index}`}>
+                                {item.prices}
                               </span>
                             )}
                           </div>
-                          <p className="text-foreground/70" data-testid={`text-item-desc-${category.id}-${index}`}>
+                          <p className="text-foreground/70 text-sm" data-testid={`text-item-desc-${category.id}-${index}`}>
                             {item.description}
                           </p>
                         </CardContent>
