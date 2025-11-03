@@ -19,8 +19,8 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <FeaturedItems />
         <WelcomeHero />
+        <FeaturedItems />
         <ItalianFavorites />
         <OrderFromWebsite />
         <FoodGallery />
