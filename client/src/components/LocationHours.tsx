@@ -19,8 +19,8 @@ export default function LocationHours() {
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4" data-testid="text-location-title">
             Visit Us Today
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            Come by and enjoy a meal that feels like home
+          <p className="text-lg text-foreground/90 leading-relaxed mb-6 max-w-4xl mx-auto" data-testid="text-location-description">
+            If you're looking for great food, friendly service, and a relaxed place to unwind, Jack's Lounge is your go-to spot. Visit us at <strong>373 West Main Street, Hyannis, MA 02601</strong>, where we've been serving the community for decades. Enjoy dine-in, takeout, or delivery—whichever works best for you.
           </p>
         </div>
 
