@@ -10,7 +10,7 @@ export default function ItalianFavorites() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
+    <section id="italian-favorites" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">

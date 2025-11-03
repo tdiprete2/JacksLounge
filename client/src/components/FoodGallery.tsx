@@ -16,7 +16,7 @@ const galleryImages = [
 
 export default function FoodGallery() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+    <section id="gallery" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-lg md:text-xl font-semibold text-foreground mb-4" data-testid="text-gallery-title">
