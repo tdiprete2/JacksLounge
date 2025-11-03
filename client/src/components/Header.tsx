@@ -13,13 +13,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <img
-              src="https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227&h=56&auto=format&dpr=1"
-              alt="Jack's Lounge"
-              className="h-14 cursor-pointer"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              data-testid="img-logo"
-            />
+            <a href="/">
+              <img
+                src="https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227&h=56&auto=format&dpr=1"
+                alt="Jack's Lounge"
+                className="h-14 cursor-pointer"
+                data-testid="img-logo"
+              />
+            </a>
           </div>
 
           <nav className="hidden md:flex items-center gap-4">
@@ -45,7 +46,7 @@ export default function Header() {
               Gallery
             </button>
             <button
-              onClick={() => scrollToSection("visit")}
+              onClick={() => scrollToSection("location")}
               className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
               data-testid="link-visit"
             >
