@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import featuredHero from "@assets/IMG_8292_1762190095053.jpg";
 
 const featuredItems = [
   {
@@ -44,37 +43,21 @@ export default function FeaturedItems() {
   };
 
   return (
-    <section id="featured" className="bg-background">
-      {/* Hero Shot */}
-      <div className="relative h-[400px] md:h-[500px]">
-        <img
-          src={featuredHero}
-          alt="Featured Items at Jack's Lounge"
-          className="w-full h-full object-cover"
-          data-testid="img-featured-hero"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white px-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" data-testid="text-featured-title">
-              Featured
-            </h2>
-            <p className="text-lg md:text-xl mb-6">Signature dishes that keep our customers coming back</p>
-            <Button
-              variant="default"
-              size="lg"
-              onClick={scrollToOrder}
-              data-testid="button-view-menu"
-            >
-              View Full Menu
-            </Button>
-          </div>
+    <section id="featured" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-featured-title">
+            Featured
+          </h2>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={scrollToOrder}
+            data-testid="button-view-menu"
+          >
+            View Menu
+          </Button>
         </div>
-      </div>
-
-      {/* Featured Items Grid */}
-      <div className="py-16 md:py-24 px-4 md:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {featuredItems.map((item) => (
@@ -100,7 +83,6 @@ export default function FeaturedItems() {
             </Card>
           ))}
         </div>
-      </div>
       </div>
     </section>
   );
