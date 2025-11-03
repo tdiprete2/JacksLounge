@@ -6,12 +6,12 @@ import pizzaSpreadImage from "@assets/1761751831936_1762190095056.jpg";
 import pastaImage from "@assets/IMG_6715_1762190095057.jpg";
 
 const galleryImages = [
-  wingsImage,
-  ribsImage,
-  saladImage,
-  quesadillaImage,
-  pizzaSpreadImage,
-  pastaImage,
+  { src: wingsImage, alt: "Crispy chicken wings with sauce at Jack's Lounge" },
+  { src: ribsImage, alt: "BBQ ribs platter from Jack's Lounge" },
+  { src: saladImage, alt: "Fresh garden salad with toppings" },
+  { src: quesadillaImage, alt: "Grilled quesadilla with melted cheese" },
+  { src: pizzaSpreadImage, alt: "Variety of Jack's signature honey-topped pizzas" },
+  { src: pastaImage, alt: "Italian pasta dish from Jack's menu" },
 ];
 
 export default function FoodGallery() {
@@ -35,8 +35,8 @@ export default function FoodGallery() {
               data-testid={`img-gallery-${index}`}
             >
               <img
-                src={image}
-                alt={`Food gallery ${index + 1}`}
+                src={image.src}
+                alt={image.alt}
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
               />
