@@ -1,7 +1,8 @@
 import WelcomeHeroCarousel from "./WelcomeHeroCarousel";
 
 // Import optimized hero slideshow images (WebP format)
-// First hero image served from public folder for LCP optimization
+import hero0Desktop from "@assets/optimized/hero-0-desktop.webp";
+import hero0Mobile from "@assets/optimized/hero-0-mobile.webp";
 import hero1Desktop from "@assets/optimized/hero-1-desktop.webp";
 import hero1Mobile from "@assets/optimized/hero-1-mobile.webp";
 import hero2Desktop from "@assets/optimized/hero-2-desktop.webp";
@@ -14,7 +15,7 @@ import hero5Desktop from "@assets/optimized/hero-5-desktop.webp";
 import hero5Mobile from "@assets/optimized/hero-5-mobile.webp";
 
 const heroSlides = [
-  { desktop: "/hero-0-desktop.webp", mobile: "/hero-0-mobile.webp", alt: "Jack's Lounge Exterior" },
+  { desktop: hero0Desktop, mobile: hero0Mobile, alt: "Jack's Lounge Exterior" },
   { desktop: hero1Desktop, mobile: hero1Mobile, alt: "Delicious Pizza at Jack's Lounge" },
   { desktop: hero2Desktop, mobile: hero2Mobile, alt: "Fresh Food at Jack's Lounge" },
   { desktop: hero3Desktop, mobile: hero3Mobile, alt: "Jack's Lounge Restaurant" },
