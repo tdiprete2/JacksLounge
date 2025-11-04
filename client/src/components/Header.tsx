@@ -26,13 +26,23 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
-              <a href="/" aria-label="Jack's Lounge Home">
+              <a href="/" aria-label="Jack's Lounge Home" className="flex items-center gap-3">
                 <img
-                  src="https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227&h=56&auto=format&dpr=1"
-                  alt="Jack's Lounge"
+                  src="/attached_assets/optimized/logo.webp"
+                  alt="Jack's Lounge Lion Logo"
                   className="h-14 cursor-pointer"
                   data-testid="img-logo"
+                  loading="eager"
                 />
+                <div className="hidden sm:block">
+                  <span 
+                    className="text-2xl font-bold text-primary border-b-2 border-primary"
+                    style={{ fontFamily: "'Lobster', cursive" }}
+                    data-testid="text-logo-title"
+                  >
+                    Jack's Lounge
+                  </span>
+                </div>
               </a>
             </div>
 
