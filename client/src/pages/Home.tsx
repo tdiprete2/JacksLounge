@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import FeaturedItems from "@/components/FeaturedItems";
 import WelcomeHero from "@/components/WelcomeHero";
@@ -15,6 +16,10 @@ import OnlineOrdering from "@/components/OnlineOrdering";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Jack's Lounge | Hyannis, MA Pizza, Ribs & Italian Food | Order Online";
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Header />
