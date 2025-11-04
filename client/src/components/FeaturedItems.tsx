@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
 import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
 import bonelessWings from "@assets/Gemini_Generated_Image_36xxm236xxm236xx_1762221978465.png";
@@ -47,11 +48,10 @@ const featuredItems = [
 ];
 
 export default function FeaturedItems() {
-  const scrollToOrder = () => {
-    const element = document.getElementById("order");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const [, setLocation] = useLocation();
+
+  const navigateToMenu = () => {
+    setLocation("/menu");
   };
 
   return (
@@ -64,7 +64,7 @@ export default function FeaturedItems() {
           <Button
             variant="outline"
             size="lg"
-            onClick={scrollToOrder}
+            onClick={navigateToMenu}
             data-testid="button-view-menu"
           >
             View Menu
@@ -76,7 +76,7 @@ export default function FeaturedItems() {
             <Card
               key={item.id}
               className="overflow-hidden hover-elevate cursor-pointer"
-              onClick={scrollToOrder}
+              onClick={navigateToMenu}
               data-testid={`card-menu-item-${item.id}`}
             >
               <div className="aspect-square overflow-hidden">
