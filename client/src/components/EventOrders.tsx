@@ -33,7 +33,6 @@ export default function EventOrders() {
             <Button
               size="lg"
               onClick={scrollToContact}
-              className="bg-white text-foreground hover:bg-white/90"
               data-testid="button-inquire"
             >
               Inquire Now
