@@ -101,6 +101,8 @@ export default function FeaturedItems() {
                     alt={item.alt}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
+                    width="800"
+                    height="800"
                   />
                 </picture>
               </div>
