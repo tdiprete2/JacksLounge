@@ -1,16 +1,23 @@
 import { Button } from "@/components/ui/button";
-import barImage from "@assets/20251029_102404_1762190095055.jpg";
+// Import optimized section images (WebP format)
+import barImageDesktop from "@assets/optimized/section-events-desktop.webp";
+import barImageMobile from "@assets/optimized/section-events-mobile.webp";
 
 export default function EventOrders() {
   return (
     <section className="relative">
       <div className="relative h-[500px] md:h-[600px]">
-        <img
-          src={barImage}
-          alt="Event & Special Orders"
-          className="w-full h-full object-cover"
-          data-testid="img-event-orders"
-        />
+        <picture>
+          <source media="(min-width: 768px)" srcSet={barImageDesktop} type="image/webp" />
+          <source media="(max-width: 767px)" srcSet={barImageMobile} type="image/webp" />
+          <img
+            src={barImageDesktop}
+            alt="Event & Special Orders"
+            className="w-full h-full object-cover"
+            data-testid="img-event-orders"
+            loading="lazy"
+          />
+        </picture>
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">
