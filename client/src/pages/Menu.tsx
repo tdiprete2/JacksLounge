@@ -12,7 +12,7 @@ const menuCategories = [
     items: [
       { name: "Nacho Supreme", price: "$14.00", description: "House Chips or corn tortilla chips, topped with Cheese. Served with Lettuce, Tomatoes, Onions, Salsa, and Sour Cream on the side" },
       { name: "Quesadillas", price: "$13.00", description: "Your choice of Chicken, Beef, Vegetarian or Cheese Quesadilla. Served with Lettuce, Onions, Tomatoes, Salsa, and Sour Cream on the side" },
-      { name: "BBQ Chicken Wings", price: "$12.00", description: "8 Piece Wings - Choose your Sauce: Plain, Buffalo, BBQ, Garlic Parmesan, Sweet Chili" },
+      { name: "Bone-in Chicken Wings", price: "$12.00", description: "8 Piece Wings - Choose your Sauce: Plain, Buffalo, BBQ, Garlic Parmesan, Sweet Chili" },
       { name: "Chicken Tenders", price: "$12.50", description: "Choose your Sauce: Plain, Buffalo, BBQ, or Sweet Chili" },
       { name: "Stuffed Quahog", price: "$7.00", description: "Breaded clam mixed with veggies, and Chorizo Sausage. Linguica, or Chourico" },
       { name: "Cheese Nachos", price: "$11.50", description: "Warm tortilla Chips and Jalapeños, served with salsa and sour cream" },
