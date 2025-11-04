@@ -6,10 +6,8 @@ set -e
 
 echo "🚀 Building Jack's Lounge for GitHub Pages..."
 
-# Build frontend with GitHub Pages base path
-cd client
-npx vite build --base=/Jacks-Lounge/ --outDir=../dist/public --emptyOutDir
-cd ..
+# Build frontend with GitHub Pages base path (from project root)
+npx vite build --base=/Jacks-Lounge/
 
 echo "✅ Build complete! Output in dist/public/"
 echo ""
