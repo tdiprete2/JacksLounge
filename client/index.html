@@ -95,11 +95,46 @@
     <link rel="preload" as="image" href="/hero-0-mobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="/hero-0-desktop.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
     
-    <!-- Async font loading -->
+    <!-- Resource Hints for External Services (Mobile Performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="dns-prefetch" href="https://olo.spoton.com">
+    <link rel="preconnect" href="https://olo.spoton.com">
+    
+    <!-- Async font loading - only load weights actually used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Async CSS Loading - Defer non-critical styles for mobile performance -->
+    <script>
+      // Convert any synchronous stylesheet links to async after DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('link[rel="stylesheet"]');
+        links.forEach(function(link) {
+          // Skip if it's already async or if it's the font stylesheet
+          if (link.media === 'all' || link.href.indexOf('googleapis.com') > -1) {
+            // Convert to preload pattern
+            var newLink = document.createElement('link');
+            newLink.rel = 'preload';
+            newLink.as = 'style';
+            newLink.href = link.href;
+            newLink.onload = function() {
+              this.rel = 'stylesheet';
+            };
+            link.parentNode.insertBefore(newLink, link);
+            link.parentNode.removeChild(link);
+            
+            // Noscript fallback
+            var noscript = document.createElement('noscript');
+            var fallback = document.createElement('link');
+            fallback.rel = 'stylesheet';
+            fallback.href = newLink.href;
+            noscript.appendChild(fallback);
+            newLink.parentNode.insertBefore(noscript, newLink.nextSibling);
+          }
+        });
+      });
+    </script>
     
     <!-- SEO Meta Tags -->
     <meta name="keywords" content="Jack's Lounge, Hyannis pizza, Hyannis restaurant, Cape Cod pizza, BBQ ribs Hyannis, Italian food Hyannis, honey pizza, family restaurant Cape Cod, takeout Hyannis, delivery Hyannis" />
