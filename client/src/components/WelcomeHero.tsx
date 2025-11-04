@@ -3,21 +3,27 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Import hero slideshow images
-import exterior1 from "@assets/20251029_101841_1762190095054.jpg";
-import exterior2 from "@assets/20251029_102232_1762190095054.jpg";
-import food1 from "@assets/IMG_6484_1762190095056.jpg";
-import food2 from "@assets/IMG_6613_1762190095056.jpg";
-import food3 from "@assets/IMG_6756_1762190095057.jpg";
-import food4 from "@assets/IMG_7054_1762190095057.jpg";
+// Import optimized hero slideshow images (WebP format)
+import hero0Desktop from "@assets/optimized/hero-0-desktop.webp";
+import hero0Mobile from "@assets/optimized/hero-0-mobile.webp";
+import hero1Desktop from "@assets/optimized/hero-1-desktop.webp";
+import hero1Mobile from "@assets/optimized/hero-1-mobile.webp";
+import hero2Desktop from "@assets/optimized/hero-2-desktop.webp";
+import hero2Mobile from "@assets/optimized/hero-2-mobile.webp";
+import hero3Desktop from "@assets/optimized/hero-3-desktop.webp";
+import hero3Mobile from "@assets/optimized/hero-3-mobile.webp";
+import hero4Desktop from "@assets/optimized/hero-4-desktop.webp";
+import hero4Mobile from "@assets/optimized/hero-4-mobile.webp";
+import hero5Desktop from "@assets/optimized/hero-5-desktop.webp";
+import hero5Mobile from "@assets/optimized/hero-5-mobile.webp";
 
 const heroSlides = [
-  { image: exterior1, alt: "Jack's Lounge Exterior" },
-  { image: food1, alt: "Delicious Pizza at Jack's Lounge" },
-  { image: food2, alt: "Fresh Food at Jack's Lounge" },
-  { image: exterior2, alt: "Jack's Lounge Restaurant" },
-  { image: food3, alt: "Signature Dishes" },
-  { image: food4, alt: "Jack's Special Meals" },
+  { desktop: hero0Desktop, mobile: hero0Mobile, alt: "Jack's Lounge Exterior" },
+  { desktop: hero1Desktop, mobile: hero1Mobile, alt: "Delicious Pizza at Jack's Lounge" },
+  { desktop: hero2Desktop, mobile: hero2Mobile, alt: "Fresh Food at Jack's Lounge" },
+  { desktop: hero3Desktop, mobile: hero3Mobile, alt: "Jack's Lounge Restaurant" },
+  { desktop: hero4Desktop, mobile: hero4Mobile, alt: "Signature Dishes" },
+  { desktop: hero5Desktop, mobile: hero5Mobile, alt: "Jack's Special Meals" },
 ];
 
 export default function WelcomeHero() {
@@ -48,12 +54,18 @@ export default function WelcomeHero() {
         <div className="flex">
           {heroSlides.map((slide, index) => (
             <div key={index} className="relative flex-[0_0_100%] min-w-0">
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                className="w-full h-[600px] md:h-[700px] object-cover"
-                data-testid={`img-hero-slide-${index}`}
-              />
+              <picture>
+                <source media="(min-width: 768px)" srcSet={slide.desktop} type="image/webp" />
+                <source media="(max-width: 767px)" srcSet={slide.mobile} type="image/webp" />
+                <img
+                  src={slide.desktop}
+                  alt={slide.alt}
+                  className="w-full h-[600px] md:h-[700px] object-cover"
+                  data-testid={`img-hero-slide-${index}`}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  {...(index === 0 && { fetchpriority: "high" })}
+                />
+              </picture>
               <div className="absolute inset-0 bg-black/40" />
             </div>
           ))}

@@ -1,48 +1,61 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
-import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
-import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
-import bonelessWings from "@assets/Gemini_Generated_Image_36xxm236xxm236xx_1762221978465.png";
-import garlicBread from "@assets/Gemini_Generated_Image_hqogmrhqogmrhqog_1762222224152.png";
-import meatLoversPizza from "@assets/Gemini_Generated_Image_aej4hbaej4hbaej4_1762222579202.png";
-import wingDings from "@assets/IMG_7117 (1)_1762221533727.jpg";
+// Import optimized featured item images (WebP format)
+import buildYourOwnDesktop from "@assets/optimized/featured-build-your-own-desktop.webp";
+import buildYourOwnMobile from "@assets/optimized/featured-build-your-own-mobile.webp";
+import quesadillaDesktop from "@assets/optimized/featured-quesadilla-desktop.webp";
+import quesadillaMobile from "@assets/optimized/featured-quesadilla-mobile.webp";
+import bonelessWingsDesktop from "@assets/optimized/featured-boneless-wings-desktop.webp";
+import bonelessWingsMobile from "@assets/optimized/featured-boneless-wings-mobile.webp";
+import garlicBreadDesktop from "@assets/optimized/featured-garlic-bread-desktop.webp";
+import garlicBreadMobile from "@assets/optimized/featured-garlic-bread-mobile.webp";
+import meatLoversDesktop from "@assets/optimized/featured-meat-lovers-desktop.webp";
+import meatLoversMobile from "@assets/optimized/featured-meat-lovers-mobile.webp";
+import wingsDesktop from "@assets/optimized/featured-wings-desktop.webp";
+import wingsMobile from "@assets/optimized/featured-wings-mobile.webp";
 
 const featuredItems = [
   {
     id: 1,
     name: "Build Your Own Pizza",
-    image: buildYourOwnPizza,
+    desktop: buildYourOwnDesktop,
+    mobile: buildYourOwnMobile,
     alt: "Build Your Own Custom Pizza at Jack's Lounge - Best Pizza in Hyannis MA"
   },
   {
     id: 2,
     name: "Chicken Quesadilla",
-    image: chickenQuesadilla,
+    desktop: quesadillaDesktop,
+    mobile: quesadillaMobile,
     alt: "Chicken Quesadilla with Salsa and Sour Cream - Jack's Lounge Hyannis Mexican Food"
   },
   {
     id: 3,
     name: "Boneless Buffalo Tenders",
-    image: bonelessWings,
+    desktop: bonelessWingsDesktop,
+    mobile: bonelessWingsMobile,
     alt: "Crispy Boneless Buffalo Chicken Tenders with Blue Cheese Dip - Best Chicken Tenders Hyannis at Jack's Lounge"
   },
   {
     id: 4,
     name: "Cheese Smothered Garlic Bread",
-    image: garlicBread,
+    desktop: garlicBreadDesktop,
+    mobile: garlicBreadMobile,
     alt: "Melted Cheese Smothered Garlic Bread with Marinara Sauce - Best Italian Appetizers Hyannis at Jack's Lounge"
   },
   {
     id: 5,
     name: "Meat Lovers Pizza",
-    image: meatLoversPizza,
+    desktop: meatLoversDesktop,
+    mobile: meatLoversMobile,
     alt: "Meat Lovers Pizza with Pepperoni Sausage and Bacon - Best Pizza in Hyannis at Jack's Lounge"
   },
   {
     id: 6,
     name: "Bone in Wings",
-    image: wingDings,
+    desktop: wingsDesktop,
+    mobile: wingsMobile,
     alt: "Crispy Baked Bone-in Chicken Wings with Blue Cheese - Best Wings in Hyannis at Jack's Lounge"
   },
 ];
@@ -80,12 +93,16 @@ export default function FeaturedItems() {
               data-testid={`card-menu-item-${item.id}`}
             >
               <div className="aspect-square overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                />
+                <picture>
+                  <source media="(min-width: 768px)" srcSet={item.desktop} type="image/webp" />
+                  <source media="(max-width: 767px)" srcSet={item.mobile} type="image/webp" />
+                  <img
+                    src={item.desktop}
+                    alt={item.alt}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl md:text-2xl font-semibold text-center" data-testid={`text-item-name-${item.id}`}>

@@ -1,9 +1,10 @@
-import wingsImage from "@assets/IMG_7117 (1)_1762190095052.jpg";
-import saladImage from "@assets/IMG_7550_1762190095052.jpg";
-import ribsImage from "@assets/IMG_8292_1762190095053.jpg";
-import quesadillaImage from "@assets/IMG_8582_1762190095053.jpg";
-import pizzaSpreadImage from "@assets/1761751831936_1762190095056.jpg";
-import pastaImage from "@assets/IMG_6715_1762190095057.jpg";
+// Import optimized gallery images (WebP format)
+import wingsImage from "@assets/optimized/gallery-wings.webp";
+import saladImage from "@assets/optimized/gallery-salad.webp";
+import ribsImage from "@assets/optimized/gallery-ribs.webp";
+import quesadillaImage from "@assets/optimized/gallery-quesadilla.webp";
+import pizzaSpreadImage from "@assets/optimized/gallery-pizza-spread.webp";
+import pastaImage from "@assets/optimized/gallery-pasta.webp";
 
 const galleryImages = [
   { src: wingsImage, alt: "Crispy chicken wings with sauce at Jack's Lounge" },

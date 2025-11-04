@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import ribsPlateImage from "@assets/IMG_8304_1762190095053.jpg";
+// Import optimized section images (WebP format)
+import ribsDesktop from "@assets/optimized/section-italian-favorites-desktop.webp";
+import ribsMobile from "@assets/optimized/section-italian-favorites-mobile.webp";
 
 export default function ItalianFavorites() {
   const scrollToOrder = () => {
@@ -14,13 +16,17 @@ export default function ItalianFavorites() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img
-              src={ribsPlateImage}
-              alt="Hearty Italian and American Favorites"
-              className="rounded-lg shadow-xl w-full"
-              loading="lazy"
-              data-testid="img-italian-favorites"
-            />
+            <picture>
+              <source media="(min-width: 768px)" srcSet={ribsDesktop} type="image/webp" />
+              <source media="(max-width: 767px)" srcSet={ribsMobile} type="image/webp" />
+              <img
+                src={ribsDesktop}
+                alt="Hearty Italian and American Favorites"
+                className="rounded-lg shadow-xl w-full"
+                loading="lazy"
+                data-testid="img-italian-favorites"
+              />
+            </picture>
           </div>
 
           <div>

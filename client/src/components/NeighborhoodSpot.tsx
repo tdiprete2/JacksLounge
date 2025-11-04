@@ -1,4 +1,6 @@
-import interiorImage from "@assets/20251029_102232_1762190095054.jpg";
+// Import optimized section images (WebP format)
+import interiorDesktop from "@assets/optimized/section-neighborhood-desktop.webp";
+import interiorMobile from "@assets/optimized/section-neighborhood-mobile.webp";
 
 export default function NeighborhoodSpot() {
   return (
@@ -6,13 +8,17 @@ export default function NeighborhoodSpot() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img
-              src={interiorImage}
-              alt="Your Neighborhood Spot"
-              className="rounded-lg shadow-xl w-full"
-              loading="lazy"
-              data-testid="img-neighborhood"
-            />
+            <picture>
+              <source media="(min-width: 768px)" srcSet={interiorDesktop} type="image/webp" />
+              <source media="(max-width: 767px)" srcSet={interiorMobile} type="image/webp" />
+              <img
+                src={interiorDesktop}
+                alt="Your Neighborhood Spot"
+                className="rounded-lg shadow-xl w-full"
+                loading="lazy"
+                data-testid="img-neighborhood"
+              />
+            </picture>
           </div>
 
           <div>
