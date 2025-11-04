@@ -84,11 +84,17 @@ export default function Header() {
                 Contact
               </a>
               <Button
-                onClick={() => scrollToSection("order")}
+                asChild
                 data-testid="button-order-online"
                 aria-label="Order food online"
               >
-                Order Online
+                <a
+                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Order Online
+                </a>
               </Button>
             </nav>
 
@@ -155,13 +161,20 @@ export default function Header() {
                       Contact
                     </a>
                     <Button
-                      onClick={() => scrollToSection("order")}
+                      asChild
                       className="mt-4"
                       size="lg"
                       data-testid="button-order-online-mobile"
                       aria-label="Order food online"
                     >
-                      Order Online
+                      <a
+                        href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Order Online
+                      </a>
                     </Button>
                   </nav>
                 </SheetContent>
