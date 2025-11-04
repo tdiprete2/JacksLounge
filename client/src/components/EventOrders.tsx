@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 // Import optimized event orders images - real restaurant party platter photos
 import eventImageDesktop from "@assets/optimized/event-orders-desktop.webp";
@@ -41,7 +42,7 @@ export default function EventOrders() {
               data-testid="button-inquire"
               className="shadow-xl text-base md:text-lg"
             >
-              <a href="/contact">Request a Quote</a>
+              <Link href="/contact">Request a Quote</Link>
             </Button>
           </div>
         </div>

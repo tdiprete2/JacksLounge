@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import {
   Accordion,
   AccordionContent,
@@ -107,13 +108,13 @@ export default function FAQ() {
             >
               Call (508) 775-0612
             </a>
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-card border border-primary/30 text-foreground rounded-md hover-elevate active-elevate-2 font-medium"
               data-testid="button-contact-faq"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
