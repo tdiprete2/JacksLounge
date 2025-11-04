@@ -3,12 +3,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ExternalLink } from "lucide-react";
+import { useEffect } from "react";
 
 const menuCategories = [
   {
     id: 1,
     name: "Appetizers",
-    description: "Start your meal right",
+    description: "Start your meal right with our famous Hyannis appetizers - wings, nachos, quesadillas & more",
     items: [
       { name: "Nacho Supreme", price: "$14.00", description: "House Chips or corn tortilla chips, topped with Cheese. Served with Lettuce, Tomatoes, Onions, Salsa, and Sour Cream on the side" },
       { name: "Quesadillas", price: "$13.00", description: "Your choice of Chicken, Beef, Vegetarian or Cheese Quesadilla. Served with Lettuce, Onions, Tomatoes, Salsa, and Sour Cream on the side" },
@@ -25,7 +26,7 @@ const menuCategories = [
   {
     id: 2,
     name: "Pizza",
-    description: "All 10\" Pizzas can be Gluten Free Crust Add $4.00 - WE ONLY USE FRESH VEGETABLES",
+    description: "Best Pizza in Hyannis MA - All 10\" Pizzas can be Gluten Free Crust Add $4.00 - WE ONLY USE FRESH VEGETABLES",
     items: [
       { name: "Special Pizza", prices: "10\" $17.00 / 14\" $23.00", description: "Pepperoni, Sausage, Linguica, Meatballs, Mushrooms, Peppers & Onions" },
       { name: "Meatlovers", prices: "10\" $17.00 / 14\" $23.00", description: "Pepperoni, Sausage, Linguica, Meatballs & Bacon" },
@@ -41,7 +42,7 @@ const menuCategories = [
   {
     id: 3,
     name: "Calzones",
-    description: "Except where noted Calzones are Served with, Cheese & Spinach and Marinara",
+    description: "Authentic Italian Calzones in Hyannis - Served with Cheese & Spinach and Marinara",
     items: [
       { name: "Vegetarian Calzone", price: "$13.00", description: "Mushroom, Onion, Tomato, Spinach, Green Pepper & Red Onions" },
       { name: "Sautéed Steak Calzone", price: "$14.00", description: "Shaved Steak sautéed with Pea Pods" },
@@ -52,7 +53,7 @@ const menuCategories = [
   {
     id: 4,
     name: "Grinders",
-    description: "Grinders are Served with a Dill pickle & Chips - Add Fries/Onion Rings $1.50",
+    description: "Classic New England Grinders - Served with a Dill pickle & Chips - Add Fries/Onion Rings $1.50",
     items: [
       { name: "Veggie Grinder", price: "$13.00", description: "Sautéed Mushroom, Onion, Tomato, Green Pepper & Red Onions" },
       { name: "Italian Grinder", price: "$13.00", description: "Capicola, Salami, Provolone, Lettuce, Tomatoes & Onions" },
@@ -65,7 +66,7 @@ const menuCategories = [
   {
     id: 5,
     name: "Grill",
-    description: "Served with a Dill pickle, Chips or Fries Included - Add Onion Rings $1.50",
+    description: "Burgers & Grill Favorites in Hyannis - Served with a Dill pickle, Chips or Fries Included - Add Onion Rings $1.50",
     items: [
       { name: "1/2 Pound Hamburger", price: "$12.50", description: "1/2 Pound Burger served with Lettuce Tomato & Onion" },
       { name: "Bacon Cheeseburger", price: "$14.50", description: "1/2 Pound Burger Served with Bacon Lettuce Tomato, Onion & your choice of American, Swiss or American Cheese" },
@@ -78,7 +79,7 @@ const menuCategories = [
   {
     id: 6,
     name: "Jack's Entrees",
-    description: "Slow-cooked to perfection",
+    description: "Signature Hyannis entrees - Slow-cooked to perfection with Jack's famous BBQ ribs",
     items: [
       { name: "1/2 Rack of Ribs (2 Pieces)", price: "$20.00", description: "Half Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
       { name: "Full Rack of Ribs (4 Pieces)", price: "$26.00", description: "Full Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
@@ -88,7 +89,7 @@ const menuCategories = [
   {
     id: 7,
     name: "Soup & Salad",
-    description: "Fresh and delicious",
+    description: "Fresh salads & homemade soups - Made daily with quality ingredients",
     items: [
       { name: "Soup of the Day", price: "Cup $5.25 / Bowl $6.50", description: "Ask your server for today's selection" },
       { name: "Chili with Garlic Bread", price: "Cup $5.25 / Bowl $7.75", description: "Homemade chili served with garlic bread" },
@@ -102,7 +103,7 @@ const menuCategories = [
   {
     id: 8,
     name: "Sides",
-    description: "Perfect additions to any meal",
+    description: "Perfect additions to any meal - Fries, onion rings, and more",
     items: [
       { name: "Basket of Fries", price: "$6.00", description: "Crispy golden fries" },
       { name: "Curly Fries", price: "$6.00", description: "Seasoned curly fries" },
@@ -115,7 +116,7 @@ const menuCategories = [
   {
     id: 9,
     name: "Kid's Menu",
-    description: "For our younger guests",
+    description: "Kid-friendly favorites for our younger guests - Pizza, pasta, and chicken tenders",
     items: [
       { name: "Chicken Tenders & Fries", price: "$12.50", description: "Baked Chicken Tenders with our Oven Baked Fries" },
       { name: "Kid's Spaghetti", price: "$9.00", description: "Spaghetti, with your choice of butter or Marinara Sauce, and a Piece of garlic bread" },
@@ -125,6 +126,35 @@ const menuCategories = [
 ];
 
 export default function Menu() {
+  useEffect(() => {
+    document.title = "Menu - Jack's Lounge Hyannis | Best Pizza & Italian Restaurant";
+    
+    const updateMetaTag = (name: string, content: string) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    const updateOGTag = (property: string, content: string) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    updateMetaTag('description', 'Full menu at Jack\'s Lounge Hyannis - Best pizza, wings, Italian entrees, calzones, grinders & more. Family-owned restaurant serving Hyannis since 1963. Order online for delivery or pickup.');
+    updateOGTag('og:title', 'Jack\'s Lounge Menu - Best Pizza & Italian Food in Hyannis MA');
+    updateOGTag('og:description', 'Browse our full menu of pizzas, wings, Italian favorites and more. Over 60 years serving Hyannis with authentic recipes and fresh ingredients.');
+    updateOGTag('og:type', 'website');
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -133,10 +163,10 @@ export default function Menu() {
         <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-menu-hero-title">
-              Our Menu
+              Jack's Lounge Menu - Best Pizza & Italian Food Hyannis MA
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 mb-8">
-              Over 60 years of serving delicious Italian and American favorites. From our signature honey-topped pizzas to fall-off-the-bone ribs, every dish is made with care.
+              Over 60 years serving Hyannis with delicious Italian and American favorites. From our signature honey-topped pizzas to fall-off-the-bone ribs, every dish is made with care using fresh, quality ingredients.
             </p>
             <Button
               size="lg"
