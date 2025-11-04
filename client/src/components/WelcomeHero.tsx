@@ -54,10 +54,10 @@ export default function WelcomeHero() {
           {heroSlides.map((slide, index) => (
             <div key={index} className="relative flex-[0_0_100%] min-w-0">
               <picture>
-                <source media="(min-width: 768px)" srcSet={slide.desktop} type="image/webp" />
-                <source media="(max-width: 767px)" srcSet={slide.mobile} type="image/webp" />
+                <source srcSet={slide.mobile} media="(max-width: 767px)" type="image/webp" />
+                <source srcSet={slide.desktop} media="(min-width: 768px)" type="image/webp" />
                 <img
-                  src={slide.desktop}
+                  src={slide.mobile}
                   alt={slide.alt}
                   className="w-full h-[600px] md:h-[700px] object-cover"
                   data-testid={`img-hero-slide-${index}`}
@@ -87,7 +87,7 @@ export default function WelcomeHero() {
           variant="outline"
           size="icon"
           onClick={scrollPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm pointer-events-auto"
           data-testid="button-prev-slide"
         >
           <ChevronLeft className="h-6 w-6" />
@@ -96,7 +96,7 @@ export default function WelcomeHero() {
           variant="outline"
           size="icon"
           onClick={scrollNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm pointer-events-auto"
           data-testid="button-next-slide"
         >
           <ChevronRight className="h-6 w-6" />
