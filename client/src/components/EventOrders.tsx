@@ -2,13 +2,6 @@ import { Button } from "@/components/ui/button";
 import barImage from "@assets/20251029_102404_1762190095055.jpg";
 
 export default function EventOrders() {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative">
       <div className="relative h-[500px] md:h-[600px]">
@@ -32,10 +25,10 @@ export default function EventOrders() {
             </p>
             <Button
               size="lg"
-              onClick={scrollToContact}
+              asChild
               data-testid="button-inquire"
             >
-              Inquire Now
+              <a href="/contact">Inquire Now</a>
             </Button>
           </div>
         </div>
