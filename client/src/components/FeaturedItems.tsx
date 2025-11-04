@@ -4,7 +4,7 @@ import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
 import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
 import bonelessWings from "@assets/Gemini_Generated_Image_36xxm236xxm236xx_1762221978465.png";
 import garlicBread from "@assets/Gemini_Generated_Image_hqogmrhqogmrhqog_1762222224152.png";
-import meatLoversPizza from "@assets/stock_images/meat_lovers_pizza_pe_887b7199.jpg";
+import meatLoversPizza from "@assets/Gemini_Generated_Image_aej4hbaej4hbaej4_1762222579202.png";
 import wingDings from "@assets/IMG_7117 (1)_1762221533727.jpg";
 
 const featuredItems = [
@@ -36,7 +36,7 @@ const featuredItems = [
     id: 5,
     name: "Meat Lovers Pizza",
     image: meatLoversPizza,
-    alt: "Meat Lovers Pizza - Best Pizza in Hyannis MA"
+    alt: "Meat Lovers Pizza with Pepperoni Sausage and Bacon - Best Pizza in Hyannis at Jack's Lounge"
   },
   {
     id: 6,
