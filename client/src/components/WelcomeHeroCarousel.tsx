@@ -1,5 +1,4 @@
-import { useEffect, useCallback } from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -14,64 +13,60 @@ interface WelcomeHeroCarouselProps {
 }
 
 export default function WelcomeHeroCarousel({ slides }: WelcomeHeroCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  }, [slides.length]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  }, [slides.length]);
 
   // Auto-play slideshow - respects reduced motion
   useEffect(() => {
-    if (!emblaApi) return;
-
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
     const interval = setInterval(() => {
-      emblaApi.scrollNext();
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [emblaApi]);
+  }, [slides.length]);
 
   return (
     <>
-      <div className="relative h-[600px] md:h-[700px] overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {slides.map((slide, index) => (
-            <div key={index} className="relative flex-[0_0_100%] min-w-0">
-              <picture>
-                <source 
-                  srcSet={slide.mobile} 
-                  media="(max-width: 767px)" 
-                  type="image/webp"
-                  {...(index === 0 && { fetchpriority: "high" as const })}
-                />
-                <source 
-                  srcSet={slide.desktop} 
-                  media="(min-width: 768px)" 
-                  type="image/webp"
-                  {...(index === 0 && { fetchpriority: "high" as const })}
-                />
-                <img
-                  src={slide.mobile}
-                  alt={slide.alt}
-                  className="w-full h-[600px] md:h-[700px] object-cover"
-                  data-testid={`img-hero-slide-${index}`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  {...(index === 0 && { fetchPriority: "high" as const })}
-                  width="1920"
-                  height="700"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-black/40" />
-            </div>
-          ))}
-        </div>
+      <div className="relative h-[600px] md:h-[700px] overflow-hidden">
+        {slides.map((slide, index) => (
+          <div 
+            key={index} 
+            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <picture>
+              <source 
+                srcSet={slide.mobile} 
+                media="(max-width: 767px)" 
+                type="image/webp"
+              />
+              <source 
+                srcSet={slide.desktop} 
+                media="(min-width: 768px)" 
+                type="image/webp"
+              />
+              <img
+                src={slide.mobile}
+                alt={slide.alt}
+                className="w-full h-[600px] md:h-[700px] object-cover"
+                data-testid={`img-hero-slide-${index}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                width="1920"
+                height="700"
+              />
+            </picture>
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+        ))}
 
         {/* Content overlay */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
