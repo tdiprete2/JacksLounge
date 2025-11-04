@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import buildYourOwnPizza from "@assets/stock_images/build_your_own_custo_1b8db730.jpg";
+import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
 import chickenQuesadilla from "@assets/stock_images/chicken_quesadilla_g_3a7fccd1.jpg";
 import bonelessWings from "@assets/stock_images/boneless_buffalo_chi_58fc0c34.jpg";
 import garlicBread from "@assets/stock_images/cheesy_garlic_bread__7c0835fb.jpg";
@@ -12,7 +12,7 @@ const featuredItems = [
     id: 1,
     name: "Build Your Own Pizza",
     image: buildYourOwnPizza,
-    alt: "Build Your Own Custom Pizza - Hyannis Best Pizza"
+    alt: "Build Your Own Custom Pizza at Jack's Lounge - Best Pizza in Hyannis MA"
   },
   {
     id: 2,
