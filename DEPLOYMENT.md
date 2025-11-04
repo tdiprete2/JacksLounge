@@ -71,6 +71,11 @@ These optimizations will carry over to the GitHub Pages deployment!
 - The base path is set to `/JacksLounge/` to match your repository name
 - All assets automatically use the correct path
 
+**Routes showing 404?**
+- The app includes a `404.html` file that handles SPA routing
+- This allows `/menu` and `/contact` to work on GitHub Pages
+- The redirect happens automatically via session storage
+
 **Want to use a custom domain?**
 - Go to Settings → Pages → Custom domain
 - Enter your domain (e.g., jackslounge.com)
