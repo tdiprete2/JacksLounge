@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-// Import optimized event orders images (WebP format)
-import eventImageDesktop from "@assets/optimized/section-events-desktop.webp";
-import eventImageMobile from "@assets/optimized/section-events-mobile.webp";
+// Import optimized event orders images - real restaurant party platter photos
+import eventImageDesktop from "@assets/optimized/event-orders-desktop.webp";
+import eventImageMobile from "@assets/optimized/event-orders-mobile.webp";
 
 export default function EventOrders() {
   return (
