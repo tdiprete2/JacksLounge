@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
-import chickenQuesadilla from "@assets/stock_images/chicken_quesadilla_g_3a7fccd1.jpg";
+import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
 import bonelessWings from "@assets/stock_images/boneless_buffalo_chi_58fc0c34.jpg";
 import garlicBread from "@assets/stock_images/cheesy_garlic_bread__7c0835fb.jpg";
 import meatLoversPizza from "@assets/stock_images/meat_lovers_pizza_pe_887b7199.jpg";
@@ -18,7 +18,7 @@ const featuredItems = [
     id: 2,
     name: "Chicken Quesadilla",
     image: chickenQuesadilla,
-    alt: "Grilled Chicken Quesadilla with Cheese - Jack's Lounge Hyannis"
+    alt: "Chicken Quesadilla with Salsa and Sour Cream - Jack's Lounge Hyannis Mexican Food"
   },
   {
     id: 3,
