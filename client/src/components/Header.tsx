@@ -38,8 +38,8 @@ export default function Header() {
                   <img
                     src={logoPng}
                     alt="Jack's Lounge - Best Pizza in Hyannis, MA"
-                    width="216"
-                    height="56"
+                    width="324"
+                    height="84"
                     className="h-14 w-auto cursor-pointer"
                     data-testid="img-logo"
                     loading="eager"
