@@ -80,25 +80,29 @@ export default function WelcomeHeroCarousel({ slides }: WelcomeHeroCarouselProps
           </div>
         </div>
 
-        {/* Navigation buttons */}
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={scrollPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm pointer-events-auto"
-          data-testid="button-prev-slide"
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </Button>
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={scrollNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-primary/50 text-white hover:bg-primary/20 backdrop-blur-sm pointer-events-auto"
-          data-testid="button-next-slide"
-        >
-          <ChevronRight className="h-6 w-6" />
-        </Button>
+        {/* Navigation buttons - stacked on right */}
+        <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={scrollPrev}
+            className="bg-black/40 border-primary/60 text-white hover:bg-primary/30 backdrop-blur-md shadow-lg pointer-events-auto transition-all"
+            data-testid="button-prev-slide"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={scrollNext}
+            className="bg-black/40 border-primary/60 text-white hover:bg-primary/30 backdrop-blur-md shadow-lg pointer-events-auto transition-all"
+            data-testid="button-next-slide"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </>
   );
