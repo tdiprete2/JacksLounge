@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import buildYourOwnPizza from "@assets/Cheese Pizza_1762221409404.jpg";
 import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
-import bonelessWings from "@assets/stock_images/boneless_buffalo_chi_58fc0c34.jpg";
+import bonelessWings from "@assets/Gemini_Generated_Image_36xxm236xxm236xx_1762221978465.png";
 import garlicBread from "@assets/stock_images/cheesy_garlic_bread__7c0835fb.jpg";
 import meatLoversPizza from "@assets/stock_images/meat_lovers_pizza_pe_887b7199.jpg";
 import wingDings from "@assets/IMG_7117 (1)_1762221533727.jpg";
@@ -22,9 +22,9 @@ const featuredItems = [
   },
   {
     id: 3,
-    name: "Boneless Buffalo Wings",
+    name: "Boneless Buffalo Tenders",
     image: bonelessWings,
-    alt: "Boneless Buffalo Wings - Jack's Lounge Hyannis"
+    alt: "Crispy Boneless Buffalo Chicken Tenders with Blue Cheese Dip - Best Chicken Tenders Hyannis at Jack's Lounge"
   },
   {
     id: 4,
