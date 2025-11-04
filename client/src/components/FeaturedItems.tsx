@@ -40,9 +40,9 @@ const featuredItems = [
   },
   {
     id: 6,
-    name: "Wing Dings",
+    name: "Bone in Wings",
     image: wingDings,
-    alt: "Baked Bone-in Wing Dings - Jack's Lounge Hyannis"
+    alt: "Baked Bone-in Wings - Jack's Lounge Hyannis"
   },
 ];
 
