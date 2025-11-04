@@ -34,7 +34,7 @@ jobs:
       - name: Build for GitHub Pages
         run: |
           # Build frontend only (skip backend build)
-          npx vite build --base=/Jacks-Lounge/
+          npx vite build --base=/JacksLounge/
         env:
           NODE_ENV: production
 

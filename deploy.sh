@@ -7,7 +7,7 @@ set -e
 echo "🚀 Building Jack's Lounge for GitHub Pages..."
 
 # Build frontend with GitHub Pages base path (from project root)
-npx vite build --base=/Jacks-Lounge/
+npx vite build --base=/JacksLounge/
 
 echo "✅ Build complete! Output in dist/public/"
 echo ""
