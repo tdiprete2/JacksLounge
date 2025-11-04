@@ -156,11 +156,33 @@ Preferred communication style: Simple, everyday language.
 - **Google Maps**: Embedded location map for restaurant address
 - **Google Fonts**: Web fonts (Inter, Playfair Display)
 
-### SEO & Social
-- OpenGraph meta tags for social media sharing
-- Twitter Card integration
-- Schema.org structured data for local business SEO
-- Canonical URLs and meta descriptions
+### SEO & Mobile-First Indexing
+- **Mobile-First Viewport Configuration:**
+  - Responsive viewport with `viewport-fit=cover` for notched devices
+  - Mobile web app capable meta tags for iOS and Android
+  - Theme color meta tags for browser UI customization
+  - Apple touch icon integration
+  
+- **Structured Data (JSON-LD Schema.org):**
+  - Organization schema with contact information
+  - Restaurant schema with menu, hours, and ordering capabilities
+  - WebSite schema with publisher information
+  - BreadcrumbList schema for enhanced mobile navigation
+  - Aggregate ratings and review data
+  - Geo-location coordinates and address details
+  
+- **Social Media Integration:**
+  - OpenGraph meta tags for Facebook/LinkedIn sharing
+  - Twitter Card meta tags with large image preview
+  - Optimized OG images (1200x630px)
+  
+- **Technical SEO:**
+  - Canonical URLs for duplicate content prevention
+  - Robots.txt for crawler guidance
+  - XML sitemap with image sitemaps
+  - Meta descriptions and keyword optimization
+  - Geographic meta tags (geo.region, geo.position, ICBM)
+  - Language and locale specifications
 
 ### Development Tools (Replit-specific)
 - **@replit/vite-plugin-runtime-error-modal**: Runtime error overlay
@@ -172,7 +194,36 @@ Preferred communication style: Simple, everyday language.
 - **nanoid**: Unique ID generation
 - **wouter**: Lightweight routing library
 
-### Asset Management
-- Static images stored in `attached_assets/` directory
-- Vite alias configuration for easy asset imports (@assets)
-- External image hosting via static-content.owner.com CDN
+### Asset Management & Performance Optimization
+
+**Image Optimization Pipeline:**
+- All images converted to WebP format (89-99% file size reduction)
+- Responsive images with srcset for mobile/desktop variants
+- Picture element with fallback support for older browsers
+- Lazy loading for below-the-fold images
+- Priority loading (fetchpriority="high") for above-the-fold content
+
+**Logo Optimization:**
+- Standard resolution: 324x84px (logo-1x.webp - 17KB)
+- Retina resolution: 648x168px (logo-2x.webp - 44KB)
+- PNG fallback: 324x84px (logo-1x.png - 9.9KB)
+- Optimized with Lanczos3 interpolation for quality
+- WebP format with 95% quality setting
+
+**Performance Scripts:**
+- `scripts/optimize-images.js`: Automated image optimization workflow
+- `scripts/optimize-logo.js`: Logo-specific optimization with retina support
+- Sharp library for high-performance image processing
+- Automated WebP conversion and responsive variant generation
+
+**Asset Storage:**
+- Original images: `attached_assets/` directory
+- Optimized images: `attached_assets/optimized/` directory
+- Vite alias configuration for easy imports (@assets)
+- External CDN: static-content.owner.com for legacy images
+
+**Font Loading Optimization:**
+- Async font loading with media="print" hack
+- Preconnect hints for Google Fonts CDN
+- Font-display: swap for instant text rendering
+- No FOIT (Flash of Invisible Text)

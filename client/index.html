@@ -2,10 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- Mobile-First Viewport Configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: light)" />
+    
+    <!-- Primary Meta Tags -->
     <title>Jack's Lounge | Hyannis, MA Pizza, Ribs & Italian Food | Order Online</title>
     <meta name="description" content="Jack's Lounge in Hyannis, MA - 60+ years serving signature honey-topped pizzas, BBQ ribs, wings & Italian favorites. Family-owned restaurant with dine-in, takeout & delivery." />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     
     <!-- Async font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +53,41 @@
     <meta name="geo.position" content="41.6532;-70.2962" />
     <meta name="ICBM" content="41.6532, -70.2962" />
     
-    <!-- Schema.org structured data -->
+    <!-- Schema.org Structured Data for Mobile-First Indexing -->
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://jackslounge.com/#organization",
+      "name": "Jack's Lounge",
+      "url": "https://jackslounge.com",
+      "logo": "https://jackslounge.com/favicon.png",
+      "image": "https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format",
+      "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "373 West Main Street",
+        "addressLocality": "Hyannis",
+        "addressRegion": "MA",
+        "postalCode": "02601",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-508-775-0612",
+        "contactType": "Customer Service",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.facebook.com/Jackspizzahyannis"
+      ]
+    }
+    </script>
+    
+    <!-- Restaurant Schema with Enhanced Mobile Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -112,6 +156,50 @@
         "bestRating": "5",
         "worstRating": "1"
       }
+    }
+    </script>
+    
+    <!-- WebSite Schema with Search Action for Mobile -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://jackslounge.com/#website",
+      "url": "https://jackslounge.com",
+      "name": "Jack's Lounge",
+      "description": "Best Pizza in Hyannis, MA - Order Online for Pickup & Delivery",
+      "publisher": {
+        "@id": "https://jackslounge.com/#organization"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
+    
+    <!-- BreadcrumbList for Enhanced Mobile Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jackslounge.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Menu",
+          "item": "https://jackslounge.com/menu"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://jackslounge.com/contact"
+        }
+      ]
     }
     </script>
   </head>
