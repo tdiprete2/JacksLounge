@@ -1,36 +1,48 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import buildYourOwnPizza from "@assets/stock_images/build_your_own_custo_1b8db730.jpg";
+import chickenQuesadilla from "@assets/stock_images/chicken_quesadilla_g_3a7fccd1.jpg";
+import bonelessWings from "@assets/stock_images/boneless_buffalo_chi_58fc0c34.jpg";
+import garlicBread from "@assets/stock_images/cheesy_garlic_bread__7c0835fb.jpg";
+import meatLoversPizza from "@assets/stock_images/meat_lovers_pizza_pe_887b7199.jpg";
+import wingDings from "@assets/stock_images/bone-in_chicken_wing_96bdedf1.jpg";
 
 const featuredItems = [
   {
     id: 1,
-    name: "Special Pizza (10\")",
-    image: "https://static-content.owner.com/funnel/images/c35a676f-0035-4881-8fd2-98c73c9c5fdf.jpg?v=7798769924&w=800&q=80&auto=format",
+    name: "Build Your Own Pizza",
+    image: buildYourOwnPizza,
+    alt: "Build Your Own Custom Pizza - Hyannis Best Pizza"
   },
   {
     id: 2,
-    name: "Rack of Ribs",
-    image: "https://static-content.owner.com/funnel/images/6337435e-6c9b-4fe8-b7d1-411305f2eb93.jpg?v=7003287042&w=800&q=80&auto=format",
+    name: "Chicken Quesadilla",
+    image: chickenQuesadilla,
+    alt: "Grilled Chicken Quesadilla with Cheese - Jack's Lounge Hyannis"
   },
   {
     id: 3,
-    name: "1/2 Lb Burger",
-    image: "https://static-content.owner.com/funnel/images/f60d5a30-3326-4b3d-8e64-54a4d21a303a.jpg?v=2717042700&w=800&q=80&auto=format",
+    name: "Boneless Buffalo Wings",
+    image: bonelessWings,
+    alt: "Boneless Buffalo Wings - Jack's Lounge Hyannis"
   },
   {
     id: 4,
-    name: "1/2 Lb Cheeseburger",
-    image: "https://static-content.owner.com/funnel/images/13090050-118b-4694-9437-e88fade74bfb.jpg?v=7248658325&w=800&q=80&auto=format",
+    name: "Cheese Smothered Garlic Bread",
+    image: garlicBread,
+    alt: "Cheese Smothered Garlic Bread with Marinara - Hyannis Italian Food"
   },
   {
     id: 5,
-    name: "Canadian Bacon Calzone",
-    image: "https://static-content.owner.com/funnel/images/633c64dc-35fb-4b32-acda-a99560465aca.jpg?v=6037713343&w=800&q=80&auto=format",
+    name: "Meat Lovers Pizza",
+    image: meatLoversPizza,
+    alt: "Meat Lovers Pizza - Best Pizza in Hyannis MA"
   },
   {
     id: 6,
-    name: "Pepperoni Calzone",
-    image: "https://static-content.owner.com/funnel/images/6c3ffdc1-58e7-49a3-bdfd-dead015d4582.jpg?v=3453523493&w=800&q=80&auto=format",
+    name: "Wing Dings",
+    image: wingDings,
+    alt: "Baked Bone-in Wing Dings - Jack's Lounge Hyannis"
   },
 ];
 
@@ -70,7 +82,7 @@ export default function FeaturedItems() {
               <div className="aspect-square overflow-hidden">
                 <img
                   src={item.image}
-                  alt={item.name}
+                  alt={item.alt}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   loading="lazy"
                 />
