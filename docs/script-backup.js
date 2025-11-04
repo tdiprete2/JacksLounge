@@ -1,19 +1,27 @@
-// Jack's Lounge - Optimized JavaScript (No console.log for production)
+// Jack's Lounge - Static HTML JavaScript
 
 // FAQ Accordion
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize accordion
   const accordionItems = document.querySelectorAll('.accordion-item');
   
   accordionItems.forEach(item => {
     const trigger = item.querySelector('.accordion-trigger');
     
-    if (trigger) {
-      trigger.addEventListener('click', function() {
-        const isActive = item.classList.contains('active');
-        accordionItems.forEach(otherItem => otherItem.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
+    trigger.addEventListener('click', function() {
+      // Toggle active class
+      const isActive = item.classList.contains('active');
+      
+      // Close all items
+      accordionItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
       });
-    }
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
   });
 });
 
@@ -21,15 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
 function handleContactSubmit(event) {
   event.preventDefault();
   
-  const firstName = document.getElementById('firstName')?.value.trim();
-  const lastName = document.getElementById('lastName')?.value.trim();
-  const email = document.getElementById('email')?.value.trim();
-  const phone = document.getElementById('phone')?.value.trim();
-  const subject = document.getElementById('subject')?.value.trim();
-  const message = document.getElementById('message')?.value.trim();
+  // Get form values
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
   
+  // Clear previous errors
   document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
   
+  // Validation
   let hasErrors = false;
   
   if (!firstName) {
@@ -60,13 +71,32 @@ function handleContactSubmit(event) {
     hasErrors = true;
   }
   
-  if (hasErrors) return false;
+  if (hasErrors) {
+    return false;
+  }
   
+  // In a real implementation, you would send this to a server
+  console.log('Contact form submitted:', {
+    firstName,
+    lastName,
+    email,
+    phone,
+    subject,
+    message
+  });
+  
+  // Show success message
   const successMessage = document.getElementById('successMessage');
   if (successMessage) {
     successMessage.style.display = 'block';
-    document.getElementById('contactForm')?.reset();
-    setTimeout(() => successMessage.style.display = 'none', 5000);
+    
+    // Clear form
+    document.getElementById('contactForm').reset();
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 5000);
   }
   
   return false;
@@ -81,7 +111,9 @@ function showError(fieldId, message) {
 }
 
 function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // Simple email validation
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
 }
 
 // Smooth scroll for anchor links
@@ -93,7 +125,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
