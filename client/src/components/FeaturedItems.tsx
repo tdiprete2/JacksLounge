@@ -5,7 +5,7 @@ import chickenQuesadilla from "@assets/IMG_8582_1762221466002.jpg";
 import bonelessWings from "@assets/stock_images/boneless_buffalo_chi_58fc0c34.jpg";
 import garlicBread from "@assets/stock_images/cheesy_garlic_bread__7c0835fb.jpg";
 import meatLoversPizza from "@assets/stock_images/meat_lovers_pizza_pe_887b7199.jpg";
-import wingDings from "@assets/stock_images/bone-in_chicken_wing_96bdedf1.jpg";
+import wingDings from "@assets/IMG_7117 (1)_1762221533727.jpg";
 
 const featuredItems = [
   {
@@ -42,7 +42,7 @@ const featuredItems = [
     id: 6,
     name: "Bone in Wings",
     image: wingDings,
-    alt: "Baked Bone-in Wings - Jack's Lounge Hyannis"
+    alt: "Crispy Baked Bone-in Chicken Wings with Blue Cheese - Best Wings in Hyannis at Jack's Lounge"
   },
 ];
 
