@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="font-serif text-2xl font-bold mb-4" data-testid="text-footer-title">
-              Jack's Lounge
+              Jack's Lounge - Hyannis Pizza & Bar
             </h3>
             <p className="text-muted-foreground mb-4">
               Serving Hyannis with signature honey-topped pizzas, BBQ ribs, and Italian favorites since 1963.
