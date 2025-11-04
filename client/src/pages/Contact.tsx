@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -32,6 +33,34 @@ import { Textarea } from "@/components/ui/textarea";
 export default function Contact() {
   const { toast } = useToast();
 
+  useEffect(() => {
+    document.title = "Contact Jack's Lounge Hyannis MA | Hours, Location, Phone";
+    
+    const updateMetaTag = (name: string, content: string) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    const updateOGTag = (property: string, content: string) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    updateMetaTag('description', 'Contact Jack\'s Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, catering, or questions. Open 7 days a week. Find hours, directions, and more.');
+    updateOGTag('og:title', 'Contact Jack\'s Lounge - Hyannis MA Pizza & Italian Restaurant');
+    updateOGTag('og:description', 'Get in touch with Jack\'s Lounge in Hyannis. Call, email, or visit us at 373 West Main Street for the best pizza and Italian food on Cape Cod.');
+  }, []);
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -62,7 +91,7 @@ export default function Contact() {
         <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-contact-hero-title">
-              Get in Touch
+              Contact Jack's Lounge Hyannis
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
               Have questions about our menu, want to place a large order, or just want to say hello? 
