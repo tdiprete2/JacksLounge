@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
+import logo1x from "@assets/optimized/logo-1x.webp";
+import logo2x from "@assets/optimized/logo-2x.webp";
+import logoPng from "@assets/optimized/logo-1x.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,13 +29,23 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
-              <a href="/" aria-label="Jack's Lounge Home">
-                <img
-                  src="https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227&h=56&auto=format&dpr=1"
-                  alt="Jack's Lounge"
-                  className="h-14 cursor-pointer"
-                  data-testid="img-logo"
-                />
+              <a href="/" aria-label="Jack's Lounge - Hyannis MA Pizza Restaurant Home">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={`${logo1x} 1x, ${logo2x} 2x`}
+                  />
+                  <img
+                    src={logoPng}
+                    alt="Jack's Lounge - Best Pizza in Hyannis, MA"
+                    width="216"
+                    height="56"
+                    className="h-14 w-auto cursor-pointer"
+                    data-testid="img-logo"
+                    loading="eager"
+                    {...({ fetchpriority: "high" } as any)}
+                  />
+                </picture>
               </a>
             </div>
 
