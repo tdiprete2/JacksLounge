@@ -14,7 +14,7 @@ git push origin main
 
 ### Step 2: Enable GitHub Pages
 
-1. Go to your repository: https://github.com/tdiprete2/Jacks-Lounge
+1. Go to your repository: https://github.com/tdiprete2/JacksLounge
 2. Click **Settings** → **Pages** (in left sidebar)
 3. Under **Source**, select: **GitHub Actions**
 4. Save the settings
@@ -31,7 +31,7 @@ The workflow will automatically deploy when you push to `main`, or you can:
 
 Once deployed (usually 2-3 minutes), your site will be live at:
 
-**https://tdiprete2.github.io/Jacks-Lounge/**
+**https://tdiprete2.github.io/JacksLounge/**
 
 ---
 
@@ -68,7 +68,7 @@ These optimizations will carry over to the GitHub Pages deployment!
 - Wait 2-3 minutes for GitHub's CDN to propagate
 
 **Assets not loading?**
-- The base path is set to `/Jacks-Lounge/` to match your repository name
+- The base path is set to `/JacksLounge/` to match your repository name
 - All assets automatically use the correct path
 
 **Want to use a custom domain?**
