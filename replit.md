@@ -273,12 +273,29 @@ Target: Achieve PageSpeed 100/100 on Performance, Accessibility, Best Practices,
 - TBT (Total Blocking Time): < 200ms (baseline was 70ms - already good)
 - CLS (Cumulative Layout Shift): 0 (maintained with explicit image dimensions)
 
+6. **Additional Mobile Performance Optimizations (November 4, 2025):**
+   - **Resource Hints:** Added preconnect and dns-prefetch for SpotOn ordering (olo.spoton.com)
+   - **Font Weight Optimization:** Reduced from 11 font weights to 4 (Inter: 400,600,700 | Playfair: 700)
+   - **Async CSS Loading Script:** Implemented JavaScript to convert synchronous stylesheets to async preload pattern
+   - **Hero Carousel Deferral:** Lazy-loaded carousel component with Intersection Observer (100px margin)
+   - **Reduced Motion Support:** Carousel respects prefers-reduced-motion for accessibility
+   - **Event Orders Image:** Replaced with optimized party platters image (55KB mobile, 195KB desktop)
+   - **Enhanced Text Readability:** Gradient overlays, drop shadows, and improved contrast for all hero text
+
+**Mobile-First Optimizations:**
+- Event Orders section optimized for mobile (450px → 550px → 600px height progression)
+- Smaller font sizes and tighter spacing on mobile, scaling up for desktop
+- Clickable phone number with tel: link for one-tap calling
+- Mobile images load first in responsive picture elements
+
 **Known Limitations:**
-- Render-blocking CSS partially addressed via critical inline CSS but Vite-generated main bundle still loads synchronously
-- Full async CSS loading requires build-time Vite plugin or post-build HTML transformation
-- Current optimizations provide significant FCP/LCP improvements even without eliminating all CSS blocking
+- Render-blocking CSS partially addressed via critical inline CSS and async loading script
+- Vite-generated main bundle still loads via JavaScript in development
+- Carousel lazy loading implemented but with TypeScript LSP warnings (functionally working)
+- Full async CSS loading requires build-time transformation for production builds
 
 **Next Steps for Production:**
-- Consider Vite plugin for true async CSS loading (e.g., vite-plugin-critical)
-- Monitor PageSpeed scores post-deployment to GitHub Pages
-- A/B test image quality settings if visual quality concerns arise
+- Build and test in production mode to verify async CSS loading effectiveness
+- Run PageSpeed Insights tests to measure actual mobile scores
+- Consider Vite plugin for build-time CSS optimization
+- Monitor Core Web Vitals post-deployment to GitHub Pages
