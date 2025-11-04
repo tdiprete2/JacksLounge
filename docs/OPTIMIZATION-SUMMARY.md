@@ -139,7 +139,7 @@ git push origin main
 ### **Step 4: Verify on GitHub Pages**
 
 Wait 2-3 minutes, then visit:
-- https://tdiprete2.github.io/Jacks-Lounge/
+- https://tdiprete2.github.io/JacksLounge/
 
 ### **Step 5: Test PageSpeed**
 

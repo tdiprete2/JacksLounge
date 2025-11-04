@@ -141,7 +141,7 @@ git push origin main
 
 ### **Step 5: Wait for GitHub Pages**
 - Wait 2-3 minutes for deployment
-- Visit: https://tdiprete2.github.io/Jacks-Lounge/
+- Visit: https://tdiprete2.github.io/JacksLounge/
 
 ### **Step 6: Run PageSpeed Test**
 1. Go to: https://pagespeed.web.dev/
@@ -346,12 +346,12 @@ You'll know it's working when:
 
 **Your Live URL (after GitHub Pages deploy):**
 ```
-https://tdiprete2.github.io/Jacks-Lounge/
+https://tdiprete2.github.io/JacksLounge/
 ```
 
 **Test PageSpeed:**
 ```
-https://pagespeed.web.dev/analysis/https-tdiprete2-github-io-Jacks-Lounge/
+https://pagespeed.web.dev/analysis/https-tdiprete2-github-io-JacksLounge/
 ```
 
 **Image Compression:**

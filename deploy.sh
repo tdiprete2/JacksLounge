@@ -20,4 +20,4 @@ echo "1. Commit the GitHub Actions workflow: git add .github/workflows/deploy.ym
 echo "2. Push to GitHub: git push origin main"
 echo "3. Enable GitHub Pages in repository settings (Settings > Pages > Source: GitHub Actions)"
 echo ""
-echo "The site will be available at: https://tdiprete2.github.io/Jacks-Lounge/"
+echo "The site will be available at: https://tdiprete2.github.io/JacksLounge/"

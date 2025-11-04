@@ -18,7 +18,7 @@ git push -u origin main
 
 ### Step 2: Enable GitHub Pages
 
-1. Go to your GitHub repository: https://github.com/tdiprete2/Jacks-Lounge
+1. Go to your GitHub repository: https://github.com/tdiprete2/JacksLounge
 2. Click **Settings** (top right)
 3. Scroll down to **Pages** (in the left sidebar)
 4. Under **Source**, select:
@@ -31,7 +31,7 @@ git push -u origin main
 GitHub will build your site (takes 1-2 minutes). You'll get a URL like:
 
 ```
-https://tdiprete2.github.io/Jacks-Lounge/
+https://tdiprete2.github.io/JacksLounge/
 ```
 
 ## 📂 What's in the docs/ Folder
@@ -68,9 +68,9 @@ Your GitHub Pages site includes:
 
 Once deployed, your pages will be at:
 
-- **Homepage:** https://tdiprete2.github.io/Jacks-Lounge/
-- **Menu:** https://tdiprete2.github.io/Jacks-Lounge/menu.html
-- **Contact:** https://tdiprete2.github.io/Jacks-Lounge/contact.html
+- **Homepage:** https://tdiprete2.github.io/JacksLounge/
+- **Menu:** https://tdiprete2.github.io/JacksLounge/menu.html
+- **Contact:** https://tdiprete2.github.io/JacksLounge/contact.html
 
 ## 🎨 Custom Domain (Optional)
 

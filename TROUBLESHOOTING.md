@@ -17,14 +17,14 @@ git push origin main
 
 ### 2. ✅ Verify GitHub Pages Source Settings
 
-1. Go to: https://github.com/YOUR_USERNAME/Jacks-Lounge/settings/pages
+1. Go to: https://github.com/YOUR_USERNAME/JacksLounge/settings/pages
 2. Under **Build and deployment** → **Source**
 3. **MUST BE:** "GitHub Actions" (NOT "Deploy from a branch")
 4. If it shows anything else, change it to "GitHub Actions"
 
 ### 3. ✅ Check Workflow Permissions
 
-1. Go to: https://github.com/YOUR_USERNAME/Jacks-Lounge/settings/actions
+1. Go to: https://github.com/YOUR_USERNAME/JacksLounge/settings/actions
 2. Scroll to **Workflow permissions**
 3. Select **"Read and write permissions"**
 4. Check **"Allow GitHub Actions to create and approve pull requests"**
@@ -32,7 +32,7 @@ git push origin main
 
 ### 4. ✅ Verify Workflow Ran Successfully
 
-1. Go to: https://github.com/YOUR_USERNAME/Jacks-Lounge/actions
+1. Go to: https://github.com/YOUR_USERNAME/JacksLounge/actions
 2. Look for "Deploy to GitHub Pages" workflow
 3. Click on the latest run
 4. Check if both "build" and "deploy" jobs show ✅ green checkmarks
@@ -87,7 +87,7 @@ git push origin main
 2. You'll see "pages build and deployment" workflow
 3. Settings → Pages will show:
    ```
-   ✅ Your site is live at https://YOUR_USERNAME.github.io/Jacks-Lounge/
+   ✅ Your site is live at https://YOUR_USERNAME.github.io/JacksLounge/
    ```
 4. First deployment can take 1-10 minutes
 
@@ -125,6 +125,6 @@ git push origin main
 
 Once deployed successfully, your site will be at:
 
-**https://YOUR_USERNAME.github.io/Jacks-Lounge/**
+**https://YOUR_USERNAME.github.io/JacksLounge/**
 
 (Replace YOUR_USERNAME with your actual GitHub username)
