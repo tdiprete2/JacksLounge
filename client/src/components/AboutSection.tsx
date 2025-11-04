@@ -17,7 +17,7 @@ export default function AboutSection() {
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-about-title">
               About Jack's Lounge
             </h2>
-            <h3 className="text-2xl font-semibold mb-4">Our Story</h3>
+            <h3 className="text-2xl font-semibold mb-4">Family-Owned Hyannis Restaurant Since 1963</h3>
             <div className="space-y-4 text-lg text-foreground/90 leading-relaxed">
               <p data-testid="text-about-para-1">
                 At Jack's Lounge, we blend easygoing vibes with hearty Italian favorites, ribs, pizza and wings, creating a welcoming spot where locals gather to enjoy great food, friendly service, and unbeatable value. Our passion is serving up delicious, comforting meals that feel like home—whether you're dining in or taking our food to go.

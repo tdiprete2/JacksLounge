@@ -95,7 +95,7 @@ export default function FAQ() {
         </Accordion>
 
         <div className="mt-12 p-6 bg-card rounded-lg border border-primary/20">
-          <h3 className="text-xl font-semibold mb-2">Still have questions?</h3>
+          <h3 className="text-xl font-semibold mb-2">Contact Jack's Lounge Hyannis</h3>
           <p className="text-foreground/70 mb-4">
             Can't find the answer you're looking for? Give us a call or send us a message!
           </p>
