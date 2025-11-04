@@ -227,3 +227,58 @@ Preferred communication style: Simple, everyday language.
 - Preconnect hints for Google Fonts CDN
 - Font-display: swap for instant text rendering
 - No FOIT (Flash of Invisible Text)
+
+### Recent Performance Optimizations (November 2025)
+
+**Mobile PageSpeed Optimization Initiative:**
+Target: Achieve PageSpeed 100/100 on Performance, Accessibility, Best Practices, and SEO
+
+**Optimizations Completed:**
+
+1. **Enhanced Image Compression:**
+   - Increased compression from quality 80-85% to 70-75% across all images
+   - Hero mobile images reduced to 41-60KB (from 56-77KB)
+   - Featured item images reduced to 10-23KB (from 15-30KB)
+   - Total bandwidth savings: ~164KB
+   - Mobile hero now 60KB instead of 77KB
+
+2. **Mobile-Optimized Logo:**
+   - Created dedicated mobile variant: 400x104px @ 19.2KB (optimized for 378x98 display)
+   - Desktop 1x variant: 324x84px @ 14.2KB
+   - Desktop 2x variant: 648x168px @ 33.0KB
+   - Reduced quality from 95% to 80-85% for compression
+   - Implemented responsive picture element with media queries
+
+3. **LCP (Largest Contentful Paint) Optimization:**
+   - Added preload hints for critical LCP images (hero-0-mobile.webp, hero-0-desktop.webp)
+   - Moved first hero image to public folder for predictable preloading path
+   - Applied `fetchpriority="high"` and `loading="eager"` to LCP image
+   - Responsive preload with media queries for mobile vs desktop
+
+4. **Critical CSS Implementation:**
+   - Inlined comprehensive critical CSS (95 lines) for above-the-fold content
+   - Includes all Tailwind utility classes used in header and hero sections
+   - Covers layout (flex, sticky, positioning), typography, colors, spacing
+   - Responsive breakpoints (md:, lg:) for all critical styles
+   - Enables styled rendering before main CSS bundle loads
+
+5. **Font Loading Optimization:**
+   - Async Google Fonts loading with media="print" onload pattern
+   - Preconnect hints for fonts.googleapis.com and fonts.gstatic.com
+   - Noscript fallback for accessibility
+
+**Performance Metrics Target:**
+- FCP (First Contentful Paint): < 1.8s (baseline was 5.4s)
+- LCP (Largest Contentful Paint): < 2.5s (baseline was 8.4s)
+- TBT (Total Blocking Time): < 200ms (baseline was 70ms - already good)
+- CLS (Cumulative Layout Shift): 0 (maintained with explicit image dimensions)
+
+**Known Limitations:**
+- Render-blocking CSS partially addressed via critical inline CSS but Vite-generated main bundle still loads synchronously
+- Full async CSS loading requires build-time Vite plugin or post-build HTML transformation
+- Current optimizations provide significant FCP/LCP improvements even without eliminating all CSS blocking
+
+**Next Steps for Production:**
+- Consider Vite plugin for true async CSS loading (e.g., vite-plugin-critical)
+- Monitor PageSpeed scores post-deployment to GitHub Pages
+- A/B test image quality settings if visual quality concerns arise
