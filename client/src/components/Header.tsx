@@ -1,11 +1,17 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -86,14 +92,80 @@ export default function Header() {
               </Button>
             </nav>
 
-            <div className="flex md:hidden items-center">
-              <Button
-                onClick={() => scrollToSection("order")}
-                data-testid="button-order-online-mobile"
-                aria-label="Order food online"
-              >
-                Order Online
-              </Button>
+            <div className="flex md:hidden items-center gap-2">
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    data-testid="button-mobile-menu"
+                    aria-label="Open mobile menu"
+                  >
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
+                    <a
+                      href="/menu"
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
+                      data-testid="link-menu-page-mobile"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Menu
+                    </a>
+                    <button
+                      onClick={() => scrollToSection("featured")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                      data-testid="link-featured-mobile"
+                      aria-label="View featured items"
+                    >
+                      Featured
+                    </button>
+                    <button
+                      onClick={() => scrollToSection("gallery")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                      data-testid="link-gallery-mobile"
+                      aria-label="View food gallery"
+                    >
+                      Gallery
+                    </button>
+                    <button
+                      onClick={() => scrollToSection("location")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                      data-testid="link-visit-mobile"
+                      aria-label="Visit us - location and hours"
+                    >
+                      Visit Us
+                    </button>
+                    <button
+                      onClick={() => scrollToSection("testimonials")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                      data-testid="link-testimonials-mobile"
+                      aria-label="Read customer reviews"
+                    >
+                      Reviews
+                    </button>
+                    <a
+                      href="/contact"
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
+                      data-testid="link-contact-page-mobile"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Contact
+                    </a>
+                    <Button
+                      onClick={() => scrollToSection("order")}
+                      className="mt-4"
+                      size="lg"
+                      data-testid="button-order-online-mobile"
+                      aria-label="Order food online"
+                    >
+                      Order Online
+                    </Button>
+                  </nav>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
