@@ -1,9 +1,9 @@
 // Import optimized rewards images - real restaurant pizza photo (WebP format)
 import rewardsDesktop from "@assets/optimized/rewards-desktop.webp";
 import rewardsMobile from "@assets/optimized/rewards-mobile.webp";
-// Import official app store badges
-import appStoreBadge from "@assets/optimized/app-store-badge.svg";
-import googlePlayBadge from "@assets/optimized/google-play-badge.webp";
+// Import official app store badges - optimized WebP format at 60px height
+import appStoreBadge from "@assets/optimized/app-store-badge-60.webp";
+import googlePlayBadge from "@assets/optimized/google-play-badge-60.webp";
 
 export default function RewardsSection() {
   return (
@@ -42,9 +42,10 @@ export default function RewardsSection() {
                 <img
                   src={appStoreBadge}
                   alt="Download on the App Store"
-                  className="h-[50px] md:h-[60px] w-auto"
-                  width="180"
+                  className="h-[60px] w-auto"
+                  width="179"
                   height="60"
+                  loading="lazy"
                 />
               </a>
               <a
@@ -57,9 +58,10 @@ export default function RewardsSection() {
                 <img
                   src={googlePlayBadge}
                   alt="Get it on Google Play"
-                  className="h-[50px] md:h-[60px] w-auto"
-                  width="180"
+                  className="h-[60px] w-auto"
+                  width="155"
                   height="60"
+                  loading="lazy"
                 />
               </a>
             </div>
