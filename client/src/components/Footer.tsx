@@ -1,7 +1,28 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Facebook } from "lucide-react";
 
 export default function Footer() {
+  const [location, navigate] = useLocation();
+
+  const scrollToSection = (id: string) => {
+    if (location !== "/") {
+      // Navigate to home page first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="bg-card border-t border-border py-12 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -29,16 +50,13 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("menu");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                <Link
+                  href="/menu"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-menu"
                 >
                   Menu
-                </button>
+                </Link>
               </li>
               <li>
                 <Link
@@ -51,10 +69,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById("order");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  onClick={() => scrollToSection("order")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-order"
                 >
@@ -63,10 +78,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    const element = document.getElementById("location");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  onClick={() => scrollToSection("location")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-location"
                 >
