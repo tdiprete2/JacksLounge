@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Facebook } from "lucide-react";
 
 export default function Footer() {
@@ -40,16 +41,13 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("about");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                <Link
+                  href="/story"
                   className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-about"
+                  data-testid="link-footer-story"
                 >
-                  About Us
-                </button>
+                  Our Story
+                </Link>
               </li>
               <li>
                 <button

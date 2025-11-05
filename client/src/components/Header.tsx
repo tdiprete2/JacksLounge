@@ -77,6 +77,13 @@ export default function Header() {
               >
                 Menu
               </Link>
+              <Link
+                href="/story"
+                className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
+                data-testid="link-story-page"
+              >
+                Our Story
+              </Link>
               <button
                 onClick={() => scrollToSection("featured")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
@@ -152,6 +159,14 @@ export default function Header() {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Menu
+                    </Link>
+                    <Link
+                      href="/story"
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
+                      data-testid="link-story-page-mobile"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Our Story
                     </Link>
                     <button
                       onClick={() => scrollToSection("featured")}
