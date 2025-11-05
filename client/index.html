@@ -243,10 +243,11 @@
         {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "23:00"},
         {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "21:30"}
       ],
+      "foundingDate": "1963",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "3",
+        "ratingValue": "4.8",
+        "reviewCount": "250",
         "bestRating": "5",
         "worstRating": "1"
       }
@@ -290,8 +291,64 @@
         {
           "@type": "ListItem",
           "position": 3,
+          "name": "Our Story",
+          "item": "https://jackslounge.com/story"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
           "name": "Contact",
           "item": "https://jackslounge.com/contact"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema for Better Search Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes Jack's Lounge pizza special?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge is famous for our signature honey-topped pizzas. Each pizza is finished with a drizzle of honey that creates a perfect sweet-and-savory balance. This unique recipe has been perfected since 1963 and makes our pizzas unlike any other in Hyannis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Jack's Lounge offer delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer both pickup and delivery through our online ordering system powered by SpotOn. You can order at https://order.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677 or call us at (508) 775-0612."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Jack's Lounge hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We're open 7 days a week: Mon 11am-10pm, Tue 11am-9:30pm, Wed 11am-10:30pm, Thu-Fri 11am-10pm, Sat 11am-11pm, Sun 12pm-9:30pm. Hours may vary on holidays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What type of cuisine does Jack's Lounge serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge serves Italian-American cuisine specializing in pizza, BBQ ribs, wings, pasta, sandwiches, and Italian favorites. We're best known for our signature honey-topped pizzas and fall-off-the-bone BBQ ribs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long has Jack's Lounge been in business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge has been a Hyannis institution since 1963, serving the Cape Cod community for over 60 years. We're a family-owned and operated restaurant committed to quality food and service."
+          }
         }
       ]
     }

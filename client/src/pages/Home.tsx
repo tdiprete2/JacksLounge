@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import FeaturedItems from "@/components/FeaturedItems";
 import WelcomeHero from "@/components/WelcomeHero";
@@ -17,7 +18,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Jack's Lounge | Hyannis, MA Pizza, Ribs & Italian Food | Order Online";
+    updateMetaTags({
+      title: "Jack's Lounge | Hyannis, MA Pizza, Ribs & Italian Food | Order Online",
+      description: "Jack's Lounge in Hyannis, MA - 60+ years serving signature honey-topped pizzas, BBQ ribs, wings & Italian favorites. Family-owned restaurant with dine-in, takeout & delivery.",
+      canonical: "https://jackslounge.com/",
+      ogUrl: "https://jackslounge.com/"
+    });
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -34,31 +35,14 @@ export default function Contact() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Contact Jack's Lounge Hyannis MA | Hours, Location, Phone";
-    
-    const updateMetaTag = (name: string, content: string) => {
-      let meta = document.querySelector(`meta[name="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('name', name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    const updateOGTag = (property: string, content: string) => {
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    updateMetaTag('description', 'Contact Jack\'s Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, catering, or questions. Open 7 days a week. Find hours, directions, and more.');
-    updateOGTag('og:title', 'Contact Jack\'s Lounge - Hyannis MA Pizza & Italian Restaurant');
-    updateOGTag('og:description', 'Get in touch with Jack\'s Lounge in Hyannis. Call, email, or visit us at 373 West Main Street for the best pizza and Italian food on Cape Cod.');
+    updateMetaTags({
+      title: "Contact Jack's Lounge Hyannis MA | Hours, Location, Phone",
+      description: "Contact Jack's Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, catering, or questions. Open 7 days a week. Find hours, directions, and more.",
+      canonical: "https://jackslounge.com/contact",
+      ogTitle: "Contact Jack's Lounge - Hyannis MA Pizza & Italian Restaurant",
+      ogDescription: "Get in touch with Jack's Lounge in Hyannis. Call, email, or visit us at 373 West Main Street for the best pizza and Italian food on Cape Cod.",
+      ogUrl: "https://jackslounge.com/contact"
+    });
   }, []);
 
   const form = useForm<ContactFormData>({

@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Allow: /menu
+Allow: /story
 Allow: /contact
 
 # Sitemap location
