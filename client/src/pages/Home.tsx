@@ -21,8 +21,8 @@ export default function Home() {
     updateMetaTags({
       title: "Jack's Lounge | Hyannis, MA Pizza, Ribs & Italian Food | Order Online",
       description: "Jack's Lounge in Hyannis, MA - 60+ years serving signature honey-topped pizzas, BBQ ribs, wings & Italian favorites. Family-owned restaurant with dine-in, takeout & delivery.",
-      canonical: "https://jackslounge.com/",
-      ogUrl: "https://jackslounge.com/"
+      canonical: "https://jackspizzahyannis.com/",
+      ogUrl: "https://jackspizzahyannis.com/"
     });
   }, []);
 
