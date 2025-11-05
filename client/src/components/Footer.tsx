@@ -68,13 +68,15 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("order")}
+                <a
+                  href="https://order.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-order"
                 >
                   Order Online
-                </button>
+                </a>
               </li>
               <li>
                 <button
