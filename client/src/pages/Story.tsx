@@ -1,36 +1,19 @@
 import { useEffect } from "react";
+import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 
 export default function Story() {
   useEffect(() => {
-    document.title = "Our Story | Jack's Lounge - 60 Years of Family Tradition in Hyannis MA";
-    
-    const updateMetaTag = (name: string, content: string) => {
-      let meta = document.querySelector(`meta[name="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('name', name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    const updateOGTag = (property: string, content: string) => {
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    updateMetaTag('description', 'Discover Jack\'s Lounge story - family-owned Hyannis restaurant since 1963. From pro boxer John "Jack" Sances to 3 generations of the DiPrete family serving signature honey pizzas.');
-    updateOGTag('og:title', 'Our Story | Jack\'s Lounge - 60 Years of Family Tradition');
-    updateOGTag('og:description', 'Discover Jack\'s Lounge story - family-owned Hyannis restaurant since 1963. From pro boxer John "Jack" Sances to 3 generations serving signature honey pizzas.');
-    updateOGTag('og:type', 'website');
+    updateMetaTags({
+      title: "Our Story | Jack's Lounge - 60 Years of Family Tradition in Hyannis MA",
+      description: "Discover Jack's Lounge story - family-owned Hyannis restaurant since 1963. From pro boxer John 'Jack' Sances to 3 generations of the DiPrete family serving signature honey pizzas.",
+      canonical: "https://jackslounge.com/story",
+      ogTitle: "Our Story | Jack's Lounge - 60 Years of Family Tradition",
+      ogDescription: "Discover Jack's Lounge story - family-owned Hyannis restaurant since 1963. From pro boxer John 'Jack' Sances to 3 generations serving signature honey pizzas.",
+      ogUrl: "https://jackslounge.com/story"
+    });
   }, []);
 
   return (
