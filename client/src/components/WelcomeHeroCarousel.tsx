@@ -60,6 +60,7 @@ export default function WelcomeHeroCarousel({ slides }: WelcomeHeroCarouselProps
                 className="w-full h-[600px] md:h-[700px] object-cover"
                 data-testid={`img-hero-slide-${index}`}
                 loading={index === 0 ? "eager" : "lazy"}
+                {...(index === 0 ? { fetchpriority: "high" } as any : {})}
                 width="1920"
                 height="700"
               />
