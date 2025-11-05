@@ -131,10 +131,10 @@ export default function Menu() {
     updateMetaTags({
       title: "Menu - Jack's Lounge Hyannis | Best Pizza & Italian Restaurant",
       description: "View Jack's Lounge full menu - signature honey pizzas, BBQ ribs, wings, Italian favorites, calzones, grinders & more. Order online for pickup or delivery in Hyannis, MA.",
-      canonical: "https://jackslounge.com/menu",
+      canonical: "https://jackspizzahyannis.com/menu",
       ogTitle: "Jack's Lounge Menu - Best Pizza & Italian Food in Hyannis MA",
       ogDescription: "Browse our full menu of pizzas, wings, Italian favorites and more. Over 60 years serving Hyannis with authentic recipes and fresh ingredients.",
-      ogUrl: "https://jackslounge.com/menu"
+      ogUrl: "https://jackspizzahyannis.com/menu"
     });
   }, []);
 
