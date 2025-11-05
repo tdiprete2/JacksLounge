@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Apple, Smartphone } from "lucide-react";
 // Import optimized rewards images - real restaurant pizza photo (WebP format)
 import rewardsDesktop from "@assets/optimized/rewards-desktop.webp";
 import rewardsMobile from "@assets/optimized/rewards-mobile.webp";
+// Import official app store badges
+import appStoreBadge from "@assets/optimized/app-store-badge.svg";
+import googlePlayBadge from "@assets/optimized/google-play-badge.webp";
 
 export default function RewardsSection() {
   return (
@@ -31,44 +32,36 @@ export default function RewardsSection() {
               Order faster, earn points with every purchase, and unlock exclusive discounts on Jack's Pizza, Wings, Ribs & More!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                size="lg"
-                asChild
+              <a
+                href="https://apps.apple.com/us/app/goto-place/id6736528808"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="button-app-store"
-                className="bg-black/90 hover:bg-black text-white border-2 border-white/30 shadow-xl min-w-[200px]"
+                className="transition-transform hover:scale-105 active:scale-95"
               >
-                <a
-                  href="https://apps.apple.com/us/app/goto-place/id6736528808"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3"
-                >
-                  <Apple className="w-6 h-6" />
-                  <div className="text-left">
-                    <div className="text-xs opacity-90">Download on the</div>
-                    <div className="text-base font-semibold">App Store</div>
-                  </div>
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                asChild
+                <img
+                  src={appStoreBadge}
+                  alt="Download on the App Store"
+                  className="h-[50px] md:h-[60px] w-auto"
+                  width="180"
+                  height="60"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.spoton.gotobyspoton&hl=en_US"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="button-google-play"
-                className="bg-black/90 hover:bg-black text-white border-2 border-white/30 shadow-xl min-w-[200px]"
+                className="transition-transform hover:scale-105 active:scale-95"
               >
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.spoton.gotobyspoton&hl=en_US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3"
-                >
-                  <Smartphone className="w-6 h-6" />
-                  <div className="text-left">
-                    <div className="text-xs opacity-90">GET IT ON</div>
-                    <div className="text-base font-semibold">Google Play</div>
-                  </div>
-                </a>
-              </Button>
+                <img
+                  src={googlePlayBadge}
+                  alt="Get it on Google Play"
+                  className="h-[50px] md:h-[60px] w-auto"
+                  width="180"
+                  height="60"
+                />
+              </a>
             </div>
           </div>
         </div>
