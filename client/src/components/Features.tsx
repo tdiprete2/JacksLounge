@@ -1,12 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
-  "Dine In",
-  "Take Out",
-  "Delivery",
-  "Happy Hour Food",
-  "Great Cocktails",
-  "Vegetarian Options"
+  "🍽️ Dine In",
+  "🥡 Take Out",
+  "🚗 Delivery",
+  "🍻 Happy Hour Food",
+  "🍹 Great Cocktails",
+  "🥗 Vegetarian Options"
 ];
 
 export default function Features() {
