@@ -19,7 +19,7 @@ const featuredItems = [
   {
     id: 1,
     name: "Build Your Own Pizza",
-    description: "Create your perfect pizza with fresh toppings on our signature honey-topped crust",
+    description: "Create your perfect pizza with fresh toppings, add our signature honey sauce for the full experience",
     desktop: buildYourOwnDesktop,
     mobile: buildYourOwnMobile,
     alt: "Build Your Own Custom Pizza at Jack's Lounge - Best Pizza in Hyannis MA"
