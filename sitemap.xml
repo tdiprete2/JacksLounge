@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&amp;w=1200&amp;q=80&amp;auto=format</image:loc>
+      <image:title>Jack's Lounge Restaurant Exterior Hyannis MA</image:title>
+      <image:caption>Jack's Lounge - Best Pizza in Hyannis MA since 1963</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://static-content.owner.com/funnel/images/c47c230c-9d49-47eb-9a99-29c70bb3518e?v=7683096227</image:loc>
+      <image:title>Jack's Lounge Logo</image:title>
+      <image:caption>Jack's Lounge - A Neighborhood Tradition serving great food and good times</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Menu Page -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/menu</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Our Story Page -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/story</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/contact</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,25 @@
+# robots.txt for Jack's Lounge - Hyannis MA
+# Allow all search engines to index all content
+
+User-agent: *
+Allow: /
+Allow: /menu
+Allow: /story
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://www.jackspizzahyannis.com/sitemap.xml
+
+# Block common non-content paths (if they exist)
+Disallow: /admin
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow crawling of CSS, JS, and images for proper indexing
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
