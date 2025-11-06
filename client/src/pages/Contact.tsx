@@ -38,10 +38,10 @@ export default function Contact() {
     updateMetaTags({
       title: "Contact Jack's Lounge Hyannis MA | Hours, Location, Phone",
       description: "Contact Jack's Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, catering, or questions. Open 7 days a week. Find hours, directions, and more.",
-      canonical: "https://jackspizzahyannis.com/contact",
+      canonical: "https://www.jackspizzahyannis.com/contact",
       ogTitle: "Contact Jack's Lounge - Hyannis MA Pizza & Italian Restaurant",
       ogDescription: "Get in touch with Jack's Lounge in Hyannis. Call, email, or visit us at 373 West Main Street for the best pizza and Italian food on Cape Cod.",
-      ogUrl: "https://jackspizzahyannis.com/contact"
+      ogUrl: "https://www.jackspizzahyannis.com/contact"
     });
   }, []);
 
