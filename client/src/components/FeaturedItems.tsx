@@ -51,7 +51,7 @@ const featuredItems = [
   {
     id: 5,
     name: "Meat Lovers Pizza",
-    description: "Loaded with pepperoni, sausage, bacon, and ham on our famous honey-topped crust",
+    description: "Loaded with Pepperoni, Sausage, Linguica, Meatballs, & Bacon.",
     desktop: meatLoversDesktop,
     mobile: meatLoversMobile,
     alt: "Meat Lovers Pizza with Pepperoni Sausage and Bacon - Best Pizza in Hyannis at Jack's Lounge"
