@@ -16,7 +16,7 @@ const menuCategories = [
       { name: "Quesadillas", price: "$13.00", description: "Your choice of Chicken, Beef, Vegetarian or Cheese Quesadilla. Served with Lettuce, Onions, Tomatoes, Salsa, and Sour Cream on the side" },
       { name: "Bone-in Chicken Wings", price: "$12.00", description: "8 Piece Wings - Choose your Sauce: Plain, Buffalo, BBQ, Garlic Parmesan, Sweet Chili" },
       { name: "Chicken Tenders", price: "$12.50", description: "Choose your Sauce: Plain, Buffalo, BBQ, or Sweet Chili" },
-      { name: "Stuffed Quahog", price: "$7.00", description: "Breaded clam mixed with veggies, and Chorizo Sausage. Linguica, or Chourico" },
+      { name: "Stuffed Quahog", price: "$7.00", description: "Breaded clam mixed with veggies, and Chorizo Sausage." },
       { name: "Cheese Nachos", price: "$11.50", description: "Warm tortilla Chips and your choice of Chicken or Beef (Add $2.00) served with salsa and sour cream" },
       { name: "Cheesy Smothered Garlic Bread", price: "$7.00", description: "Our homemade Garlic bread with cheese, served with Marinara" },
       { name: "Basket of Warm Nachos", price: "$5.50", description: "Served with Salsa" },
