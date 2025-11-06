@@ -27,7 +27,7 @@ const featuredItems = [
   {
     id: 2,
     name: "Chicken Quesadilla",
-    description: "Grilled tortilla stuffed with seasoned chicken, cheese, peppers, and onions",
+    description: "Grilled tortilla stuffed with seasoned chicken and cheese",
     desktop: quesadillaDesktop,
     mobile: quesadillaMobile,
     alt: "Chicken Quesadilla with Salsa and Sour Cream - Jack's Lounge Hyannis Mexican Food"
