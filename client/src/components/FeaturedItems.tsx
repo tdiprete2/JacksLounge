@@ -19,6 +19,7 @@ const featuredItems = [
   {
     id: 1,
     name: "Build Your Own Pizza",
+    description: "Create your perfect pizza with fresh toppings on our signature honey-topped crust",
     desktop: buildYourOwnDesktop,
     mobile: buildYourOwnMobile,
     alt: "Build Your Own Custom Pizza at Jack's Lounge - Best Pizza in Hyannis MA"
@@ -26,6 +27,7 @@ const featuredItems = [
   {
     id: 2,
     name: "Chicken Quesadilla",
+    description: "Grilled tortilla stuffed with seasoned chicken, cheese, peppers, and onions",
     desktop: quesadillaDesktop,
     mobile: quesadillaMobile,
     alt: "Chicken Quesadilla with Salsa and Sour Cream - Jack's Lounge Hyannis Mexican Food"
@@ -33,6 +35,7 @@ const featuredItems = [
   {
     id: 3,
     name: "Boneless Buffalo Tenders",
+    description: "Crispy boneless chicken tenders tossed in Buffalo sauce, served with blue cheese",
     desktop: bonelessWingsDesktop,
     mobile: bonelessWingsMobile,
     alt: "Crispy Boneless Buffalo Chicken Tenders with Blue Cheese Dip - Best Chicken Tenders Hyannis at Jack's Lounge"
@@ -40,6 +43,7 @@ const featuredItems = [
   {
     id: 4,
     name: "Cheese Smothered Garlic Bread",
+    description: "Fresh Italian bread topped with garlic butter and melted mozzarella cheese",
     desktop: garlicBreadDesktop,
     mobile: garlicBreadMobile,
     alt: "Melted Cheese Smothered Garlic Bread with Marinara Sauce - Best Italian Appetizers Hyannis at Jack's Lounge"
@@ -47,13 +51,15 @@ const featuredItems = [
   {
     id: 5,
     name: "Meat Lovers Pizza",
+    description: "Loaded with pepperoni, sausage, bacon, and ham on our famous honey-topped crust",
     desktop: meatLoversDesktop,
     mobile: meatLoversMobile,
     alt: "Meat Lovers Pizza with Pepperoni Sausage and Bacon - Best Pizza in Hyannis at Jack's Lounge"
   },
   {
     id: 6,
-    name: "Bone in Wings",
+    name: "Bone-in Wings",
+    description: "Crispy-baked chicken wings with your choice of sauce: Buffalo, BBQ, Teriyaki, or Garlic Parmesan",
     desktop: wingsDesktop,
     mobile: wingsMobile,
     alt: "Crispy Baked Bone-in Chicken Wings with Blue Cheese - Best Wings in Hyannis at Jack's Lounge"
@@ -107,9 +113,12 @@ export default function FeaturedItems() {
                 </picture>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-center" data-testid={`text-item-name-${item.id}`}>
+                <h3 className="text-xl md:text-2xl font-semibold text-center mb-2" data-testid={`text-item-name-${item.id}`}>
                   {item.name}
                 </h3>
+                <p className="text-sm text-foreground/70 text-center" data-testid={`text-item-description-${item.id}`}>
+                  {item.description}
+                </p>
               </CardContent>
             </Card>
           ))}
