@@ -59,7 +59,7 @@ const featuredItems = [
   {
     id: 6,
     name: "Bone-in Wings",
-    description: "Crispy-baked chicken wings with your choice of sauce: Buffalo, BBQ, Teriyaki, or Garlic Parmesan",
+    description: "Crispy-baked chicken wings with your choice of sauce: Buffalo, BBQ, Sweet Chili, or Garlic Parmesan",
     desktop: wingsDesktop,
     mobile: wingsMobile,
     alt: "Crispy Baked Bone-in Chicken Wings with Blue Cheese - Best Wings in Hyannis at Jack's Lounge"
