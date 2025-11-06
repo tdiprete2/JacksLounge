@@ -35,6 +35,8 @@ jobs:
         run: |
           # Build frontend only (skip backend build)
           npx vite build --base=/
+          # Generate static HTML files for each route
+          node scripts/generate-pages.js
         env:
           NODE_ENV: production
 
