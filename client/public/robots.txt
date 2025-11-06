@@ -8,7 +8,7 @@ Allow: /story
 Allow: /contact
 
 # Sitemap location
-Sitemap: https://jackspizzahyannis.com/sitemap.xml
+Sitemap: https://www.jackspizzahyannis.com/sitemap.xml
 
 # Block common non-content paths (if they exist)
 Disallow: /admin
