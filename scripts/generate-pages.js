@@ -9,7 +9,7 @@ const distDir = path.resolve(__dirname, '../dist/public');
 const indexPath = path.join(distDir, 'index.html');
 let baseHtml = fs.readFileSync(indexPath, 'utf-8');
 
-// Page configurations with SEO meta tags
+// Page configurations with SEO meta tags and readable content
 const pages = {
   menu: {
     title: 'Menu | Jack\'s Lounge - Pizza, Ribs, Wings & Italian Food in Hyannis MA',
@@ -17,6 +17,25 @@ const pages = {
     canonical: 'https://www.jackspizzahyannis.com/menu',
     ogTitle: 'Jack\'s Lounge Menu - Pizza, Ribs & Italian Food',
     ogUrl: 'https://www.jackspizzahyannis.com/menu',
+    noscript: `
+      <h1>Jack's Lounge Menu - Hyannis, MA</h1>
+      <p><strong>Best Pizza in Hyannis - Order Online for Pickup & Delivery</strong></p>
+      <p>Explore our full menu featuring signature honey-topped pizzas, BBQ ribs, wings, pasta, sandwiches, and salads. Gluten-free options available.</p>
+      
+      <h2>Featured Menu Items</h2>
+      <ul>
+        <li><strong>Build Your Own Pizza</strong> - Create your perfect pizza with our fresh toppings</li>
+        <li><strong>Meat Lovers Pizza</strong> - Loaded with pepperoni, sausage, and bacon</li>
+        <li><strong>Bone-in Wings</strong> - Crispy baked wings with your choice of sauce</li>
+        <li><strong>Boneless Buffalo Tenders</strong> - Tender chicken with blue cheese dip</li>
+        <li><strong>BBQ Ribs</strong> - Fall-off-the-bone tender ribs</li>
+        <li><strong>Italian Pasta Dishes</strong> - Classic pasta with homemade sauces</li>
+      </ul>
+      
+      <p><strong>Location:</strong> 373 West Main Street, Hyannis, MA 02601</p>
+      <p><strong>Phone:</strong> (508) 775-0612</p>
+      <p><strong>Order Online:</strong> <a href="https://olo.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677">Order Now</a></p>
+    `
   },
   story: {
     title: 'Our Story | Jack\'s Lounge - 60+ Years of Hyannis Tradition Since 1963',
@@ -24,6 +43,22 @@ const pages = {
     canonical: 'https://www.jackspizzahyannis.com/story',
     ogTitle: 'Our Story - Jack\'s Lounge Hyannis MA',
     ogUrl: 'https://www.jackspizzahyannis.com/story',
+    noscript: `
+      <h1>Our Story - Jack's Lounge Hyannis, MA</h1>
+      <p><strong>60+ Years of Hyannis Tradition Since 1963</strong></p>
+      
+      <h2>A Neighborhood Institution</h2>
+      <p>Jack's Lounge has been serving the Hyannis community since 1963. For over 60 years, we've been a beloved neighborhood spot where families gather for great food and good times.</p>
+      
+      <h2>Signature Honey-Topped Pizza</h2>
+      <p>We're famous for our unique honey-topped pizzas - a secret recipe perfected over six decades. Each pizza is finished with a drizzle of honey that creates the perfect sweet-and-savory balance. This signature touch makes our pizzas unlike any other in Hyannis, MA.</p>
+      
+      <h2>Family-Owned Restaurant</h2>
+      <p>As a family-owned restaurant, we take pride in serving quality Italian-American cuisine including pizza, BBQ ribs, wings, pasta, and sandwiches. We've been serving generations of Cape Cod families with the same commitment to quality and hospitality.</p>
+      
+      <p><strong>Visit Us:</strong> 373 West Main Street, Hyannis, MA 02601</p>
+      <p><strong>Call:</strong> (508) 775-0612</p>
+    `
   },
   contact: {
     title: 'Contact & Hours | Jack\'s Lounge Hyannis MA - Order Pickup & Delivery',
@@ -31,10 +66,47 @@ const pages = {
     canonical: 'https://www.jackspizzahyannis.com/contact',
     ogTitle: 'Contact Jack\'s Lounge - Hyannis MA',
     ogUrl: 'https://www.jackspizzahyannis.com/contact',
+    noscript: `
+      <h1>Contact Jack's Lounge - Hyannis, MA</h1>
+      
+      <h2>Location & Address</h2>
+      <p><strong>Jack's Lounge</strong><br>
+      373 West Main Street<br>
+      Hyannis, MA 02601</p>
+      
+      <h2>Phone & Contact</h2>
+      <p><strong>Phone:</strong> (508) 775-0612<br>
+      <strong>Email:</strong> jackspizza@comcast.net</p>
+      
+      <h2>Hours of Operation</h2>
+      <ul>
+        <li><strong>Monday:</strong> 11:00 AM - 10:00 PM</li>
+        <li><strong>Tuesday:</strong> 11:00 AM - 9:30 PM</li>
+        <li><strong>Wednesday:</strong> 11:00 AM - 10:30 PM</li>
+        <li><strong>Thursday:</strong> 11:00 AM - 10:00 PM</li>
+        <li><strong>Friday:</strong> 11:00 AM - 10:00 PM</li>
+        <li><strong>Saturday:</strong> 11:00 AM - 11:00 PM</li>
+        <li><strong>Sunday:</strong> 12:00 PM - 9:30 PM</li>
+      </ul>
+      
+      <h2>Order Online</h2>
+      <p>Order pickup or delivery: <a href="https://olo.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677">Order Now on SpotOn</a></p>
+      
+      <h2>Services</h2>
+      <ul>
+        <li>Dine-in</li>
+        <li>Takeout</li>
+        <li>Delivery</li>
+        <li>Online Ordering</li>
+        <li>Catering & Event Orders</li>
+      </ul>
+      
+      <p><strong>Serving Hyannis, MA and Cape Cod with the best pizza, wings, and Italian food since 1963.</strong></p>
+    `
   },
 };
 
-// Function to update meta tags in HTML
+// Function to update meta tags and add noscript content in HTML
 function updateMetaTags(html, config) {
   let updated = html;
 
@@ -86,6 +158,22 @@ function updateMetaTags(html, config) {
     `<meta name="twitter:description" content="${config.description}"`
   );
 
+  // Add noscript content for Google to read without JavaScript
+  if (config.noscript) {
+    const noscriptContent = `
+    <noscript>
+      <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; line-height: 1.6;">
+        ${config.noscript}
+      </div>
+    </noscript>`;
+    
+    // Insert noscript right after <body> tag
+    updated = updated.replace(
+      /<body>/,
+      `<body>${noscriptContent}`
+    );
+  }
+
   return updated;
 }
 
@@ -100,12 +188,12 @@ Object.keys(pages).forEach((pageName) => {
     fs.mkdirSync(pageDir, { recursive: true });
   }
 
-  // Update HTML with page-specific meta tags
+  // Update HTML with page-specific meta tags and noscript content
   const pageHtml = updateMetaTags(baseHtml, config);
 
   // Write the HTML file
   fs.writeFileSync(pageHtmlPath, pageHtml, 'utf-8');
-  console.log(`✅ Generated: ${pageName}/index.html`);
+  console.log(`✅ Generated: ${pageName}/index.html with readable content`);
 });
 
-console.log('\n🎉 All pages generated successfully!');
+console.log('\n🎉 All pages generated with SEO-friendly text content!');
