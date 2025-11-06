@@ -117,18 +117,18 @@
     <link rel="preload" as="image" href="/hero-0-desktop.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
     
     <!-- Resource Hints for External Services (Mobile Performance) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://static-content.owner.com">
-    <link rel="preconnect" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
     <link rel="dns-prefetch" href="https://maps.gstatic.com">
     <link rel="dns-prefetch" href="https://olo.spoton.com">
-    <link rel="preconnect" href="https://olo.spoton.com">
     
-    <!-- Preload and load fonts with optional display to prevent layout shift -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional"></noscript>
+    <!-- Preload and load fonts with swap display for better performance -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
     
     <!-- SEO Meta Tags -->
     <meta name="keywords" content="Jack's Lounge, Hyannis pizza, Hyannis restaurant, Cape Cod pizza, BBQ ribs Hyannis, Italian food Hyannis, honey pizza, family restaurant Cape Cod, takeout Hyannis, delivery Hyannis" />
