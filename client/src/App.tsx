@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Menu from "@/pages/Menu";
 import Contact from "@/pages/Contact";
 import Story from "@/pages/Story";
+import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
 
 // Get base path from environment or use root
@@ -32,6 +33,7 @@ function Router() {
         <Route path="/menu" component={Menu} />
         <Route path="/contact" component={Contact} />
         <Route path="/story" component={Story} />
+        <Route path="/admin" component={Admin} />
         <Route component={NotFound} />
       </Switch>
     </WouterRouter>

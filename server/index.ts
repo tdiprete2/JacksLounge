@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { initializeScheduler } from "./scheduler";
 
 const app = express();
 
@@ -80,6 +81,15 @@ app.use((req, res, next) => {
     log(`✓ Server successfully started on port ${port}`);
     log(`✓ Environment: ${app.get("env")}`);
     log(`✓ Ready to accept connections on 0.0.0.0:${port}`);
+    
+    // Warn if admin password not set
+    if (!process.env.ADMIN_PASSWORD) {
+      log(`⚠️  WARNING: ADMIN_PASSWORD not set! Admin panel will be unavailable.`);
+      log(`⚠️  Set ADMIN_PASSWORD in environment variables to enable admin features.`);
+    }
+    
+    // Initialize review scheduler
+    initializeScheduler();
   });
 
   server.on('error', (error: any) => {

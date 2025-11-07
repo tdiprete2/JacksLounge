@@ -1,55 +1,106 @@
-import { Star } from "lucide-react";
+import { Star, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
+import type { ReviewStats, Review } from "@shared/schema";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Justin T.",
-    text: "Jacks Lounge is a local favorite. I've been coming here since I was a kid and now I go there as an adult. Their pizza is crunchy and thin and checks all the boxes. Jacks staff is always friendly, they always have a menu with specials that are delicious. I would recommend if you're looking for a small atmosphere with great vibes and tasty food and drinks!",
-    avatar: "https://static-content.owner.com/funnel/images/f5f11da7-63a1-4748-aefe-c032925da3e9?v=3696744320&w=128&q=80&auto=format",
-  },
-  {
-    id: 2,
-    name: "Brooke S.",
-    text: "Hands down have the best fries, they were baked instead of fried so I felt so good afterwards after eating them. Also, decent calm chowder! Thank you Jack's.",
-    avatar: "https://static-content.owner.com/funnel/images/d546fac5-339e-41fb-bdc8-eda6d29e6a7b?v=2907565741&w=128&q=80&auto=format",
-  },
-  {
-    id: 3,
-    name: "April M.",
-    text: "The wings were AMAZING ! Cole was so nice. We are definitely going to go back for dinner. I love the atmosphere It's an awesome lounge!",
-    avatar: "https://static-content.owner.com/funnel/images/747fd2a6-b8d0-4f75-93ee-199d6c3bf466?v=6837840113&w=128&q=80&auto=format",
-  },
-];
+interface ReviewsResponse {
+  stats: ReviewStats | null;
+  reviews: Review[];
+}
 
 export default function Testimonials() {
+  const { data, isLoading } = useQuery<ReviewsResponse>({
+    queryKey: ['/api/reviews'],
+  });
+
+  const reviews = data?.reviews || [];
+  const stats = data?.stats;
+
   return (
     <section id="testimonials" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-base md:text-lg font-semibold text-center text-foreground mb-12" data-testid="text-testimonials-title">
-          What our guests are saying
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="text-center" data-testid={`card-testimonial-${testimonial.id}`}>
-              <p className="text-foreground/80 mb-8 leading-relaxed" data-testid={`text-review-${testimonial.id}`}>
-                {testimonial.text}
-              </p>
-              <div className="flex flex-col items-center gap-3">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full object-cover"
-                  data-testid={`img-avatar-${testimonial.id}`}
-                />
-                <p className="font-medium text-foreground" data-testid={`text-name-${testimonial.id}`}>
-                  {testimonial.name}
-                </p>
+        <div className="text-center mb-12">
+          <h2 className="text-base md:text-lg font-semibold text-foreground mb-4" data-testid="text-testimonials-title">
+            What our guests are saying
+          </h2>
+          
+          {stats && (
+            <div className="flex items-center justify-center gap-2 mb-2" data-testid="div-rating-stats">
+              <div className="flex items-center gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    className={i < Math.round(stats.overallRating) ? "fill-primary text-primary" : "text-muted"}
+                    data-testid={`icon-star-${i}`}
+                  />
+                ))}
               </div>
+              <span className="font-semibold text-lg" data-testid="text-overall-rating">
+                {stats.overallRating.toFixed(1)}
+              </span>
             </div>
-          ))}
+          )}
+          
+          {stats && (
+            <p className="text-sm text-muted-foreground" data-testid="text-review-count">
+              Based on {stats.totalReviews} Google reviews
+            </p>
+          )}
         </div>
+
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse" data-testid={`skeleton-review-${i}`}>
+                <div className="h-32 bg-muted rounded mb-8"></div>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-16 h-16 bg-muted rounded-full"></div>
+                  <div className="h-4 w-24 bg-muted rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {reviews.slice(0, 6).map((review) => (
+              <div key={review.id} className="text-center" data-testid={`card-review-${review.id}`}>
+                <div className="flex justify-center mb-4">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      size={16}
+                      className={i < review.rating ? "fill-primary text-primary" : "text-muted"}
+                      data-testid={`icon-review-star-${review.id}-${i}`}
+                    />
+                  ))}
+                </div>
+                {review.reviewText && (
+                  <p className="text-foreground/80 mb-8 leading-relaxed" data-testid={`text-review-text-${review.id}`}>
+                    {review.reviewText}
+                  </p>
+                )}
+                <div className="flex flex-col items-center gap-3">
+                  {review.authorPhoto ? (
+                    <img
+                      src={review.authorPhoto}
+                      alt={review.authorName}
+                      className="w-16 h-16 rounded-full object-cover"
+                      data-testid={`img-avatar-${review.id}`}
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center" data-testid={`div-avatar-${review.id}`}>
+                      <User size={32} className="text-muted-foreground" />
+                    </div>
+                  )}
+                  <p className="font-medium text-foreground" data-testid={`text-reviewer-${review.id}`}>
+                    {review.authorName}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <Button
@@ -58,7 +109,7 @@ export default function Testimonials() {
             data-testid="button-review"
           >
             <a
-              href="https://www.google.com/search?sca_esv=3254653861c5b0f8&rlz=1C1RXQR_enUS1135US1135&sxsrf=AE3TifN0Q5URC3ThX_nkrDSGkCP1zNDDxQ:1762219892513&q=jacks+lounge&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s_t01b4el_-ZS1G1dmBrR9n8YoDA0yOra6PcSzrOxUdjKKs8_A1nWsQ2k1U2chO53gBrp_M6ECVF7uLFdFWd76zz-n94&sa=X&ved=2ahUKEwiGkNbVrNeQAxX2pIkEHf5nAfwQrrQLegQIHhAA&cshid=1762219920073083&biw=2195&bih=1074&dpr=1.75#"
+              href="https://www.google.com/search?q=jacks+lounge+hyannis"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2"
