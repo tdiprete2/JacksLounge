@@ -326,7 +326,6 @@ export default function Contact() {
                     <Button
                       asChild
                       size="lg"
-                      variant="outline"
                       className="w-full"
                     >
                       <a
