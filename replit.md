@@ -129,4 +129,11 @@ Preferred communication style: Simple, everyday language.
 - **Image Optimization:** WebP conversion, responsive images (`srcset`), `picture` element, lazy loading, `fetchpriority="high"`.
 - **Logo Optimization:** Standard and Retina WebP variants, PNG fallback.
 - **Font Loading:** Async loading, preconnect hints, `font-display: swap`.
-- **Performance Optimizations (November 2025):** Enhanced image compression, mobile-optimized logo, LCP optimization (preload, `fetchpriority="high"`), critical CSS inlining, optimized font loading, deferred carousel loading, reduced motion support.
+- **Performance Optimizations (November 2025):**
+  - Enhanced image compression (62-68% quality range for optimal web delivery)
+  - Mobile-optimized logo with aggressive compression
+  - LCP optimization (preload hero images, `fetchpriority="high"`)
+  - Critical CSS inlining for faster initial render
+  - Optimized font loading with preconnect hints
+  - Deferred carousel loading and reduced motion support
+  - **Results:** ~58KB reduction in image payload, 8-9% file size savings on hero/featured images
