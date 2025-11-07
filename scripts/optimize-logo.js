@@ -39,7 +39,7 @@ async function optimizeLogo() {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
-      .webp({ quality: 75, effort: 6 })
+      .webp({ quality: 65, effort: 6 })
       .toFile(join(outputDir, 'logo-mobile.webp'));
     console.log('✅ Created logo-mobile.webp (400x104 - mobile optimized)');
 
@@ -50,7 +50,7 @@ async function optimizeLogo() {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
-      .webp({ quality: 75, effort: 6 })
+      .webp({ quality: 68, effort: 6 })
       .toFile(join(outputDir, 'logo-1x.webp'));
     console.log('✅ Created logo-1x.webp (324x84 - desktop standard)');
 
@@ -61,7 +61,7 @@ async function optimizeLogo() {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
-      .webp({ quality: 70, effort: 6 })
+      .webp({ quality: 62, effort: 6 })
       .toFile(join(outputDir, 'logo-2x.webp'));
     console.log('✅ Created logo-2x.webp (648x168 - retina/2x)');
 
