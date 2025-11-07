@@ -14,6 +14,9 @@ import NotFound from "@/pages/not-found";
 // Get base path from environment or use root
 const base = import.meta.env.BASE_URL || "/";
 
+// Check if admin route should be enabled (default: true for Replit, false for GitHub Pages)
+const enableAdmin = import.meta.env.VITE_ENABLE_ADMIN !== "false";
+
 function ScrollToTop() {
   const [location] = useLocation();
 
@@ -33,7 +36,7 @@ function Router() {
         <Route path="/menu" component={Menu} />
         <Route path="/contact" component={Contact} />
         <Route path="/story" component={Story} />
-        <Route path="/admin" component={Admin} />
+        {enableAdmin && <Route path="/admin" component={Admin} />}
         <Route component={NotFound} />
       </Switch>
     </WouterRouter>

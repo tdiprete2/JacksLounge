@@ -1,9 +1,31 @@
 import express, { type Request, Response, NextFunction } from "express";
+import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { initializeScheduler } from "./scheduler";
 
 const app = express();
+
+// Configure CORS to allow requests from GitHub Pages
+const allowedOrigins = [
+  'http://localhost:5000',
+  'https://www.jackspizzahyannis.com',
+  'https://jackspizzahyannis.com',
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 
 declare module 'http' {
   interface IncomingMessage {
