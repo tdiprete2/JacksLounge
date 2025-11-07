@@ -15,9 +15,8 @@ if grep -q "YOUR-REPLIT-DEPLOYMENT-URL" client/.env.production.github; then
   echo ""
 fi
 
-# Build with GitHub Pages environment
-cp client/.env.production.github client/.env.production.local
-npx vite build --base=/
+# Build with GitHub Pages environment variables (inline to avoid leaving .local file)
+VITE_ENABLE_ADMIN=false VITE_API_URL=$(grep VITE_API_URL client/.env.production.github | cut -d '=' -f2) npx vite build --base=/
 
 echo ""
 echo "✅ Build complete! Output in dist/public/"
