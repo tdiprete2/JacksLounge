@@ -4,15 +4,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RefreshCw, Star, Calendar, Database, Lock } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { RefreshCw, Star, Calendar, Database, Lock, Mail, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { queryClient, apiRequest } from "@/lib/queryClient";
-import type { ReviewStats, Review } from "@shared/schema";
+import type { ReviewStats, Review, ContactRequest } from "@shared/schema";
 import { formatDistanceToNow } from "date-fns";
 
 interface ReviewsResponse {
   stats: ReviewStats | null;
   reviews: Review[];
+}
+
+interface ContactsResponse {
+  contacts: ContactRequest[];
+  unreadCount: number;
 }
 
 export default function Admin() {
@@ -24,6 +30,35 @@ export default function Admin() {
 
   const { data, isLoading } = useQuery<ReviewsResponse>({
     queryKey: ['/api/reviews'],
+  });
+
+  const { data: contactsData, isLoading: contactsLoading, error: contactsError } = useQuery<ContactsResponse>({
+    queryKey: ['/api/contacts'],
+    queryFn: async () => {
+      try {
+        const response = await apiRequest(
+          'GET',
+          '/api/contacts',
+          undefined,
+          { 'x-admin-password': adminPassword }
+        );
+        return await response.json();
+      } catch (error) {
+        // Check if it's a 401 error
+        if (error instanceof Error && error.message.includes('401')) {
+          setIsAuthenticated(false);
+          sessionStorage.removeItem('adminPassword');
+          toast({
+            title: "Session Expired",
+            description: "Please log in again",
+            variant: "destructive",
+          });
+        }
+        throw error;
+      }
+    },
+    enabled: isAuthenticated && !!adminPassword,
+    retry: false,
   });
 
   useEffect(() => {
@@ -79,6 +114,25 @@ export default function Admin() {
     refreshMutation.mutate();
   };
 
+  const markAsReadMutation = useMutation({
+    mutationFn: (id: string) => 
+      apiRequest('POST', `/api/contacts/${id}/mark-read`, { password: adminPassword }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/contacts'] });
+      toast({
+        title: "Marked as Read",
+        description: "Contact message marked as read",
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to mark as read",
+        variant: "destructive",
+      });
+    },
+  });
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -89,7 +143,7 @@ export default function Admin() {
               Admin Login
             </CardTitle>
             <CardDescription>
-              Enter the admin password to access the reviews management panel
+              Enter the admin password to access the management panel
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -123,10 +177,10 @@ export default function Admin() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2" data-testid="text-admin-title">
-            Reviews Admin Panel
+            Admin Panel
           </h1>
           <p className="text-muted-foreground" data-testid="text-admin-description">
-            Manage and monitor your Google Business Profile reviews
+            Manage reviews and contact messages
           </p>
         </div>
 
@@ -267,6 +321,98 @@ export default function Admin() {
                   Reviews are automatically fetched from Google Business Profile and updated weekly. You can manually refresh at any time using the button above.
                 </p>
               </div>
+            </CardContent>
+          </Card>
+
+          <Card data-testid="card-contact-messages">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Mail size={20} />
+                Contact Messages
+                {contactsData && contactsData.unreadCount > 0 && (
+                  <Badge variant="destructive" data-testid="badge-unread-count">
+                    {contactsData.unreadCount} unread
+                  </Badge>
+                )}
+              </CardTitle>
+              <CardDescription>
+                Messages submitted through the contact form
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {contactsLoading ? (
+                <div className="space-y-4">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="animate-pulse">
+                      <div className="h-4 bg-muted rounded w-1/4 mb-2"></div>
+                      <div className="h-20 bg-muted rounded"></div>
+                    </div>
+                  ))}
+                </div>
+              ) : contactsError ? (
+                <div className="text-center py-8">
+                  <p className="text-destructive mb-2">Failed to load contact messages</p>
+                  <p className="text-sm text-muted-foreground">{(contactsError as Error).message}</p>
+                </div>
+              ) : contactsData && contactsData.contacts.length > 0 ? (
+                <div className="space-y-4">
+                  {contactsData.contacts.map((contact) => (
+                    <div
+                      key={contact.id}
+                      className={`border rounded-lg p-4 ${contact.isRead === 0 ? 'bg-accent/10' : ''}`}
+                      data-testid={`card-contact-${contact.id}`}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <p className="font-medium" data-testid={`text-contact-name-${contact.id}`}>
+                              {contact.firstName} {contact.lastName}
+                            </p>
+                            {contact.isRead === 0 && (
+                              <Badge variant="secondary" data-testid={`badge-unread-${contact.id}`}>
+                                New
+                              </Badge>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground" data-testid={`text-contact-email-${contact.id}`}>
+                            {contact.email}
+                          </p>
+                          {contact.company && (
+                            <p className="text-sm text-muted-foreground" data-testid={`text-contact-company-${contact.id}`}>
+                              {contact.company}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm text-muted-foreground">
+                            {formatDistanceToNow(new Date(contact.createdAt), { addSuffix: true })}
+                          </p>
+                          {contact.isRead === 0 && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => markAsReadMutation.mutate(contact.id)}
+                              disabled={markAsReadMutation.isPending}
+                              data-testid={`button-mark-read-${contact.id}`}
+                            >
+                              <CheckCircle2 size={14} className="mr-1" />
+                              Mark Read
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                      <div className="border-t pt-3">
+                        <p className="text-sm font-medium mb-1">Message:</p>
+                        <p className="text-sm text-foreground whitespace-pre-wrap" data-testid={`text-contact-message-${contact.id}`}>
+                          {contact.message}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground">No contact messages yet</p>
+              )}
             </CardContent>
           </Card>
         </div>

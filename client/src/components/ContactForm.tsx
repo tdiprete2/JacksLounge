@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,20 +17,33 @@ export default function ContactForm() {
   });
   const { toast } = useToast();
 
+  const submitMutation = useMutation({
+    mutationFn: (data: typeof formData) => apiRequest('POST', '/api/contact', data),
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again or call us directly.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      company: "",
-      message: "",
-    });
+    submitMutation.mutate(formData);
   };
 
   return (
@@ -116,8 +131,14 @@ export default function ContactForm() {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full md:w-auto" data-testid="button-submit">
-                Submit
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full md:w-auto" 
+                data-testid="button-submit"
+                disabled={submitMutation.isPending}
+              >
+                {submitMutation.isPending ? "Sending..." : "Submit"}
               </Button>
             </form>
           </CardContent>

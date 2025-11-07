@@ -20,15 +20,18 @@ export type User = typeof users.$inferSelect;
 export const contactRequests = pgTable("contact_requests", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
+  lastName: text("last_name"),
   email: text("email").notNull(),
-  phone: text("phone"),
-  subject: text("subject").notNull(),
+  company: text("company"),
   message: text("message").notNull(),
+  isRead: integer("is_read").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
 export const insertContactRequestSchema = createInsertSchema(contactRequests).omit({
   id: true,
+  isRead: true,
+  createdAt: true,
 });
 
 export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
