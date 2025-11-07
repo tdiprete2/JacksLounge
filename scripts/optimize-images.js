@@ -15,15 +15,15 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 // Define size presets for different use cases
-// Reduced quality for mobile-first performance (targeting PageSpeed 100)
+// Aggressive compression for mobile-first performance (targeting PageSpeed 90+)
 const PRESETS = {
-  hero: { width: 1920, height: 1080, quality: 75 }, // Hero carousel
-  heroMobile: { width: 768, height: 600, quality: 70 },
-  featured: { width: 800, height: 600, quality: 75 }, // Featured items
-  featuredMobile: { width: 400, height: 300, quality: 70 },
-  gallery: { width: 600, height: 600, quality: 75 }, // Food gallery
-  section: { width: 1200, height: 800, quality: 75 }, // Section images
-  sectionMobile: { width: 600, height: 400, quality: 70 },
+  hero: { width: 1920, height: 1080, quality: 68 }, // Hero carousel
+  heroMobile: { width: 768, height: 600, quality: 62 },
+  featured: { width: 800, height: 600, quality: 68 }, // Featured items
+  featuredMobile: { width: 400, height: 300, quality: 62 },
+  gallery: { width: 600, height: 600, quality: 68 }, // Food gallery
+  section: { width: 1200, height: 800, quality: 68 }, // Section images
+  sectionMobile: { width: 600, height: 400, quality: 62 },
 };
 
 async function optimizeImage(inputPath, outputBaseName, preset) {
