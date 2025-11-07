@@ -19,7 +19,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   useEffect(() => {
     updateMetaTags({
-      title: "Best Pizza & Wings in Hyannis, MA | Jack's Lounge | Hot Honey Pizza",
+      title: "Best Pizza & Wings Hyannis MA | Jack's Lounge",
       description: "Best pizza & wings in Hyannis! Signature hot honey pizza, crispy wings, BBQ ribs since 1963. Gluten-free options. Order delivery & pickup online!",
       canonical: "https://www.jackspizzahyannis.com/",
       ogUrl: "https://www.jackspizzahyannis.com/"
