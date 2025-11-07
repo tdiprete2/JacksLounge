@@ -6,22 +6,34 @@ import { initializeScheduler } from "./scheduler";
 
 const app = express();
 
-// Configure CORS to allow requests from GitHub Pages
-const allowedOrigins = [
-  'http://localhost:5000',
-  'https://www.jackspizzahyannis.com',
-  'https://jackspizzahyannis.com',
-];
+// Configure CORS to allow requests from GitHub Pages and Replit deployments
+const isDevelopment = app.get("env") === "development";
 
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
+    // In development, allow all origins for easier testing
+    if (isDevelopment) {
+      return callback(null, true);
+    }
+    
+    // In production, allow specific origins
+    const allowedOrigins = [
+      'https://www.jackspizzahyannis.com',
+      'https://jackspizzahyannis.com',
+    ];
+    
+    // Allow any Replit deployment URL
+    if (origin.includes('.replit.app') || origin.includes('.replit.dev')) {
+      return callback(null, true);
+    }
+    
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(null, false);
     }
   },
   credentials: true,
