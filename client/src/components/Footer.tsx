@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Facebook } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
   const [location, navigate] = useLocation();
@@ -34,16 +34,28 @@ export default function Footer() {
             <p className="text-muted-foreground mb-4">
               Serving Hyannis with signature honey-topped pizzas, BBQ ribs, and Italian favorites since 1963.
             </p>
-            <a
-              href="https://www.facebook.com/Jackspizzahyannis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-primary transition-colors"
-              data-testid="link-facebook"
-            >
-              <Facebook size={24} />
-              <span>Follow us on Facebook for Daily Specials</span>
-            </a>
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://www.facebook.com/Jackspizzahyannis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-primary transition-colors"
+                data-testid="link-facebook"
+              >
+                <Facebook size={24} />
+                <span>Follow us on Facebook for Daily Specials</span>
+              </a>
+              <a
+                href="https://www.instagram.com/jackspizzahyannis/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-primary transition-colors"
+                data-testid="link-instagram"
+              >
+                <Instagram size={24} />
+                <span>Follow us on Instagram</span>
+              </a>
+            </div>
           </div>
 
           <div>
