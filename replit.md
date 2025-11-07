@@ -49,6 +49,25 @@ Preferred communication style: Simple, everyday language.
 
 **Admin Panel:** Password-protected `/admin` route to view and manage contact submissions, with unread indicators and "mark as read" functionality. Session persistence via `sessionStorage`.
 
+### Google Business Reviews Integration (November 2025)
+
+**Current Implementation (Places API New):**
+- **Service:** GoogleReviewsService (`server/services/google-reviews.ts`)
+- **Authentication:** Google Cloud service account credentials via `GOOGLE_CREDENTIALS` secret
+- **Business Discovery:** Text Search API finds "Jack's Pizza" business Place ID automatically
+- **Review Fetching:** Places API (New) retrieves latest reviews with ratings, text, author info, and photos
+- **Data Storage:** Reviews stored in-memory with automatic weekly refresh (Sunday 2 AM)
+- **Admin Panel:** Manual refresh available via admin interface
+
+**API Limitation:**
+- **Maximum Reviews:** Places API (New) has hard limit of 5 reviews per request (no pagination)
+- **Business Total:** Jack's Pizza has 217 Google reviews, but only 5 most recent are accessible
+- **Overall Stats:** Rating (4.5) and total count (217) are available, but historical reviews are not
+
+**Future Enhancement Options:**
+1. Accept current limitation (5 latest reviews shown on website)
+2. Implement Google Business Profile API for all 217 reviews (requires service account invitation to business)
+
 ### Authentication & Authorization
 
 **Current State:** Admin authentication for contact management via `ADMIN_PASSWORD` env variable and `sessionStorage`. User schema defined, but customer authentication is not yet implemented. Session management infrastructure via `connect-pg-simple` is prepared.
