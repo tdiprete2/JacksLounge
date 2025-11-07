@@ -4,3 +4,16 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Credentials and secrets
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+!drizzle.config.json
+*.key
+*.pem
+*.p12
+.env.local
+.env.*.local
