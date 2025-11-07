@@ -2,127 +2,130 @@ import { google } from 'googleapis';
 import { storage } from '../storage';
 import type { InsertReview, InsertReviewStats } from '@shared/schema';
 
+const PLACE_ID = 'ChIJ61JUcaAx-4kRZbBEtxohYrw';
+
 export class GoogleReviewsService {
-  private mybusiness;
+  private auth;
   private initialized = false;
 
   constructor() {
-    // Initialize with credentials if available
     const credentials = process.env.GOOGLE_CREDENTIALS;
     if (credentials) {
       try {
-        const auth = new google.auth.GoogleAuth({
+        this.auth = new google.auth.GoogleAuth({
           credentials: JSON.parse(credentials),
-          scopes: ['https://www.googleapis.com/auth/business.manage'],
+          scopes: ['https://www.googleapis.com/auth/cloud-platform'],
         });
-        this.mybusiness = google.mybusinessaccountmanagement({ version: 'v1', auth });
         this.initialized = true;
+        console.log('Google Places API initialized successfully');
       } catch (error) {
         console.error('Failed to initialize Google API:', error);
       }
+    } else {
+      console.warn('GOOGLE_CREDENTIALS not found - reviews will not be fetched');
     }
   }
 
   async fetchAndStoreReviews(): Promise<{ success: boolean; error?: string; stats?: any }> {
     if (!this.initialized) {
-      console.log('Google API not initialized - using mock data for development');
-      return this.useMockData();
+      const error = 'Google API not initialized - GOOGLE_CREDENTIALS missing';
+      console.error(error);
+      return { success: false, error };
     }
 
     try {
-      // In production, fetch from Google Business Profile API
-      // For now, we'll use mock data as placeholder
-      return this.useMockData();
+      console.log(`Fetching reviews for Place ID: ${PLACE_ID}`);
+      
+      const authClient = await this.auth!.getClient();
+      const accessToken = await authClient.getAccessToken();
+      
+      if (!accessToken.token) {
+        throw new Error('Failed to obtain access token');
+      }
+
+      console.log('Successfully obtained access token');
+
+      const response = await fetch(
+        `https://places.googleapis.com/v1/places/${PLACE_ID}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken.token}`,
+            'X-Goog-FieldMask': 'reviews,rating,userRatingCount',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Places API error: ${response.status} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log('Google Places API response:', JSON.stringify(data, null, 2));
+
+      if (!data.reviews || data.reviews.length === 0) {
+        console.warn('No reviews found in Places API response');
+        return { success: false, error: 'No reviews available' };
+      }
+
+      return await this.processAndStoreReviews(data);
     } catch (error) {
       console.error('Error fetching Google reviews:', error);
       return { success: false, error: (error as Error).message };
     }
   }
 
-  private async useMockData(): Promise<{ success: boolean; stats: any }> {
-    // Mock data for development - simulates Google Business Profile reviews
-    const mockReviews = [
-      {
-        externalId: 'review1',
-        authorName: 'Sarah M.',
-        authorPhoto: null,
-        rating: 5,
-        reviewText: 'Best pizza in Hyannis! The hot honey pizza is absolutely amazing. Been coming here for years!',
-        reviewDate: new Date('2024-11-15'),
-      },
-      {
-        externalId: 'review2',
-        authorName: 'John D.',
-        authorPhoto: null,
-        rating: 5,
-        reviewText: 'Great wings and fantastic service. The BBQ ribs are fall-off-the-bone tender!',
-        reviewDate: new Date('2024-11-10'),
-      },
-      {
-        externalId: 'review3',
-        authorName: 'Lisa K.',
-        authorPhoto: null,
-        rating: 4,
-        reviewText: 'Love the signature honey on the pizza! Family favorite spot for over 10 years.',
-        reviewDate: new Date('2024-11-05'),
-      },
-      {
-        externalId: 'review4',
-        authorName: 'Mike R.',
-        authorPhoto: null,
-        rating: 5,
-        reviewText: 'The Meat Lovers pizza is loaded! Generous portions and great late-night hours.',
-        reviewDate: new Date('2024-10-28'),
-      },
-      {
-        externalId: 'review5',
-        authorName: 'Emily P.',
-        authorPhoto: null,
-        rating: 5,
-        reviewText: 'Best local pizza place on Cape Cod. Fresh ingredients and the staff is always friendly!',
-        reviewDate: new Date('2024-10-20'),
-      },
-      {
-        externalId: 'review6',
-        authorName: 'Tom B.',
-        authorPhoto: null,
-        rating: 4,
-        reviewText: 'Great gluten-free options! The crispy wings are perfect for game day.',
-        reviewDate: new Date('2024-10-15'),
-      },
-    ];
-
+  private async processAndStoreReviews(data: any): Promise<{ success: boolean; stats: any }> {
     const platform = 'google';
+    const reviews = data.reviews || [];
     
-    // Calculate overall rating
-    const totalRating = mockReviews.reduce((sum, r) => sum + r.rating, 0);
-    const overallRating = totalRating / mockReviews.length;
+    console.log(`Processing ${reviews.length} reviews from Google Places API`);
 
-    // Clear existing reviews for this platform
+    const processedReviews: InsertReview[] = reviews.map((review: any) => {
+      const authorName = review.authorAttribution?.displayName || 'Anonymous';
+      const authorPhoto = review.authorAttribution?.photoUri || null;
+      const rating = review.rating || 0;
+      const reviewText = review.text?.text || review.originalText?.text || '';
+      const publishTime = review.publishTime || new Date().toISOString();
+      const reviewDate = new Date(publishTime);
+      const externalId = review.name || `review-${Date.now()}-${Math.random()}`;
+
+      return {
+        platform,
+        externalId,
+        authorName,
+        authorPhoto,
+        rating,
+        reviewText,
+        reviewDate,
+      };
+    });
+
+    const overallRating = data.rating || (processedReviews.reduce((sum, r) => sum + r.rating, 0) / processedReviews.length);
+    const totalReviews = data.userRatingCount || processedReviews.length;
+
     await storage.deleteReviewsByPlatform(platform);
 
-    // Store new reviews
-    for (const mockReview of mockReviews) {
-      const insertReview: InsertReview = {
-        platform,
-        ...mockReview,
-      };
-      await storage.createReview(insertReview);
+    for (const review of processedReviews) {
+      await storage.createReview(review);
     }
 
-    // Store stats
     const stats: InsertReviewStats = {
       platform,
       overallRating,
-      totalReviews: mockReviews.length,
+      totalReviews,
     };
     await storage.upsertReviewStats(stats);
+
+    console.log(`Successfully stored ${processedReviews.length} reviews with overall rating ${overallRating.toFixed(1)}`);
 
     return {
       success: true,
       stats: {
         overallRating: overallRating.toFixed(1),
-        totalReviews: mockReviews.length,
+        totalReviews,
         platform,
       },
     };
