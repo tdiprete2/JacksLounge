@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock, Facebook } from "lucide-react";
+import { SiInstagram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
@@ -302,24 +303,44 @@ export default function Contact() {
                 <Card className="p-6">
                   <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
                   <p className="text-foreground/70 mb-6">
-                    Follow us on Facebook for daily specials, updates, and more!
+                    Follow us on social media for daily specials, updates, and more!
                   </p>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="w-full"
-                  >
-                    <a
-                      href="https://www.facebook.com/Jackspizzahyannis"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2"
-                      data-testid="button-facebook"
+                  <div className="space-y-3">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full"
                     >
-                      <Facebook className="w-5 h-5" />
-                      Visit Our Facebook Page
-                    </a>
-                  </Button>
+                      <a
+                        href="https://www.facebook.com/Jackspizzahyannis"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2"
+                        data-testid="button-facebook"
+                      >
+                        <Facebook className="w-5 h-5" />
+                        Visit Our Facebook Page
+                      </a>
+                    </Button>
+                    
+                    <Button
+                      asChild
+                      size="lg"
+                      variant="outline"
+                      className="w-full"
+                    >
+                      <a
+                        href="https://www.instagram.com/jackspizzahyannis/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2"
+                        data-testid="button-instagram"
+                      >
+                        <SiInstagram className="w-5 h-5" />
+                        Follow Us on Instagram
+                      </a>
+                    </Button>
+                  </div>
                 </Card>
 
                 <Card className="p-6 bg-primary/5">
