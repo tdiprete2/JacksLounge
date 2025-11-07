@@ -1,0 +1,74 @@
+~/workspace$ bash scripts/build-github-pages.sh
+🚀 Building for GitHub Pages (public site only)...
+vite v5.4.20 building for production...
+transforming (1) index.htmlBrowserslist: browsers data (caniuse-lite) is 13 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+transforming (5) src/App.tsx
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 2195 modules transformed.
+../dist/public/assets/logo-1x-DPgrjVfD.png                                10.14 kB
+../dist/public/assets/featured-garlic-bread-mobile-BbnEUgV7.webp          10.24 kB
+../dist/public/assets/featured-boneless-wings-mobile-BUW7HjhI.webp        12.43 kB
+../dist/public/assets/logo-1x-DBXBSgAT.webp                               14.49 kB
+../dist/public/assets/featured-wings-mobile-DLUrM7mT.webp                 14.86 kB
+../dist/public/assets/featured-build-your-own-mobile-VwbPKyAo.webp        14.89 kB
+../dist/public/assets/featured-quesadilla-mobile-CcKgpKt1.webp            14.92 kB
+../dist/public/assets/logo-mobile-rujoEQmC.webp                           19.70 kB
+../dist/public/assets/featured-meat-lovers-mobile-vSStUJD1.webp           23.47 kB
+../dist/public/index.html                                                 24.12 kB │ gzip:   6.70 kB
+../dist/public/assets/hero-4-mobile-QRtJYwW9.webp                         24.19 kB
+../dist/public/assets/rewards-mobile-BjgXS2Ze.webp                        24.89 kB
+../dist/public/assets/featured-garlic-bread-desktop-C1vWmP1t.webp         28.72 kB
+../dist/public/assets/section-neighborhood-mobile-D9mLjJsp.webp           30.67 kB
+../dist/public/assets/gallery-ribs-C3TN0Tgk.webp                          33.17 kB
+../dist/public/assets/section-italian-favorites-mobile-C5dpqg7Q.webp      33.60 kB
+../dist/public/assets/logo-2x-DiSlALwk.webp                               33.81 kB
+../dist/public/assets/gallery-salad-Bt1qrjrV.webp                         34.00 kB
+../dist/public/assets/gallery-quesadilla-C3HdyJoy.webp                    34.93 kB
+../dist/public/assets/featured-build-your-own-desktop-BSSDCUX9.webp       35.25 kB
+../dist/public/assets/featured-boneless-wings-desktop-B39_yQDn.webp       35.79 kB
+../dist/public/assets/hero-5-mobile-DaNMgIC3.webp                         36.15 kB
+../dist/public/assets/gallery-wings-2VD_Ftfm.webp                         38.14 kB
+../dist/public/assets/featured-quesadilla-desktop-Ba4u934H.webp           41.54 kB
+../dist/public/assets/hero-2-mobile-CtcdWEF6.webp                         42.17 kB
+../dist/public/assets/featured-wings-desktop-DJCmbIdI.webp                44.75 kB
+../dist/public/assets/hero-1-mobile-Bfs0u6cT.webp                         46.51 kB
+../dist/public/assets/gallery-pasta-Bur5slUB.webp                         48.54 kB
+../dist/public/assets/hero-3-mobile-CVaavItc.webp                         54.04 kB
+../dist/public/assets/event-orders-mobile-XwGpZuhM.webp                   55.69 kB
+../dist/public/assets/gallery-pizza-spread-BrNZPrrA.webp                  57.77 kB
+../dist/public/assets/hero-0-mobile-DaMGwzEc.webp                         60.98 kB
+../dist/public/assets/hero-4-desktop-CSchVQBK.webp                        65.12 kB
+../dist/public/assets/featured-meat-lovers-desktop-BYZSbO-Y.webp          74.58 kB
+../dist/public/assets/rewards-desktop-B1S5WmpY.webp                       75.01 kB
+../dist/public/assets/hero-5-desktop-DQ-cjzVw.webp                       100.10 kB
+../dist/public/assets/hero-2-desktop-8C4p1zGh.webp                       104.69 kB
+../dist/public/assets/section-italian-favorites-desktop-lPWwZ3Ab.webp    111.64 kB
+../dist/public/assets/section-neighborhood-desktop-B7e7sebD.webp         115.80 kB
+../dist/public/assets/hero-1-desktop-QCq6afNa.webp                       147.55 kB
+../dist/public/assets/event-orders-desktop-Dgshs3SS.webp                 198.84 kB
+../dist/public/assets/hero-3-desktop-Bujedk8e.webp                       245.41 kB
+../dist/public/assets/hero-0-desktop-Bgkk5C9q.webp                       401.24 kB
+../dist/public/assets/IMG_7054_1762190095057-B1toS2Bf.jpg              3,242.35 kB
+../dist/public/assets/index-CuOb-fHQ.css                                  77.68 kB │ gzip:  12.79 kB
+../dist/public/assets/index-BScVbGl6.js                                  517.77 kB │ gzip: 161.62 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.77s
+
+✅ Build complete! Output in dist/public/
+
+📦 This build:
+   ✅ Excludes /admin route
+   ✅ Connects to Replit backend for contact form
+   ✅ Ready for www.jackspizzahyannis.com
+
+Next steps:
+1. Publish Replit deployment first (click Publish button)
+2. Update VITE_API_URL in client/.env.production.github with Replit URL
+3. Rebuild with this script
+4. Deploy to GitHub Pages: cp -r dist/public docs && git push
