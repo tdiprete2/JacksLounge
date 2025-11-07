@@ -26,8 +26,16 @@ echo "   ✅ Excludes /admin route"
 echo "   ✅ Connects to Replit backend for contact form"
 echo "   ✅ Ready for www.jackspizzahyannis.com"
 echo ""
+echo "📁 Cleaning old build artifacts from docs/..."
+rm -rf docs/assets
+mkdir -p docs
+
+echo "📋 Copying new build to docs/..."
+cp -r dist/public/* docs/
+
+echo ""
+echo "✅ GitHub Pages deployment ready!"
+echo ""
 echo "Next steps:"
-echo "1. Publish Replit deployment first (click Publish button)"
-echo "2. Update VITE_API_URL in client/.env.production.github with Replit URL"
-echo "3. Rebuild with this script"
-echo "4. Deploy to GitHub Pages: cp -r dist/public docs && git push"
+echo "1. Review changes: git status"
+echo "2. Commit and push: git add docs && git commit -m 'Deploy updates' && git push"
