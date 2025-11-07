@@ -9,14 +9,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertContactRequestSchema } from "@shared/schema";
+import { insertContactRequestSchema, type InsertContactRequest } from "@shared/schema";
 import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 const contactFormSchema = insertContactRequestSchema.extend({
   firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
-  subject: z.string().min(1, "Subject is required"),
   message: z.string().min(1, "Message is required"),
 });
 
@@ -52,20 +52,31 @@ export default function Contact() {
       firstName: "",
       lastName: "",
       email: "",
-      phone: "",
-      subject: "",
+      company: "",
       message: "",
     },
   });
 
+  const submitMutation = useMutation({
+    mutationFn: (data: InsertContactRequest) => apiRequest('POST', '/api/contact', data),
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+      form.reset();
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const onSubmit = (data: ContactFormData) => {
-    console.log("Contact form submitted:", data);
-    // TODO: Wire this through storage/interface layers for backend persistence
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    form.reset();
+    submitMutation.mutate(data);
   };
 
   return (
@@ -190,9 +201,9 @@ export default function Contact() {
                         name="lastName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Last Name *</FormLabel>
+                            <FormLabel>Last Name</FormLabel>
                             <FormControl>
-                              <Input {...field} data-testid="input-last-name" />
+                              <Input {...field} value={field.value || ""} data-testid="input-last-name" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -216,26 +227,12 @@ export default function Contact() {
 
                     <FormField
                       control={form.control}
-                      name="phone"
+                      name="company"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel>Company Name</FormLabel>
                           <FormControl>
-                            <Input type="tel" {...field} value={field.value || ""} data-testid="input-phone" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject *</FormLabel>
-                          <FormControl>
-                            <Input {...field} data-testid="input-subject" />
+                            <Input {...field} value={field.value || ""} data-testid="input-company" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -256,8 +253,14 @@ export default function Contact() {
                       )}
                     />
 
-                    <Button type="submit" size="lg" className="w-full" data-testid="button-submit">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full" 
+                      data-testid="button-submit"
+                      disabled={submitMutation.isPending}
+                    >
+                      {submitMutation.isPending ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </Form>
