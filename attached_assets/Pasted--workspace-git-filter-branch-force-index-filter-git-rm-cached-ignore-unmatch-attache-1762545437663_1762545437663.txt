@@ -1,0 +1,65 @@
+~/workspace$ git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json" \
+  --prune-empty --tag-name-filter cat -- --all
+git push origin main --force
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+     rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+     alternative filtering tool such as 'git filter-repo'
+     (https://github.com/newren/git-filter-repo/) instead.  See the
+     filter-branch manual page for more details; to squelch this warning,
+     set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite ffbbcbcb3c25bb531765335b808b9085df2e241b (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 4bd2651e9f8ac86f6343ab4a7654a93d6ef498cb (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 0234eff81fe1cbf746f6fd8008ac2577725a5dc6 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite f211b8abc88ff935e3ab25fb03976a1e7e829235 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite b145c3cf3558735df514f1655b9c5299ec6cf22e (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite da79f6d056016fa27399682577ac929c1c616e1e (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 0ccacbef3e9b220a1876beac225028a5dc59fe10 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 840426307e944b30ce804a0bb2694de094d51f25 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 9481e444eeca5e33829de6d20a531c7aaec366b4 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 22b6a7c7b5b4904aa965e9dd264708ac007e2834 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 142c54aca9304b67d0f0f262393fd1cf01cf2489 (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+Rewrite 718774d8e37c25a2694d23809b862fd3a59aa59a (383/394) (27 seconds passed, remaining 0 predicted)    rm 'attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json'
+
+WARNING: Ref 'refs/heads/main' is unchanged
+WARNING: Ref 'refs/heads/replit-agent' is unchanged
+Ref 'refs/notes/commits' was rewritten
+WARNING: Ref 'refs/remotes/gitsafe-backup/main' is unchanged
+Ref 'refs/remotes/origin/main' was rewritten
+WARNING: Ref 'refs/remotes/origin/main' is unchanged
+WARNING: Ref 'refs/replit/agent-ledger' is unchanged
+Enumerating objects: 366, done.
+Counting objects: 100% (366/366), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (38/38), done.
+Writing objects: 100% (358/358), 62.24 KiB | 923.00 KiB/s, done.
+Total 358 (delta 24), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (24/24), completed with 5 local objects.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+remote:     
+remote:     
+remote:       —— Google Cloud Service Account Credentials ——————————
+remote:        locations:
+remote:          - commit: ffbbcbcb3c25bb531765335b808b9085df2e241b
+remote:            path: attached_assets/jacks-lounge-477516-e13c2472ecb5_1762542850963.json:1
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/tdiprete2/JacksLounge/security/secret-scanning/unblock-secret/35AFx02oB6sui2yQoyR60YZrNH5
+remote:     
+remote: 
+remote: 
+To https://github.com/tdiprete2/JacksLounge.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/tdiprete2/JacksLounge.git'
