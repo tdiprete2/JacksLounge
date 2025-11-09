@@ -31,7 +31,7 @@ const faqs = [
   {
     id: "5",
     question: "Why is Jack's pizza special?",
-    answer: "Our signature honey-topped pizzas have been a local favorite for over 60 years! We use a unique recipe that includes a light drizzle of honey on our thin, crispy crust pizzas. It's a sweet and savory combination that keeps customers coming back generation after generation. This is what makes us the best pizza in Hyannis."
+    answer: "Our signature honey-topped pizzas have been a local favorite for over 60 years! We use a unique recipe that includes a light drizzle of honey on our crispy crust pizzas. It's a sweet and savory combination that keeps customers coming back generation after generation. This is what makes us the best pizza in Hyannis."
   },
   {
     id: "6",
