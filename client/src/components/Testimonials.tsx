@@ -59,7 +59,7 @@ export default function Testimonials() {
           </div>
           
           <a
-            href="https://www.google.com/search?q=jacks+lounge+hyannis"
+            href="https://www.google.com/maps/search/?api=1&query=Jack's+Lounge+373+West+Main+Street+Hyannis+MA+02601"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-foreground/60 hover:text-primary transition-colors"
@@ -99,7 +99,7 @@ export default function Testimonials() {
             data-testid="button-review"
           >
             <a
-              href="https://www.google.com/search?q=jacks+lounge+hyannis"
+              href="https://www.google.com/maps/search/?api=1&query=Jack's+Lounge+373+West+Main+Street+Hyannis+MA+02601"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2"
