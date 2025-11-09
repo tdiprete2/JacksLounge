@@ -26,7 +26,7 @@ const faqs = [
   {
     id: "4",
     question: "What makes Jack's Lounge the best wings in Hyannis?",
-    answer: "Our wings are crispy-baked to perfection, never fried! We offer both bone-in wings and boneless buffalo tenders with your choice of sauces including Buffalo, BBQ, Teriyaki, and Garlic Parmesan. Served with blue cheese and celery, our wings are a local favorite in Cape Cod."
+    answer: "Our wings are crispy-baked to perfection, never fried! We offer both bone-in wings and boneless buffalo tenders with your choice of sauces including Buffalo, BBQ, Sweet Chili, and Garlic Parmesan. Served with blue cheese and celery, our wings are a local favorite in Cape Cod."
   },
   {
     id: "5",
