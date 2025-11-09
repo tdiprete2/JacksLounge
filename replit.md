@@ -49,6 +49,30 @@ Preferred communication style: Simple, everyday language.
 
 **Admin Panel:** Password-protected `/admin` route to view and manage contact submissions, with unread indicators and "mark as read" functionality. Session persistence via `sessionStorage`.
 
+### Customer Testimonials
+
+**Current Implementation:** Manually curated real customer reviews from verified platforms (November 2025).
+
+**Sources:** DoorDash, One Bite Pizza, Yelp, TripAdvisor
+- Reviews are manually selected from authentic customer feedback
+- Google overall rating badge: 4.6/5 stars displayed prominently
+- Last updated: November 9, 2025
+
+**Maintenance:** Reviews should be refreshed periodically (quarterly recommended) by reviewing latest customer feedback from:
+- Google Business Profile
+- DoorDash delivery reviews
+- Yelp restaurant reviews
+- One Bite Pizza app reviews
+- TripAdvisor ratings
+
+**Component Location:** `client/src/components/Testimonials.tsx`
+
+**Design Features:**
+- Google rating badge with 5-star visualization
+- Link to view all Google reviews
+- Three featured customer testimonials with sources
+- "Leave a Review on Google" call-to-action button
+
 ### Authentication & Authorization
 
 **Current State:** Admin authentication for contact management via `ADMIN_PASSWORD` env variable and `sessionStorage`. User schema defined, but customer authentication is not yet implemented. Session management infrastructure via `connect-pg-simple` is prepared.

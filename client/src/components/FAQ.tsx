@@ -107,7 +107,7 @@ export default function FAQ() {
     };
 
     // Create or update script tag
-    let scriptTag = document.getElementById('faq-schema');
+    let scriptTag = document.getElementById('faq-schema') as HTMLScriptElement;
     if (!scriptTag) {
       scriptTag = document.createElement('script');
       scriptTag.id = 'faq-schema';

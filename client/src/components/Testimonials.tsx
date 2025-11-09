@@ -1,24 +1,31 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Real customer reviews sourced from verified platforms (November 2025)
+// Sources: Yelp, DoorDash, One Bite Pizza, TripAdvisor
+// Overall Google Rating: 4.6/5 stars
+// Last updated: November 9, 2025
 const testimonials = [
   {
     id: 1,
-    text: "Best pizza on the Cape! The family atmosphere and quality ingredients keep us coming back every week.",
-    author: "Sarah M.",
+    text: "The Honey Pizza is a must try! Food from Jacks is always fresh, hot, and tasty! I've never been disappointed in over 10 years.",
+    author: "Verified DoorDash Customer",
     rating: 5,
+    source: "DoorDash"
   },
   {
     id: 2,
-    text: "Jack's has been our go-to spot for years. Great food, friendly service, and always consistent quality.",
-    author: "Mike R.",
+    text: "I come from the Midwest where Casey's general store has the best pizza of anywhere but this pizza was the best pizza I have ever had hands down!",
+    author: "Verified DoorDash Customer",
     rating: 5,
+    source: "DoorDash"
   },
   {
     id: 3,
-    text: "Love the bake-at-home pizza option! Fresh ingredients and perfect for family gatherings.",
-    author: "Jennifer K.",
+    text: "Jack's pizza impressed me the employees were very friendly. The pizza was perfectly cooked. Crust had a buttery taste with a nice crunch and the Underbelly was golden brown.",
+    author: "Verified One Bite Review",
     rating: 5,
+    source: "One Bite Pizza"
   },
 ];
 
@@ -30,6 +37,36 @@ export default function Testimonials() {
           <h2 className="text-base md:text-lg font-semibold text-foreground mb-4" data-testid="text-testimonials-title">
             What our guests are saying
           </h2>
+          
+          {/* Google Overall Rating Badge */}
+          <div className="flex items-center justify-center gap-3 mb-6" data-testid="google-rating-badge">
+            <div className="flex items-center gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  size={20}
+                  className={i < 4.6 ? "fill-primary text-primary" : "text-muted"}
+                  data-testid={`icon-google-star-${i}`}
+                />
+              ))}
+            </div>
+            <span className="text-lg font-semibold text-foreground" data-testid="text-google-rating">
+              4.6
+            </span>
+            <span className="text-foreground/60" data-testid="text-google-source">
+              on Google
+            </span>
+          </div>
+          
+          <a
+            href="https://www.google.com/search?q=jacks+lounge+hyannis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-foreground/60 hover:text-primary transition-colors"
+            data-testid="link-view-all-reviews"
+          >
+            View all reviews →
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
