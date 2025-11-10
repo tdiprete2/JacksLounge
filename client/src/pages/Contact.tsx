@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -31,6 +31,44 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+function DeferredMap() {
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+  if (!mapLoaded) {
+    return (
+      <div className="aspect-video rounded-lg overflow-hidden mb-6 relative group">
+        <div className="w-full h-full bg-muted flex items-center justify-center">
+          <Button
+            onClick={() => setMapLoaded(true)}
+            size="lg"
+            data-testid="button-load-map"
+            className="gap-2"
+          >
+            <MapPin className="w-5 h-5" />
+            Load Interactive Map
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="aspect-video rounded-lg overflow-hidden mb-6">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.4687876!2d-70.2962!3d41.6532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM5JzExLjUiTiA3MMKwMTcnNDYuMyJX!5e0!3m2!1sen!2sus!4v1234567890"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Jack's Lounge Location"
+        data-testid="map-embed"
+      />
+    </div>
+  );
+}
 
 export default function Contact() {
   const { toast } = useToast();
@@ -272,19 +310,7 @@ export default function Contact() {
                   <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6" data-testid="text-location-title">
                     Visit Us
                   </h2>
-                  <div className="aspect-video rounded-lg overflow-hidden mb-6">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.4687876!2d-70.2962!3d41.6532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM5JzExLjUiTiA3MMKwMTcnNDYuMyJX!5e0!3m2!1sen!2sus!4v1234567890"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Jack's Lounge Location"
-                      data-testid="map-embed"
-                    />
-                  </div>
+                  <DeferredMap />
                   <Button
                     asChild
                     variant="outline"
