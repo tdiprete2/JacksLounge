@@ -37,15 +37,25 @@ echo "🔗 Creating route-specific HTML files for SEO (fixes redirect errors)...
 # Create directories for each route
 mkdir -p docs/menu docs/contact docs/story
 
-# Copy index.html to each route directory so direct navigation works
-# This prevents 404 errors when Google crawls these URLs directly
+# Create route-specific HTML with correct canonical URLs and metadata
+# Menu page
 cp docs/index.html docs/menu/index.html
-cp docs/index.html docs/contact/index.html
-cp docs/index.html docs/story/index.html
+sed -i 's#<link rel="canonical" href="https://www.jackspizzahyannis.com" />#<link rel="canonical" href="https://www.jackspizzahyannis.com/menu" />#g' docs/menu/index.html
+sed -i 's#<title>Best Pizza & Wings Hyannis MA | Jack'"'"'s Lounge</title>#<title>Menu - Pizza, Wings, BBQ Ribs | Jack'"'"'s Lounge Hyannis MA</title>#g' docs/menu/index.html
 
-echo "   ✅ Created /menu/index.html"
-echo "   ✅ Created /contact/index.html"
-echo "   ✅ Created /story/index.html"
+# Contact page
+cp docs/index.html docs/contact/index.html
+sed -i 's#<link rel="canonical" href="https://www.jackspizzahyannis.com" />#<link rel="canonical" href="https://www.jackspizzahyannis.com/contact" />#g' docs/contact/index.html
+sed -i 's#<title>Best Pizza & Wings Hyannis MA | Jack'"'"'s Lounge</title>#<title>Contact Jack'"'"'s Lounge Hyannis MA | Hours, Location, Phone</title>#g' docs/contact/index.html
+
+# Story page
+cp docs/index.html docs/story/index.html
+sed -i 's#<link rel="canonical" href="https://www.jackspizzahyannis.com" />#<link rel="canonical" href="https://www.jackspizzahyannis.com/story" />#g' docs/story/index.html
+sed -i 's#<title>Best Pizza & Wings Hyannis MA | Jack'"'"'s Lounge</title>#<title>Our Story - Family Restaurant Since 1963 | Jack'"'"'s Lounge Hyannis</title>#g' docs/story/index.html
+
+echo "   ✅ Created /menu/index.html with correct canonical URL"
+echo "   ✅ Created /contact/index.html with correct canonical URL"
+echo "   ✅ Created /story/index.html with correct canonical URL"
 
 echo ""
 echo "✅ GitHub Pages deployment ready!"
