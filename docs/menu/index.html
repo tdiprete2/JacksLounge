@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Mobile-First Viewport Configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: light)" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Best Pizza & Wings Hyannis MA | Jack's Lounge</title>
+    <meta name="description" content="Best pizza & wings in Hyannis! Signature hot honey pizza, crispy wings, BBQ ribs since 1963. Gluten-free options. Order delivery & pickup online!" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BEFRKNKYF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4BEFRKNKYF');
+    </script>
+    
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    
+    <!-- Critical CSS for Above-the-Fold Content (Tailwind utilities inlined) -->
+    <style>
+      *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+      html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal}
+      body{margin:0;line-height:inherit;background-color:hsl(0 0% 7%);color:hsl(0 0% 95%)}
+      #root{min-height:100vh}
+      h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+      a{color:inherit;text-decoration:inherit}
+      button,input{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}
+      button{background-color:transparent;background-image:none;cursor:pointer;text-transform:none}
+      img,svg,video{display:block;vertical-align:middle;max-width:100%;height:auto}
+      .sticky{position:sticky}
+      .fixed{position:fixed}
+      .absolute{position:absolute}
+      .relative{position:relative}
+      .inset-0{inset:0}
+      .top-0{top:0}
+      .z-50{z-index:50}
+      .flex{display:flex}
+      .hidden{display:none}
+      .h-14{height:3.5rem}
+      .h-20{height:5rem}
+      .h-6{height:1.5rem}
+      .w-6{width:1.5rem}
+      .w-full{width:100%}
+      .w-auto{width:auto}
+      .max-w-7xl{max-width:80rem}
+      .max-w-4xl{max-width:56rem}
+      .flex-col{flex-direction:column}
+      .items-center{align-items:center}
+      .justify-between{justify-content:space-between}
+      .justify-center{justify-content:center}
+      .gap-2{gap:0.5rem}
+      .gap-4{gap:1rem}
+      .overflow-hidden{overflow:hidden}
+      .rounded-md{border-radius:calc(0.5rem - 2px)}
+      .border-b{border-bottom-width:1px}
+      .bg-background{background-color:hsl(0 0% 7%)}
+      .bg-black\/40{background-color:rgb(0 0 0 / 0.4)}
+      .px-3{padding-left:0.75rem;padding-right:0.75rem}
+      .px-4{padding-left:1rem;padding-right:1rem}
+      .px-6{padding-left:1.5rem;padding-right:1.5rem}
+      .py-2{padding-top:0.5rem;padding-bottom:0.5rem}
+      .pb-2{padding-bottom:0.5rem}
+      .text-center{text-align:center}
+      .text-4xl{font-size:2.25rem;line-height:2.5rem}
+      .text-lg{font-size:1.125rem;line-height:1.75rem}
+      .text-sm{font-size:0.875rem;line-height:1.25rem}
+      .font-bold{font-weight:700}
+      .font-medium{font-weight:500}
+      .leading-relaxed{line-height:1.625}
+      .text-white{color:rgb(255 255 255)}
+      .text-foreground{color:hsl(0 0% 95%)}
+      .cursor-pointer{cursor:pointer}
+      .pointer-events-none{pointer-events:none}
+      .object-cover{-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}
+      .mb-6{margin-bottom:1.5rem}
+      .mx-auto{margin-left:auto;margin-right:auto}
+      @media(min-width:768px){
+        .md\:flex{display:flex}
+        .md\:hidden{display:none}
+        .md\:h-\[700px\]{height:700px}
+        .md\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+        .md\:text-5xl{font-size:3rem;line-height:1}
+        .md\:text-xl{font-size:1.25rem;line-height:1.75rem}
+      }
+      @media(min-width:1024px){
+        .lg\:px-8{padding-left:2rem;padding-right:2rem}
+        .lg\:text-6xl{font-size:3.75rem;line-height:1}
+      }
+      header{border-color:hsl(45 80% 55% / 0.3)}
+      .h-\[600px\]{height:600px}
+    </style>
+    
+    <!-- Preload Critical Resources for LCP Optimization -->
+    <link rel="preload" as="image" href="/hero-0-mobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/hero-0-desktop.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
+    
+    <!-- Resource Hints for External Services (Mobile Performance) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://static-content.owner.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com">
+    <link rel="dns-prefetch" href="https://olo.spoton.com">
+    
+    <!-- Preload and load fonts with optional display to prevent layout shift -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional"></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Jack's Lounge, Hyannis pizza, Hyannis restaurant, Cape Cod pizza, BBQ ribs Hyannis, Italian food Hyannis, honey pizza, family restaurant Cape Cod, takeout Hyannis, delivery Hyannis" />
+    <meta name="author" content="Jack's Lounge" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.jackspizzahyannis.com" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Jack's Lounge - Hyannis, MA Pizza & Italian Restaurant" />
+    <meta property="og:description" content="60+ years serving signature honey-topped pizzas, BBQ ribs, and Italian favorites in Hyannis, MA. Order online for pickup or delivery!" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://www.jackspizzahyannis.com" />
+    <meta property="og:site_name" content="Jack's Lounge" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jack's Lounge Restaurant in Hyannis, MA" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jack's Lounge - Hyannis, MA Pizza & Italian Restaurant" />
+    <meta name="twitter:description" content="60+ years serving signature honey-topped pizzas, BBQ ribs, and Italian favorites in Hyannis, MA. Order online!" />
+    <meta name="twitter:image" content="https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format" />
+    
+    <!-- Business/Local SEO -->
+    <meta name="geo.region" content="US-MA" />
+    <meta name="geo.placename" content="Hyannis" />
+    <meta name="geo.position" content="41.6532;-70.2962" />
+    <meta name="ICBM" content="41.6532, -70.2962" />
+    
+    <!-- Schema.org Structured Data for Mobile-First Indexing -->
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.jackspizzahyannis.com/#organization",
+      "name": "Jack's Lounge",
+      "url": "https://www.jackspizzahyannis.com",
+      "logo": "https://www.jackspizzahyannis.com/favicon.png",
+      "image": "https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format",
+      "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "373 West Main Street",
+        "addressLocality": "Hyannis",
+        "addressRegion": "MA",
+        "postalCode": "02601",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-508-775-0612",
+        "contactType": "Customer Service",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.facebook.com/Jackspizzahyannis"
+      ]
+    }
+    </script>
+    
+    <!-- Restaurant Schema with Enhanced Mobile Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://www.jackspizzahyannis.com/#restaurant",
+      "name": "Jack's Lounge",
+      "alternateName": "Jack's Pizza",
+      "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
+      "image": [
+        "https://static-content.owner.com/funnel/images/91d98be6-9cea-4bc3-bcb1-bb97ade74a19?v=8251033691&w=1200&q=80&auto=format",
+        "https://static-content.owner.com/funnel/images/7f5bdb2a-6e14-45ba-9aa5-10e3d6bdf67b?v=621699893&w=1200&q=80&auto=format",
+        "https://static-content.owner.com/funnel/images/dccd7aab-aa39-465f-9ef3-e1fce3a35963?v=2564014006&w=1200&q=80&auto=format"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "373 West Main Street",
+        "addressLocality": "Hyannis",
+        "addressRegion": "MA",
+        "postalCode": "02601",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.6532",
+        "longitude": "-70.2962"
+      },
+      "url": "https://www.jackspizzahyannis.com",
+      "telephone": "+1-508-775-0612",
+      "email": "jackspizza@comcast.net",
+      "sameAs": [
+        "https://www.facebook.com/Jackspizzahyannis"
+      ],
+      "servesCuisine": ["Italian", "American", "Pizza", "BBQ"],
+      "priceRange": "$$",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "currenciesAccepted": "USD",
+      "acceptsReservations": "False",
+      "hasMenu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+      "menu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+          "inLanguage": "en-US",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickup", "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"]
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "11:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "11:00", "closes": "21:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "11:00", "closes": "22:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "11:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "23:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "21:30"}
+      ],
+      "foundingDate": "1963",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "250",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <!-- WebSite Schema with Search Action for Mobile -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.jackspizzahyannis.com/#website",
+      "url": "https://www.jackspizzahyannis.com",
+      "name": "Jack's Lounge",
+      "description": "Best Pizza in Hyannis, MA - Order Online for Pickup & Delivery",
+      "publisher": {
+        "@id": "https://www.jackspizzahyannis.com/#organization"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
+    
+    <!-- BreadcrumbList for Enhanced Mobile Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jackspizzahyannis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Menu",
+          "item": "https://www.jackspizzahyannis.com/menu"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Our Story",
+          "item": "https://www.jackspizzahyannis.com/story"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://www.jackspizzahyannis.com/contact"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema for Better Search Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes Jack's Lounge pizza special?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge is famous for our signature honey-topped pizzas. Each pizza is finished with a drizzle of honey that creates a perfect sweet-and-savory balance. This unique recipe has been perfected since 1963 and makes our pizzas unlike any other in Hyannis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Jack's Lounge offer delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer both pickup and delivery through our online ordering system powered by SpotOn. You can order at https://order.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677 or call us at (508) 775-0612."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Jack's Lounge hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We're open 7 days a week: Mon 11am-10pm, Tue 11am-9:30pm, Wed 11am-10:30pm, Thu-Fri 11am-10pm, Sat 11am-11pm, Sun 12pm-9:30pm. Hours may vary on holidays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What type of cuisine does Jack's Lounge serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge serves Italian-American cuisine specializing in pizza, BBQ ribs, wings, pasta, sandwiches, and Italian favorites. We're best known for our signature honey-topped pizzas and fall-off-the-bone BBQ ribs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long has Jack's Lounge been in business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack's Lounge has been a Hyannis institution since 1963, serving the Cape Cod community for over 60 years. We're a family-owned and operated restaurant committed to quality food and service."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-FkJ6Wp8t.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DfCfjFn0.css">
+  </head>
+  <body>
+    <noscript>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; line-height: 1.6; color: #f5f5f5; background-color: #121212;">
+        <header style="text-align: center; padding: 20px 0; border-bottom: 2px solid #d4af37;">
+          <h1 style="font-size: 2.5em; margin: 0; color: #d4af37;">Best Pizza & Wings in Hyannis, MA - Jack's Lounge</h1>
+          <p style="font-size: 1.2em; margin: 10px 0;">Signature Hot Honey Pizza Since 1963</p>
+        </header>
+        
+        <nav style="background: #1a1a1a; padding: 15px; margin: 20px 0; text-align: center;">
+          <a href="/" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Home</a> | 
+          <a href="/menu" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Menu</a> | 
+          <a href="/story" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Our Story</a> | 
+          <a href="/contact" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Contact</a>
+        </nav>
+
+        <main style="padding: 20px 0;">
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Welcome to Jack's Lounge - Hyannis' Best Pizza Restaurant</h2>
+            <p>Welcome to Jack's Lounge, home of the best pizza and wings in Hyannis, Massachusetts! Since 1963, we've been serving Cape Cod families our famous signature hot honey pizza, crispy bone-in wings, and authentic Italian favorites. Our family-owned restaurant has become a beloved Hyannis institution, known for quality food and warm hospitality.</p>
+            
+            <p>What makes our pizza special? Every pizza is topped with our signature honey drizzle - a unique recipe we've perfected over 60 years. This creates the perfect sweet and savory balance that keeps customers coming back generation after generation. Try our hot honey pizza for an extra spicy kick, or build your own pizza with fresh toppings on our famous honey-topped crust.</p>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Best Wings in Hyannis</h2>
+            <p>Our crispy-baked bone-in chicken wings are a local favorite! Choose from Buffalo, BBQ, Sweet Chili, or Garlic Parmesan sauces. We also serve boneless buffalo tenders for those who prefer tender, sauce-tossed chicken. All wings come with blue cheese and celery. Order wings for your next party or game day - we specialize in large catering orders!</p>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Our Menu - Pizza, Wings, BBQ Ribs & Italian Favorites</h2>
+            <p>Explore our full menu featuring specialty pizzas like our famous Meat Lovers (loaded with pepperoni, sausage, linguica, meatballs, and bacon), Buffalo Chicken Pizza, and our signature Jack's Famous Honey Pizza. We offer gluten-free crust options for all 10-inch pizzas.</p>
+            
+            <p>Beyond pizza and wings, enjoy our fall-off-the-bone BBQ ribs, Italian pasta dishes, fresh salads, calzones, quesadillas, and appetizers. From nachos supreme with homemade chili to cheesy garlic bread, there's something for everyone at Jack's Lounge. Visit our <a href="/menu" style="color: #d4af37; text-decoration: underline;">menu page</a> to see all our offerings.</p>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Order Online for Delivery & Pickup</h2>
+            <p>Order online through our SpotOn ordering system for convenient pickup or delivery throughout the Hyannis area. We're open 7 days a week with late-night hours, making us the perfect choice for pizza delivery after a night out on Cape Cod.</p>
+            
+            <p><strong>Hours:</strong> Monday 11am-10pm, Tuesday 11am-9:30pm, Wednesday 11am-10:30pm, Thursday-Friday 11am-10pm, Saturday 11am-11pm, Sunday 12pm-9:30pm</p>
+            
+            <p><strong>Order Now:</strong> <a href="https://olo.spoton.com/60c3b6829adef31f4442003e" style="color: #d4af37; text-decoration: underline;">Click here to order online</a> or call <a href="tel:+15087750612" style="color: #d4af37; text-decoration: underline;">(508) 775-0612</a></p>
+          </section>
+
+          <section style="margin: 30px 0; background: #1a1a1a; padding: 20px; border-radius: 8px;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Visit Us in Hyannis</h2>
+            <p><strong>Address:</strong> 373 West Main Street, Hyannis, MA 02601</p>
+            <p><strong>Phone:</strong> <a href="tel:+15087750612" style="color: #d4af37; text-decoration: underline;">(508) 775-0612</a></p>
+            <p><strong>Email:</strong> <a href="mailto:jackspizza@comcast.net" style="color: #d4af37; text-decoration: underline;">jackspizza@comcast.net</a></p>
+            
+            <p>We're located on West Main Street in Hyannis, with ample parking available. Whether you're a local or visiting Cape Cod, Jack's Lounge is your destination for the best pizza, wings, and Italian food in Hyannis, Massachusetts. Learn more about our 60+ year history on our <a href="/story" style="color: #d4af37; text-decoration: underline;">story page</a>.</p>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h3 style="color: #d4af37; font-size: 1.5em; margin-bottom: 15px;">Why Choose Jack's Lounge?</h3>
+            <ul style="line-height: 2;">
+              <li>Signature hot honey pizza - our unique recipe since 1963</li>
+              <li>Best wings in Hyannis - crispy-baked, never fried</li>
+              <li>Gluten-free pizza options available</li>
+              <li>Family-owned and operated for over 60 years</li>
+              <li>Online ordering for pickup and delivery</li>
+              <li>Late-night hours for your convenience</li>
+              <li>Catering available for parties and events</li>
+              <li>Fresh ingredients and authentic Italian recipes</li>
+            </ul>
+          </section>
+
+          <p style="text-align: center; margin: 40px 0; font-size: 1.2em;">
+            <strong>This website requires JavaScript. Please enable JavaScript in your browser to view the full interactive experience.</strong>
+          </p>
+        </main>
+
+        <footer style="border-top: 2px solid #d4af37; padding: 20px 0; text-align: center; margin-top: 40px;">
+          <p>&copy; 2024 Jack's Lounge. Best Pizza & Wings in Hyannis, MA Since 1963</p>
+          <p>373 West Main Street, Hyannis, MA 02601 | (508) 775-0612</p>
+        </footer>
+      </div>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>

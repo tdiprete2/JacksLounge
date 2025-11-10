@@ -119,6 +119,11 @@ Preferred communication style: Simple, everyday language.
 - Structured Data (JSON-LD Schema.org: Organization, Restaurant, WebSite, BreadcrumbList)
 - Social Media Integration (OpenGraph, Twitter Card meta tags)
 - Technical SEO (Canonical URLs, Robots.txt, XML sitemap, Meta descriptions, Geo-tags)
+- **SPA Routing for SEO (November 2025):**
+  - Route-specific HTML files created for /menu, /contact, /story to prevent 404 errors
+  - GitHub Pages serves physical index.html for each route
+  - Fixes Google Search Console "Redirect error" issues
+  - Maintains client-side routing with Wouter after initial page load
 
 ### Development Tools (Replit-specific)
 - @replit/vite-plugin-runtime-error-modal
@@ -142,3 +147,9 @@ Preferred communication style: Simple, everyday language.
   - Optimized font loading with preconnect hints
   - Deferred carousel loading and reduced motion support
   - **Results:** ~58KB reduction in image payload, 8-9% file size savings on hero/featured images
+- **Code Splitting & Lazy Loading (November 10, 2025):**
+  - Route-level code splitting with React.lazy() and Suspense
+  - Main bundle reduced from 506KB to 262KB (-48% reduction)
+  - Per-route chunks: Contact (141KB), Home (47KB), Menu (11KB), Story (5KB), Admin (32KB)
+  - Deferred Google Maps loading on Contact page (click-to-load)
+  - **Results:** 244KB reduction in initial JavaScript payload, improved TTI on all pages

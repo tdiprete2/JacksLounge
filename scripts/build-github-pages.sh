@@ -33,6 +33,20 @@ mkdir -p docs
 echo "📋 Copying new build to docs/..."
 cp -r dist/public/* docs/
 
+echo "🔗 Creating route-specific HTML files for SEO (fixes redirect errors)..."
+# Create directories for each route
+mkdir -p docs/menu docs/contact docs/story
+
+# Copy index.html to each route directory so direct navigation works
+# This prevents 404 errors when Google crawls these URLs directly
+cp docs/index.html docs/menu/index.html
+cp docs/index.html docs/contact/index.html
+cp docs/index.html docs/story/index.html
+
+echo "   ✅ Created /menu/index.html"
+echo "   ✅ Created /contact/index.html"
+echo "   ✅ Created /story/index.html"
+
 echo ""
 echo "✅ GitHub Pages deployment ready!"
 echo ""
