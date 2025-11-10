@@ -36,7 +36,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="https://www.facebook.com/Jackspizzahyannis"
+                href="https://www.facebook.com/profile.php?id=61583877891027"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-primary transition-colors"
