@@ -42,7 +42,7 @@ export default function EventOrders() {
               data-testid="button-inquire"
               className="shadow-xl text-base md:text-lg"
             >
-              <Link href="/contact">Request a Quote</Link>
+              <Link href="/contact/">Request a Quote</Link>
             </Button>
           </div>
         </div>

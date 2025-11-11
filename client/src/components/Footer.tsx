@@ -63,7 +63,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/menu"
+                  href="/menu/"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-menu"
                 >
@@ -72,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/story"
+                  href="/story/"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-story"
                 >

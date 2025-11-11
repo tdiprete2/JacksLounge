@@ -120,10 +120,18 @@ Preferred communication style: Simple, everyday language.
 - Social Media Integration (OpenGraph, Twitter Card meta tags)
 - Technical SEO (Canonical URLs, Robots.txt, XML sitemap, Meta descriptions, Geo-tags)
 - **SPA Routing for SEO (November 2025):**
-  - Route-specific HTML files created for /menu, /contact, /story to prevent 404 errors
+  - Route-specific HTML files created for /menu/, /contact/, /story/ to prevent 404 errors
   - GitHub Pages serves physical index.html for each route
-  - Fixes Google Search Console "Redirect error" issues
+  - **Trailing Slash Convention (November 11, 2025):**
+    - All public URLs use trailing slashes (/menu/, /contact/, /story/)
+    - Eliminates GitHub Pages 301 redirects (directory URLs automatically get trailing slashes)
+    - Canonical URLs, sitemap, and all internal navigation links use trailing slashes
+    - Fixes Google Search Console "Redirect error" issues
   - Maintains client-side routing with Wouter after initial page load
+- **Social Media:**
+  - Facebook: https://www.facebook.com/jacksloungehyannis (updated November 11, 2025)
+  - Instagram: https://www.instagram.com/jackspizzahyannis/
+  - Updated in all navigation, footer, and structured data (Organization & Restaurant schemas)
 
 ### Development Tools (Replit-specific)
 - @replit/vite-plugin-runtime-error-modal

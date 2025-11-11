@@ -71,14 +71,14 @@ export default function Header() {
 
             <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
               <Link
-                href="/menu"
+                href="/menu/"
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-menu-page"
               >
                 Menu
               </Link>
               <Link
-                href="/story"
+                href="/story/"
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-story-page"
               >
@@ -117,7 +117,7 @@ export default function Header() {
                 Reviews
               </button>
               <Link
-                href="/contact"
+                href="/contact/"
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-contact-page"
               >
@@ -153,7 +153,7 @@ export default function Header() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
                     <Link
-                      href="/menu"
+                      href="/menu/"
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-menu-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -161,7 +161,7 @@ export default function Header() {
                       Menu
                     </Link>
                     <Link
-                      href="/story"
+                      href="/story/"
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-story-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -201,7 +201,7 @@ export default function Header() {
                       Reviews
                     </button>
                     <Link
-                      href="/contact"
+                      href="/contact/"
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-contact-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
