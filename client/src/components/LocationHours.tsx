@@ -7,9 +7,9 @@ const hours = [
   { day: "Monday", hours: "11:00 AM - 10:00 PM" },
   { day: "Tuesday", hours: "11:00 AM - 9:30 PM" },
   { day: "Wednesday", hours: "11:00 AM - 10:30 PM" },
-  { day: "Thursday", hours: "11:00 AM - 10:00 PM" },
-  { day: "Friday", hours: "11:00 AM - 10:00 PM" },
-  { day: "Saturday", hours: "11:00 AM - 11:00 PM" },
+  { day: "Thursday", hours: "11:00 AM - 10:30 PM" },
+  { day: "Friday", hours: "11:00 AM - 11:00 PM" },
+  { day: "Saturday", hours: "11:00 AM - 10:30 PM" },
 ];
 
 export default function LocationHours() {
