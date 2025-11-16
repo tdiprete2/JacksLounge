@@ -10,6 +10,7 @@ const HomeLazy = lazy(() => import("@/pages/Home"));
 const MenuLazy = lazy(() => import("@/pages/Menu"));
 const ContactLazy = lazy(() => import("@/pages/Contact"));
 const StoryLazy = lazy(() => import("@/pages/Story"));
+const SpecialsLazy = lazy(() => import("@/pages/Specials"));
 const AdminLazy = lazy(() => import("@/pages/Admin"));
 const NotFoundLazy = lazy(() => import("@/pages/not-found"));
 
@@ -18,6 +19,7 @@ const Home = () => <Suspense fallback={<div className="min-h-screen flex items-c
 const Menu = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><MenuLazy /></Suspense>;
 const Contact = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><ContactLazy /></Suspense>;
 const Story = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><StoryLazy /></Suspense>;
+const Specials = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><SpecialsLazy /></Suspense>;
 const Admin = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><AdminLazy /></Suspense>;
 const NotFound = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><NotFoundLazy /></Suspense>;
 
@@ -46,6 +48,7 @@ function Router() {
         <Route path="/menu" component={Menu} />
         <Route path="/contact" component={Contact} />
         <Route path="/story" component={Story} />
+        <Route path="/specials" component={Specials} />
         {enableAdmin && <Route path="/admin" component={Admin} />}
         <Route component={NotFound} />
       </Switch>

@@ -80,6 +80,15 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/specials/"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-specials"
+                >
+                  Daily Specials
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://order.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677"
                   target="_blank"

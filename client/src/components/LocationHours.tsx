@@ -115,16 +115,14 @@ export default function LocationHours() {
           <Button
             size="lg"
             asChild
-            data-testid="button-facebook"
+            data-testid="button-view-specials"
           >
             <a
-              href="https://www.facebook.com/jacksloungehyannis"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/specials/"
               className="inline-flex items-center gap-2"
             >
               <Facebook size={20} />
-              Follow Us on Facebook for Daily Specials
+              View Updates & Daily Specials
             </a>
           </Button>
         </div>
