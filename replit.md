@@ -17,7 +17,7 @@ Preferred communication style: Simple, everyday language.
 **UI/UX Design:**
 - **Component Library:** shadcn/ui (Radix UI primitives) with a "New York" style variant.
 - **Design Philosophy:** Mobile-first, food-first visual hierarchy, black and gold theme, Inter (UI) and Playfair Display (headings) typography, accessibility-focused.
-- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Contact, 404.
+- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Contact, Specials (Facebook feed), Story, 404.
 - **Patterns:** Component composition, custom hooks, centralized utilities, path aliases.
 
 ### Backend
@@ -72,6 +72,30 @@ Preferred communication style: Simple, everyday language.
 - Link to view all Google reviews
 - Three featured customer testimonials with sources
 - "Leave a Review on Google" call-to-action button
+
+### Daily Specials & Updates Page
+
+**Current Implementation:** Live Facebook feed embedded on dedicated page (November 2025).
+
+**Features:**
+- **Facebook Page Plugin**: Displays real-time posts from https://www.facebook.com/jacksloungehyannis
+- **SPA Integration**: FB.XFBML.parse() called on navigation to ensure feed loads in single-page application
+- **Responsive Design**: Adapts to mobile and desktop viewports
+- **Fallback**: Direct link to Facebook page for users without JavaScript
+
+**Technical Details:**
+- Facebook SDK loaded asynchronously in client/index.html (body)
+- TypeScript declarations for window.FB object
+- Route: `/specials/` with lazy-loaded component
+- SEO: Dedicated `/specials/index.html` for GitHub Pages, canonical URL, optimized title
+- Updated sitemap.xml with daily changefreq priority 0.9
+
+**Navigation:**
+- Header: Desktop and mobile menus
+- Footer: Quick links section
+- Homepage: "View Updates & Daily Specials" button in Location section (replaces external Facebook link)
+
+**Component Location:** `client/src/pages/Specials.tsx`
 
 ### Authentication & Authorization
 
