@@ -23,7 +23,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(https://static-content.owner.com/funnel/images/ff5c81a4-1c65-43a0-b76d-8e3c0db8115f?v=6217982679&w=3840&q=80&auto=format)',
+          backgroundImage: 'url(/images/hero/main-hero.webp)',
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
