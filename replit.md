@@ -191,3 +191,10 @@ Preferred communication style: Simple, everyday language.
   - Per-route chunks: Contact (141KB), Home (47KB), Menu (11KB), Story (5KB), Admin (32KB)
   - Deferred Google Maps loading on Contact page (click-to-load)
   - **Results:** 244KB reduction in initial JavaScript payload, improved TTI on all pages
+- **External CDN Migration (November 17, 2025):**
+  - Removed all owner.com CDN dependencies
+  - Migrated hero carousel images to `/images/hero/` (12 WebP variants, 1.2MB total)
+  - Migrated social media/OG images to `/images/social/` (og-image.jpg 147KB, sitemap-featured.jpg 103KB)
+  - Updated all meta tags, structured data, and sitemaps to reference jackspizzahyannis.com URLs
+  - Zero external CDN dependencies for images
+  - Production build verified clean (docs/ directory)
