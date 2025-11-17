@@ -1,19 +1,16 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-// Import optimized event orders images - real restaurant party platter photos
-import eventImageDesktop from "@assets/optimized/event-orders-desktop.webp";
-import eventImageMobile from "@assets/optimized/event-orders-mobile.webp";
 
 export default function EventOrders() {
   return (
     <section className="relative">
       <div className="relative h-[450px] md:h-[550px] lg:h-[600px]">
         <picture>
-          <source srcSet={eventImageMobile} media="(max-width: 767px)" type="image/webp" />
-          <source srcSet={eventImageDesktop} media="(min-width: 768px)" type="image/webp" />
+          <source srcSet="/images/sections/event-orders-mobile.webp" media="(max-width: 767px)" type="image/webp" />
+          <source srcSet="/images/sections/event-orders-desktop.webp" media="(min-width: 768px)" type="image/webp" />
           <img
-            src={eventImageMobile}
-            alt="Jack's Lounge party platters - pizza, chicken tenders, fries, and fresh salad for events and special orders"
+            src="/images/sections/event-orders-mobile.webp"
+            alt="Jack's Lounge party platters - pizza, chicken tenders, fries, and fresh salad for events and special orders in Hyannis MA"
             className="w-full h-full object-cover"
             width="800"
             height="533"

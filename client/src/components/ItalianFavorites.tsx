@@ -1,7 +1,4 @@
 import { Button } from "@/components/ui/button";
-// Import optimized section images (WebP format)
-import ribsDesktop from "@assets/optimized/section-italian-favorites-desktop.webp";
-import ribsMobile from "@assets/optimized/section-italian-favorites-mobile.webp";
 
 export default function ItalianFavorites() {
   const scrollToOrder = () => {
@@ -17,13 +14,15 @@ export default function ItalianFavorites() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <picture>
-              <source media="(min-width: 768px)" srcSet={ribsDesktop} type="image/webp" />
-              <source media="(max-width: 767px)" srcSet={ribsMobile} type="image/webp" />
+              <source media="(min-width: 768px)" srcSet="/images/sections/section-italian-favorites-desktop.webp" type="image/webp" />
+              <source media="(max-width: 767px)" srcSet="/images/sections/section-italian-favorites-mobile.webp" type="image/webp" />
               <img
-                src={ribsDesktop}
-                alt="Hearty Italian and American Favorites"
+                src="/images/sections/section-italian-favorites-desktop.webp"
+                alt="Hearty Italian and American Favorites at Jack's Lounge Hyannis MA"
                 className="rounded-lg shadow-xl w-full"
                 loading="lazy"
+                width="1200"
+                height="800"
                 data-testid="img-italian-favorites"
               />
             </picture>

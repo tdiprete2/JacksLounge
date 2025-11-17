@@ -1,7 +1,3 @@
-// Import optimized section images (WebP format)
-import interiorDesktop from "@assets/optimized/section-neighborhood-desktop.webp";
-import interiorMobile from "@assets/optimized/section-neighborhood-mobile.webp";
-
 export default function NeighborhoodSpot() {
   return (
     <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
@@ -9,13 +5,15 @@ export default function NeighborhoodSpot() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <picture>
-              <source media="(min-width: 768px)" srcSet={interiorDesktop} type="image/webp" />
-              <source media="(max-width: 767px)" srcSet={interiorMobile} type="image/webp" />
+              <source media="(min-width: 768px)" srcSet="/images/sections/section-neighborhood-desktop.webp" type="image/webp" />
+              <source media="(max-width: 767px)" srcSet="/images/sections/section-neighborhood-mobile.webp" type="image/webp" />
               <img
-                src={interiorDesktop}
-                alt="Your Neighborhood Spot"
+                src="/images/sections/section-neighborhood-desktop.webp"
+                alt="Your Neighborhood Spot - Jack's Lounge restaurant in Hyannis MA"
                 className="rounded-lg shadow-xl w-full"
                 loading="lazy"
+                width="1200"
+                height="800"
                 data-testid="img-neighborhood"
               />
             </picture>

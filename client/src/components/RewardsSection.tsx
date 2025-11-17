@@ -1,19 +1,12 @@
-// Import optimized rewards images - real restaurant pizza photo (WebP format)
-import rewardsDesktop from "@assets/optimized/rewards-desktop.webp";
-import rewardsMobile from "@assets/optimized/rewards-mobile.webp";
-// Import official app store badges - optimized WebP format at 60px height
-import appStoreBadge from "@assets/optimized/app-store-badge-60.webp";
-import googlePlayBadge from "@assets/optimized/google-play-badge-60.webp";
-
 export default function RewardsSection() {
   return (
     <section className="relative">
       <div className="relative h-[450px] md:h-[550px]">
         <picture>
-          <source media="(min-width: 768px)" srcSet={rewardsDesktop} type="image/webp" />
-          <source media="(max-width: 767px)" srcSet={rewardsMobile} type="image/webp" />
+          <source media="(min-width: 768px)" srcSet="/images/sections/rewards-desktop.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet="/images/sections/rewards-mobile.webp" type="image/webp" />
           <img
-            src={rewardsDesktop}
+            src="/images/sections/rewards-desktop.webp"
             alt="Download Jack's Lounge app - order pizza, earn rewards, get discounts on your favorite Hyannis food"
             className="w-full h-full object-cover"
             width="1920"
@@ -40,8 +33,8 @@ export default function RewardsSection() {
                 className="transition-transform hover:scale-105 active:scale-95"
               >
                 <img
-                  src={appStoreBadge}
-                  alt="Download on the App Store"
+                  src="/images/badges/app-store-badge-60.webp"
+                  alt="Download Jack's Lounge on the App Store"
                   className="h-[60px] w-auto"
                   width="179"
                   height="60"
@@ -56,8 +49,8 @@ export default function RewardsSection() {
                 className="transition-transform hover:scale-105 active:scale-95"
               >
                 <img
-                  src={googlePlayBadge}
-                  alt="Get it on Google Play"
+                  src="/images/badges/google-play-badge-60.webp"
+                  alt="Get Jack's Lounge on Google Play"
                   className="h-[60px] w-auto"
                   width="155"
                   height="60"

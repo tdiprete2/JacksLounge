@@ -63,6 +63,7 @@ export default function WelcomeHeroCarousel({ slides }: WelcomeHeroCarouselProps
                 {...(index === 0 ? { fetchpriority: "high" } as any : {})}
                 width="1920"
                 height="700"
+                style={{ aspectRatio: '1920/700' }}
               />
             </picture>
             <div className="absolute inset-0 bg-black/40" />

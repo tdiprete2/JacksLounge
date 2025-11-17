@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import chiliImage from "@assets/IMG_7054_1762190095057.jpg";
 
 export default function OrderFromWebsite() {
   const scrollToOrder = () => {
@@ -30,13 +29,19 @@ export default function OrderFromWebsite() {
           </div>
 
           <div className="relative">
-            <img
-              src={chiliImage}
-              alt="Order From Our Website"
-              className="rounded-lg shadow-xl w-full"
-              loading="lazy"
-              data-testid="img-order-section"
-            />
+            <picture>
+              <source media="(min-width: 768px)" srcSet="/images/sections/order-desktop.webp" type="image/webp" />
+              <source media="(max-width: 767px)" srcSet="/images/sections/order-mobile.webp" type="image/webp" />
+              <img
+                src="/images/sections/order-desktop.webp"
+                alt="Order pizza and wings online from Jack's Lounge in Hyannis MA - fast pickup and delivery"
+                className="rounded-lg shadow-xl w-full"
+                loading="lazy"
+                width="1200"
+                height="800"
+                data-testid="img-order-section"
+              />
+            </picture>
           </div>
         </div>
       </div>

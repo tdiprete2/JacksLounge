@@ -3,10 +3,6 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
-import logoMobile from "@assets/optimized/logo-mobile.webp";
-import logo1x from "@assets/optimized/logo-1x.webp";
-import logo2x from "@assets/optimized/logo-2x.webp";
-import logoPng from "@assets/optimized/logo-1x.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -49,14 +45,14 @@ export default function Header() {
                   <source
                     type="image/webp"
                     media="(min-width: 768px)"
-                    srcSet={`${logo1x} 1x, ${logo2x} 2x`}
+                    srcSet="/images/logo/logo-1x.webp 1x, /images/logo/logo-2x.webp 2x"
                   />
                   <source
                     type="image/webp"
-                    srcSet={logoMobile}
+                    srcSet="/images/logo/logo-mobile.webp"
                   />
                   <img
-                    src={logoPng}
+                    src="/images/logo/logo-1x.png"
                     alt="Jack's Lounge - Best Pizza in Hyannis, MA"
                     width="216"
                     height="56"

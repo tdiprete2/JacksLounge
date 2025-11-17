@@ -1,18 +1,11 @@
-// Import optimized gallery images (WebP format)
-import wingsImage from "@assets/optimized/gallery-wings.webp";
-import saladImage from "@assets/optimized/gallery-salad.webp";
-import ribsImage from "@assets/optimized/gallery-ribs.webp";
-import quesadillaImage from "@assets/optimized/gallery-quesadilla.webp";
-import pizzaSpreadImage from "@assets/optimized/gallery-pizza-spread.webp";
-import pastaImage from "@assets/optimized/gallery-pasta.webp";
-
+// Gallery images served from /images/gallery/ (optimized WebP format)
 const galleryImages = [
-  { src: wingsImage, alt: "Crispy chicken wings with sauce at Jack's Lounge" },
-  { src: ribsImage, alt: "BBQ ribs platter from Jack's Lounge" },
-  { src: saladImage, alt: "Fresh garden salad with toppings" },
-  { src: quesadillaImage, alt: "Grilled quesadilla with melted cheese" },
-  { src: pizzaSpreadImage, alt: "Variety of Jack's signature honey-topped pizzas" },
-  { src: pastaImage, alt: "Italian pasta dish from Jack's menu" },
+  { src: "/images/gallery/gallery-wings.webp", alt: "Crispy chicken wings with sauce at Jack's Lounge Hyannis MA" },
+  { src: "/images/gallery/gallery-ribs.webp", alt: "BBQ ribs platter from Jack's Lounge in Hyannis MA" },
+  { src: "/images/gallery/gallery-salad.webp", alt: "Fresh garden salad with toppings at Jack's Lounge" },
+  { src: "/images/gallery/gallery-quesadilla.webp", alt: "Grilled quesadilla with melted cheese - Mexican food Hyannis" },
+  { src: "/images/gallery/gallery-pizza-spread.webp", alt: "Variety of Jack's signature honey-topped pizzas in Hyannis MA" },
+  { src: "/images/gallery/gallery-pasta.webp", alt: "Italian pasta dish from Jack's menu in Hyannis" },
 ];
 
 export default function FoodGallery() {
@@ -40,6 +33,8 @@ export default function FoodGallery() {
                 alt={image.alt}
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
+                width="800"
+                height="800"
               />
             </div>
           ))}

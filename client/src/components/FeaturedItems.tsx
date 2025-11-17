@@ -1,67 +1,55 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
-// Import optimized featured item images (WebP format)
-import buildYourOwnDesktop from "@assets/optimized/featured-build-your-own-desktop.webp";
-import buildYourOwnMobile from "@assets/optimized/featured-build-your-own-mobile.webp";
-import quesadillaDesktop from "@assets/optimized/featured-quesadilla-desktop.webp";
-import quesadillaMobile from "@assets/optimized/featured-quesadilla-mobile.webp";
-import bonelessWingsDesktop from "@assets/optimized/featured-boneless-wings-desktop.webp";
-import bonelessWingsMobile from "@assets/optimized/featured-boneless-wings-mobile.webp";
-import garlicBreadDesktop from "@assets/optimized/featured-garlic-bread-desktop.webp";
-import garlicBreadMobile from "@assets/optimized/featured-garlic-bread-mobile.webp";
-import meatLoversDesktop from "@assets/optimized/featured-meat-lovers-desktop.webp";
-import meatLoversMobile from "@assets/optimized/featured-meat-lovers-mobile.webp";
-import wingsDesktop from "@assets/optimized/featured-wings-desktop.webp";
-import wingsMobile from "@assets/optimized/featured-wings-mobile.webp";
 
+// Featured items with optimized WebP images served from /images/featured/
 const featuredItems = [
   {
     id: 1,
     name: "Build Your Own Pizza",
     description: "Create your perfect pizza with fresh toppings, add our signature honey sauce for the full experience",
-    desktop: buildYourOwnDesktop,
-    mobile: buildYourOwnMobile,
+    desktop: "/images/featured/featured-build-your-own-desktop.webp",
+    mobile: "/images/featured/featured-build-your-own-mobile.webp",
     alt: "Build Your Own Custom Pizza at Jack's Lounge - Best Pizza in Hyannis MA"
   },
   {
     id: 2,
     name: "Chicken Quesadilla",
     description: "Grilled tortilla stuffed with seasoned chicken and cheese",
-    desktop: quesadillaDesktop,
-    mobile: quesadillaMobile,
+    desktop: "/images/featured/featured-quesadilla-desktop.webp",
+    mobile: "/images/featured/featured-quesadilla-mobile.webp",
     alt: "Chicken Quesadilla with Salsa and Sour Cream - Jack's Lounge Hyannis Mexican Food"
   },
   {
     id: 3,
     name: "Boneless Buffalo Tenders",
     description: "Crispy boneless chicken tenders tossed in Buffalo sauce, served with blue cheese",
-    desktop: bonelessWingsDesktop,
-    mobile: bonelessWingsMobile,
+    desktop: "/images/featured/featured-boneless-wings-desktop.webp",
+    mobile: "/images/featured/featured-boneless-wings-mobile.webp",
     alt: "Crispy Boneless Buffalo Chicken Tenders with Blue Cheese Dip - Best Chicken Tenders Hyannis at Jack's Lounge"
   },
   {
     id: 4,
     name: "Cheese Smothered Garlic Bread",
     description: "Fresh Italian bread topped with garlic butter and melted mozzarella cheese",
-    desktop: garlicBreadDesktop,
-    mobile: garlicBreadMobile,
+    desktop: "/images/featured/featured-garlic-bread-desktop.webp",
+    mobile: "/images/featured/featured-garlic-bread-mobile.webp",
     alt: "Melted Cheese Smothered Garlic Bread with Marinara Sauce - Best Italian Appetizers Hyannis at Jack's Lounge"
   },
   {
     id: 5,
     name: "Meat Lovers Pizza",
     description: "Loaded with Pepperoni, Sausage, Linguica, Meatballs, & Bacon.",
-    desktop: meatLoversDesktop,
-    mobile: meatLoversMobile,
+    desktop: "/images/featured/featured-meat-lovers-desktop.webp",
+    mobile: "/images/featured/featured-meat-lovers-mobile.webp",
     alt: "Meat Lovers Pizza with Pepperoni Sausage and Bacon - Best Pizza in Hyannis at Jack's Lounge"
   },
   {
     id: 6,
     name: "Bone-in Wings",
     description: "Crispy-baked chicken wings with your choice of sauce: Buffalo, BBQ, Sweet Chili, or Garlic Parmesan",
-    desktop: wingsDesktop,
-    mobile: wingsMobile,
+    desktop: "/images/featured/featured-wings-desktop.webp",
+    mobile: "/images/featured/featured-wings-mobile.webp",
     alt: "Crispy Baked Bone-in Chicken Wings with Blue Cheese - Best Wings in Hyannis at Jack's Lounge"
   },
 ];
