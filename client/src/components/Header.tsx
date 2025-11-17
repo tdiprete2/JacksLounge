@@ -42,7 +42,7 @@ export default function Header() {
       </a>
       <header className="sticky top-0 z-50 bg-background border-b border-primary/30">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
             <div className="flex items-center">
               <Link href="/" aria-label="Jack's Lounge - Hyannis MA Pizza Restaurant Home">
                 <picture>
@@ -60,7 +60,7 @@ export default function Header() {
                     alt="Jack's Lounge - Best Pizza in Hyannis, MA"
                     width="324"
                     height="84"
-                    className="h-14 w-auto cursor-pointer"
+                    className="h-20 w-auto cursor-pointer"
                     data-testid="img-logo"
                     loading="eager"
                     {...({ fetchpriority: "high" } as any)}
