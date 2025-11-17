@@ -169,7 +169,13 @@ Preferred communication style: Simple, everyday language.
 
 ### Asset Management & Performance Optimization
 - **Image Optimization:** WebP conversion, responsive images (`srcset`), `picture` element, lazy loading, `fetchpriority="high"`.
-- **Logo Optimization:** Standard and Retina WebP variants, PNG fallback.
+- **Logo Optimization (Updated November 2025):** 
+  - New Jack's Lounge lion logo (golden lion icon + script text on black background)
+  - Size: 168x168px (3x larger than original for prominent branding)
+  - Desktop WebP: 4.6KB (1x), 12KB (2x Retina)
+  - Mobile WebP: 2.8KB (120x120px)
+  - PNG fallback: 2.3KB
+  - Eager loading with high fetch priority for LCP optimization
 - **Font Loading:** Async loading, preconnect hints, `font-display: swap`.
 - **Performance Optimizations (November 2025):**
   - Enhanced image compression (62-68% quality range for optimal web delivery)
