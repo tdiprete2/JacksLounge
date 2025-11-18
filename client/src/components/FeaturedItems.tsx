@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import { Link } from "wouter";
 
 // Featured items with optimized WebP images served from /images/featured/
 const featuredItems = [
@@ -55,12 +55,6 @@ const featuredItems = [
 ];
 
 export default function FeaturedItems() {
-  const [, setLocation] = useLocation();
-
-  const navigateToMenu = () => {
-    setLocation("/menu");
-  };
-
   return (
     <section id="featured" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -69,46 +63,47 @@ export default function FeaturedItems() {
             Hyannis Pizza & Italian Favorites
           </h2>
           <Button
+            asChild
             variant="outline"
             size="lg"
-            onClick={navigateToMenu}
             data-testid="button-view-menu"
           >
-            View Menu
+            <Link href="/menu/">View Menu</Link>
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {featuredItems.map((item) => (
-            <Card
+            <Link
               key={item.id}
-              className="overflow-hidden hover-elevate cursor-pointer"
-              onClick={navigateToMenu}
+              href="/menu/"
               data-testid={`card-menu-item-${item.id}`}
             >
-              <div className="aspect-square overflow-hidden">
-                <picture>
-                  <source media="(min-width: 768px)" srcSet={item.desktop} type="image/webp" />
-                  <source media="(max-width: 767px)" srcSet={item.mobile} type="image/webp" />
-                  <img
-                    src={item.desktop}
-                    alt={item.alt}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
-                    width="800"
-                    height="800"
-                  />
-                </picture>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-center mb-2" data-testid={`text-item-name-${item.id}`}>
-                  {item.name}
-                </h3>
-                <p className="text-sm text-foreground/70 text-center" data-testid={`text-item-description-${item.id}`}>
-                  {item.description}
-                </p>
-              </CardContent>
-            </Card>
+              <Card className="overflow-hidden hover-elevate cursor-pointer h-full">
+                <div className="aspect-square overflow-hidden">
+                  <picture>
+                    <source media="(min-width: 768px)" srcSet={item.desktop} type="image/webp" />
+                    <source media="(max-width: 767px)" srcSet={item.mobile} type="image/webp" />
+                    <img
+                      src={item.desktop}
+                      alt={item.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                      width="800"
+                      height="800"
+                    />
+                  </picture>
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl md:text-2xl font-semibold text-center mb-2" data-testid={`text-item-name-${item.id}`}>
+                    {item.name}
+                  </h3>
+                  <p className="text-sm text-foreground/70 text-center" data-testid={`text-item-description-${item.id}`}>
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

@@ -4,7 +4,8 @@ import { Facebook, Instagram } from "lucide-react";
 export default function Footer() {
   const [location, navigate] = useLocation();
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
     if (location !== "/") {
       // Navigate to home page first, then scroll
       navigate("/");
@@ -100,13 +101,14 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("location")}
+                <a
+                  href="/#location"
+                  onClick={(e) => scrollToSection(e, "location")}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-location"
                 >
                   Location & Hours
-                </button>
+                </a>
               </li>
             </ul>
           </div>

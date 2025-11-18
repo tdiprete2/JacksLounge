@@ -8,7 +8,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location, navigate] = useLocation();
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
     if (location !== "/") {
       // Navigate to home page, then scroll after navigation
       navigate("/");
@@ -87,38 +88,42 @@ export default function Header() {
               >
                 Specials
               </Link>
-              <button
-                onClick={() => scrollToSection("featured")}
+              <a
+                href="/#featured"
+                onClick={(e) => scrollToSection(e, "featured")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-featured"
                 aria-label="View featured items"
               >
                 Featured
-              </button>
-              <button
-                onClick={() => scrollToSection("gallery")}
+              </a>
+              <a
+                href="/#gallery"
+                onClick={(e) => scrollToSection(e, "gallery")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-gallery"
                 aria-label="View food gallery"
               >
                 Gallery
-              </button>
-              <button
-                onClick={() => scrollToSection("location")}
+              </a>
+              <a
+                href="/#location"
+                onClick={(e) => scrollToSection(e, "location")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-visit"
                 aria-label="Visit us - location and hours"
               >
                 Visit Us
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
+              </a>
+              <a
+                href="/#testimonials"
+                onClick={(e) => scrollToSection(e, "testimonials")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-testimonials"
                 aria-label="Read customer reviews"
               >
                 Reviews
-              </button>
+              </a>
               <Link
                 href="/contact/"
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
@@ -179,38 +184,42 @@ export default function Header() {
                     >
                       Specials
                     </Link>
-                    <button
-                      onClick={() => scrollToSection("featured")}
-                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                    <a
+                      href="/#featured"
+                      onClick={(e) => scrollToSection(e, "featured")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md block"
                       data-testid="link-featured-mobile"
                       aria-label="View featured items"
                     >
                       Featured
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("gallery")}
-                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                    </a>
+                    <a
+                      href="/#gallery"
+                      onClick={(e) => scrollToSection(e, "gallery")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md block"
                       data-testid="link-gallery-mobile"
                       aria-label="View food gallery"
                     >
                       Gallery
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("location")}
-                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                    </a>
+                    <a
+                      href="/#location"
+                      onClick={(e) => scrollToSection(e, "location")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md block"
                       data-testid="link-visit-mobile"
                       aria-label="Visit us - location and hours"
                     >
                       Visit Us
-                    </button>
-                    <button
-                      onClick={() => scrollToSection("testimonials")}
-                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md text-left"
+                    </a>
+                    <a
+                      href="/#testimonials"
+                      onClick={(e) => scrollToSection(e, "testimonials")}
+                      className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md block"
                       data-testid="link-testimonials-mobile"
                       aria-label="Read customer reviews"
                     >
                       Reviews
-                    </button>
+                    </a>
                     <Link
                       href="/contact/"
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
