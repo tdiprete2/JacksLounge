@@ -97,6 +97,29 @@ Preferred communication style: Simple, everyday language.
 
 **Component Location:** `client/src/pages/Specials.tsx`
 
+### Floating Action Buttons (November 2025)
+
+**Current Implementation:** Two persistent floating buttons for quick access to key actions.
+
+**Features:**
+- **Left Button (Rewards):** "Sign Up for Rewards" → https://l.spoton.com/DrOldL
+  - Links to SpotOn Loyalty program signup
+  - Gold background (#d4af37) with white gift icon
+- **Right Button (Order Online):** "Order Online" → https://olo.spoton.com/60c3b6829adef31f4442003e
+  - Links to SpotOn online ordering platform
+  - Gold background (#d4af37) with white shopping bag icon
+
+**Design & Accessibility:**
+- Fixed positioning at bottom corners (z-index: 50)
+- Rounded pill shape with hover effects (scale-105, enhanced shadow)
+- Mobile responsive: Text hidden on small screens, only icons visible
+- WCAG compliant: aria-label attributes for screen reader accessibility
+- Opens in new tab with security attributes (target="_blank", rel="noopener noreferrer")
+
+**Component Location:** `client/src/components/FloatingButtons.tsx`
+
+**Integration:** Component renders globally via `App.tsx`, appears on all pages
+
 ### Authentication & Authorization
 
 **Current State:** Admin authentication for contact management via `ADMIN_PASSWORD` env variable and `sessionStorage`. User schema defined, but customer authentication is not yet implemented. Session management infrastructure via `connect-pg-simple` is prepared.
