@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import FloatingButtons from "@/components/FloatingButtons";
 
 // Lazy load pages for code splitting and better performance
 const HomeLazy = lazy(() => import("@/pages/Home"));
@@ -61,6 +62,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <FloatingButtons />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
