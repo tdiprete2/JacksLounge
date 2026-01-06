@@ -1,12 +1,39 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, Drumstick, Flame, MapPin } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
+
+const wingFlavors = [
+  { 
+    name: "The Original", 
+    description: "Our signature oven-baked wings, kept simple and seasoned to perfection. Rubbed in a custom blend of savory spices and baked until the skin is golden-crisp and the meat is tender. No sauce, no mess—just bold, natural flavor in every bite.",
+    image: "/images/featured/original-wings-jacks-lounge-hyannis.webp"
+  },
+  { 
+    name: "Buffalo", 
+    description: "The gold standard. Baked wings tossed in a bright, tangy cayenne pepper sauce with a smooth buttery finish. Bold flavor with a classic kick. Served with a cool side of Bleu Cheese or Ranch.",
+    image: "/images/featured/buffalo-wings-jacks-lounge-hyannis.webp"
+  },
+  { 
+    name: "BBQ", 
+    description: "Our wings are tossed in a rich, BBQ glaze that defines the word \"sticky.\" Infused with hickory smoke and a hint of molasses, the sauce creates a deep, savory coating that's thick enough to cling and bold enough to satisfy.",
+    image: "/images/featured/bbq-wings-jacks-lounge-hyannis.webp"
+  },
+  { 
+    name: "Garlic Parm", 
+    description: "A savory classic. Our crispy baked wings are fully coated in a rich, buttery garlic sauce and tossed until every crevice is filled with creamy parmesan flavor.",
+    image: "/images/featured/garlic-parm-wings-jacks-lounge-hyannis.webp"
+  },
+  { 
+    name: "Sweet Chili", 
+    description: "Crispy, oven-baked wings. In a thick, glistening coating that hits you first with a smooth sweetness before finishing with a mild, tangy chili kick. Perfectly tossed so every bite is coated in that signature red-pepper shine.",
+    image: "/images/featured/sweet-chili-wings-jacks-lounge-hyannis.webp"
+  },
+];
 
 const wingItems = [
   { 
@@ -53,12 +80,10 @@ const wingItems = [
   },
 ];
 
-const sauceDescriptions = [
-  { name: "Buffalo", heat: "Hot", description: "Classic tangy hot sauce - our most popular choice" },
-  { name: "BBQ", heat: "Mild", description: "Sweet & smoky house-made barbecue" },
-  { name: "Garlic Parmesan", heat: "Mild", description: "Buttery garlic with aged parmesan" },
-  { name: "Sweet Chili", heat: "Medium", description: "Asian-inspired sweet heat" },
-  { name: "Plain", heat: "No sauce", description: "Naked & crispy - perfect for dipping" },
+const wingPricing = [
+  { pieces: "8 Piece", price: "12" },
+  { pieces: "16 Piece", price: "22" },
+  { pieces: "25 Piece", price: "32" },
 ];
 
 function generateWingsSchema() {
@@ -141,7 +166,7 @@ export default function Wings() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#2a2a2a]">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(generateWingsSchema())}
@@ -152,124 +177,112 @@ export default function Wings() {
       </Helmet>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-full bg-primary/10">
-                <Drumstick className="w-12 h-12 text-primary" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-wings-hero-title">
-              Best Wings in Hyannis MA
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/70 mb-4">
-              <strong>Jack's Lounge</strong> serves Cape Cod's crispiest, most flavorful wings.
-            </p>
-            <p className="text-base md:text-lg text-foreground/70 mb-8">
-              Every order is cooked fresh to golden perfection. Choose from five delicious sauce options: Buffalo, BBQ, Garlic Parmesan, Sweet Chili, or Plain.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                asChild
-                data-testid="button-order-wings"
-              >
-                <a
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  Order Wings Online
-                  <ExternalLink size={18} />
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                data-testid="button-view-full-menu"
-              >
-                <Link href="/menu/">
-                  View Full Menu
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Wings Menu */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+        <section 
+          className="relative py-8 md:py-12 px-4"
+          style={{
+            background: "linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)"
+          }}
+        >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Wings & Chicken Tenders
-              </h2>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                All wings served with celery and your choice of blue cheese or ranch dressing.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {wingItems.map((item, index) => (
-                <Card key={index} className="hover-elevate" data-testid={`wing-item-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start gap-4 mb-2">
-                      <h3 className="text-xl font-semibold text-foreground" data-testid={`text-wing-name-${index}`}>
-                        {item.name}
-                      </h3>
-                      <span className="text-primary font-bold whitespace-nowrap" data-testid={`text-wing-price-${index}`}>
-                        {item.price}
-                      </span>
-                    </div>
-                    <p className="text-sm text-foreground/50 mb-3">{item.pieces}</p>
-                    <p className="text-foreground/70 text-sm mb-3" data-testid={`text-wing-desc-${index}`}>
-                      {item.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {item.sauces.map((sauce, sauceIndex) => (
-                        <span key={sauceIndex} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
-                          {sauce}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+            <h1 className="sr-only" data-testid="text-wings-hero-title">Best Wings in Hyannis MA</h1>
+            
+            <div className="flex justify-center items-center gap-1 md:gap-2 mb-8 md:mb-12">
+              {['W', 'I', 'N', 'G', 'S'].map((letter, idx) => (
+                <div key={idx} className="flex items-center">
+                  <span 
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-widest"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    {letter}
+                  </span>
+                  {idx < 4 && (
+                    <div className="w-px h-16 md:h-24 lg:h-32 bg-white/30 mx-2 md:mx-4" />
+                  )}
+                </div>
               ))}
             </div>
 
-            {/* Sauce Guide */}
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
-                Sauce Guide
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                {sauceDescriptions.map((sauce, index) => (
-                  <Card key={index} className="text-center">
-                    <CardContent className="p-4">
-                      <h4 className="font-semibold text-lg mb-1">{sauce.name}</h4>
-                      {sauce.heat && <span className="text-sm">{sauce.heat}</span>}
-                      <p className="text-sm text-foreground/70 mt-2">{sauce.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+              {wingFlavors.map((item, index) => (
+                <a
+                  key={index}
+                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col cursor-pointer"
+                  data-testid={`wing-item-${index}`}
+                >
+                  <div className="relative h-48 md:h-56 lg:h-64 mb-4 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.name} Wings - Best wings in Hyannis MA`}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                      loading={index < 3 ? "eager" : "lazy"}
+                    />
+                  </div>
+                  
+                  <h3 
+                    className="text-lg md:text-xl text-white mb-3 text-center"
+                    style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                    data-testid={`text-wing-name-${index}`}
+                  >
+                    {item.name}
+                  </h3>
+                  
+                  <p 
+                    className="text-white/80 text-xs md:text-sm leading-relaxed text-center px-1"
+                    data-testid={`text-wing-desc-${index}`}
+                  >
+                    {item.description}
+                  </p>
+                </a>
+              ))}
             </div>
 
-            {/* Call to Action */}
-            <div className="text-center mt-16 p-8 bg-card rounded-lg">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Ready for the Best Wings in Hyannis?
+            <div className="mt-10 p-6 bg-white/5 rounded-lg">
+              <h3 className="text-xl md:text-2xl text-white text-center mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Also Available: Chicken Tenders
               </h3>
-              <p className="text-foreground/70 mb-6 max-w-xl mx-auto">
-                Order online for pickup or delivery. All wings cooked fresh to order!
+              <p className="text-white/70 text-center text-sm max-w-2xl mx-auto">
+                Hand-breaded chicken tenders cooked golden and crispy. Your choice of sauce on the side: Plain, Buffalo, BBQ, or Sweet Chili. <span className="text-[#e55b25] font-bold">$12.50</span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12 pt-8 border-t border-white/20">
+              {wingPricing.map((option, index) => (
+                <div key={index} className="flex items-center gap-3" data-testid={`text-wing-price-${index}`}>
+                  <span className="text-white text-lg md:text-xl font-semibold">
+                    {option.pieces}
+                  </span>
+                  <span className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#e55b25] text-white text-lg md:text-xl font-bold">
+                    ${option.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between mt-12 pt-8 border-t border-white/20">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <p className="text-white/60 text-sm">All wings served with celery and your choice of blue cheese or ranch</p>
+              </div>
+              
+              <div className="text-center">
+                <h2 
+                  className="text-2xl md:text-3xl text-[#d4af37] mb-1"
+                  style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                >
+                  Jack's Lounge
+                </h2>
+                <p className="text-white/80 text-sm">373 West Main Street Hyannis, MA</p>
+                <p className="text-white/80 text-sm">(508)-775-0612</p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-0">
                 <Button
                   size="lg"
+                  className="bg-[#e55b25] hover:bg-[#d14a15] text-white"
                   asChild
-                  data-testid="button-order-wings-bottom"
+                  data-testid="button-order-wings"
                 >
                   <a
                     href="https://olo.spoton.com/60c3b6829adef31f4442003e"
@@ -277,58 +290,22 @@ export default function Wings() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"
                   >
-                    Order Online Now
+                    Order Online
                     <ExternalLink size={18} />
                   </a>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10"
                   asChild
-                  data-testid="button-call-to-order"
+                  data-testid="button-view-full-menu"
                 >
-                  <a href="tel:+15087750612">
-                    Call (508) 775-0612
-                  </a>
+                  <Link href="/menu/">
+                    View Full Menu
+                  </Link>
                 </Button>
               </div>
-            </div>
-
-            {/* Why Our Wings */}
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                Why Jack's Has the Best Wings in Hyannis
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <Drumstick className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">Always Fresh</h4>
-                  <p className="text-foreground/70">Never frozen, always cooked to order for maximum crispiness</p>
-                </div>
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <Flame className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">House-Made Sauces</h4>
-                  <p className="text-foreground/70">Five signature sauces made in-house daily</p>
-                </div>
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <MapPin className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">Cape Cod Favorite</h4>
-                  <p className="text-foreground/70">Locals and visitors agree - we've got the best wings on the Cape</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Back to Menu */}
-            <div className="text-center mt-12">
-              <Link href="/menu/" className="text-primary hover:underline font-semibold">
-                ← Back to Full Menu
-              </Link>
             </div>
           </div>
         </section>

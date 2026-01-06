@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, Pizza as PizzaIcon, ChefHat, Users } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Link } from "wouter";
@@ -11,67 +10,59 @@ import { Helmet } from "react-helmet-async";
 const pizzaItems = [
   { 
     name: "Jack's Famous Honey Pizza", 
-    prices: "10\" $13.25 / 14\" $16.75", 
+    prices: { small: "13.25", large: "16.75" },
     description: "Our signature kitchen craft - freshly shredded mozzarella cheese topped with a golden honey drizzle. A sweet and savory Hyannis tradition that keeps locals coming back for over 60 years.",
     image: "/images/featured/honey-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Special Pizza (The Works)", 
-    prices: "10\" $17.00 / 14\" $23.00", 
+    prices: { small: "17", large: "23" },
     description: "Loaded with pepperoni, Italian sausage, linguica, meatballs, fresh mushrooms, green peppers & caramelized onions. The ultimate meat and veggie combination.",
     image: "/images/featured/special-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Meatlovers Pizza", 
-    prices: "10\" $17.00 / 14\" $23.00", 
+    prices: { small: "17", large: "23" },
     description: "For serious carnivores - piled high with pepperoni, Italian sausage, linguica, homemade meatballs & crispy bacon on our hand-tossed crust.",
     image: "/images/featured/meatlovers-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Buffalo Chicken Pizza", 
-    prices: "10\" $15.50 / 14\" $21.00", 
+    prices: { small: "15.50", large: "21" },
     description: "Tender grilled chicken tossed in tangy buffalo sauce, topped with melted mozzarella. Served with creamy blue cheese on the side.",
     image: "/images/featured/buffalo-chicken-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Chicken Bacon Ranch Pizza", 
-    prices: "10\" $16.00 / 14\" $22.00", 
+    prices: { small: "16", large: "22" },
     description: "Juicy grilled chicken and crispy bacon with a generous drizzle of ranch dressing over melted cheese. A crowd favorite.",
     image: "/images/featured/chicken-bacon-ranch-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Mexican Pizza", 
-    prices: "10\" $16.00 / 14\" $22.00", 
+    prices: { small: "16", large: "22" },
     description: "Seasoned beef, black olives & jalapeños with melted cheese. Served with fresh salsa & sour cream on the side for the perfect kick.",
     image: "/images/featured/mexican-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Vegetarian Pizza", 
-    prices: "10\" $15.00 / 14\" $19.00", 
+    prices: { small: "15", large: "19" },
     description: "A garden-fresh combination of mushrooms, onions, green peppers, red onions, vine-ripened tomatoes & fresh spinach on our signature crust.",
     image: "/images/featured/vegetarian-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Build Your Own Pizza", 
-    prices: "10\" $11.00 / 14\" $15.00", 
+    prices: { small: "11", large: "15" },
     description: "Start with our hand-tossed crust and fresh mozzarella, then add your favorite toppings from our selection of premium meats, fresh vegetables & specialty ingredients.",
     image: "/images/featured/build-your-own-pizza-jacks-lounge-hyannis.webp"
   },
   { 
     name: "Silver (Thin Crust) Pizza", 
-    prices: "10\" $10.00 / 14\" $14.00", 
+    prices: { small: "10", large: "14" },
     description: "Our crispy, golden thin crust pizza - light, crunchy & perfect for those who love that satisfying crackle with every bite.",
     image: "/images/featured/thin-crust-pizza-jacks-lounge-hyannis.webp"
   },
 ];
-
-function parsePizzaPrices(priceString: string): { small: string; large: string } {
-  const match = priceString.match(/10"\s*\$?([\d.]+)\s*\/\s*14"\s*\$?([\d.]+)/);
-  if (match) {
-    return { small: match[1], large: match[2] };
-  }
-  return { small: "11.00", large: "15.00" };
-}
 
 function generatePizzaSchema() {
   return {
@@ -81,7 +72,6 @@ function generatePizzaSchema() {
     "description": "Award-winning pizza in Hyannis, Cape Cod. Try our famous Honey Pizza and specialty pies made fresh daily since 1963.",
     "numberOfItems": pizzaItems.length,
     "itemListElement": pizzaItems.map((item, index) => {
-      const prices = parsePizzaPrices(item.prices);
       return {
         "@type": "ListItem",
         "position": index + 1,
@@ -92,8 +82,8 @@ function generatePizzaSchema() {
           "offers": {
             "@type": "AggregateOffer",
             "priceCurrency": "USD",
-            "lowPrice": prices.small,
-            "highPrice": prices.large,
+            "lowPrice": item.prices.small,
+            "highPrice": item.prices.large,
             "offerCount": 2,
             "availability": "https://schema.org/InStock"
           }
@@ -157,8 +147,11 @@ export default function Pizza() {
     });
   }, []);
 
+  const firstRow = pizzaItems.slice(0, 5);
+  const secondRow = pizzaItems.slice(5);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#2a2a2a]">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(generatePizzaSchema())}
@@ -169,98 +162,145 @@ export default function Pizza() {
       </Helmet>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-full bg-primary/10">
-                <PizzaIcon className="w-12 h-12 text-primary" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-pizza-hero-title">
-              Best Pizza in Hyannis MA
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/70 mb-4">
-              <strong>Jack's Lounge</strong> has been serving Cape Cod's favorite pizza since 1963.
-            </p>
-            <p className="text-base md:text-lg text-foreground/70 mb-8">
-              From our signature honey-drizzled pizza to loaded specialty pies, every pizza is hand-tossed and made fresh with quality ingredients. Gluten-free crust available on all 10" pizzas.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                asChild
-                data-testid="button-order-pizza"
-              >
-                <a
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  Order Pizza Online
-                  <ExternalLink size={18} />
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                data-testid="button-view-full-menu"
-              >
-                <Link href="/menu/">
-                  View Full Menu
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Pizza Menu */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+        <section 
+          className="relative py-8 md:py-12 px-4"
+          style={{
+            background: "linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)"
+          }}
+        >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Signature Pizzas
-              </h2>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                All pizzas available in 10" or 14" sizes. <strong>Gluten-free crust</strong> available on 10" pizzas (+$4.00). We use only fresh vegetables.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {pizzaItems.map((item, index) => (
-                <Card key={index} className="hover-elevate" data-testid={`pizza-item-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start gap-4 mb-3">
-                      <h3 className="text-xl font-semibold text-foreground" data-testid={`text-pizza-name-${index}`}>
-                        {item.name}
-                      </h3>
-                    </div>
-                    <p className="text-primary font-bold text-sm mb-3" data-testid={`text-pizza-price-${index}`}>
-                      {item.prices}
-                    </p>
-                    <p className="text-foreground/70 text-sm" data-testid={`text-pizza-desc-${index}`}>
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
+            <h1 className="sr-only" data-testid="text-pizza-hero-title">Best Pizza in Hyannis MA</h1>
+            
+            <div className="flex justify-center items-center gap-1 md:gap-2 mb-8 md:mb-12">
+              {['P', 'I', 'Z', 'Z', 'A'].map((letter, idx) => (
+                <div key={idx} className="flex items-center">
+                  <span 
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-widest"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    {letter}
+                  </span>
+                  {idx < 4 && (
+                    <div className="w-px h-16 md:h-24 lg:h-32 bg-white/30 mx-2 md:mx-4" />
+                  )}
+                </div>
               ))}
             </div>
 
-            {/* Call to Action */}
-            <div className="text-center mt-16 p-8 bg-card rounded-lg">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Ready to Order the Best Pizza in Hyannis?
-              </h3>
-              <p className="text-foreground/70 mb-6 max-w-xl mx-auto">
-                Skip the wait! Order online for pickup or delivery. All pizzas made fresh to order.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+              {firstRow.map((item, index) => (
+                <a
+                  key={index}
+                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col cursor-pointer"
+                  data-testid={`pizza-item-${index}`}
+                >
+                  <div className="relative h-48 md:h-56 lg:h-64 mb-2 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.name} - Best pizza in Hyannis MA`}
+                      className="w-full h-full object-cover object-center transform -rotate-12 scale-125 group-hover:scale-130 transition-transform duration-300"
+                      loading={index < 3 ? "eager" : "lazy"}
+                    />
+                  </div>
+                  
+                  <h3 
+                    className="text-lg md:text-xl text-white mb-2 text-center"
+                    style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                    data-testid={`text-pizza-name-${index}`}
+                  >
+                    {item.name}
+                  </h3>
+                  
+                  <div className="flex justify-center gap-2 mb-3" data-testid={`text-pizza-price-${index}`}>
+                    <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
+                      10" ${item.prices.small}
+                    </span>
+                    <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
+                      14" ${item.prices.large}
+                    </span>
+                  </div>
+                  
+                  <p 
+                    className="text-white/80 text-xs md:text-sm leading-relaxed text-center px-1"
+                    data-testid={`text-pizza-desc-${index}`}
+                  >
+                    {item.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6">
+              {secondRow.map((item, index) => (
+                <a
+                  key={index + 5}
+                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col cursor-pointer"
+                  data-testid={`pizza-item-${index + 5}`}
+                >
+                  <div className="relative h-40 md:h-48 mb-2 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.name} - Best pizza in Hyannis MA`}
+                      className="w-full h-full object-cover object-center transform -rotate-12 scale-125 group-hover:scale-130 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  <h3 
+                    className="text-base md:text-lg text-white mb-2 text-center"
+                    style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                    data-testid={`text-pizza-name-${index + 5}`}
+                  >
+                    {item.name}
+                  </h3>
+                  
+                  <div className="flex justify-center gap-2 mb-2" data-testid={`text-pizza-price-${index + 5}`}>
+                    <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
+                      10" ${item.prices.small}
+                    </span>
+                    <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
+                      14" ${item.prices.large}
+                    </span>
+                  </div>
+                  
+                  <p 
+                    className="text-white/80 text-xs leading-relaxed text-center px-1"
+                    data-testid={`text-pizza-desc-${index + 5}`}
+                  >
+                    {item.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between mt-12 pt-8 border-t border-white/20">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <p className="text-white/60 text-sm">Gluten-free crust available on 10" pizzas (+$4.00)</p>
+              </div>
+              
+              <div className="text-center">
+                <h2 
+                  className="text-2xl md:text-3xl text-[#d4af37] mb-1"
+                  style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                >
+                  Jack's Lounge
+                </h2>
+                <p className="text-white/80 text-sm">373 West Main Street Hyannis, MA</p>
+                <p className="text-white/80 text-sm">(508)-775-0612</p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-0">
                 <Button
                   size="lg"
+                  className="bg-[#e55b25] hover:bg-[#d14a15] text-white"
                   asChild
-                  data-testid="button-order-pizza-bottom"
+                  data-testid="button-order-pizza"
                 >
                   <a
                     href="https://olo.spoton.com/60c3b6829adef31f4442003e"
@@ -268,58 +308,22 @@ export default function Pizza() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"
                   >
-                    Order Online Now
+                    Order Online
                     <ExternalLink size={18} />
                   </a>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10"
                   asChild
-                  data-testid="button-call-to-order"
+                  data-testid="button-view-full-menu"
                 >
-                  <a href="tel:+15087750612">
-                    Call (508) 775-0612
-                  </a>
+                  <Link href="/menu/">
+                    View Full Menu
+                  </Link>
                 </Button>
               </div>
-            </div>
-
-            {/* Why Choose Jack's */}
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                Why Jack's Lounge Has the Best Pizza in Hyannis
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <PizzaIcon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">Fresh Daily</h4>
-                  <p className="text-foreground/70">Hand-tossed dough made fresh every day using our original 1963 recipe</p>
-                </div>
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <ChefHat className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">Quality Ingredients</h4>
-                  <p className="text-foreground/70">Premium mozzarella, fresh vegetables, and house-made sauces</p>
-                </div>
-                <div className="p-6">
-                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
-                    <Users className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-lg mb-2">Family Tradition</h4>
-                  <p className="text-foreground/70">60+ years serving Cape Cod families with recipes passed down through generations</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Back to Menu */}
-            <div className="text-center mt-12">
-              <Link href="/menu/" className="text-primary hover:underline font-semibold">
-                ← Back to Full Menu
-              </Link>
             </div>
           </div>
         </section>
