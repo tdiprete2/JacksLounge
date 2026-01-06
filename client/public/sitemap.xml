@@ -52,4 +52,20 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Pizza Page (SEO Cluster) -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/pizza/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <!-- Wings Page (SEO Cluster) -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/wings/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
 </urlset>

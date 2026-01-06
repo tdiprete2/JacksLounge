@@ -35,7 +35,7 @@ cp -r dist/public/* docs/
 
 echo "🔗 Creating route-specific HTML files for SEO (fixes redirect errors)..."
 # Create directories for each route
-mkdir -p docs/menu docs/contact docs/story docs/specials
+mkdir -p docs/menu docs/contact docs/story docs/specials docs/pizza docs/wings
 
 # Create route-specific HTML with correct canonical URLs and metadata
 # Menu page
@@ -62,6 +62,19 @@ echo "   ✅ Created /menu/index.html with correct canonical URL"
 echo "   ✅ Created /contact/index.html with correct canonical URL"
 echo "   ✅ Created /story/index.html with correct canonical URL"
 echo "   ✅ Created /specials/index.html with correct canonical URL"
+
+# Pizza page (SEO Cluster)
+cp docs/index.html docs/pizza/index.html
+sed -i 's#<link rel="canonical" href="https://www.jackspizzahyannis.com" />#<link rel="canonical" href="https://www.jackspizzahyannis.com/pizza/" />#g' docs/pizza/index.html
+sed -i 's#<title>Best Pizza & Wings Hyannis MA | Jack'"'"'s Lounge</title>#<title>Best Pizza in Hyannis MA | Jack'"'"'s Lounge - Famous Honey Pizza</title>#g' docs/pizza/index.html
+
+# Wings page (SEO Cluster)
+cp docs/index.html docs/wings/index.html
+sed -i 's#<link rel="canonical" href="https://www.jackspizzahyannis.com" />#<link rel="canonical" href="https://www.jackspizzahyannis.com/wings/" />#g' docs/wings/index.html
+sed -i 's#<title>Best Pizza & Wings Hyannis MA | Jack'"'"'s Lounge</title>#<title>Best Wings in Hyannis MA | Jack'"'"'s Lounge - Crispy Buffalo Wings</title>#g' docs/wings/index.html
+
+echo "   ✅ Created /pizza/index.html with correct canonical URL"
+echo "   ✅ Created /wings/index.html with correct canonical URL"
 
 echo ""
 echo "✅ GitHub Pages deployment ready!"

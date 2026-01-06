@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Pizza, Drumstick, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
+import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 
 const menuCategories = [
   {
@@ -126,6 +128,39 @@ const menuCategories = [
   },
 ];
 
+function generateMenuSchema() {
+  const allItems: Array<{name: string; description: string; price?: string; prices?: string}> = [];
+  menuCategories.forEach(category => {
+    category.items.forEach(item => allItems.push(item));
+  });
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Jack's Lounge Full Menu",
+    "description": "Complete menu featuring pizza, wings, Italian favorites, calzones, grinders, BBQ ribs and more at Jack's Lounge in Hyannis, MA.",
+    "url": "https://www.jackspizzahyannis.com/menu/",
+    "hasMenuSection": menuCategories.map(category => ({
+      "@type": "MenuSection",
+      "name": category.name,
+      "description": category.description,
+      "hasMenuItem": category.items.map(item => ({
+        "@type": "MenuItem",
+        "name": item.name,
+        "description": item.description,
+        ...('price' in item && item.price ? {
+          "offers": {
+            "@type": "Offer",
+            "price": item.price.replace('$', '').replace(/[^0-9.]/g, ''),
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        } : {})
+      }))
+    }))
+  };
+}
+
 export default function Menu() {
   useEffect(() => {
     updateMetaTags({
@@ -140,6 +175,11 @@ export default function Menu() {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(generateMenuSchema())}
+        </script>
+      </Helmet>
       <Header />
       <main>
         {/* Hero Section */}
@@ -166,6 +206,46 @@ export default function Menu() {
                 <ExternalLink size={18} />
               </a>
             </Button>
+          </div>
+        </section>
+
+        {/* Featured Category Links (SEO Cluster) */}
+        <section className="py-8 px-4 md:px-6 lg:px-8 bg-background border-b">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Link href="/pizza/">
+                <Card className="hover-elevate cursor-pointer group" data-testid="link-pizza-page">
+                  <CardContent className="p-6 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-full bg-primary/10">
+                        <Pizza className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">Best Pizza in Hyannis</h3>
+                        <p className="text-sm text-foreground/70">View our signature pizzas</p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link href="/wings/">
+                <Card className="hover-elevate cursor-pointer group" data-testid="link-wings-page">
+                  <CardContent className="p-6 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-full bg-primary/10">
+                        <Drumstick className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">Best Wings in Hyannis</h3>
+                        <p className="text-sm text-foreground/70">5 delicious sauce options</p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
           </div>
         </section>
 

@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { HelmetProvider } from "react-helmet-async";
 import FloatingButtons from "@/components/FloatingButtons";
 
 // Lazy load pages for code splitting and better performance
@@ -12,6 +13,8 @@ const MenuLazy = lazy(() => import("@/pages/Menu"));
 const ContactLazy = lazy(() => import("@/pages/Contact"));
 const StoryLazy = lazy(() => import("@/pages/Story"));
 const SpecialsLazy = lazy(() => import("@/pages/Specials"));
+const PizzaLazy = lazy(() => import("@/pages/Pizza"));
+const WingsLazy = lazy(() => import("@/pages/Wings"));
 const AdminLazy = lazy(() => import("@/pages/Admin"));
 const NotFoundLazy = lazy(() => import("@/pages/not-found"));
 
@@ -21,6 +24,8 @@ const Menu = () => <Suspense fallback={<div className="min-h-screen flex items-c
 const Contact = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><ContactLazy /></Suspense>;
 const Story = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><StoryLazy /></Suspense>;
 const Specials = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><SpecialsLazy /></Suspense>;
+const Pizza = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><PizzaLazy /></Suspense>;
+const Wings = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><WingsLazy /></Suspense>;
 const Admin = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><AdminLazy /></Suspense>;
 const NotFound = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><NotFoundLazy /></Suspense>;
 
@@ -50,6 +55,8 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/story" component={Story} />
         <Route path="/specials" component={Specials} />
+        <Route path="/pizza" component={Pizza} />
+        <Route path="/wings" component={Wings} />
         {enableAdmin && <Route path="/admin" component={Admin} />}
         <Route component={NotFound} />
       </Switch>
@@ -59,13 +66,15 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <FloatingButtons />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <FloatingButtons />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
