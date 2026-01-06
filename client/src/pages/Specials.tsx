@@ -21,11 +21,11 @@ declare global {
 export default function Specials() {
   useEffect(() => {
     updateMetaTags({
-      title: "Daily Specials & Updates | Jack's Lounge - Hyannis MA",
-      description: "Check out Jack's Lounge latest daily specials, promotions, and updates. Follow our Facebook feed for the freshest news on pizza deals, wing specials, and events in Hyannis MA.",
+      title: "Late Night Food & Game Day Wings Hyannis | Jack's Lounge Specials",
+      description: "Late night pizza delivery in Hyannis! Game day wings, daily specials & promotions at Jack's Lounge. Best pizza deals, wing specials & family dinner deals in Hyannis MA.",
       canonical: "https://www.jackspizzahyannis.com/specials/",
-      ogTitle: "Daily Specials & Updates | Jack's Lounge",
-      ogDescription: "Check out Jack's Lounge latest daily specials, promotions, and updates. Fresh pizza deals, wing specials, and events in Hyannis MA.",
+      ogTitle: "Late Night Food & Game Day Wings | Jack's Lounge Hyannis",
+      ogDescription: "Late night pizza delivery, game day wings & daily specials at Jack's Lounge. Best pizza deals and family dinner specials in Hyannis MA.",
       ogUrl: "https://www.jackspizzahyannis.com/specials/"
     });
 
@@ -55,10 +55,10 @@ export default function Specials() {
         <section className="bg-card py-16 md:py-24 px-4 md:px-6 lg:px-8 border-b border-border">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" data-testid="text-specials-title">
-              Updates & Specials
+              Late Night Food & Game Day Specials in Hyannis
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Stay up to date with our latest daily specials, promotions, and restaurant news. Follow our Facebook feed below for the freshest updates!
+              Looking for late night pizza delivery in Hyannis? Game day wings for your party? Stay up to date with our latest daily specials, promotions, and restaurant news. Follow our Facebook feed below for the freshest updates!
             </p>
           </div>
         </section>

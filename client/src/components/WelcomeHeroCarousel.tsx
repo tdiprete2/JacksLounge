@@ -74,10 +74,10 @@ export default function WelcomeHeroCarousel({ slides }: WelcomeHeroCarouselProps
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" data-testid="text-welcome-title">
-              Best Pizza in Hyannis
+              Jack's Lounge: Home of the Original Honey Pizza in Hyannis
             </h1>
             <p className="text-lg md:text-xl leading-relaxed" data-testid="text-welcome-description">
-              A Neighborhood Tradition Serving Great Food and Good Times
+              Top-Rated Pizza & Pub Near Hyannis Harbor Since 1963
             </p>
           </div>
         </div>

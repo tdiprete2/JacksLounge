@@ -1,0 +1,38 @@
+To drive more orders and clicks for Jack's Lounge in 2026, you need to shift from "General SEO" to "Intent-Based Local SEO." People aren't just searching for "pizza"; they are searching for specific solutions like "who delivers late near me" or "best crispy wings for the game."
+
+1. The Best Keywords for 2026 (Order-Drivers)
+Focus on these three categories to capture high-intent customers:
+
+Category	Keywords to Use	Where to Put Them
+Direct Intent	"Pizza delivery Hyannis," "Takeout near 373 West Main," "Order wings online Hyannis"	Website Buttons & Meta Descriptions
+Niche Cravings	"Hot Honey Pizza," "Gluten-free pizza Hyannis," "Best bone-in wings Cape Cod"	Menu item titles & Image Alt-text
+Occasion-Based	"Late night food Hyannis," "Game day wings," "Family dinner deals Hyannis"	Google Business Posts & Specials page
+
+Export to Sheets
+
+2. The "Order Now" Click Strategy
+To get more orders, your search results must look "clickable" and "reliable."
+
+The "Map Pack" Win: Google now prioritizes the "Top 3" map results. To stay there, you need Recency. A review from 2 days ago is 10x more powerful than a review from 2 months ago.
+
+Menu Photos in Search: When people search for "Hot Honey Pizza," Google often shows a photo from a customer review next to your business name. Encourage customers to post photos by saying: "Post a photo of your pizza for a chance to win a $25 gift card!"
+
+Voice Search Optimization: 50% of searches are now voice-activated. Use "Conversational" keywords like: "Where is the best pizza in Hyannis?" or "Who has the best wings near me open now?" in your FAQ section.
+
+3. SEO Checklist for More Clicks
+Google Business Profile "Posts": Post at least 2x a week. Google treats these like "mini-ads" that show up for free. Use a high-quality photo of your wings with the caption: "Looking for the best wings in Hyannis for the game? Order online now for fast pickup!"
+
+Dish-Specific SEO: Since your menu is HTML (not a PDF), make sure your most popular dishes have descriptors.
+
+Instead of: "Buffalo Wings"
+
+Use: "Crispy Bone-in Buffalo Wings - The best wings in Hyannis, served with celery and blue cheese."
+
+Mobile Speed is King: 80% of your customers are on their phones. If your "Order Online" page takes more than 3 seconds to load, you lose 50% of those orders. Check your speed on Google’s PageSpeed Insights.
+
+4. Advanced Tip: AI-Search Readiness
+Tools like ChatGPT and Gemini are now recommending restaurants. To be the one they recommend, ensure your business name is mentioned alongside your product in reviews.
+
+Ask customers to be specific: Instead of "Great food!", ask them to say "Jack's Lounge has the best honey pizza in Hyannis." This "Brand + Keyword" association tells AI exactly what you are the "best" at.
+
+Next Step: I recommend updating your Google Business Profile description today using one of the 200-character blurbs we created, making sure it includes the words "Order Online" and "Delivery."

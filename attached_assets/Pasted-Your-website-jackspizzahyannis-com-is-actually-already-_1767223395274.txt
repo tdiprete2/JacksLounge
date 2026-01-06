@@ -1,0 +1,58 @@
+Your website, jackspizzahyannis.com, is actually already doing a very good job with SEO basics. You have clear keywords in your titles and headers, and your image alt tags are descriptive.
+
+However, there is always room to sharpen these to outrank local competitors and capture more specific "intent" (like people looking for delivery or late-night food).
+
+Here is a breakdown of your current tags and my suggested improvements:
+
+1. The Title Tag (The most important SEO tag)
+The Title Tag is what appears in the Google search tab and as the blue link in search results.
+
+Current: Best Pizza & Wings Hyannis MA | Jack's Lounge
+
+The Problem: It's solid, but it misses your "secret sauce"—the Hot Honey. People search for unique items, and "Hot Honey Pizza" is a growing trend.
+
+Improved: Jack's Lounge | Best Hot Honey Pizza & Wings in Hyannis, MA
+
+Why: It leads with your brand name for recognition and includes your most unique menu item along with your high-volume keywords (Pizza, Wings, Hyannis).
+
+2. The Meta Description
+This is the "sales pitch" snippet that appears under your link in Google.
+
+Current: (Varies, but currently focuses on a list of menu items).
+
+The Problem: It’s a bit passive. It lists food but doesn't "sell" the experience or emphasize your 60-year history as strongly as it could.
+
+Improved (155 characters): Taste the original Hot Honey Pizza at Jack's Lounge! Serving Hyannis since 1963 with the best wings, BBQ ribs & Italian favorites. Order online for fast delivery.
+
+Why: It creates urgency ("Taste the original"), builds trust ("since 1963"), and highlights your delivery service, which is a major search factor.
+
+3. Header Tags (H1, H2, H3)
+These are the "headlines" on your actual webpage. Google uses them to understand the structure of your content.
+
+Current H1: Best Pizza & Wings in Hyannis, MA - Jack's Lounge
+
+Improved H1: Jack's Lounge: Home of the Original Hot Honey Pizza in Hyannis
+
+Why: Your H1 should be unique. Using "Home of the Original" makes you the authority on that specific dish, while still keeping the "Hyannis" keyword.
+
+Current H2 (Subheaders): You have good H2s like Best Wings in Hyannis.
+
+Improvement Suggestion: Add a specific H2 for your location/vibe to capture "near me" searches:
+
+Top-Rated Pizza & Pub Near Hyannis Harbor
+
+Late-Night Pizza Delivery in Hyannis & Barnstable
+
+4. Image "Alt" Tags
+You are already doing this well, but you can add Location + Intent to them.
+
+Current Style: Meat Lovers Pizza with Pepperoni...
+
+Improved Style: Meat Lovers Pizza - Best Takeout Pizza Hyannis MA - Jack's Lounge
+
+Why: If someone searches Google Images for "takeout pizza Hyannis," your photo is now much more likely to show up.
+
+💡 The "Pro" Recommendation: Schema Markup
+While not a "tag" you can see, Schema Markup is code you can add that tells Google exactly what your hours, price range, and menu are.
+
+Does your website provider (or developer) use "Restaurant Schema"? If not, adding it would allow Google to show your 4.6-star rating and your price range ($) directly in the search results, which significantly increases clicks.
