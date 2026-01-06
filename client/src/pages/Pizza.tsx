@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, Pizza as PizzaIcon } from "lucide-react";
+import { ExternalLink, Pizza as PizzaIcon, ChefHat, Users } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Link } from "wouter";
@@ -65,6 +65,14 @@ const pizzaItems = [
   },
 ];
 
+function parsePizzaPrices(priceString: string): { small: string; large: string } {
+  const match = priceString.match(/10"\s*\$?([\d.]+)\s*\/\s*14"\s*\$?([\d.]+)/);
+  if (match) {
+    return { small: match[1], large: match[2] };
+  }
+  return { small: "11.00", large: "15.00" };
+}
+
 function generatePizzaSchema() {
   return {
     "@context": "https://schema.org",
@@ -72,26 +80,26 @@ function generatePizzaSchema() {
     "name": "Jack's Lounge Pizza Menu - Best Pizza in Hyannis MA",
     "description": "Award-winning pizza in Hyannis, Cape Cod. Try our famous Honey Pizza and specialty pies made fresh daily since 1963.",
     "numberOfItems": pizzaItems.length,
-    "itemListElement": pizzaItems.map((item, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "MenuItem",
-        "name": item.name,
-        "description": item.description,
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "offerCount": 2
-        },
-        "menuAddOn": {
-          "@type": "MenuSection",
-          "name": "Customizations",
-          "description": "Gluten-free crust available (+$4.00). Fresh vegetables only."
+    "itemListElement": pizzaItems.map((item, index) => {
+      const prices = parsePizzaPrices(item.prices);
+      return {
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "MenuItem",
+          "name": item.name,
+          "description": item.description,
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": prices.small,
+            "highPrice": prices.large,
+            "offerCount": 2,
+            "availability": "https://schema.org/InStock"
+          }
         }
-      }
-    }))
+      };
+    })
   };
 }
 
@@ -284,17 +292,23 @@ export default function Pizza() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="p-6">
-                  <div className="text-4xl mb-4">🍕</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <PizzaIcon className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">Fresh Daily</h4>
                   <p className="text-foreground/70">Hand-tossed dough made fresh every day using our original 1963 recipe</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-4xl mb-4">🧀</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <ChefHat className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">Quality Ingredients</h4>
                   <p className="text-foreground/70">Premium mozzarella, fresh vegetables, and house-made sauces</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <Users className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">Family Tradition</h4>
                   <p className="text-foreground/70">60+ years serving Cape Cod families with recipes passed down through generations</p>
                 </div>

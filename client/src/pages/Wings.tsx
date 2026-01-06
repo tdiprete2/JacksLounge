@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, Drumstick } from "lucide-react";
+import { ExternalLink, Drumstick, Flame, MapPin } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Link } from "wouter";
@@ -54,11 +54,11 @@ const wingItems = [
 ];
 
 const sauceDescriptions = [
-  { name: "Buffalo", heat: "🔥🔥", description: "Classic tangy hot sauce - our most popular choice" },
-  { name: "BBQ", heat: "🔥", description: "Sweet & smoky house-made barbecue" },
-  { name: "Garlic Parmesan", heat: "", description: "Buttery garlic with aged parmesan" },
-  { name: "Sweet Chili", heat: "🔥", description: "Asian-inspired sweet heat" },
-  { name: "Plain", heat: "", description: "Naked & crispy - perfect for dipping" },
+  { name: "Buffalo", heat: "Hot", description: "Classic tangy hot sauce - our most popular choice" },
+  { name: "BBQ", heat: "Mild", description: "Sweet & smoky house-made barbecue" },
+  { name: "Garlic Parmesan", heat: "Mild", description: "Buttery garlic with aged parmesan" },
+  { name: "Sweet Chili", heat: "Medium", description: "Asian-inspired sweet heat" },
+  { name: "Plain", heat: "No sauce", description: "Naked & crispy - perfect for dipping" },
 ];
 
 function generateWingsSchema() {
@@ -301,17 +301,23 @@ export default function Wings() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="p-6">
-                  <div className="text-4xl mb-4">🍗</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <Drumstick className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">Always Fresh</h4>
                   <p className="text-foreground/70">Never frozen, always cooked to order for maximum crispiness</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-4xl mb-4">🌶️</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <Flame className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">House-Made Sauces</h4>
                   <p className="text-foreground/70">Five signature sauces made in-house daily</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-4xl mb-4">📍</div>
+                  <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
+                    <MapPin className="w-8 h-8 text-primary" />
+                  </div>
                   <h4 className="font-semibold text-lg mb-2">Cape Cod Favorite</h4>
                   <p className="text-foreground/70">Locals and visitors agree - we've got the best wings on the Cape</p>
                 </div>

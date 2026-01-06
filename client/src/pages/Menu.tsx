@@ -128,12 +128,20 @@ const menuCategories = [
   },
 ];
 
+function parsePrice(priceStr: string): string | null {
+  const match = priceStr.match(/^\$?([\d.]+)/);
+  return match ? match[1] : null;
+}
+
+function parseSizePrice(priceStr: string): { lowPrice: string; highPrice: string } | null {
+  const match = priceStr.match(/10"\s*\$?([\d.]+)\s*\/\s*14"\s*\$?([\d.]+)/);
+  if (match) {
+    return { lowPrice: match[1], highPrice: match[2] };
+  }
+  return null;
+}
+
 function generateMenuSchema() {
-  const allItems: Array<{name: string; description: string; price?: string; prices?: string}> = [];
-  menuCategories.forEach(category => {
-    category.items.forEach(item => allItems.push(item));
-  });
-  
   return {
     "@context": "https://schema.org",
     "@type": "Menu",
@@ -144,19 +152,47 @@ function generateMenuSchema() {
       "@type": "MenuSection",
       "name": category.name,
       "description": category.description,
-      "hasMenuItem": category.items.map(item => ({
-        "@type": "MenuItem",
-        "name": item.name,
-        "description": item.description,
-        ...('price' in item && item.price ? {
-          "offers": {
-            "@type": "Offer",
-            "price": item.price.replace('$', '').replace(/[^0-9.]/g, ''),
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
+      "hasMenuItem": category.items.map(item => {
+        const baseItem = {
+          "@type": "MenuItem",
+          "name": item.name,
+          "description": item.description
+        };
+        
+        if ('price' in item && item.price) {
+          const singlePrice = parsePrice(item.price);
+          if (singlePrice) {
+            return {
+              ...baseItem,
+              "offers": {
+                "@type": "Offer",
+                "price": singlePrice,
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            };
           }
-        } : {})
-      }))
+        }
+        
+        if ('prices' in item && item.prices) {
+          const rangePrices = parseSizePrice(item.prices);
+          if (rangePrices) {
+            return {
+              ...baseItem,
+              "offers": {
+                "@type": "AggregateOffer",
+                "lowPrice": rangePrices.lowPrice,
+                "highPrice": rangePrices.highPrice,
+                "priceCurrency": "USD",
+                "offerCount": 2,
+                "availability": "https://schema.org/InStock"
+              }
+            };
+          }
+        }
+        
+        return baseItem;
+      })
     }))
   };
 }
