@@ -6,6 +6,7 @@ Allow: /
 Allow: /menu
 Allow: /story
 Allow: /contact
+Allow: /specials
 
 # Sitemap location
 Sitemap: https://www.jackspizzahyannis.com/sitemap.xml
