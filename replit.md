@@ -17,7 +17,7 @@ Preferred communication style: Simple, everyday language.
 **UI/UX Design:**
 - **Component Library:** shadcn/ui (Radix UI primitives) with a "New York" style variant.
 - **Design Philosophy:** Mobile-first, food-first visual hierarchy, black and gold theme, Inter (UI) and Playfair Display (headings) typography, accessibility-focused.
-- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Contact, Specials (Facebook feed), Story, 404.
+- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Pizza (SEO cluster), Wings (SEO cluster), Contact, Specials (Facebook feed), Story, 404.
 - **Patterns:** Component composition, custom hooks, centralized utilities, path aliases.
 
 ### Backend
@@ -120,6 +120,47 @@ Preferred communication style: Simple, everyday language.
 
 **Integration:** Component renders globally via `App.tsx`, appears on all pages
 
+### SEO Cluster Strategy (January 2026)
+
+**Purpose:** Improve search visibility by creating dedicated, keyword-optimized sub-pages for high-value food categories.
+
+**Implemented Pages:**
+- `/pizza/` - Targets "Best Pizza in Hyannis MA"
+  - Component: `client/src/pages/Pizza.tsx`
+  - H1: "Best Pizza in Hyannis MA"
+  - 9 specialty pizzas with detailed descriptions
+  - MenuItem JSON-LD schema with AggregateOffer (lowPrice/highPrice for 10"/14" sizes)
+  - Restaurant schema linking to menu
+  - Order Online CTA and internal linking to main menu
+  
+- `/wings/` - Targets "Best Wings in Hyannis MA"
+  - Component: `client/src/pages/Wings.tsx`
+  - H1: "Best Wings in Hyannis MA"
+  - 6 wing/tender options with sauce descriptions
+  - MenuItem JSON-LD schema with Offer pricing
+  - Restaurant schema linking to menu
+  - Sauce guide section with heat level indicators
+  - Order Online CTA and internal linking to main menu
+
+**Main Menu Integration:**
+- `client/src/pages/Menu.tsx` now includes:
+  - Full Menu JSON-LD schema with all 9 categories
+  - Internal link cards to Pizza and Wings sub-pages
+  - Proper price parsing for both single-price and range-price items
+
+**Technical Implementation:**
+- HelmetProvider from `react-helmet-async` wraps App for JSON-LD schema injection
+- Lazy-loaded routes in App.tsx for code splitting
+- Price parsing functions extract valid numeric values from price strings
+- Sitemap.xml includes /pizza/ and /wings/ with priority 0.95
+- Build script creates route-specific HTML files for GitHub Pages
+
+**Schema Validation:**
+- All MenuItem schemas use valid Schema.org types
+- AggregateOffer used for multi-size items (pizza) with lowPrice/highPrice
+- Offer used for single-price items
+- Prices parsed via regex to ensure numeric values
+
 ### Authentication & Authorization
 
 **Current State:** Admin authentication for contact management via `ADMIN_PASSWORD` env variable and `sessionStorage`. User schema defined, but customer authentication is not yet implemented. Session management infrastructure via `connect-pg-simple` is prepared.
@@ -163,11 +204,11 @@ Preferred communication style: Simple, everyday language.
 
 ### SEO & Mobile-First Indexing
 - Mobile-First Viewport (`viewport-fit=cover`, mobile web app meta tags)
-- Structured Data (JSON-LD Schema.org: Organization, Restaurant, WebSite, BreadcrumbList)
+- Structured Data (JSON-LD Schema.org: Organization, Restaurant, WebSite, BreadcrumbList, Menu, MenuItem)
 - Social Media Integration (OpenGraph, Twitter Card meta tags)
 - Technical SEO (Canonical URLs, Robots.txt, XML sitemap, Meta descriptions, Geo-tags)
 - **SPA Routing for SEO (November 2025):**
-  - Route-specific HTML files created for /menu/, /contact/, /story/ to prevent 404 errors
+  - Route-specific HTML files created for /menu/, /contact/, /story/, /pizza/, /wings/ to prevent 404 errors
   - GitHub Pages serves physical index.html for each route
   - **Trailing Slash Convention (November 11, 2025):**
     - All public URLs use trailing slashes (/menu/, /contact/, /story/)
