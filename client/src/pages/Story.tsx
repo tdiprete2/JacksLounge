@@ -40,7 +40,7 @@ export default function Story() {
             {/* First Paragraph */}
             <Card className="p-8 md:p-10">
               <p className="text-base md:text-lg leading-relaxed text-foreground" data-testid="text-story-intro">
-                Our passion is serving up delicious, comforting meals that feel like home—whether you're dining in or taking our food to go. Opened in <strong>1963 by John "Jack" Sances</strong>, a former professional boxer, Jack's Lounge has been a cornerstone of the Hyannis community for over six decades.
+                Our passion is serving up delicious, comforting meals that feel like home—whether you're dining in or taking our food to go. Opened in <strong>1963 by John "Jack" Sances</strong>, a former professional boxer who fought under the name <strong>"Tommy Nee"</strong>, Jack's Lounge has been a cornerstone of the Hyannis community for over six decades.
               </p>
             </Card>
 
