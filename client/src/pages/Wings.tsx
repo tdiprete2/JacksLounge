@@ -75,7 +75,7 @@ const wingItems = [
     name: "Chicken Tenders", 
     price: "$12.50", 
     pieces: "Large portion",
-    description: "Hand-breaded chicken tenders cooked golden and crispy. Your choice of sauce on the side.",
+    description: "Chicken tenders cooked golden and crispy. Your choice of sauce on the side.",
     sauces: ["Plain", "Buffalo", "BBQ", "Sweet Chili"]
   },
 ];
@@ -244,7 +244,7 @@ export default function Wings() {
                 Also Available: Chicken Tenders
               </h3>
               <p className="text-white/70 text-center text-sm max-w-2xl mx-auto">
-                Hand-breaded chicken tenders cooked golden and crispy. Your choice of sauce on the side: Plain, Buffalo, BBQ, or Sweet Chili. <span className="text-[#e55b25] font-bold">$12.50</span>
+                Chicken tenders cooked golden and crispy. Your choice of sauce on the side: Plain, Buffalo, BBQ, or Sweet Chili. <span className="text-[#e55b25] font-bold">$12.50</span>
               </p>
             </div>
 
