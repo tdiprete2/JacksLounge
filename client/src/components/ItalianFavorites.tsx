@@ -32,9 +32,7 @@ export default function ItalianFavorites() {
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-italian-title">
               Hearty Italian and American Favorites Made Fresh
             </h2>
-            <p className="text-lg text-foreground/90 leading-relaxed mb-6" data-testid="text-italian-description">
-              At Jack's Lounge, we serve a mix of Italian and American favorites that everyone loves. Our menu is packed with comforting dishes like pizza, ribs, wings, and other hearty meals that never go out of style. Every dish is prepared with care and served fresh, so you can always count on a great meal. We even offer uncooked pizzas so you can bake them at home and enjoy that same Jack's flavor right from your oven.
-            </p>
+            <p className="text-lg text-foreground/90 leading-relaxed mb-6" data-testid="text-italian-description">At Jack's Lounge, we serve a mix of Italian and American favorites that everyone loves. Our menu is packed with comforting dishes like pizza, salads, wings, and other hearty meals that never go out of style. Every dish is prepared with care and served fresh, so you can always count on a great meal. We even offer uncooked pizzas so you can bake them at home and enjoy that same Jack's flavor right from your oven.</p>
             <Button
               size="lg"
               onClick={scrollToOrder}
