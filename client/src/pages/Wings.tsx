@@ -186,19 +186,15 @@ export default function Wings() {
           <div className="max-w-7xl mx-auto">
             <h1 className="sr-only" data-testid="text-wings-hero-title">Best Wings in Hyannis MA</h1>
             
-            <div className="flex justify-center items-center gap-1 md:gap-2 mb-8 md:mb-12">
+            <div className="flex justify-center items-center gap-4 md:gap-6 mb-8 md:mb-12">
               {['W', 'I', 'N', 'G', 'S'].map((letter, idx) => (
-                <div key={idx} className="flex items-center">
-                  <span 
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-widest"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {letter}
-                  </span>
-                  {idx < 4 && (
-                    <div className="w-px h-16 md:h-24 lg:h-32 bg-white/30 mx-2 md:mx-4" />
-                  )}
-                </div>
+                <span 
+                  key={idx}
+                  className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-widest"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  {letter}
+                </span>
               ))}
             </div>
 
