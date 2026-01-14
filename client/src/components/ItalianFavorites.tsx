@@ -18,7 +18,7 @@ export default function ItalianFavorites() {
               <source media="(max-width: 767px)" srcSet="/images/sections/section-italian-favorites-mobile.webp" type="image/webp" />
               <img
                 src="/images/sections/section-italian-favorites-desktop.webp"
-                alt="Hearty Italian and American Favorites at Jack's Lounge Hyannis MA"
+                alt="Tuesday Special - 25% Off All Pizzas at Jack's Lounge Hyannis MA"
                 className="rounded-lg shadow-xl w-full"
                 loading="lazy"
                 width="1200"
@@ -30,15 +30,15 @@ export default function ItalianFavorites() {
 
           <div>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-italian-title">
-              Hearty Italian and American Favorites Made Fresh
+              Tuesday Special: 25% Off All Pizzas
             </h2>
-            <p className="text-lg text-foreground/90 leading-relaxed mb-6" data-testid="text-italian-description">At Jack's Lounge, we serve a mix of Italian and American favorites that everyone loves. Our menu is packed with comforting dishes like pizza, salads, wings, and other hearty meals that never go out of style. Every dish is prepared with care and served fresh, so you can always count on a great meal. We even offer uncooked pizzas so you can bake them at home and enjoy that same Jack's flavor right from your oven.</p>
+            <p className="text-lg text-foreground/90 leading-relaxed mb-6" data-testid="text-italian-description">Every Tuesday, enjoy 25% off all pizzas at Jack's Lounge! No coupon needed, no minimum purchase required. Whether you're craving our signature honey-topped pizzas, a loaded Meat Lovers, or building your own custom creation, Tuesday is the perfect day to satisfy your pizza cravings at a great price.</p>
             <Button
               size="lg"
               onClick={scrollToOrder}
               data-testid="button-italian-menu"
             >
-              Explore Our Menu
+              Order Now
             </Button>
           </div>
         </div>
