@@ -263,7 +263,7 @@ export default function Wings() {
 
             <div className="flex flex-col md:flex-row items-center justify-between mt-12 pt-8 border-t border-white/20">
               <div className="text-center md:text-left mb-6 md:mb-0">
-                <p className="text-white/60 text-sm">All wings served with celery and your choice of blue cheese or ranch</p>
+                <p className="text-white/60 text-sm">All wings served with your choice of blue cheese or ranch</p>
               </div>
               
               <div className="text-center">
