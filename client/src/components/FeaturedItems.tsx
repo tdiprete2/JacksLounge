@@ -22,11 +22,11 @@ const featuredItems = [
   },
   {
     id: 3,
-    name: "Boneless Buffalo Tenders",
-    description: "Crispy boneless chicken tenders tossed in Buffalo sauce, served with blue cheese",
+    name: "Antipasto Salad",
+    description: "Fresh greens topped with Italian meats, provolone, pepperoni, cucumbers, tomatoes & more",
     desktop: "/images/featured/featured-boneless-wings-desktop.webp",
     mobile: "/images/featured/featured-boneless-wings-mobile.webp",
-    alt: "Crispy Boneless Buffalo Chicken Tenders with Blue Cheese Dip - Best Chicken Tenders Hyannis at Jack's Lounge"
+    alt: "Fresh Antipasto Salad with Italian Meats and Provolone Cheese - Jack's Lounge Hyannis MA"
   },
   {
     id: 4,
