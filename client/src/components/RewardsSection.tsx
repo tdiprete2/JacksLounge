@@ -22,7 +22,7 @@ export default function RewardsSection() {
               Download Our App & Save
             </h2>
             <p className="text-base md:text-xl lg:text-2xl leading-relaxed mb-6 md:mb-8 max-w-2xl mx-auto drop-shadow-md font-medium" data-testid="text-rewards-description">
-              Order faster, earn points with every purchase, and unlock exclusive discounts on Jack's Pizza, Wings, Ribs & More!
+              Order faster, earn points with every purchase, and unlock exclusive discounts on Jack's Pizza, Wings & More!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a

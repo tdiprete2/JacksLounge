@@ -82,10 +82,8 @@ const menuCategories = [
   {
     id: 6,
     name: "Jack's Entrees",
-    description: "Signature Hyannis entrees - Slow-cooked to perfection with Jack's famous BBQ ribs",
+    description: "Signature Hyannis entrees - Hearty Italian classics made fresh every day",
     items: [
-      { name: "1/2 Rack of Ribs (2 Pieces)", price: "$20.00", description: "Half Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
-      { name: "Full Rack of Ribs (4 Pieces)", price: "$26.00", description: "Full Rack of Jack's Famous Pork Ribs, covered in our BBQ sauce and served with a side of Rice and Vegetable" },
       { name: "Spaghetti & Sauce", price: "$9.00", description: "Spaghetti & Marinara w/ Garlic Bread" },
     ]
   },
@@ -146,7 +144,7 @@ function generateMenuSchema() {
     "@context": "https://schema.org",
     "@type": "Menu",
     "name": "Jack's Lounge Full Menu",
-    "description": "Complete menu featuring pizza, wings, Italian favorites, calzones, grinders, BBQ ribs and more at Jack's Lounge in Hyannis, MA.",
+    "description": "Complete menu featuring pizza, wings, Italian favorites, calzones, grinders, soups, salads and more at Jack's Lounge in Hyannis, MA.",
     "url": "https://www.jackspizzahyannis.com/menu/",
     "hasMenuSection": menuCategories.map(category => ({
       "@type": "MenuSection",
@@ -201,7 +199,7 @@ export default function Menu() {
   useEffect(() => {
     updateMetaTags({
       title: "Menu - Jack's Lounge Hyannis | Best Pizza & Italian Restaurant",
-      description: "View Jack's Lounge full menu - signature honey pizzas, BBQ ribs, wings, Italian favorites, calzones, grinders & more. Order online for pickup or delivery in Hyannis, MA.",
+      description: "View Jack's Lounge full menu - signature honey pizzas, crispy wings, Italian favorites, calzones, grinders & more. Order online for pickup or delivery in Hyannis, MA.",
       canonical: "https://www.jackspizzahyannis.com/menu",
       ogTitle: "Jack's Lounge Menu - Best Pizza & Italian Food in Hyannis MA",
       ogDescription: "Browse our full menu of pizzas, wings, Italian favorites and more. Over 60 years serving Hyannis with authentic recipes and fresh ingredients.",

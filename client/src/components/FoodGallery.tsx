@@ -1,7 +1,6 @@
 // Gallery images served from /images/gallery/ (optimized WebP format)
 const galleryImages = [
   { src: "/images/gallery/gallery-wings.webp", alt: "Crispy chicken wings with sauce at Jack's Lounge Hyannis MA" },
-  { src: "/images/gallery/gallery-ribs.webp", alt: "BBQ ribs platter from Jack's Lounge in Hyannis MA" },
   { src: "/images/gallery/gallery-salad.webp", alt: "Fresh garden salad with toppings at Jack's Lounge" },
   { src: "/images/gallery/gallery-quesadilla.webp", alt: "Grilled quesadilla with melted cheese - Mexican food Hyannis" },
   { src: "/images/gallery/gallery-pizza-spread.webp", alt: "Variety of Jack's signature honey-topped pizzas in Hyannis MA" },

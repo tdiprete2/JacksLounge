@@ -28,7 +28,7 @@ export default function Story() {
               Our Story
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              At Jack's Lounge, we blend easygoing vibes with hearty Italian favorites, ribs, pizza and wings, creating a welcoming spot where locals gather to enjoy great food, friendly service, and unbeatable value.
+              At Jack's Lounge, we blend easygoing vibes with hearty Italian favorites, pizza and wings, creating a welcoming spot where locals gather to enjoy great food, friendly service, and unbeatable value.
             </p>
           </div>
         </section>
