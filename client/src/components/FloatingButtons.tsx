@@ -20,7 +20,7 @@ export default function FloatingButtons() {
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
           <ShoppingBag className="h-5 w-5 text-black" />
         </div>
-        <span className="text-base font-bold tracking-wide text-black">
+        <span className="text-base font-bold tracking-wide text-white">
           Order Online
         </span>
       </a>
