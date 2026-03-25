@@ -29,20 +29,39 @@ export default function Specials() {
       ogUrl: "https://www.jackspizzahyannis.com/specials/"
     });
 
-    // Re-parse Facebook plugin when navigating to this page in SPA
+    // Ensure fb-root div exists (required by the Facebook SDK)
+    if (!document.getElementById('fb-root')) {
+      const fbRoot = document.createElement('div');
+      fbRoot.id = 'fb-root';
+      document.body.insertBefore(fbRoot, document.body.firstChild);
+    }
+
     const parseFacebookPlugin = () => {
       if (window.FB?.XFBML) {
         window.FB.XFBML.parse();
       }
     };
 
-    // Check if FB SDK is already loaded
     if (window.FB) {
+      // SDK already loaded from a previous visit to this page
       parseFacebookPlugin();
     } else {
-      // Wait for FB SDK to load
-      window.addEventListener('fbAsyncInit', parseFacebookPlugin);
-      return () => window.removeEventListener('fbAsyncInit', parseFacebookPlugin);
+      // Chain fbAsyncInit so we don't overwrite any existing handler
+      const prevInit = window.fbAsyncInit;
+      window.fbAsyncInit = function() {
+        if (prevInit) prevInit();
+        parseFacebookPlugin();
+      };
+
+      // Inject the SDK script only once per page session
+      if (!document.querySelector('script[src*="connect.facebook.net"]')) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.defer = true;
+        script.crossOrigin = 'anonymous';
+        script.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0';
+        document.body.appendChild(script);
+      }
     }
   }, []);
 

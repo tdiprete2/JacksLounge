@@ -394,11 +394,19 @@
       </div>
     </noscript>
     
-    <!-- Facebook SDK for Page Plugin -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="ABC123"></script>
-    
+    <!-- Static hero pre-render: first hero image shown immediately before React mounts, reducing LCP render delay -->
+    <div id="hero-placeholder" style="position:fixed;top:0;left:0;width:100%;height:600px;overflow:hidden;z-index:50;pointer-events:none;">
+      <picture>
+        <source media="(min-width:768px)" srcset="/images/hero/hero-0-desktop.webp" type="image/webp">
+        <img src="/images/hero/hero-0-mobile.webp" alt="Jack's Lounge Exterior" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </picture>
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
+    </div>
     <div id="root"></div>
+    <!-- Fade out the static placeholder once React has mounted -->
+    <script>
+      (function(){var r=document.getElementById('root');if(!r)return;new MutationObserver(function(m,o){if(r.hasChildNodes()){var p=document.getElementById('hero-placeholder');if(p){p.style.transition='opacity 0.3s';p.style.opacity='0';setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},350);}o.disconnect();}}).observe(r,{childList:true});})();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
