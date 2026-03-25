@@ -15,7 +15,7 @@ const faqs = [
     id: 1,
     question: "What is honey pizza?",
     answer:
-      "It's Jack's Lounge's signature creation — a hand-tossed pizza topped with freshly shredded mozzarella and white cheddar, then finished with a generous drizzle of golden honey. The blend of savory cheese and sweet honey creates a one-of-a-kind flavor that has kept locals coming back for over 60 years.",
+      "It's Jack's Lounge's signature creation — a hand-tossed pizza topped with freshly shredded mozzarella and white cheddar, then finished with a generous drizzle of golden honey. The DiPrete family introduced it after taking over the restaurant in 1985, and it's been a Cape Cod staple ever since.",
   },
   {
     id: 2,
@@ -144,7 +144,7 @@ export default function FamousHoneyPizza() {
       canonical: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
       ogTitle: "Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963",
       ogDescription:
-        "Try the honey pizza that's kept locals coming back for 60 years. Sweet, savory, and unlike anything else on Cape Cod. Order online or visit us in Hyannis, MA.",
+        "Try the honey pizza that's kept locals coming back for over 40 years. Sweet, savory, and unlike anything else on Cape Cod. Order online or visit us in Hyannis, MA.",
       ogUrl: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
     });
   }, []);
@@ -191,8 +191,8 @@ export default function FamousHoneyPizza() {
 
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                   Freshly shredded mozzarella and white cheddar crowned with a golden honey drizzle. 
-                  The sweet-savory balance that has made Jack's Lounge legendary in Hyannis 
-                  for over six decades — and the one slice every Cape Cod visitor has to try.
+                  A DiPrete family creation that has made Jack's Lounge legendary in Hyannis 
+                  for over 40 years — and the one slice every Cape Cod visitor has to try.
                 </p>
 
                 {/* Pricing */}
@@ -263,26 +263,29 @@ export default function FamousHoneyPizza() {
 
             <div className="space-y-6 text-base md:text-lg leading-relaxed text-muted-foreground">
               <p>
-                When <strong className="text-foreground">John "Jack" Sances</strong> — former professional
-                boxer fighting under the name "Tommy Nee" — opened Jack's Lounge at 373 West Main Street
-                in Hyannis in <strong className="text-foreground">1963</strong>, he had a simple belief: 
-                great food should surprise you. The Famous Honey Pizza was born from that instinct.
+                Jack's Lounge was founded in <strong className="text-foreground">1963</strong> by{" "}
+                <strong className="text-foreground">John "Jack" Sances</strong> — former professional
+                boxer fighting under the name "Tommy Nee" — who built it into a neighborhood staple
+                on 373 West Main Street in Hyannis.
               </p>
               <p>
-                At a time when pizza meant tomato sauce and pepperoni, Jack reached for a honey jar
-                instead. The result was unlike anything Cape Cod had ever tasted — the heat of the 
-                oven caramelizing the cheese ever so slightly, the honey cutting through with warmth 
-                and sweetness, creating a bite that was both comforting and unexpected.
+                In <strong className="text-foreground">1985</strong>,{" "}
+                <strong className="text-foreground">Henry and Anne DiPrete</strong> purchased the
+                restaurant and brought their own touch to the kitchen. It was the DiPretes who
+                created the Famous Honey Pizza — reaching for a honey jar when most pizza makers
+                were thinking tomato sauce. The result was unlike anything Cape Cod had tasted:
+                freshly shredded mozzarella and white cheddar, the oven caramelizing the cheese
+                just so, the honey cutting through with warmth and sweetness.
               </p>
               <p>
-                In <strong className="text-foreground">1985</strong>, Henry and Anne DiPrete took ownership
-                and kept the recipe exactly as Jack intended. Today, their daughter <strong className="text-foreground">Grace</strong> 
-                {" "}and grandson <strong className="text-foreground">Tim</strong> carry on the tradition —
-                three generations, one honey drizzle.
+                Today, their daughter <strong className="text-foreground">Grace</strong>{" "}
+                and grandson <strong className="text-foreground">Tim</strong> carry on the tradition —
+                the same recipe, the same Hyannis address, the same loyal customers who've been
+                coming back since the day the DiPretes first drizzled honey on a pie.
               </p>
               <p>
-                Whether you're a Hyannis local who's been ordering it for decades, or a summer visitor
-                trying it for the first time, the Famous Honey Pizza is the one thing every guest 
+                Whether you're a Hyannis local who's been ordering it for years, or a summer visitor
+                trying it for the first time, the Famous Honey Pizza is the one thing every guest
                 remembers long after leaving Cape Cod.
               </p>
             </div>

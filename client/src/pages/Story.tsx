@@ -84,7 +84,7 @@ export default function Story() {
                   <p className="text-sm font-medium text-primary uppercase tracking-wider mb-1">Signature Recipe</p>
                   <h3 className="text-lg font-bold mb-1">Jack's Famous Honey Pizza — the full story</h3>
                   <p className="text-muted-foreground text-sm">
-                    Learn the origin of the 60-year-old recipe, see the ingredients, prices, and FAQ.
+                    Learn how the DiPrete family created the recipe in the 1980s, see the ingredients, prices, and FAQ.
                   </p>
                 </div>
                 <ArrowRight className="h-6 w-6 text-primary shrink-0 group-hover:translate-x-1 transition-transform" />
