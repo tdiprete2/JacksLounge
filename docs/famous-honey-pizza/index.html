@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Mobile-First Viewport Configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="hsl(0, 0%, 7%)" media="(prefers-color-scheme: light)" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963 | Jack's Lounge</title>
+    <meta name="description" content="Discover Jack's Famous Honey Pizza — freshly shredded mozzarella with a golden honey drizzle. A Cape Cod tradition since 1963. Order online for pickup or delivery in Hyannis, MA." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BEFRKNKYF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4BEFRKNKYF');
+    </script>
+    
+    <!-- GitHub Pages SPA redirect handler -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    
+    <!-- Critical CSS for Above-the-Fold Content (Tailwind utilities inlined) -->
+    <style>
+      *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+      html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal}
+      body{margin:0;line-height:inherit;background-color:hsl(0 0% 7%);color:hsl(0 0% 95%)}
+      #root{min-height:100vh}
+      h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+      a{color:inherit;text-decoration:inherit}
+      button,input{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}
+      button{background-color:transparent;background-image:none;cursor:pointer;text-transform:none}
+      img,svg,video{display:block;vertical-align:middle;max-width:100%;height:auto}
+      .sticky{position:sticky}
+      .fixed{position:fixed}
+      .absolute{position:absolute}
+      .relative{position:relative}
+      .inset-0{inset:0}
+      .top-0{top:0}
+      .z-50{z-index:50}
+      .flex{display:flex}
+      .hidden{display:none}
+      .h-14{height:3.5rem}
+      .h-20{height:5rem}
+      .h-6{height:1.5rem}
+      .w-6{width:1.5rem}
+      .w-full{width:100%}
+      .w-auto{width:auto}
+      .max-w-7xl{max-width:80rem}
+      .max-w-4xl{max-width:56rem}
+      .flex-col{flex-direction:column}
+      .items-center{align-items:center}
+      .justify-between{justify-content:space-between}
+      .justify-center{justify-content:center}
+      .gap-2{gap:0.5rem}
+      .gap-4{gap:1rem}
+      .overflow-hidden{overflow:hidden}
+      .rounded-md{border-radius:calc(0.5rem - 2px)}
+      .border-b{border-bottom-width:1px}
+      .bg-background{background-color:hsl(0 0% 7%)}
+      .bg-black\/40{background-color:rgb(0 0 0 / 0.4)}
+      .px-3{padding-left:0.75rem;padding-right:0.75rem}
+      .px-4{padding-left:1rem;padding-right:1rem}
+      .px-6{padding-left:1.5rem;padding-right:1.5rem}
+      .py-2{padding-top:0.5rem;padding-bottom:0.5rem}
+      .pb-2{padding-bottom:0.5rem}
+      .text-center{text-align:center}
+      .text-4xl{font-size:2.25rem;line-height:2.5rem}
+      .text-lg{font-size:1.125rem;line-height:1.75rem}
+      .text-sm{font-size:0.875rem;line-height:1.25rem}
+      .font-bold{font-weight:700}
+      .font-medium{font-weight:500}
+      .leading-relaxed{line-height:1.625}
+      .text-white{color:rgb(255 255 255)}
+      .text-foreground{color:hsl(0 0% 95%)}
+      .cursor-pointer{cursor:pointer}
+      .pointer-events-none{pointer-events:none}
+      .object-cover{-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}
+      .mb-6{margin-bottom:1.5rem}
+      .mx-auto{margin-left:auto;margin-right:auto}
+      @media(min-width:768px){
+        .md\:flex{display:flex}
+        .md\:hidden{display:none}
+        .md\:h-\[700px\]{height:700px}
+        .md\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+        .md\:text-5xl{font-size:3rem;line-height:1}
+        .md\:text-xl{font-size:1.25rem;line-height:1.75rem}
+      }
+      @media(min-width:1024px){
+        .lg\:px-8{padding-left:2rem;padding-right:2rem}
+        .lg\:text-6xl{font-size:3.75rem;line-height:1}
+      }
+      header{border-color:hsl(45 80% 55% / 0.3)}
+      .h-\[600px\]{height:600px}
+    </style>
+    
+    <!-- Preload Critical Resources for LCP Optimization -->
+    <link rel="preload" as="image" href="/images/featured/honey-pizza-jacks-lounge-hyannis.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/featured/honey-pizza-jacks-lounge-hyannis.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
+    
+    <!-- Resource Hints for External Services (Mobile Performance) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com">
+    <link rel="dns-prefetch" href="https://olo.spoton.com">
+    
+    <!-- Preload and load fonts with optional display to prevent layout shift -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=optional"></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="honey pizza Cape Cod, honey pizza Hyannis, Jack's Famous Honey Pizza, sweet pizza Hyannis, Jack's Lounge honey pizza, best pizza Hyannis MA, unique pizza Cape Cod" />
+    <meta name="author" content="Jack's Lounge" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.jackspizzahyannis.com/famous-honey-pizza/" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963" />
+    <meta property="og:description" content="Freshly shredded mozzarella with a golden honey drizzle. Jack's signature pizza has been a Cape Cod staple since 1963. Order online for pickup or delivery in Hyannis, MA." />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://www.jackspizzahyannis.com/famous-honey-pizza/" />
+    <meta property="og:site_name" content="Jack's Lounge" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:alt" content="Jack's Famous Honey Pizza — golden honey drizzle over fresh mozzarella" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963" />
+    <meta name="twitter:description" content="Freshly shredded mozzarella with a golden honey drizzle. Jack's signature pizza since 1963 in Hyannis, MA." />
+    <meta name="twitter:image" content="https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp" />
+    
+    <!-- Business/Local SEO -->
+    <meta name="geo.region" content="US-MA" />
+    <meta name="geo.placename" content="Hyannis" />
+    <meta name="geo.position" content="41.6532;-70.2962" />
+    <meta name="ICBM" content="41.6532, -70.2962" />
+    
+    <!-- Schema.org Structured Data -->
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.jackspizzahyannis.com/#organization",
+      "name": "Jack's Lounge",
+      "url": "https://www.jackspizzahyannis.com",
+      "logo": "https://www.jackspizzahyannis.com/favicon.png",
+      "image": "https://www.jackspizzahyannis.com/images/social/og-image.jpg",
+      "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "373 West Main Street",
+        "addressLocality": "Hyannis",
+        "addressRegion": "MA",
+        "postalCode": "02601",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-508-775-0612",
+        "contactType": "Customer Service",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.facebook.com/jacksloungehyannis"
+      ]
+    }
+    </script>
+    
+    <!-- MenuItem Schema for Famous Honey Pizza -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MenuItem",
+      "@id": "https://www.jackspizzahyannis.com/famous-honey-pizza/#menuitem",
+      "name": "Jack's Famous Honey Pizza",
+      "description": "Hand-tossed pizza topped with freshly shredded mozzarella cheese and finished with a generous golden honey drizzle. A Cape Cod tradition since 1963.",
+      "image": "https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "13.25",
+        "highPrice": "16.75",
+        "priceCurrency": "USD",
+        "offerCount": "2",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "10 inch",
+            "price": "13.25",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "14 inch",
+            "price": "16.75",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      "suitableForDiet": "https://schema.org/GlutenFreeDiet",
+      "menuAddOn": [
+        {
+          "@type": "MenuItem",
+          "name": "Gluten-Free Crust (10\" only)",
+          "offers": {
+            "@type": "Offer",
+            "price": "4.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Restaurant Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://www.jackspizzahyannis.com/#restaurant",
+      "name": "Jack's Lounge",
+      "alternateName": "Jack's Pizza",
+      "description": "Family-owned restaurant serving signature honey-topped pizzas, BBQ ribs, wings, and Italian favorites since 1963",
+      "image": [
+        "https://www.jackspizzahyannis.com/images/social/og-image.jpg",
+        "https://www.jackspizzahyannis.com/images/social/sitemap-featured.jpg"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "373 West Main Street",
+        "addressLocality": "Hyannis",
+        "addressRegion": "MA",
+        "postalCode": "02601",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.6532",
+        "longitude": "-70.2962"
+      },
+      "url": "https://www.jackspizzahyannis.com",
+      "telephone": "+1-508-775-0612",
+      "email": "jackspizza@comcast.net",
+      "sameAs": [
+        "https://www.facebook.com/jacksloungehyannis"
+      ],
+      "servesCuisine": ["Italian", "American", "Pizza", "BBQ"],
+      "priceRange": "$$",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "currenciesAccepted": "USD",
+      "acceptsReservations": "False",
+      "hasMenu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+      "menu": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://olo.spoton.com/60c3b6829adef31f4442003e",
+          "inLanguage": "en-US",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickup", "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"]
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "11:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "11:00", "closes": "21:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "11:00", "closes": "22:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "11:00", "closes": "22:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "23:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "22:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "21:30"}
+      ],
+      "foundingDate": "1963",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "250",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <!-- BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jackspizzahyannis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Menu",
+          "item": "https://www.jackspizzahyannis.com/menu/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Jack's Famous Honey Pizza",
+          "item": "https://www.jackspizzahyannis.com/famous-honey-pizza/"
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; line-height: 1.6; color: #f5f5f5; background-color: #121212;">
+        <header style="text-align: center; padding: 20px 0; border-bottom: 2px solid #d4af37;">
+          <h1 style="font-size: 2.5em; margin: 0; color: #d4af37;">Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963</h1>
+          <p style="font-size: 1.2em; margin: 10px 0;">Freshly Shredded Mozzarella + Golden Honey Drizzle</p>
+        </header>
+        
+        <nav style="background: #1a1a1a; padding: 15px; margin: 20px 0; text-align: center;">
+          <a href="/" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Home</a> | 
+          <a href="/menu" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Menu</a> | 
+          <a href="/story" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Our Story</a> | 
+          <a href="/contact" style="color: #d4af37; padding: 10px 20px; text-decoration: none; font-weight: bold;">Contact</a>
+        </nav>
+
+        <main style="padding: 20px 0;">
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">What Is Jack's Famous Honey Pizza?</h2>
+            <p>Jack's Famous Honey Pizza is the signature creation of Jack's Lounge in Hyannis, Massachusetts. It's a hand-tossed pizza topped with freshly shredded mozzarella cheese and finished with a generous drizzle of golden honey. The combination of savory melted cheese and sweet honey creates a one-of-a-kind flavor that has kept Cape Cod locals coming back for over 60 years.</p>
+            
+            <p>Jack Sances opened Jack's Lounge in 1963 with this honey pizza as the centerpiece of the menu. The DiPrete family purchased the restaurant in 1985 and preserved the original recipe. Today, Grace and Tim DiPrete continue the tradition — the same recipe, the same Hyannis location, the same loyal customers.</p>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Pricing</h2>
+            <ul style="line-height: 2;">
+              <li><strong>10 inch:</strong> $13.25 (gluten-free crust available for +$4.00)</li>
+              <li><strong>14 inch:</strong> $16.75</li>
+              <li><strong>Hot Honey variation:</strong> available — ask when ordering</li>
+            </ul>
+          </section>
+
+          <section style="margin: 30px 0;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Frequently Asked Questions</h2>
+            <p><strong>Is the honey pizza sweet or savory?</strong><br>Both! The honey is drizzled just right — enough to add warmth and sweetness without overpowering the cheese. Most people describe their first bite as a pleasant surprise.</p>
+            <p><strong>Can I get it gluten-free?</strong><br>Yes! Any 10" pizza can be prepared on a gluten-free crust for an additional $4.00.</p>
+            <p><strong>Where can I order it?</strong><br>Order online at <a href="https://olo.spoton.com/60c3b6829adef31f4442003e" style="color: #d4af37;">olo.spoton.com</a> or call (508) 775-0612. Available for pickup and delivery in the Hyannis area.</p>
+          </section>
+
+          <section style="margin: 30px 0; background: #1a1a1a; padding: 20px; border-radius: 8px;">
+            <h2 style="color: #d4af37; font-size: 2em; margin-bottom: 15px;">Visit Us in Hyannis</h2>
+            <p><strong>Address:</strong> 373 West Main Street, Hyannis, MA 02601</p>
+            <p><strong>Phone:</strong> <a href="tel:+15087750612" style="color: #d4af37; text-decoration: underline;">(508) 775-0612</a></p>
+            <p><strong>Email:</strong> <a href="mailto:jackspizza@comcast.net" style="color: #d4af37; text-decoration: underline;">jackspizza@comcast.net</a></p>
+          </section>
+
+          <p style="text-align: center; margin: 40px 0; font-size: 1.2em;">
+            <strong>This website requires JavaScript. Please enable JavaScript in your browser to view the full interactive experience.</strong>
+          </p>
+        </main>
+
+        <footer style="border-top: 2px solid #d4af37; padding: 20px 0; text-align: center; margin-top: 40px;">
+          <p>&copy; 2024 Jack's Lounge. Best Pizza & Wings in Hyannis, MA Since 1963</p>
+          <p>373 West Main Street, Hyannis, MA 02601 | (508) 775-0612</p>
+        </footer>
+      </div>
+    </noscript>
+    
+    <div id="root"></div>
+  </body>
+</html>
