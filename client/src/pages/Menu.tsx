@@ -2,10 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink, Pizza, Drumstick, ArrowRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
-import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 
 const menuCategories = [
@@ -236,46 +235,6 @@ export default function Menu() {
                 <ExternalLink size={18} />
               </a>
             </Button>
-          </div>
-        </section>
-
-        {/* Featured Category Links (SEO Cluster) */}
-        <section className="py-8 px-4 md:px-6 lg:px-8 bg-background border-b">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link href="/pizza/">
-                <Card className="hover-elevate cursor-pointer group" data-testid="link-pizza-page">
-                  <CardContent className="p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-full bg-primary/10">
-                        <Pizza className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">Best Pizza in Hyannis</h3>
-                        <p className="text-sm text-foreground/70">View our signature pizzas</p>
-                      </div>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                  </CardContent>
-                </Card>
-              </Link>
-              <Link href="/wings/">
-                <Card className="hover-elevate cursor-pointer group" data-testid="link-wings-page">
-                  <CardContent className="p-6 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-full bg-primary/10">
-                        <Drumstick className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">Best Wings in Hyannis</h3>
-                        <p className="text-sm text-foreground/70">5 delicious sauce options</p>
-                      </div>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                  </CardContent>
-                </Card>
-              </Link>
-            </div>
           </div>
         </section>
 
