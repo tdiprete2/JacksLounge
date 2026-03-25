@@ -15,7 +15,7 @@ const faqs = [
     id: 1,
     question: "What is honey pizza?",
     answer:
-      "It's Jack's Lounge's signature creation — a hand-tossed pizza covered with freshly shredded mozzarella cheese and finished with a generous drizzle of golden honey. The combination of savory melted cheese and sweet honey creates a one-of-a-kind flavor that has kept locals coming back for over 60 years.",
+      "It's Jack's Lounge's signature creation — a hand-tossed pizza topped with freshly shredded mozzarella and white cheddar, then finished with a generous drizzle of golden honey. The blend of savory cheese and sweet honey creates a one-of-a-kind flavor that has kept locals coming back for over 60 years.",
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ function generateSchema() {
     "@type": "MenuItem",
     name: "Jack's Famous Honey Pizza",
     description:
-      "Freshly shredded mozzarella cheese topped with a golden honey drizzle. A sweet and savory Cape Cod tradition since 1963.",
+      "Freshly shredded mozzarella and white cheddar topped with a golden honey drizzle. A sweet and savory Cape Cod tradition since 1963.",
     image: "https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp",
     url: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
     offers: {
@@ -85,7 +85,7 @@ function generateSchema() {
     },
     nutrition: {
       "@type": "NutritionInformation",
-      description: "Freshly shredded mozzarella, golden honey drizzle",
+      description: "Freshly shredded mozzarella and white cheddar, golden honey drizzle",
     },
   };
 
@@ -140,7 +140,7 @@ export default function FamousHoneyPizza() {
     updateMetaTags({
       title: "Jack's Famous Honey Pizza | Cape Cod Tradition Since 1963 | Hyannis MA",
       description:
-        "Discover Jack's Famous Honey Pizza — freshly shredded mozzarella with a golden honey drizzle. A sweet & savory Cape Cod tradition since 1963. Order online from Hyannis, MA.",
+        "Discover Jack's Famous Honey Pizza — freshly shredded mozzarella and white cheddar with a golden honey drizzle. A sweet & savory Cape Cod tradition since 1963. Order online from Hyannis, MA.",
       canonical: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
       ogTitle: "Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963",
       ogDescription:
@@ -190,7 +190,7 @@ export default function FamousHoneyPizza() {
                 </h1>
 
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Freshly shredded mozzarella cheese crowned with a golden honey drizzle. 
+                  Freshly shredded mozzarella and white cheddar crowned with a golden honey drizzle. 
                   The sweet-savory balance that has made Jack's Lounge legendary in Hyannis 
                   for over six decades — and the one slice every Cape Cod visitor has to try.
                 </p>
@@ -237,7 +237,7 @@ export default function FamousHoneyPizza() {
                 <div className="relative overflow-hidden rounded-md shadow-lg">
                   <img
                     src="/images/featured/honey-pizza-jacks-lounge-hyannis.webp"
-                    alt="Jack's Famous Honey Pizza — freshly shredded mozzarella with golden honey drizzle, Hyannis MA"
+                    alt="Jack's Famous Honey Pizza — freshly shredded mozzarella and white cheddar with golden honey drizzle, Hyannis MA"
                     className="w-full object-cover"
                     style={{ aspectRatio: "4/3" }}
                     fetchPriority="high"
@@ -308,9 +308,9 @@ export default function FamousHoneyPizza() {
               <Card data-testid="feature-card-2">
                 <CardContent className="p-8 text-center">
                   <div className="text-4xl mb-4">🧀</div>
-                  <h3 className="text-xl font-bold mb-3">Freshly Shredded Mozzarella</h3>
+                  <h3 className="text-xl font-bold mb-3">Freshly Shredded Mozzarella & White Cheddar</h3>
                   <p className="text-muted-foreground">
-                    We shred mozzarella in-house daily. Pre-shredded won't melt the same way — we've always known that.
+                    We shred mozzarella and white cheddar in-house daily. The blend melts together perfectly — pre-shredded cheese won't do it the same way.
                   </p>
                 </CardContent>
               </Card>
