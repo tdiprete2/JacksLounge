@@ -2,10 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Helmet } from "react-helmet-async";
+import { Link } from "wouter";
 
 const menuCategories = [
   {
@@ -278,6 +279,34 @@ export default function Menu() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Famous Honey Pizza link card */}
+            <div className="mt-12">
+              <Link
+                href="/famous-honey-pizza"
+                className="block group rounded-md border border-primary/30 bg-primary/5 hover-elevate transition-colors overflow-hidden"
+                data-testid="link-famous-honey-pizza"
+              >
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6 md:p-8">
+                  <img
+                    src="/images/featured/honey-pizza-jacks-lounge-hyannis.webp"
+                    alt="Jack's Famous Honey Pizza"
+                    className="w-full sm:w-40 md:w-48 h-32 sm:h-28 object-cover rounded-md shrink-0"
+                    loading="lazy"
+                    width="192"
+                    height="112"
+                  />
+                  <div className="flex-1 text-center sm:text-left">
+                    <p className="text-sm font-medium text-primary uppercase tracking-wider mb-1">Signature Item</p>
+                    <h3 className="text-xl md:text-2xl font-bold mb-2">Jack's Famous Honey Pizza</h3>
+                    <p className="text-muted-foreground text-sm md:text-base">
+                      A Cape Cod tradition since 1963 — freshly shredded mozzarella with a golden honey drizzle. Learn the story behind the recipe.
+                    </p>
+                  </div>
+                  <ArrowRight className="h-6 w-6 text-primary shrink-0 hidden sm:block group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             </div>
 
             <div className="text-center mt-16">

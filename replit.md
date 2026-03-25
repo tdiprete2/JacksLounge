@@ -17,7 +17,7 @@ Preferred communication style: Simple, everyday language.
 **UI/UX Design:**
 - **Component Library:** shadcn/ui (Radix UI primitives) with a "New York" style variant.
 - **Design Philosophy:** Mobile-first, food-first visual hierarchy, black and gold theme, Inter (UI) and Playfair Display (headings) typography, accessibility-focused.
-- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Pizza (SEO cluster), Wings (SEO cluster), Contact, Specials (Facebook feed), Story, 404.
+- **Pages:** Home (hero, featured items, gallery, testimonials, FAQ), Menu, Famous Honey Pizza (SEO landing), Pizza (SEO cluster, hidden), Wings (SEO cluster, hidden), Contact, Specials (Facebook feed), Story, 404.
 - **Patterns:** Component composition, custom hooks, centralized utilities, path aliases.
 
 ### Backend

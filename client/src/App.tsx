@@ -14,6 +14,7 @@ const ContactLazy = lazy(() => import("@/pages/Contact"));
 const StoryLazy = lazy(() => import("@/pages/Story"));
 const SpecialsLazy = lazy(() => import("@/pages/Specials"));
 const AdminLazy = lazy(() => import("@/pages/Admin"));
+const FamousHoneyPizzaLazy = lazy(() => import("@/pages/FamousHoneyPizza"));
 const NotFoundLazy = lazy(() => import("@/pages/not-found"));
 
 // Wrapper components to work with wouter routing
@@ -23,6 +24,7 @@ const Contact = () => <Suspense fallback={<div className="min-h-screen flex item
 const Story = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><StoryLazy /></Suspense>;
 const Specials = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><SpecialsLazy /></Suspense>;
 const Admin = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><AdminLazy /></Suspense>;
+const FamousHoneyPizza = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><FamousHoneyPizzaLazy /></Suspense>;
 const NotFound = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><NotFoundLazy /></Suspense>;
 
 // Get base path from environment or use root
@@ -51,6 +53,7 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/story" component={Story} />
         <Route path="/specials" component={Specials} />
+        <Route path="/famous-honey-pizza" component={FamousHoneyPizza} />
         {enableAdmin && <Route path="/admin" component={Admin} />}
         <Route component={NotFound} />
       </Switch>

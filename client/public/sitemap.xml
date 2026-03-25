@@ -44,6 +44,19 @@
     <priority>0.9</priority>
   </url>
   
+  <!-- Famous Honey Pizza SEO Landing Page -->
+  <url>
+    <loc>https://www.jackspizzahyannis.com/famous-honey-pizza/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp</image:loc>
+      <image:title>Jack's Famous Honey Pizza - Cape Cod Tradition Since 1963</image:title>
+      <image:caption>Jack's Famous Honey Pizza - freshly shredded mozzarella with golden honey drizzle, Hyannis MA</image:caption>
+    </image:image>
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://www.jackspizzahyannis.com/contact/</loc>

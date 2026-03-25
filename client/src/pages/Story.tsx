@@ -3,6 +3,8 @@ import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 
 export default function Story() {
   useEffect(() => {
@@ -70,6 +72,24 @@ export default function Story() {
                 </p>
               </Card>
             </div>
+
+            {/* Famous Honey Pizza link card */}
+            <Link
+              href="/famous-honey-pizza"
+              className="block group rounded-md border border-primary/30 bg-primary/5 hover-elevate transition-colors overflow-hidden"
+              data-testid="link-story-honey-pizza"
+            >
+              <div className="flex items-center justify-between gap-4 p-6">
+                <div>
+                  <p className="text-sm font-medium text-primary uppercase tracking-wider mb-1">Signature Recipe</p>
+                  <h3 className="text-lg font-bold mb-1">Jack's Famous Honey Pizza — the full story</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Learn the origin of the 60-year-old recipe, see the ingredients, prices, and FAQ.
+                  </p>
+                </div>
+                <ArrowRight className="h-6 w-6 text-primary shrink-0 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
             {/* Tradition Meets Innovation */}
             <div className="space-y-6">
