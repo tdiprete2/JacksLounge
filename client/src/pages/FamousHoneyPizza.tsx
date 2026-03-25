@@ -13,7 +13,7 @@ const ORDER_URL = "https://olo.spoton.com/60c3b6829adef31f4442003e";
 const faqs = [
   {
     id: 1,
-    question: "What is Jack's Famous Honey Pizza?",
+    question: "What is honey pizza?",
     answer:
       "It's Jack's Lounge's signature creation — a hand-tossed pizza covered with freshly shredded mozzarella cheese and finished with a generous drizzle of golden honey. The combination of savory melted cheese and sweet honey creates a one-of-a-kind flavor that has kept locals coming back for over 60 years.",
   },
@@ -185,7 +185,7 @@ export default function FamousHoneyPizza() {
                 >
                   Jack's Famous Honey Pizza
                   <span className="block text-primary mt-2 text-2xl md:text-3xl font-semibold">
-                    A Cape Cod Tradition Since 1963
+                    — A Cape Cod Tradition Since 1963
                   </span>
                 </h1>
 
