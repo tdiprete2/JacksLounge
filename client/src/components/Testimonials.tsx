@@ -1,6 +1,5 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 // Real customer reviews sourced from verified platforms (November 2025)
 // Sources: DoorDash, One Bite Pizza
