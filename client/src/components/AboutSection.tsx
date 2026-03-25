@@ -5,10 +5,12 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 lg:order-1">
             <img
-              src="https://static.wixstatic.com/media/4849f2_9c3ec27589344283b6deaa05e8124e0c~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,usm_0.66_1.00_0.01/IMG_8304_edited.jpg"
+              src="/images/sections/about-interior.webp"
               alt="Jack's Lounge restaurant interior - family dining in Hyannis MA"
               className="rounded-lg shadow-xl w-full"
               loading="lazy"
+              width="600"
+              height="800"
               data-testid="img-about"
             />
           </div>

@@ -21,7 +21,7 @@ const faqs = [
   {
     id: "3",
     question: "What is hot honey pizza and do you have it?",
-    answer: "Our signature hot honey pizza features our famous honey-topped pizza with a spicy kick! We've been drizzling honey on our pizzas since 1963, creating that perfect sweet and savory balance. It's our most popular specialty and what makes Jack's the best pizza in Hyannis, MA."
+    answer: "Our signature hot honey pizza features our famous honey-topped pizza with a spicy kick! The DiPrete family created the honey pizza recipe in the 1980s, and it's been our most popular specialty ever since — that perfect sweet and savory balance that makes Jack's the best pizza in Hyannis, MA."
   },
   {
     id: "4",

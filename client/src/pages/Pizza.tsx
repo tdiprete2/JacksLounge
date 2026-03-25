@@ -11,7 +11,7 @@ const pizzaItems = [
   { 
     name: "Jack's Famous Honey Pizza", 
     prices: { small: "13.25", large: "16.75" },
-    description: "Our signature kitchen craft - freshly shredded mozzarella cheese topped with a golden honey drizzle. A sweet and savory Hyannis tradition that keeps locals coming back for over 60 years.",
+    description: "Our signature kitchen craft — freshly shredded mozzarella and white cheddar topped with a golden honey drizzle. A DiPrete family creation introduced in the 1980s that keeps locals coming back year after year.",
     image: "/images/featured/honey-pizza-jacks-lounge-hyannis.webp"
   },
   { 
@@ -138,7 +138,7 @@ function generateRestaurantSchema() {
 export default function Pizza() {
   useEffect(() => {
     updateMetaTags({
-      title: "Best Pizza in Hyannis MA | Jack's Lounge - Famous Honey Pizza Since 1963",
+      title: "Best Pizza in Hyannis MA | Jack's Lounge",
       description: "Try the best pizza in Hyannis, Cape Cod! Jack's Lounge serves award-winning specialty pizzas including our famous Honey Pizza. Fresh ingredients, hand-tossed crust. Order online or dine in.",
       canonical: "https://www.jackspizzahyannis.com/pizza/",
       ogTitle: "Best Pizza in Hyannis MA | Jack's Lounge",

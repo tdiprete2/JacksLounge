@@ -200,10 +200,10 @@ export default function Menu() {
     updateMetaTags({
       title: "Menu - Jack's Lounge Hyannis | Best Pizza & Italian Restaurant",
       description: "View Jack's Lounge full menu - signature honey pizzas, crispy wings, Italian favorites, calzones, grinders & more. Order online for pickup or delivery in Hyannis, MA.",
-      canonical: "https://www.jackspizzahyannis.com/menu",
+      canonical: "https://www.jackspizzahyannis.com/menu/",
       ogTitle: "Jack's Lounge Menu - Best Pizza & Italian Food in Hyannis MA",
-      ogDescription: "Browse our full menu of pizzas, wings, Italian favorites and more. Over 60 years serving Hyannis with authentic recipes and fresh ingredients.",
-      ogUrl: "https://www.jackspizzahyannis.com/menu"
+      ogDescription: "Browse our full menu of pizzas, wings, Italian favorites and more. Family-owned in Hyannis since 1963 with authentic recipes and fresh ingredients.",
+      ogUrl: "https://www.jackspizzahyannis.com/menu/"
     });
   }, []);
 
@@ -301,7 +301,7 @@ export default function Menu() {
                     <p className="text-sm font-medium text-primary uppercase tracking-wider mb-1">Signature Item</p>
                     <h3 className="text-xl md:text-2xl font-bold mb-2">Jack's Famous Honey Pizza</h3>
                     <p className="text-muted-foreground text-sm md:text-base">
-                      A Cape Cod tradition since 1963 — freshly shredded mozzarella with a golden honey drizzle. Learn the story behind the recipe.
+                      A DiPrete family original since the 1980s — freshly shredded mozzarella and white cheddar with a golden honey drizzle. Learn the story behind the recipe.
                     </p>
                   </div>
                   <ArrowRight className="h-6 w-6 text-primary shrink-0 hidden sm:block group-hover:translate-x-1 transition-transform" />

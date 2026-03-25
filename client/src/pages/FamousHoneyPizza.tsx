@@ -72,7 +72,7 @@ function generateSchema() {
     "@type": "MenuItem",
     name: "Jack's Famous Honey Pizza",
     description:
-      "Freshly shredded mozzarella and white cheddar topped with a golden honey drizzle. A sweet and savory Cape Cod tradition since 1963.",
+      "A DiPrete family original — freshly shredded mozzarella and white cheddar with a golden honey drizzle, served at Jack's Lounge in Hyannis MA since 1985.",
     image: "https://www.jackspizzahyannis.com/images/featured/honey-pizza-jacks-lounge-hyannis.webp",
     url: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
     offers: {
@@ -138,11 +138,11 @@ function generateSchema() {
 export default function FamousHoneyPizza() {
   useEffect(() => {
     updateMetaTags({
-      title: "Jack's Famous Honey Pizza | Cape Cod Tradition Since 1963 | Hyannis MA",
+      title: "Jack's Famous Honey Pizza | Jack's Lounge Hyannis MA",
       description:
-        "Discover Jack's Famous Honey Pizza — freshly shredded mozzarella and white cheddar with a golden honey drizzle. A sweet & savory Cape Cod tradition since 1963. Order online from Hyannis, MA.",
+        "Discover Jack's Famous Honey Pizza — freshly shredded mozzarella and white cheddar with a golden honey drizzle. A DiPrete family creation served at Hyannis MA's favorite restaurant since 1985. Order online.",
       canonical: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
-      ogTitle: "Jack's Famous Honey Pizza — A Cape Cod Tradition Since 1963",
+      ogTitle: "Jack's Famous Honey Pizza — Jack's Lounge Hyannis MA",
       ogDescription:
         "Try the honey pizza that's kept locals coming back for over 40 years. Sweet, savory, and unlike anything else on Cape Cod. Order online or visit us in Hyannis, MA.",
       ogUrl: "https://www.jackspizzahyannis.com/famous-honey-pizza/",
@@ -185,7 +185,7 @@ export default function FamousHoneyPizza() {
                 >
                   Jack's Famous Honey Pizza
                   <span className="block text-primary mt-2 text-2xl md:text-3xl font-semibold">
-                    — A Cape Cod Tradition Since 1963
+                    — A Jack's Lounge Original
                   </span>
                 </h1>
 
