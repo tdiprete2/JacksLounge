@@ -59,6 +59,16 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => {
+    // Signal React has mounted — CSS hides the static hero placeholder
+    document.body.classList.add('react-mounted');
+    const timer = setTimeout(() => {
+      const p = document.getElementById('hero-placeholder');
+      if (p) p.remove();
+    }, 350);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>

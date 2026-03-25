@@ -29,11 +29,15 @@ export default function Specials() {
       ogUrl: "https://www.jackspizzahyannis.com/specials/"
     });
 
+    // Track elements injected by this component so we can clean them up
+    let injectedFbRoot: HTMLDivElement | null = null;
+    let injectedScript: HTMLScriptElement | null = null;
+
     // Ensure fb-root div exists (required by the Facebook SDK)
     if (!document.getElementById('fb-root')) {
-      const fbRoot = document.createElement('div');
-      fbRoot.id = 'fb-root';
-      document.body.insertBefore(fbRoot, document.body.firstChild);
+      injectedFbRoot = document.createElement('div');
+      injectedFbRoot.id = 'fb-root';
+      document.body.insertBefore(injectedFbRoot, document.body.firstChild);
     }
 
     const parseFacebookPlugin = () => {
@@ -55,14 +59,24 @@ export default function Specials() {
 
       // Inject the SDK script only once per page session
       if (!document.querySelector('script[src*="connect.facebook.net"]')) {
-        const script = document.createElement('script');
-        script.async = true;
-        script.defer = true;
-        script.crossOrigin = 'anonymous';
-        script.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0';
-        document.body.appendChild(script);
+        injectedScript = document.createElement('script');
+        injectedScript.async = true;
+        injectedScript.defer = true;
+        injectedScript.crossOrigin = 'anonymous';
+        injectedScript.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0';
+        document.body.appendChild(injectedScript);
       }
     }
+
+    return () => {
+      // Clean up elements injected by this component on unmount
+      if (injectedFbRoot && injectedFbRoot.parentNode) {
+        injectedFbRoot.parentNode.removeChild(injectedFbRoot);
+      }
+      if (injectedScript && injectedScript.parentNode) {
+        injectedScript.parentNode.removeChild(injectedScript);
+      }
+    };
   }, []);
 
   return (
