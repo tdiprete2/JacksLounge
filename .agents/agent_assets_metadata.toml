@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "XHRsrmSp7g8dcVz9IAW96"
+uri = "file://exports/jackslounge-project-source.zip"
+type = "unspecified"
+title = "Jack's Lounge project source"
+description = "Application source, public assets, documentation, scripts, configuration, and lockfiles. Secrets, dependencies, caches, build output, Git metadata, and agent state are excluded."
+
+[[outputs]]
+id = "Qoki1n8b3-17mO-p7o_ca"
+uri = "file://exports/jackslounge-project-assets.zip"
+type = "unspecified"
+title = "Jack's Lounge raw project assets"
+description = "Raw project assets from attached_assets, packaged separately because of their size. Sensitive filename patterns were excluded."

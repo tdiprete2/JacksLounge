@@ -1,0 +1,2 @@
+exports/jackslounge-project-assets.zip filter=lfs diff=lfs merge=lfs -text
+exports/jackslounge-project-source.zip filter=lfs diff=lfs merge=lfs -text
