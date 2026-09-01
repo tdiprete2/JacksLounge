@@ -1,0 +1,206 @@
+Audit and repair the public Jack’s Lounge website without changing the existing visual identity. Work only in development and do not deploy until I approve.
+
+Fix these items in priority order:
+
+1. Repair internal navigation
+
+The live header and footer generate broken links such as:
+
+* https://menu/
+* https://story/
+* https://specials/
+* https://contact/
+* // for the homepage logo
+
+The source uses Wouter and currently passes `import.meta.env.BASE_URL || "/"` as the router base. Investigate whether the `/` base is causing links such as `/menu/` to become `//menu/`. Correct the routing centrally rather than patching every rendered URL individually.
+
+Verify desktop and mobile navigation for:
+
+* Home/logo
+* Menu
+* Our Story
+* Specials
+* Featured
+* Gallery
+* Visit Us
+* Reviews
+* Contact
+* Famous Honey Pizza
+
+Both trailing-slash and non-trailing-slash versions should resolve safely.
+
+2. Repair the Famous Honey Pizza page
+
+The route `/famous-honey-pizza/` currently renders a blank page on the live website even though `FamousHoneyPizza.tsx` contains content.
+
+Determine whether this is caused by routing, lazy loading, a failed JavaScript chunk, or a runtime exception. Make sure the finished page displays:
+
+* Header and navigation
+* Page heading
+* Honey pizza description
+* Accurate prices
+* Original honey versus hot-honey distinction
+* Order-direct button
+* Full-menu link
+* Footer
+* Valid metadata and structured data
+
+Do not claim that honey pizza has existed since 1963. Jack’s Lounge opened in 1963; the DiPrete family introduced the honey pizza after taking over in 1985.
+
+3. Standardize business hours
+
+The website currently contains conflicting hours across the homepage, Contact page, FAQ, static HTML fallback, and Restaurant structured data.
+
+Do not guess which hours are correct. First provide me with one table showing every conflicting version and every source file where it appears. Ask me to confirm the official closing hours. After confirmation, define the hours in one shared configuration and use that source everywhere.
+
+4. Reconcile website menu prices with SpotOn
+
+The website and live SpotOn menu currently disagree. Confirm all discrepancies before changing prices. Known examples to verify include:
+
+* 10-inch thin-crust pizza: website $10.00 versus SpotOn $9.50
+* 14-inch Mexican pizza: website $22.00 versus SpotOn $21.00
+
+Create one shared menu data source so Menu and Pizza pages cannot show different prices. SpotOn should be treated as the current selling-price authority unless I tell you otherwise.
+
+Clean up obvious menu wording problems, including:
+
+* “Silver” or “Sliver Pizza” should use a clear customer-facing name such as “Thin Crust Pizza,” unless the unusual name is intentional.
+* “Freshly shredded cheese with topped with Honey drizzle”
+* “American, Swiss or American Cheese”
+* Inconsistent capitalization
+* “Tomatos”
+* “Sweet Chilli” versus “Sweet Chili”
+
+Report every proposed menu-text correction before applying changes that could alter the meaning of an item.
+
+5. Verify the contact form safely
+
+Do not send a real test submission from production.
+
+Confirm in development that:
+
+* First Name, Email, and Message are required.
+* Every input has a correctly associated accessible label.
+* Client and server validation agree.
+* The form uses POST `/api/contact`.
+* Database storage succeeds.
+* Email notification failure does not incorrectly discard or duplicate a stored request.
+* Users receive a clear success or failure message.
+* Spam and repeated-submission protection are present.
+* Contact information is not exposed in logs.
+* The admin contact-request screen remains protected.
+
+Use test data only in the development environment.
+
+6. Improve the initial loading experience
+
+The live homepage can temporarily display only a dark exterior photo, a spinner, floating buttons, and a large empty area.
+
+Investigate the static hero placeholder, React mounting, lazy loading, and image loading. The page should display useful hero text immediately and should never look blank or broken while JavaScript loads.
+
+Keep the current design for now, but make the loading state fast and stable. Report before-and-after measurements for mobile and desktop.
+
+7. Repair the Specials page
+
+The Specials page promises a Facebook feed, but the feed may not render.
+
+Make the page useful even when Facebook blocks or fails to load:
+
+* Display a clear fallback.
+* Keep a working Facebook link.
+* Do not leave an empty feed area.
+* Design the code so daily specials can later be displayed directly on the website.
+* Do not automatically publish or invent specials.
+
+8. Correct inconsistent messaging
+
+Change “Catering” language to “Party Trays & Large Orders” where appropriate. The site should not promise full-service catering if Jack’s only provides food for large orders.
+
+Use consistent language for:
+
+* Jack’s Lounge serving Hyannis since 1963
+* DiPrete family ownership since 1985
+* Famous original honey pizza
+* Separate spicy hot-honey option
+* Direct pickup and delivery ordering
+
+9. Fix SEO implementation
+
+Investigate why non-JavaScript crawlers receive page-specific content followed by the homepage’s entire `<noscript>` content on Menu, Story, and Contact pages.
+
+Each indexable URL must return:
+
+* Appropriate page-specific title
+* Page-specific description
+* Correct canonical URL
+* One relevant H1
+* Page-specific crawlable content
+* No duplicated homepage fallback
+* Correct HTTP status
+* Valid Open Graph information
+* Valid structured data
+
+Check:
+
+* `/`
+* `/menu/`
+* `/story/`
+* `/specials/`
+* `/contact/`
+* `/famous-honey-pizza/`
+* `/robots.txt`
+* `/sitemap.xml`
+
+Update sitemap modification dates as part of the eventual approved release.
+
+10. Validate review markup
+
+The visible homepage reports a 4.6 Google rating, while structured data contains a 4.8 rating and 250 reviews.
+
+Do not invent or hard-code unsupported ratings. Show me where each rating and review count originates. Remove or update structured aggregate-rating markup if it cannot be kept current and supported by visible content.
+
+11. Standardize ordering links
+
+The project contains multiple SpotOn URLs. Verify which URL is current and standardize all direct-order buttons to one shared constant.
+
+Label the primary call to action:
+
+“Order Direct — Pickup or Delivery”
+
+Do not alter the SpotOn account, menu, prices, or production ordering configuration.
+
+12. Testing and handoff
+
+Add automated checks for:
+
+* Every internal navigation link
+* Every public route
+* No protocol-relative internal links
+* Famous Honey Pizza content rendering
+* Shared hours consistency
+* Shared menu-price consistency
+* Contact validation
+* Correct canonical URLs
+* No blank route rendering
+
+Run:
+
+* TypeScript checking
+* Production build
+* Existing tests
+* New regression tests
+* Mobile and desktop route checks
+
+The project currently has pre-existing TypeScript errors in `Admin.tsx` involving missing `ReviewStats` and `Review` exports. Diagnose and report these separately. Do not hide or suppress them merely to make the check appear successful.
+
+When finished, give me:
+
+1. Root cause of every issue
+2. Files changed
+3. Tests added
+4. Test and build results
+5. Remaining blockers
+6. Screenshots of the corrected desktop and mobile pages
+7. A deployment checklist
+
+Stop before deployment and wait for my approval.
