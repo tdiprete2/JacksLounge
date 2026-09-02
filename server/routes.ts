@@ -3,7 +3,6 @@ import { createServer, type Server } from "http";
 import { createHash, timingSafeEqual } from "crypto";
 import { storage } from "./storage";
 import { emailService } from "./services/email";
-import { getGoogleRating } from "./services/google-rating";
 import { insertContactRequestSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -68,20 +67,6 @@ function requireAdmin(req: Request, res: Response, next: NextFunction) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  app.get("/api/google-rating", async (_req, res) => {
-    try {
-      const rating = await getGoogleRating();
-      res.set("Cache-Control", "public, max-age=300, s-maxage=21600, stale-while-revalidate=86400");
-      res.json(rating);
-    } catch (error) {
-      console.warn(
-        "Google rating unavailable:",
-        error instanceof Error ? error.message : "Unknown error",
-      );
-      res.status(503).json({ error: "Google rating is temporarily unavailable" });
-    }
-  });
-
   app.post("/api/contact", async (req, res) => {
     if (!contactOriginIsAllowed(req) || isRateLimited(req)) {
       return res.status(400).json({ error: "Unable to submit contact request" });

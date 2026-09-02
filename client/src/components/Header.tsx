@@ -121,9 +121,9 @@ export default function Header() {
                 onClick={(e) => scrollToSection(e, "testimonials")}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-testimonials"
-                aria-label="View our Google rating"
+                aria-label="Read customer reviews"
               >
-                Google Rating
+                Reviews
               </a>
                 <Link
                   href={PATHS.contact}
@@ -217,9 +217,9 @@ export default function Header() {
                       onClick={(e) => scrollToSection(e, "testimonials")}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md block"
                       data-testid="link-testimonials-mobile"
-                      aria-label="View our Google rating"
+                      aria-label="Read customer reviews"
                     >
-                      Google Rating
+                      Reviews
                     </a>
                     <Link
                       href={PATHS.contact}
