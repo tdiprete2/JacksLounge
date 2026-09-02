@@ -46,7 +46,7 @@ const faqs = [
   {
     id: "7",
     question: "Are you open late for pizza delivery?",
-    answer: "Yes! We're open until 10pm-11pm most nights, making us one of the best late-night pizza options in Hyannis. Perfect for when you're craving pizza and wings after a night out on Cape Cod. Call (508) 775-0612 or order online for late-night delivery."
+    answer: "Delivery closing times vary by day and are earlier than dine-in hours. See the Contact page for the complete delivery schedule, then call (508) 775-0612 or order online to confirm current availability."
   },
   {
     id: "8",
@@ -60,8 +60,8 @@ const faqs = [
   },
   {
     id: "10",
-    question: "Can I order wings for large parties or catering?",
-    answer: "Yes! We specialize in large orders of wings, tenders, pizzas, and more for parties and events. We offer party trays of boneless buffalo tenders and bone-in wings with your choice of sauces. Call us at (508) 775-0612 to discuss your catering needs for wings and pizza in Hyannis."
+    question: "Can I order wings and party trays for large groups?",
+    answer: "Yes! We prepare large orders of wings, tenders, pizzas, salads, and specialty trays for parties and events. Jack's Lounge does not offer full catering services. Call us at (508) 775-0612 to discuss sizes, advance notice, and availability."
   },
   {
     id: "11",

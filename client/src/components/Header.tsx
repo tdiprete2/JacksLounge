@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { PATHS, SITE } from "@shared/site";
 
@@ -160,6 +166,10 @@ export default function Header() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetTitle className="sr-only">Jack's Lounge navigation</SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Open a page or jump to a section of the homepage.
+                  </SheetDescription>
                   <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
                     <Link
                       href={PATHS.menu}

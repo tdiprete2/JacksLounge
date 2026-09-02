@@ -6,28 +6,12 @@ import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 import {
-  canonicalUrl,
   getPublicRoute,
   normalizePublicPath,
-  routeFallbackHtml,
-  type RouteSeo,
 } from "@shared/site";
+import { renderRouteHtml } from "@shared/render-page";
 
 const viteLogger = createLogger();
-
-function renderRouteHtml(template: string, route: RouteSeo): string {
-  const canonical = canonicalUrl(route.path);
-  return template
-    .replace(/<title>[\s\S]*?<\/title>/, `<title>${route.title}</title>`)
-    .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${route.description}" />`)
-    .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${canonical}" />`)
-    .replace(/<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${route.title}" />`)
-    .replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${route.description}" />`)
-    .replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${canonical}" />`)
-    .replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${route.title}" />`)
-    .replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${route.description}" />`)
-    .replace(/<noscript id="route-fallback">[\s\S]*?<\/noscript>/, `<noscript id="route-fallback">${routeFallbackHtml(route)}</noscript>`);
-}
 
 function resolveRoute(pathname: string) {
   const route = getPublicRoute(pathname);
@@ -39,6 +23,7 @@ function resolveRoute(pathname: string) {
       description: "The requested page could not be found.",
       heading: "Page Not Found",
       summary: "The page you requested does not exist. Use the links below to return to Jack's Lounge.",
+      fallbackDetails: ["Check the address or use the navigation below to find the page you need."],
     },
     status: 404,
   };

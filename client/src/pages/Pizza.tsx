@@ -70,7 +70,7 @@ function generatePizzaSchema() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Jack's Lounge Pizza Menu - Best Pizza in Hyannis MA",
-    "description": "Award-winning pizza in Hyannis, Cape Cod. Try our famous Honey Pizza and specialty pies made fresh daily since 1963.",
+    "description": "Pizza in Hyannis from Jack's Lounge, a neighborhood restaurant opened in 1963. The DiPrete family introduced the Famous Honey Pizza after taking over in 1985.",
     "numberOfItems": pizzaItems.length,
     "itemListElement": pizzaItems.map((item, index) => {
       return {
@@ -140,10 +140,10 @@ export default function Pizza() {
   useEffect(() => {
     updateMetaTags({
       title: "Best Pizza in Hyannis MA | Jack's Lounge",
-      description: "Try the best pizza in Hyannis, Cape Cod! Jack's Lounge serves award-winning specialty pizzas including our famous Honey Pizza. Fresh ingredients, hand-tossed crust. Order online or dine in.",
+      description: "Explore Jack's Lounge pizza in Hyannis, including Famous Honey Pizza, specialty pies and build-your-own options. Order online or dine in.",
       canonical: "https://www.jackspizzahyannis.com/pizza/",
       ogTitle: "Best Pizza in Hyannis MA | Jack's Lounge",
-      ogDescription: "Award-winning pizza since 1963. Try our famous Honey Pizza, Meatlovers, Buffalo Chicken & more. Fresh ingredients, hand-tossed crust. Order online!",
+      ogDescription: "Jack's Lounge has served Hyannis since 1963. Try our Famous Honey Pizza, Meatlovers, Buffalo Chicken and more. Order online!",
       ogUrl: "https://www.jackspizzahyannis.com/pizza/"
     });
   }, []);

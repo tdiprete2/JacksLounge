@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Facebook } from "lucide-react";
+import { SITE } from "@shared/site";
 
 // Extend Window interface for Facebook SDK
 declare global {
@@ -13,12 +14,18 @@ declare global {
       XFBML?: {
         parse: () => void;
       };
+      Event?: {
+        subscribe: (eventName: string, callback: () => void) => void;
+        unsubscribe: (eventName: string, callback: () => void) => void;
+      };
     };
     fbAsyncInit?: () => void;
   }
 }
 
 export default function Specials() {
+  const [feedStatus, setFeedStatus] = useState<"loading" | "ready" | "failed">("loading");
+
   useEffect(() => {
     updateMetaTags({
       title: "Daily Specials & Updates | Jack's Lounge - Hyannis MA",
@@ -32,6 +39,10 @@ export default function Specials() {
     // Track elements injected by this component so we can clean them up
     let injectedFbRoot: HTMLDivElement | null = null;
     let injectedScript: HTMLScriptElement | null = null;
+    const markFeedReady = () => setFeedStatus("ready");
+    const fallbackTimer = window.setTimeout(() => {
+      setFeedStatus((status) => status === "ready" ? status : "failed");
+    }, 6000);
 
     // Ensure fb-root div exists (required by the Facebook SDK)
     if (!document.getElementById('fb-root')) {
@@ -42,6 +53,7 @@ export default function Specials() {
 
     const parseFacebookPlugin = () => {
       if (window.FB?.XFBML) {
+        window.FB.Event?.subscribe("xfbml.render", markFeedReady);
         window.FB.XFBML.parse();
       }
     };
@@ -64,11 +76,14 @@ export default function Specials() {
         injectedScript.defer = true;
         injectedScript.crossOrigin = 'anonymous';
         injectedScript.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0';
+        injectedScript.onerror = () => setFeedStatus("failed");
         document.body.appendChild(injectedScript);
       }
     }
 
     return () => {
+      window.clearTimeout(fallbackTimer);
+      window.FB?.Event?.unsubscribe("xfbml.render", markFeedReady);
       // Clean up elements injected by this component on unmount
       if (injectedFbRoot && injectedFbRoot.parentNode) {
         injectedFbRoot.parentNode.removeChild(injectedFbRoot);
@@ -124,10 +139,10 @@ export default function Specials() {
               </div>
             </Card>
 
-            {/* Facebook Page Plugin */}
+            {/* Facebook Page Plugin with a timed, useful fallback */}
             <div className="flex justify-center" data-testid="container-facebook-feed">
               <div className="w-full max-w-2xl">
-                <Card className="p-4 md:p-6">
+                <Card className={`p-4 md:p-6 ${feedStatus === "ready" ? "" : "hidden"}`}>
                   <div 
                     className="fb-page" 
                     data-href="https://www.facebook.com/jacksloungehyannis"
@@ -147,6 +162,34 @@ export default function Specials() {
                     </blockquote>
                   </div>
                 </Card>
+
+                {feedStatus === "loading" && (
+                  <Card className="p-8 text-center" data-testid="facebook-feed-loading">
+                    <p className="text-muted-foreground">
+                      Loading the latest Facebook updates…
+                    </p>
+                  </Card>
+                )}
+
+                {feedStatus === "failed" && (
+                  <Card className="p-8 text-center" data-testid="facebook-feed-fallback">
+                    <h2 className="text-2xl font-semibold mb-3">Today's updates are still available</h2>
+                    <p className="text-muted-foreground mb-6">
+                      The Facebook feed could not load in this browser. Visit our official Facebook page
+                      or call {SITE.phoneDisplay} to ask about today's specials and availability.
+                    </p>
+                    <div className="flex flex-col sm:flex-row justify-center gap-3">
+                      <Button asChild>
+                        <a href="https://www.facebook.com/jacksloungehyannis" target="_blank" rel="noopener noreferrer">
+                          View Official Facebook Page
+                        </a>
+                      </Button>
+                      <Button variant="outline" asChild>
+                        <a href={SITE.phoneHref}>Call {SITE.phoneDisplay}</a>
+                      </Button>
+                    </div>
+                  </Card>
+                )}
               </div>
             </div>
 

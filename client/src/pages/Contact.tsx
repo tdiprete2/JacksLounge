@@ -18,6 +18,7 @@ const contactFormSchema = insertContactRequestSchema.extend({
   firstName: z.string().min(1, "First name is required"),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
   message: z.string().min(1, "Message is required"),
+  website: z.string().max(0).optional(),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -83,7 +84,7 @@ export default function Contact() {
   useEffect(() => {
     updateMetaTags({
       title: "Contact Jack's Lounge Hyannis MA | Hours, Location, Phone",
-      description: "Contact Jack's Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, catering, or questions. Open 7 days a week. Find hours, directions, and more.",
+      description: "Contact Jack's Lounge in Hyannis MA at 373 West Main Street. Call 508-775-0612 for orders, party trays, large orders, hours, directions, or questions.",
       canonical: "https://www.jackspizzahyannis.com/contact/",
       ogTitle: "Contact Jack's Lounge - Hyannis MA Pizza & Italian Restaurant",
       ogDescription: "Get in touch with Jack's Lounge in Hyannis. Call, email, or visit us at 373 West Main Street for the best pizza and Italian food on Cape Cod.",
@@ -99,6 +100,7 @@ export default function Contact() {
       email: "",
       company: "",
       message: "",
+      website: "",
     },
   });
 
@@ -246,6 +248,24 @@ export default function Contact() {
 
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="website"
+                      render={({ field }) => (
+                        <FormItem className="hidden" aria-hidden="true">
+                          <FormLabel>Website</FormLabel>
+                          <FormControl>
+                            <Input
+                              {...field}
+                              value={field.value || ""}
+                              tabIndex={-1}
+                              autoComplete="off"
+                              data-testid="input-website"
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
@@ -254,7 +274,14 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>First Name *</FormLabel>
                             <FormControl>
-                              <Input {...field} data-testid="input-first-name" />
+                              <Input
+                                {...field}
+                                required
+                                aria-required="true"
+                                maxLength={80}
+                                autoComplete="given-name"
+                                data-testid="input-first-name"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -267,7 +294,13 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>Last Name</FormLabel>
                             <FormControl>
-                              <Input {...field} value={field.value || ""} data-testid="input-last-name" />
+                              <Input
+                                {...field}
+                                value={field.value || ""}
+                                maxLength={80}
+                                autoComplete="family-name"
+                                data-testid="input-last-name"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -282,7 +315,15 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email *</FormLabel>
                           <FormControl>
-                            <Input type="email" {...field} data-testid="input-email" />
+                              <Input
+                                type="email"
+                                {...field}
+                                required
+                                aria-required="true"
+                                maxLength={254}
+                                autoComplete="email"
+                                data-testid="input-email"
+                              />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -296,7 +337,13 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Company Name</FormLabel>
                           <FormControl>
-                            <Input {...field} value={field.value || ""} data-testid="input-company" />
+                              <Input
+                                {...field}
+                                value={field.value || ""}
+                                maxLength={120}
+                                autoComplete="organization"
+                                data-testid="input-company"
+                              />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -310,7 +357,15 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Message *</FormLabel>
                           <FormControl>
-                            <Textarea {...field} className="min-h-40" data-testid="input-message" />
+                              <Textarea
+                                {...field}
+                                required
+                                aria-required="true"
+                                maxLength={4000}
+                                autoComplete="off"
+                                className="min-h-40"
+                                data-testid="input-message"
+                              />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

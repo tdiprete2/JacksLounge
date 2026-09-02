@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     updateMetaTags({
       title: "Best Pizza & Wings Hyannis MA | Jack's Lounge",
-      description: "Best pizza & wings in Hyannis! Signature hot honey pizza, crispy wings since 1963. Gluten-free options available. Order delivery & pickup online!",
+      description: "Jack's Lounge has served Hyannis since 1963. Enjoy Famous Honey Pizza, oven-baked wings and Italian-American favorites for dine-in, takeout or delivery.",
       canonical: "https://www.jackspizzahyannis.com/",
       ogUrl: "https://www.jackspizzahyannis.com/"
     });
