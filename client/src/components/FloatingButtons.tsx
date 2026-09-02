@@ -1,6 +1,6 @@
 import { Gift, ShoppingBag } from "lucide-react";
 
-const ORDER_URL = "https://olo.spoton.com/60c3b6829adef31f4442003e";
+import { SITE } from "@shared/site";
 const REWARDS_URL = "https://l.spoton.com/DrOldL";
 const BRAND_GOLD = "#d4af37";
 
@@ -9,7 +9,7 @@ export default function FloatingButtons() {
     <>
       {/* ── Mobile: full-width sticky "Order Online" bar (hidden on md+) ── */}
       <a
-        href={ORDER_URL}
+            href={SITE.orderUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Order Online"
@@ -47,7 +47,7 @@ export default function FloatingButtons() {
 
       {/* Order Online Button - Bottom Right */}
       <a
-        href={ORDER_URL}
+        href={SITE.orderUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Order Online"

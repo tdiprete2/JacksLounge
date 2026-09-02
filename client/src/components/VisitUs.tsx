@@ -1,5 +1,6 @@
 import { Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HOURS } from "@shared/site";
 
 export default function VisitUs() {
   return (
@@ -9,20 +10,14 @@ export default function VisitUs() {
           Visit Us Today!
         </h2>
         <div className="mb-8">
-          <p className="text-lg font-semibold mb-4">We're open:</p>
+          <p className="text-lg font-semibold mb-4">Dine-in hours:</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-2xl mx-auto text-left">
-            <div className="flex justify-between px-4 py-2">
-              <span className="font-medium">Monday – Friday</span>
-              <span>11 AM–10 PM</span>
-            </div>
-            <div className="flex justify-between px-4 py-2">
-              <span className="font-medium">Saturday</span>
-              <span>11 AM–11 PM</span>
-            </div>
-            <div className="flex justify-between px-4 py-2 md:col-span-2 justify-center">
-              <span className="font-medium">Sunday</span>
-              <span>12 PM–9:30 PM</span>
-            </div>
+            {HOURS.dineIn.map((schedule) => (
+              <div key={schedule.day} className="flex justify-between gap-4 px-4 py-2">
+                <span className="font-medium">{schedule.day}</span>
+                <span>{schedule.open}–{schedule.close}</span>
+              </div>
+            ))}
           </div>
         </div>
         <p className="text-lg mb-8">Come by and enjoy a meal that feels like home.</p>

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
+import { PATHS, SITE } from "@shared/site";
 
 const pizzaItems = [
   { 
@@ -187,7 +188,7 @@ export default function Pizza() {
               {firstRow.map((item, index) => (
                 <a
                   key={index}
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex flex-col cursor-pointer"
@@ -233,7 +234,7 @@ export default function Pizza() {
               {secondRow.map((item, index) => (
                 <a
                   key={index + 5}
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex flex-col cursor-pointer"
@@ -299,7 +300,7 @@ export default function Pizza() {
                   data-testid="button-order-pizza"
                 >
                   <a
-                    href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                    href={SITE.orderUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"
@@ -315,7 +316,7 @@ export default function Pizza() {
                   asChild
                   data-testid="button-view-full-menu"
                 >
-                  <Link href="/menu/">
+                  <Link href={PATHS.menu}>
                     View Full Menu
                   </Link>
                 </Button>

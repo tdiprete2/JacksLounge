@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "wouter";
-
-const ORDER_URL = "https://olo.spoton.com/60c3b6829adef31f4442003e";
+import { PATHS, SITE } from "@shared/site";
 
 const faqs = [
   {
@@ -219,13 +218,13 @@ export default function FamousHoneyPizza() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button size="lg" asChild data-testid="button-order-honey-pizza">
-                    <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                    <a href={SITE.orderUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                       Order Online
                       <ExternalLink size={18} />
                     </a>
                   </Button>
                   <Button size="lg" variant="outline" asChild data-testid="button-view-full-menu">
-                    <Link href="/menu" className="inline-flex items-center gap-2">
+                    <Link href={PATHS.menu} className="inline-flex items-center gap-2">
                       View Full Menu
                     </Link>
                   </Button>
@@ -240,7 +239,7 @@ export default function FamousHoneyPizza() {
                     alt="Jack's Famous Honey Pizza — freshly shredded mozzarella and white cheddar with golden honey drizzle, Hyannis MA"
                     className="w-full object-cover"
                     style={{ aspectRatio: "4/3" }}
-                    fetchPriority="high"
+                    {...({ fetchpriority: "high" } as any)}
                     loading="eager"
                     width="600"
                     height="450"
@@ -340,7 +339,7 @@ export default function FamousHoneyPizza() {
               Order pickup or delivery online — or visit us at 373 West Main Street, Hyannis.
             </p>
             <Button size="lg" asChild data-testid="button-order-honey-cta">
-              <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <a href={SITE.orderUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                 Order Jack's Honey Pizza Online
                 <ExternalLink size={18} />
               </a>
@@ -370,7 +369,7 @@ export default function FamousHoneyPizza() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
-                href="/menu"
+                href={PATHS.menu}
                 className="block p-5 rounded-md border border-border bg-background hover-elevate transition-colors text-center"
                 data-testid="link-to-menu"
               >
@@ -378,7 +377,7 @@ export default function FamousHoneyPizza() {
                 <div className="text-sm text-muted-foreground">Pizzas, wings, grinders, and more</div>
               </Link>
               <Link
-                href="/story"
+                href={PATHS.story}
                 className="block p-5 rounded-md border border-border bg-background hover-elevate transition-colors text-center"
                 data-testid="link-to-story"
               >

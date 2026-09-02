@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { updateMetaTags } from "@/utils/seo";
 import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
+import { PATHS, SITE } from "@shared/site";
 
 const menuCategories = [
   {
@@ -227,7 +228,7 @@ export default function Menu() {
               data-testid="button-order-full-menu"
             >
               <a
-                href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                href={SITE.orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
@@ -319,7 +320,7 @@ export default function Menu() {
                 data-testid="button-view-full-menu"
               >
                 <a
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2"

@@ -3,15 +3,11 @@
 
 User-agent: *
 Allow: /
-Allow: /menu
-Allow: /story
-Allow: /contact
-
 # Sitemap location
 Sitemap: https://www.jackspizzahyannis.com/sitemap.xml
 
 # Block common non-content paths (if they exist)
-Disallow: /admin
+Disallow: /admin/
 Disallow: /api/
 Disallow: /*.json$
 

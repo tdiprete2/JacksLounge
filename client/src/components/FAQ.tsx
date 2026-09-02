@@ -6,12 +6,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { HOURS, PATHS } from "@shared/site";
+
+const dineInHoursText = HOURS.dineIn
+  .map(({ day, open, close }) => `${day} ${open}–${close}`)
+  .join(", ");
 
 const faqs = [
   {
     id: "1",
     question: "What are your hours of operation?",
-    answer: "We're open Monday 11am-10pm, Tuesday 11am-9:30pm, Wednesday 11am-10:30pm, Thursday-Friday 11am-10pm, Saturday 11am-11pm, and Sunday 12pm-9:30pm. Hours may vary on holidays, so please call ahead during holiday periods."
+    answer: `Our dine-in hours are ${dineInHoursText}. Takeout and delivery hours close earlier; see the Contact page for all three schedules. Hours may vary on holidays.`
   },
   {
     id: "2",
@@ -21,7 +26,7 @@ const faqs = [
   {
     id: "3",
     question: "What is hot honey pizza and do you have it?",
-    answer: "Our signature hot honey pizza features our famous honey-topped pizza with a spicy kick! The DiPrete family created the honey pizza recipe in the 1980s, and it's been our most popular specialty ever since — that perfect sweet and savory balance that makes Jack's the best pizza in Hyannis, MA."
+    answer: "Jack's Famous Honey Pizza is a sweet-savory cheese pizza finished with honey. The restaurant opened in 1963, and the DiPrete family introduced the honey pizza after taking over in 1985. A hot-honey variation is also available."
   },
   {
     id: "4",
@@ -31,7 +36,7 @@ const faqs = [
   {
     id: "5",
     question: "Why is Jack's pizza special?",
-    answer: "Our signature honey-topped pizzas have been a local favorite for over 60 years! We use a unique recipe that includes a light drizzle of honey on our crispy crust pizzas. It's a sweet and savory combination that keeps customers coming back generation after generation. This is what makes us the best pizza in Hyannis."
+    answer: "Jack's has served Hyannis since 1963. Our signature Famous Honey Pizza was introduced by the DiPrete family after 1985 and combines freshly shredded cheese with a honey drizzle."
   },
   {
     id: "6",
@@ -164,7 +169,7 @@ export default function FAQ() {
               Call (508) 775-0612
             </a>
             <Link
-              href="/contact/"
+              href={PATHS.contact}
               className="inline-flex items-center justify-center px-6 py-3 bg-card border border-primary/30 text-foreground rounded-md hover-elevate active-elevate-2 font-medium"
               data-testid="button-contact-faq"
             >

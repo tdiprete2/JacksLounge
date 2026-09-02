@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import { SITE } from "@shared/site";
 
 export default function OnlineOrdering() {
   return (
@@ -17,7 +18,7 @@ export default function OnlineOrdering() {
           data-testid="button-order-now"
         >
           <a
-            href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+            href={SITE.orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2"

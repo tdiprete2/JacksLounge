@@ -7,6 +7,16 @@ interface EmailConfig {
   replyTo?: string;
 }
 
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]!);
+}
+
 class EmailService {
   private transporter: nodemailer.Transporter | null = null;
   private contactEmail: string;
@@ -35,20 +45,20 @@ class EmailService {
       });
       console.log('✉️  Email service initialized with SMTP');
     } else {
-      console.log('⚠️  Email credentials not configured - emails will be logged only');
-      console.log('   Set EMAIL_USER and EMAIL_PASS to enable email sending');
+      console.warn('Email notifications are disabled because SMTP is not configured.');
     }
   }
 
   async sendContactNotification(contact: InsertContactRequest): Promise<boolean> {
-    const subject = `New Contact Request from ${contact.firstName} ${contact.lastName || ''}`;
+    const fullName = `${contact.firstName} ${contact.lastName || ''}`.trim();
+    const subject = `New Contact Request from ${fullName.replace(/[\r\n]+/g, " ")}`;
     const html = `
       <h2>New Contact Form Submission</h2>
-      <p><strong>From:</strong> ${contact.firstName} ${contact.lastName || ''}</p>
-      <p><strong>Email:</strong> ${contact.email}</p>
-      ${contact.company ? `<p><strong>Company:</strong> ${contact.company}</p>` : ''}
+      <p><strong>From:</strong> ${escapeHtml(fullName)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(contact.email)}</p>
+      ${contact.company ? `<p><strong>Company:</strong> ${escapeHtml(contact.company)}</p>` : ''}
       <p><strong>Message:</strong></p>
-      <p>${contact.message.replace(/\n/g, '<br>')}</p>
+      <p>${escapeHtml(contact.message).replace(/\n/g, '<br>')}</p>
       <hr>
       <p><small>This is an automated notification from Jack's Lounge website contact form.</small></p>
     `;
@@ -67,10 +77,7 @@ This is an automated notification from Jack's Lounge website contact form.
     `;
 
     if (!this.transporter) {
-      console.log('📧 Email would be sent to:', this.contactEmail);
-      console.log('Subject:', subject);
-      console.log('Content:', text);
-      return true;
+      return false;
     }
 
     try {
@@ -82,10 +89,10 @@ This is an automated notification from Jack's Lounge website contact form.
         text,
         html,
       });
-      console.log('✅ Contact notification email sent to:', this.contactEmail);
+      console.log('Contact notification email sent.');
       return true;
     } catch (error) {
-      console.error('❌ Failed to send email:', error);
+      console.error('Contact notification email failed to send.');
       return false;
     }
   }

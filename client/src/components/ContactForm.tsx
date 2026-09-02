@@ -14,6 +14,7 @@ export default function ContactForm() {
     email: "",
     company: "",
     message: "",
+    website: "",
   });
   const { toast } = useToast();
 
@@ -30,6 +31,7 @@ export default function ContactForm() {
         email: "",
         company: "",
         message: "",
+        website: "",
       });
     },
     onError: (error: Error) => {
@@ -65,6 +67,10 @@ export default function ContactForm() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <Input id="website" name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={(e) => setFormData({ ...formData, website: e.target.value })} />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -75,6 +81,8 @@ export default function ContactForm() {
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     required
+                    maxLength={80}
+                    autoComplete="given-name"
                     data-testid="input-first-name"
                   />
                 </div>
@@ -86,6 +94,8 @@ export default function ContactForm() {
                     id="lastName"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    maxLength={80}
+                    autoComplete="family-name"
                     data-testid="input-last-name"
                   />
                 </div>
@@ -101,6 +111,8 @@ export default function ContactForm() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
+                    maxLength={254}
+                    autoComplete="email"
                   data-testid="input-email"
                 />
               </div>
@@ -113,6 +125,8 @@ export default function ContactForm() {
                   id="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    maxLength={120}
+                    autoComplete="organization"
                   data-testid="input-company"
                 />
               </div>
@@ -126,6 +140,8 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
+                    maxLength={4000}
+                    autoComplete="off"
                   className="min-h-48"
                   data-testid="input-message"
                 />

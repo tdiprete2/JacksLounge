@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
 import FloatingButtons from "@/components/FloatingButtons";
+import { PATHS } from "@shared/site";
 
 // Lazy load pages for code splitting and better performance
 const HomeLazy = lazy(() => import("@/pages/Home"));
@@ -15,6 +16,8 @@ const StoryLazy = lazy(() => import("@/pages/Story"));
 const SpecialsLazy = lazy(() => import("@/pages/Specials"));
 const AdminLazy = lazy(() => import("@/pages/Admin"));
 const FamousHoneyPizzaLazy = lazy(() => import("@/pages/FamousHoneyPizza"));
+const PizzaLazy = lazy(() => import("@/pages/Pizza"));
+const WingsLazy = lazy(() => import("@/pages/Wings"));
 const NotFoundLazy = lazy(() => import("@/pages/not-found"));
 
 // Wrapper components to work with wouter routing
@@ -25,10 +28,9 @@ const Story = () => <Suspense fallback={<div className="min-h-screen flex items-
 const Specials = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><SpecialsLazy /></Suspense>;
 const Admin = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><AdminLazy /></Suspense>;
 const FamousHoneyPizza = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><FamousHoneyPizzaLazy /></Suspense>;
+const Pizza = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><PizzaLazy /></Suspense>;
+const Wings = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><WingsLazy /></Suspense>;
 const NotFound = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><NotFoundLazy /></Suspense>;
-
-// Get base path from environment or use root
-const base = import.meta.env.BASE_URL || "/";
 
 // Check if admin route should be enabled (default: true for Replit, false for GitHub Pages)
 const enableAdmin = import.meta.env.VITE_ENABLE_ADMIN !== "false";
@@ -45,16 +47,18 @@ function ScrollToTop() {
 
 function Router() {
   return (
-    <WouterRouter base={base}>
+    <WouterRouter>
       <ScrollToTop />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/menu" component={Menu} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/story" component={Story} />
-        <Route path="/specials" component={Specials} />
-        <Route path="/famous-honey-pizza" component={FamousHoneyPizza} />
-        {enableAdmin && <Route path="/admin" component={Admin} />}
+        <Route path={PATHS.home} component={Home} />
+        <Route path={PATHS.menu} component={Menu} />
+        <Route path={PATHS.pizza} component={Pizza} />
+        <Route path={PATHS.wings} component={Wings} />
+        <Route path={PATHS.contact} component={Contact} />
+        <Route path={PATHS.story} component={Story} />
+        <Route path={PATHS.specials} component={Specials} />
+        <Route path={PATHS.honeyPizza} component={FamousHoneyPizza} />
+        {enableAdmin && <Route path={PATHS.admin} component={Admin} />}
         <Route component={NotFound} />
       </Switch>
     </WouterRouter>

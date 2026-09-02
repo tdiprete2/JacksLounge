@@ -1,5 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors";
+import session from "express-session";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { initializeScheduler } from "./scheduler";
@@ -8,6 +9,17 @@ const app = express();
 
 // Configure CORS to allow requests from GitHub Pages and Replit deployments
 const isDevelopment = app.get("env") === "development";
+const sessionSecret = process.env.SESSION_SECRET;
+
+if (!sessionSecret && !isDevelopment) {
+  throw new Error("SESSION_SECRET is required in production");
+}
+if (!sessionSecret) {
+  console.warn("WARNING: SESSION_SECRET is not set; development sessions will be invalidated on restart.");
+}
+if (!isDevelopment) {
+  app.set("trust proxy", 1);
+}
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -50,30 +62,26 @@ app.use(express.json({
   }
 }));
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+  name: "jackslounge.sid",
+  secret: sessionSecret || "development-only-session-secret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: !isDevelopment,
+    maxAge: 8 * 60 * 60 * 1000,
+  },
+}));
 
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
   res.on("finish", () => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
       log(logLine);
     }
   });
@@ -86,10 +94,7 @@ app.use((req, res, next) => {
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-
-    res.status(status).json({ message });
-    throw err;
+    res.status(status).json({ error: "Internal Server Error" });
   });
 
   // importantly only setup vite in development and after

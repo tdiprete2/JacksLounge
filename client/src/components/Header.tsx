@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
+import { PATHS, SITE } from "@shared/site";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,22 +68,22 @@ export default function Header() {
             </div>
 
             <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
-              <Link
-                href="/menu/"
+                <Link
+                  href={PATHS.menu}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-menu-page"
               >
                 Menu
               </Link>
-              <Link
-                href="/story/"
+                <Link
+                  href={PATHS.story}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-story-page"
               >
                 Our Story
               </Link>
-              <Link
-                href="/specials/"
+                <Link
+                  href={PATHS.specials}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-specials-page"
               >
@@ -124,8 +125,8 @@ export default function Header() {
               >
                 Reviews
               </a>
-              <Link
-                href="/contact/"
+                <Link
+                  href={PATHS.contact}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
                 data-testid="link-contact-page"
               >
@@ -137,7 +138,7 @@ export default function Header() {
                 aria-label="Order food online"
               >
                 <a
-                  href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                  href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -161,7 +162,7 @@ export default function Header() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
                     <Link
-                      href="/menu/"
+                      href={PATHS.menu}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-menu-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -169,7 +170,7 @@ export default function Header() {
                       Menu
                     </Link>
                     <Link
-                      href="/story/"
+                      href={PATHS.story}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-story-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -177,7 +178,7 @@ export default function Header() {
                       Our Story
                     </Link>
                     <Link
-                      href="/specials/"
+                      href={PATHS.specials}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-specials-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -221,7 +222,7 @@ export default function Header() {
                       Reviews
                     </a>
                     <Link
-                      href="/contact/"
+                      href={PATHS.contact}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
                       data-testid="link-contact-page-mobile"
                       onClick={() => setMobileMenuOpen(false)}
@@ -236,7 +237,7 @@ export default function Header() {
                       aria-label="Order food online"
                     >
                       <a
-                        href="https://olo.spoton.com/60c3b6829adef31f4442003e"
+                        href={SITE.orderUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setMobileMenuOpen(false)}

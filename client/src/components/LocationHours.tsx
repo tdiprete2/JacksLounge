@@ -1,16 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const hours = [
-  { day: "Sunday", hours: "12:00 PM - 9:30 PM" },
-  { day: "Monday", hours: "11:00 AM - 10:00 PM" },
-  { day: "Tuesday", hours: "11:00 AM - 9:30 PM" },
-  { day: "Wednesday", hours: "11:00 AM - 10:30 PM" },
-  { day: "Thursday", hours: "11:00 AM - 10:30 PM" },
-  { day: "Friday", hours: "11:00 AM - 11:00 PM" },
-  { day: "Saturday", hours: "11:00 AM - 10:30 PM" },
-];
+import { HOURS, PATHS, SITE } from "@shared/site";
 
 export default function LocationHours() {
   return (
@@ -28,7 +19,7 @@ export default function LocationHours() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="rounded-lg overflow-hidden shadow-lg h-96">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.0!2d-70.2897!3d41.6532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89fb33c8a7d0d0d1%3A0x1234567890abcdef!2s373%20W%20Main%20St%2C%20Hyannis%2C%20MA%2002601!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+              src="https://www.google.com/maps?q=Jack%27s%20Lounge%2C%20373%20West%20Main%20Street%2C%20Hyannis%2C%20MA%2002601&output=embed"
               width="100%"
               height="100%"
               frameBorder="0"
@@ -48,7 +39,7 @@ export default function LocationHours() {
               </CardHeader>
               <CardContent>
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=373%20W%20Main%20St%2C%20Hyannis%2C%20MA%2002601%2C%20USA"
+                  href={SITE.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lg hover:text-primary transition-colors"
@@ -95,14 +86,14 @@ export default function LocationHours() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  {hours.map((schedule, index) => (
+                  {HOURS.dineIn.map((schedule, index) => (
                     <div
                       key={schedule.day}
                       className="flex justify-between text-base"
                       data-testid={`text-hours-${index}`}
                     >
                       <span className="font-medium">{schedule.day}</span>
-                      <span className="text-muted-foreground">{schedule.hours}</span>
+                      <span className="text-muted-foreground">{schedule.open} – {schedule.close}</span>
                     </div>
                   ))}
                 </div>
@@ -118,7 +109,7 @@ export default function LocationHours() {
             data-testid="button-view-specials"
           >
             <a
-              href="/specials/"
+              href={PATHS.specials}
               className="inline-flex items-center gap-2"
             >
               <Facebook size={20} />

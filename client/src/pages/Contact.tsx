@@ -31,6 +31,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { HOURS, SITE } from "@shared/site";
+
+const scheduleLabels = {
+  dineIn: "Dine-in",
+  takeout: "Takeout",
+  delivery: "Delivery",
+} as const;
 
 function DeferredMap() {
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -195,19 +202,38 @@ export default function Contact() {
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">Hours</h3>
-                  <div className="text-sm text-foreground/70 space-y-1">
-                    <p>Mon: 11am - 10pm</p>
-                    <p>Tue: 11am - 9:30pm</p>
-                    <p>Wed: 11am - 10:30pm</p>
-                    <p>Thu-Fri: 11am - 10pm</p>
-                    <p>Sat: 11am - 11pm</p>
-                    <p>Sun: 12pm - 9:30pm</p>
-                  </div>
+                   <p className="text-sm text-foreground/70">
+                     Dine-in, takeout, and delivery have separate closing times. See all schedules below.
+                   </p>
                 </div>
               </Card>
             </div>
 
-            {/* Contact Form and Map */}
+             <section className="mb-16" aria-labelledby="service-hours-title">
+               <h2 id="service-hours-title" className="font-serif text-3xl md:text-4xl font-bold text-center mb-8">
+                 Hours by Service
+               </h2>
+               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                 {(Object.keys(scheduleLabels) as Array<keyof typeof scheduleLabels>).map((service) => (
+                   <Card key={service} className="p-6">
+                     <h3 className="text-xl font-semibold mb-4">{scheduleLabels[service]}</h3>
+                     <dl className="space-y-2 text-sm">
+                       {HOURS[service].map(({ day, open, close }) => (
+                         <div key={day} className="flex justify-between gap-4">
+                           <dt className="font-medium">{day}</dt>
+                           <dd className="text-foreground/70 text-right">{open}–{close}</dd>
+                         </div>
+                       ))}
+                     </dl>
+                   </Card>
+                 ))}
+               </div>
+               <p className="text-center text-sm text-foreground/60 mt-4">
+                 Holiday hours may vary. Please call {SITE.phoneDisplay} to confirm.
+               </p>
+             </section>
+
+             {/* Contact Form and Map */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
               <div>
@@ -318,7 +344,7 @@ export default function Contact() {
                     className="w-full"
                   >
                     <a
-                      href="https://maps.google.com/?q=373+West+Main+Street,+Hyannis,+MA+02601"
+                       href={SITE.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="button-directions"

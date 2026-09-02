@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Facebook, Instagram } from "lucide-react";
+import { PATHS, SITE } from "@shared/site";
 
 export default function Footer() {
   const [location, navigate] = useLocation();
@@ -62,7 +63,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/menu/"
+                  href={PATHS.menu}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-menu"
                 >
@@ -71,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/story/"
+                  href={PATHS.story}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-story"
                 >
@@ -80,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/specials/"
+                  href={PATHS.specials}
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-specials"
                 >
@@ -89,7 +90,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://order.spoton.com/so-jacks-4621/hyannis-ma/679d5d0ce023c79ae4105677"
+                  href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"

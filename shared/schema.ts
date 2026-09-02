@@ -32,7 +32,13 @@ export const insertContactRequestSchema = createInsertSchema(contactRequests).om
   id: true,
   isRead: true,
   createdAt: true,
-});
+}).extend({
+  firstName: z.string().trim().min(1).max(80),
+  lastName: z.string().trim().max(80).optional().transform((value) => value || undefined),
+  email: z.string().trim().email().max(254),
+  company: z.string().trim().max(120).optional().transform((value) => value || undefined),
+  message: z.string().trim().min(1).max(4000),
+}).strict();
 
 export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
 export type ContactRequest = typeof contactRequests.$inferSelect;

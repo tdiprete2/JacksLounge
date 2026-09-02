@@ -1,5 +1,7 @@
-import { type User, type InsertUser, type ContactRequest, type InsertContactRequest } from "@shared/schema";
+import { type User, type InsertUser, type ContactRequest, type InsertContactRequest, contactRequests, users } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { desc, eq, sql } from "drizzle-orm";
+import { db } from "./db";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -83,4 +85,51 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getUser(id: string): Promise<User | undefined> {
+    return (await db!.select().from(users).where(eq(users.id, id)).limit(1))[0];
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    return (await db!.select().from(users).where(eq(users.username, username)).limit(1))[0];
+  }
+
+  async createUser(user: InsertUser): Promise<User> {
+    return (await db!.insert(users).values(user).returning())[0];
+  }
+
+  async getAllContactRequests(): Promise<ContactRequest[]> {
+    return db!.select().from(contactRequests).orderBy(desc(contactRequests.createdAt));
+  }
+
+  async getContactRequest(id: string): Promise<ContactRequest | undefined> {
+    return (await db!.select().from(contactRequests).where(eq(contactRequests.id, id)).limit(1))[0];
+  }
+
+  async createContactRequest(request: InsertContactRequest): Promise<ContactRequest> {
+    return (await db!.insert(contactRequests).values(request).returning())[0];
+  }
+
+  async markContactRequestAsRead(id: string): Promise<ContactRequest | undefined> {
+    return (await db!.update(contactRequests).set({ isRead: 1 }).where(eq(contactRequests.id, id)).returning())[0];
+  }
+
+  async getUnreadContactRequestsCount(): Promise<number> {
+    const result = await db!.select({ count: sql<number>`count(*)::int` })
+      .from(contactRequests)
+      .where(eq(contactRequests.isRead, 0));
+    return result[0]?.count ?? 0;
+  }
+}
+
+const isProduction = process.env.NODE_ENV === "production";
+
+export const storage: IStorage = process.env.DATABASE_URL
+  ? new DatabaseStorage()
+  : (() => {
+      if (isProduction) {
+        throw new Error("DATABASE_URL is required in production");
+      }
+      console.warn("WARNING: DATABASE_URL is not set; using non-persistent development memory storage.");
+      return new MemStorage();
+    })();

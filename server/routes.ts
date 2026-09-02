@@ -1,101 +1,148 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
+import { createHash, timingSafeEqual } from "crypto";
 import { storage } from "./storage";
 import { emailService } from "./services/email";
 import { insertContactRequestSchema } from "@shared/schema";
+import { z } from "zod";
+
+declare module "express-session" {
+  interface SessionData {
+    isAdmin?: boolean;
+  }
+}
+
+const contactSubmissionSchema = insertContactRequestSchema.extend({
+  website: z.string().max(0).optional(),
+}).strict();
+
+const loginSchema = z.object({
+  password: z.string().min(1).max(1024),
+}).strict();
+
+const submissions = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+
+function contactOriginIsAllowed(req: Request): boolean {
+  const origin = req.get("origin");
+  if (!origin) return true;
+  try {
+    const originUrl = new URL(origin);
+    const host = req.get("host");
+    if (host && originUrl.host === host) return true;
+    return [
+      "https://www.jackspizzahyannis.com",
+      "https://jackspizzahyannis.com",
+    ].includes(origin) || /\.replit\.(app|dev)$/.test(originUrl.hostname);
+  } catch {
+    return false;
+  }
+}
+
+function isRateLimited(req: Request): boolean {
+  const key = req.ip || "unknown";
+  const now = Date.now();
+  const existing = submissions.get(key);
+  if (!existing || existing.resetAt <= now) {
+    submissions.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  existing.count += 1;
+  return existing.count > RATE_LIMIT_MAX;
+}
+
+function configuredPasswordMatches(candidate: string): boolean {
+  const configured = process.env.ADMIN_PASSWORD;
+  if (!configured) return false;
+  const digest = (value: string) => createHash("sha256").update(value).digest();
+  return timingSafeEqual(digest(candidate), digest(configured));
+}
+
+function requireAdmin(req: Request, res: Response, next: NextFunction) {
+  if (!req.session?.isAdmin) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  next();
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Contact endpoints
   app.post("/api/contact", async (req, res) => {
+    if (!contactOriginIsAllowed(req) || isRateLimited(req)) {
+      return res.status(400).json({ error: "Unable to submit contact request" });
+    }
+
+    const parsed = contactSubmissionSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ error: "Unable to submit contact request" });
+    }
+
+    if (parsed.data.website) {
+      return res.json({ success: true, message: "Contact request received" });
+    }
+
+    const { website: _website, ...contact } = parsed.data;
     try {
-      const validatedData = insertContactRequestSchema.parse(req.body);
-      
-      // Save to database
-      const contactRequest = await storage.createContactRequest(validatedData);
-      
-      // Send email notification
-      await emailService.sendContactNotification(validatedData);
-      
+      const contactRequest = await storage.createContactRequest(contact);
+      const emailSent = await emailService.sendContactNotification(contact);
       res.json({
         success: true,
-        message: 'Contact request received',
+        message: "Contact request received",
         id: contactRequest.id,
+        emailSent,
       });
-    } catch (error) {
-      console.error('Error handling contact request:', error);
-      if (error instanceof Error && 'issues' in error) {
-        res.status(400).json({ error: 'Invalid form data', details: error });
-      } else {
-        res.status(500).json({ error: 'Failed to submit contact request' });
-      }
+    } catch {
+      res.status(500).json({ error: "Unable to submit contact request" });
     }
   });
 
-  app.get("/api/contacts", async (req, res) => {
+  app.post("/api/admin/login", async (req, res) => {
+    const parsed = loginSchema.safeParse(req.body);
+    if (!parsed.success || !configuredPasswordMatches(parsed.data.password)) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+    req.session.regenerate((error) => {
+      if (error) return res.status(500).json({ error: "Unable to log in" });
+      req.session.isAdmin = true;
+      req.session.save((saveError) => {
+        if (saveError) return res.status(500).json({ error: "Unable to log in" });
+        res.json({ authenticated: true });
+      });
+    });
+  });
+
+  app.post("/api/admin/logout", requireAdmin, (req, res) => {
+    req.session.destroy(() => {
+      res.clearCookie("jackslounge.sid");
+      res.json({ authenticated: false });
+    });
+  });
+
+  app.get("/api/admin/session", (req, res) => {
+    res.json({ authenticated: Boolean(req.session?.isAdmin) });
+  });
+
+  app.get("/api/contacts", requireAdmin, async (_req, res) => {
     try {
-      // Require admin authentication
-      const adminPassword = process.env.ADMIN_PASSWORD;
-      if (!adminPassword) {
-        return res.status(503).json({
-          error: 'Admin password not configured',
-        });
-      }
-
-      const providedPassword = req.headers['x-admin-password'] as string;
-      if (!providedPassword || providedPassword !== adminPassword) {
-        return res.status(401).json({
-          error: 'Unauthorized',
-        });
-      }
-
-      const contacts = await storage.getAllContactRequests();
-      const unreadCount = await storage.getUnreadContactRequestsCount();
-
-      res.json({
-        contacts,
-        unreadCount,
-      });
-    } catch (error) {
-      console.error('Error fetching contacts:', error);
-      res.status(500).json({ error: 'Failed to fetch contacts' });
+      const [contacts, unreadCount] = await Promise.all([
+        storage.getAllContactRequests(),
+        storage.getUnreadContactRequestsCount(),
+      ]);
+      res.json({ contacts, unreadCount });
+    } catch {
+      res.status(500).json({ error: "Unable to fetch contacts" });
     }
   });
 
-  app.post("/api/contacts/:id/mark-read", async (req, res) => {
+  app.post("/api/contacts/:id/mark-read", requireAdmin, async (req, res) => {
     try {
-      // Require admin authentication
-      const adminPassword = process.env.ADMIN_PASSWORD;
-      if (!adminPassword) {
-        return res.status(503).json({
-          error: 'Admin password not configured',
-        });
-      }
-
-      const providedPassword = req.body.password || req.headers['x-admin-password'];
-      if (!providedPassword || providedPassword !== adminPassword) {
-        return res.status(401).json({
-          error: 'Unauthorized',
-        });
-      }
-
-      const { id } = req.params;
-      const contact = await storage.markContactRequestAsRead(id);
-
-      if (!contact) {
-        return res.status(404).json({ error: 'Contact not found' });
-      }
-
-      res.json({
-        success: true,
-        contact,
-      });
-    } catch (error) {
-      console.error('Error marking contact as read:', error);
-      res.status(500).json({ error: 'Failed to mark contact as read' });
+      const contact = await storage.markContactRequestAsRead(req.params.id);
+      if (!contact) return res.status(404).json({ error: "Contact not found" });
+      res.json({ success: true, contact });
+    } catch {
+      res.status(500).json({ error: "Unable to update contact" });
     }
   });
 
-  const httpServer = createServer(app);
-
-  return httpServer;
+  return createServer(app);
 }
