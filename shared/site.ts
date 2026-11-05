@@ -69,7 +69,7 @@ export const PUBLIC_ROUTES: readonly RouteSeo[] = [
     path: PATHS.home,
     title: "Best Pizza & Wings in Hyannis, MA | Jack's Lounge",
     description: "Jack's Lounge serves famous honey pizza, crispy wings and Italian-American favorites in Hyannis. Dine in, take out or order delivery.",
-    heading: "Jack's Lounge: Pizza, Wings & Local Tradition in Hyannis",
+    heading: "Jack's Lounge - Best Pizza & Wings in Hyannis",
     summary: "Open since 1963 at 373 West Main Street. The DiPrete family introduced Jack's Famous Honey Pizza after taking over in 1985.",
     fallbackDetails: [
       "Jack's Lounge serves pizza, oven-baked wings, grinders, calzones, salads and Italian-American favorites for dine-in, takeout and delivery.",

@@ -70,3 +70,25 @@ test("Specials includes a timed first-party failure fallback", () => {
   assert.match(source, /The Facebook feed could not load/i);
   assert.match(source, /Call \{SITE\.phoneDisplay\}/);
 });
+
+test("homepage and menu each have one matching restaurant H1 in React and fallback output", () => {
+  const baseTemplate = fs.readFileSync("client/index.html", "utf8");
+  const cases = [
+    { path: PATHS.home, source: "client/src/components/WelcomeHeroCarousel.tsx", heading: "Jack's Lounge - Best Pizza & Wings in Hyannis" },
+    { path: PATHS.menu, source: "client/src/pages/Menu.tsx", heading: "Jack's Lounge Menu" },
+  ];
+  const headings = (html: string) => Array.from(
+    html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g),
+    (match) => match[1].replace(/&amp;/g, "&").trim(),
+  );
+
+  for (const { path, source, heading } of cases) {
+    const route = getPublicRoute(path);
+    assert.ok(route);
+    assert.deepEqual(headings(fs.readFileSync(source, "utf8")), [heading]);
+    assert.deepEqual(headings(renderRouteHtml(baseTemplate, route)), [heading]);
+    assert.ok(route.title.includes("Jack's Lounge"));
+    if (path === PATHS.menu) assert.ok(route.title.includes("Menu"));
+  }
+  assert.deepEqual(headings(baseTemplate), [cases[0].heading]);
+});
