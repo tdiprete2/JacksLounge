@@ -254,19 +254,19 @@ export default function Menu() {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {category.items.map((item, index) => (
-                      <Card key={index} className="hover-elevate" data-testid={`menu-item-${category.id}-${index}`}>
-                        <CardContent className="p-6">
-                          <div className="flex justify-between items-start gap-4 mb-2">
-                            <h3 className="text-xl font-semibold text-foreground" data-testid={`text-item-name-${category.id}-${index}`}>
+                      <Card key={index} className="min-w-0 hover-elevate" data-testid={`menu-item-${category.id}-${index}`}>
+                        <CardContent className="p-4 sm:p-6">
+                          <div className="flex min-w-0 flex-col items-start gap-2 mb-2 sm:flex-row sm:justify-between sm:gap-4">
+                            <h3 className="min-w-0 break-words text-xl font-semibold text-foreground" data-testid={`text-item-name-${category.id}-${index}`}>
                               {item.name}
                             </h3>
                             {'price' in item && item.price && (
-                              <span className="text-base text-primary font-bold whitespace-nowrap" data-testid={`text-item-price-${category.id}-${index}`}>
+                              <span className="max-w-full text-base text-primary font-bold" data-testid={`text-item-price-${category.id}-${index}`}>
                                 {item.price}
                               </span>
                             )}
                             {'prices' in item && item.prices && (
-                              <span className="text-sm text-primary font-bold whitespace-nowrap" data-testid={`text-item-prices-${category.id}-${index}`}>
+                              <span className="max-w-full text-sm text-primary font-bold" data-testid={`text-item-prices-${category.id}-${index}`}>
                                 {item.prices}
                               </span>
                             )}

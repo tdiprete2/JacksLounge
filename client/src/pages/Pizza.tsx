@@ -8,7 +8,14 @@ import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { PATHS, SITE } from "@shared/site";
 
-const pizzaItems = [
+interface PizzaItem {
+  name: string;
+  prices: { small: string; large: string };
+  description: string;
+  image?: string;
+}
+
+const pizzaItems: PizzaItem[] = [
   { 
     name: "Jack's Famous Honey Pizza", 
     prices: { small: "13.25", large: "16.75" },
@@ -18,50 +25,44 @@ const pizzaItems = [
   { 
     name: "Special Pizza (The Works)", 
     prices: { small: "17", large: "23" },
-    description: "Loaded with pepperoni, Italian sausage, linguica, meatballs, fresh mushrooms, green peppers & caramelized onions. The ultimate meat and veggie combination.",
-    image: "/images/featured/special-pizza-jacks-lounge-hyannis.webp"
+    description: "Loaded with pepperoni, Italian sausage, linguica, meatballs, fresh mushrooms, green peppers & caramelized onions. The ultimate meat and veggie combination."
   },
   { 
     name: "Meatlovers Pizza", 
     prices: { small: "17", large: "23" },
     description: "For serious carnivores - piled high with pepperoni, Italian sausage, linguica, homemade meatballs & crispy bacon on our hand-tossed crust.",
-    image: "/images/featured/meatlovers-pizza-jacks-lounge-hyannis.webp"
+    image: "/images/featured/featured-meat-lovers-desktop.webp"
   },
   { 
     name: "Buffalo Chicken Pizza", 
     prices: { small: "15.50", large: "21" },
-    description: "Tender grilled chicken tossed in tangy buffalo sauce, topped with melted mozzarella. Served with creamy blue cheese on the side.",
-    image: "/images/featured/buffalo-chicken-pizza-jacks-lounge-hyannis.webp"
+    description: "Tender grilled chicken tossed in tangy buffalo sauce, topped with melted mozzarella. Served with creamy blue cheese on the side."
   },
   { 
     name: "Chicken Bacon Ranch Pizza", 
     prices: { small: "16", large: "22" },
-    description: "Juicy grilled chicken and crispy bacon with a generous drizzle of ranch dressing over melted cheese. A crowd favorite.",
-    image: "/images/featured/chicken-bacon-ranch-pizza-jacks-lounge-hyannis.webp"
+    description: "Juicy grilled chicken and crispy bacon with a generous drizzle of ranch dressing over melted cheese. A crowd favorite."
   },
   { 
     name: "Mexican Pizza", 
     prices: { small: "16", large: "22" },
-    description: "Seasoned beef, black olives & jalapeños with melted cheese. Served with fresh salsa & sour cream on the side for the perfect kick.",
-    image: "/images/featured/mexican-pizza-jacks-lounge-hyannis.webp"
+    description: "Seasoned beef, black olives & jalapeños with melted cheese. Served with fresh salsa & sour cream on the side for the perfect kick."
   },
   { 
     name: "Vegetarian Pizza", 
     prices: { small: "15", large: "19" },
-    description: "A garden-fresh combination of mushrooms, onions, green peppers, red onions, vine-ripened tomatoes & fresh spinach on our signature crust.",
-    image: "/images/featured/vegetarian-pizza-jacks-lounge-hyannis.webp"
+    description: "A garden-fresh combination of mushrooms, onions, green peppers, red onions, vine-ripened tomatoes & fresh spinach on our signature crust."
   },
   { 
     name: "Build Your Own Pizza", 
     prices: { small: "11", large: "15" },
     description: "Start with our hand-tossed crust and fresh mozzarella, then add your favorite toppings from our selection of premium meats, fresh vegetables & specialty ingredients.",
-    image: "/images/featured/build-your-own-pizza-jacks-lounge-hyannis.webp"
+    image: "/images/featured/featured-build-your-own-desktop.webp"
   },
   { 
     name: "Silver (Thin Crust) Pizza", 
     prices: { small: "10", large: "14" },
     description: "Our crispy, golden thin crust pizza - light, crunchy & perfect for those who love that satisfying crackle with every bite.",
-    image: "/images/featured/thin-crust-pizza-jacks-lounge-hyannis.webp"
   },
 ];
 
@@ -184,24 +185,30 @@ export default function Pizza() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-4">
               {firstRow.map((item, index) => (
                 <a
                   key={index}
                   href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col cursor-pointer"
+                  className="group flex min-w-0 flex-col cursor-pointer"
                   data-testid={`pizza-item-${index}`}
                 >
-                  <div className="relative h-48 md:h-56 lg:h-64 mb-2 overflow-hidden">
+                  {item.image && <div className="relative aspect-[4/3] shrink-0 mb-3 overflow-hidden rounded-md">
                     <img
                       src={item.image}
+                      srcSet={item.image.endsWith("-desktop.webp")
+                        ? `${item.image.replace("-desktop.webp", "-mobile.webp")} 640w, ${item.image} 1200w`
+                        : undefined}
+                      sizes="(min-width: 1280px) 240px, (min-width: 640px) 45vw, 100vw"
                       alt={`${item.name} - Best pizza in Hyannis MA`}
-                      className="w-full h-full object-cover object-center transform -rotate-12 scale-125 group-hover:scale-130 transition-transform duration-300"
+                      className="h-full w-full object-cover object-center"
                       loading={index < 3 ? "eager" : "lazy"}
+                      width="600"
+                      height="450"
                     />
-                  </div>
+                  </div>}
                   
                   <h3 
                     className="text-lg md:text-xl text-white mb-2 text-center"
@@ -211,7 +218,7 @@ export default function Pizza() {
                     {item.name}
                   </h3>
                   
-                  <div className="flex justify-center gap-2 mb-3" data-testid={`text-pizza-price-${index}`}>
+                  <div className="flex flex-wrap justify-center gap-2 mb-3" data-testid={`text-pizza-price-${index}`}>
                     <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
                       10" ${item.prices.small}
                     </span>
@@ -230,24 +237,30 @@ export default function Pizza() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 mt-6">
               {secondRow.map((item, index) => (
                 <a
                   key={index + 5}
                   href={SITE.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col cursor-pointer"
+                  className="group flex min-w-0 flex-col cursor-pointer"
                   data-testid={`pizza-item-${index + 5}`}
                 >
-                  <div className="relative h-40 md:h-48 mb-2 overflow-hidden">
+                  {item.image && <div className="relative aspect-[4/3] shrink-0 mb-3 overflow-hidden rounded-md">
                     <img
                       src={item.image}
+                      srcSet={item.image.endsWith("-desktop.webp")
+                        ? `${item.image.replace("-desktop.webp", "-mobile.webp")} 640w, ${item.image} 1200w`
+                        : undefined}
+                      sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 100vw"
                       alt={`${item.name} - Best pizza in Hyannis MA`}
-                      className="w-full h-full object-cover object-center transform -rotate-12 scale-125 group-hover:scale-130 transition-transform duration-300"
+                      className="h-full w-full object-cover object-center"
                       loading="lazy"
+                      width="600"
+                      height="450"
                     />
-                  </div>
+                  </div>}
                   
                   <h3 
                     className="text-base md:text-lg text-white mb-2 text-center"
@@ -257,7 +270,7 @@ export default function Pizza() {
                     {item.name}
                   </h3>
                   
-                  <div className="flex justify-center gap-2 mb-2" data-testid={`text-pizza-price-${index + 5}`}>
+                  <div className="flex flex-wrap justify-center gap-2 mb-2" data-testid={`text-pizza-price-${index + 5}`}>
                     <span className="inline-flex items-center justify-center bg-[#e55b25] text-white text-xs font-bold px-2 py-1 rounded">
                       10" ${item.prices.small}
                     </span>

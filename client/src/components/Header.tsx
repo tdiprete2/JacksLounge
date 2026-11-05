@@ -168,7 +168,7 @@ export default function Header() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="z-[60] max-h-[100dvh] w-[min(88vw,400px)] max-w-[400px] overflow-y-auto"
+                  className="z-[60] max-h-[100dvh] w-[min(88vw,400px)] max-w-[400px] overflow-y-auto motion-reduce:animate-none data-[state=open]:duration-200"
                 >
                   <SheetTitle className="sr-only">Jack's Lounge navigation</SheetTitle>
                   <SheetDescription className="sr-only">
