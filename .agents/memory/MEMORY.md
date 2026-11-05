@@ -1,2 +1,3 @@
 - [Ordering scope](ordering-scope.md) — keep direct SpotOn links; no dedicated ordering page or ordering embed.
 - [Menu delivery constraints](menu-delivery.md) — preserve useful menu content without JavaScript; compare performance on matching compressed builds, not unlike hosts.
+- [Dependency restore policy](dependency-restore.md) — security overrides preserve clean installs under the package firewall; validate lock updates with a fresh restore.
