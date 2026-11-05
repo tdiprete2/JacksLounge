@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jack’s Lounge — Website Audit</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;color:#eee;background:#141414;margin:0}main{max-width:1050px;margin:auto;padding:32px 20px 80px}h1,h2,h3{line-height:1.25}h1{font-size:2.4rem}h2{color:#edc539;margin-top:40px}a{color:#edc539}p,li{max-width:85ch}.muted{color:#bbb}.notice{padding:20px;border-left:4px solid #edc539;background:#252218}.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{padding:12px;text-align:left;border-bottom:1px solid #444;white-space:nowrap}th{background:#242424}code{background:#292929;padding:2px 5px;border-radius:4px}.good{color:#b9e3bb}.warn{color:#ffe08a}@media print{body{background:white;color:black}h2,a{color:#554300}.notice,th{background:#f7f4e8}.muted{color:#555}}
+</style>
+<main>
+<p class="muted">Audit: November 4, 2026, Eastern Time · No publishing or DNS changes performed</p>
+<h1>Jack’s Lounge Website Audit</h1>
+<div class="notice"><strong>Top priority: the public sites are behind the current application.</strong>
+The custom domain is served by GitHub Pages, while a separate Replit deployment also exists. Neither currently reflects all of the fixes visible in the updated workspace. Publishing to Replit alone will not update the GitHub Pages custom domain.</div>
+
+<h2>What changed in the workspace</h2>
+<ul>
+<li>Sticky mobile header now exposes <strong>Order Online</strong> and <strong>(508) 775-0612</strong> without opening the menu. The number links to <code>tel:+15087750612</code>; ordering links directly to SpotOn.</li>
+<li>Both mobile actions are 48px tall. Layouts were checked visually at 320px and 390px, plus desktop at 1440px. Navigation switches to the full desktop layout at wide screens to avoid tablet overflow.</li>
+<li>Removed the redundant fixed mobile bottom ordering bar and its reserved padding. The menu drawer is scrollable, and desktop floating controls remain.</li>
+<li>Compressed 14 oversized food images from <strong>50.58 MB to 1.99 MB combined</strong>, a <strong>96.1% reduction</strong>. This is the total across those asset variants, not the bytes every visitor downloads.</li>
+<li>Non-home routes no longer preload or briefly display the homepage hero image.</li>
+<li>Browser titles, descriptions, canonical URLs, social metadata, and shared route schema now use the same route definitions as the server and static build, including client-side navigation.</li>
+<li>Corrected residual fallback/footer wording that implied honey pizza existed in 1963. The restaurant opened in 1963; the DiPrete family introduced its Famous Honey Pizza after taking over in 1985. Original honey and hot honey remain distinct.</li>
+<li>The no-JavaScript contact fallback includes all three configured service schedules: dine-in, takeout, and delivery. Schema dine-in hours match the configured hours.</li>
+<li>Fixed the GitHub Pages build reference from the missing JavaScript generator to the existing TypeScript generator, and disabled the admin route in that public static build. No workflow was triggered.</li>
+</ul>
+<p><strong>Unchanged:</strong> menu prices, review excerpts and ratings, the direct SpotOn destination, and the existing homepage/menu H1 wording. No dedicated ordering page or ordering embed was added.</p>
+
+<h2>Public hosting and SEO findings</h2>
+<div class="table"><table>
+<thead><tr><th>Check</th><th>Custom domain: GitHub Pages</th><th>Published Replit app</th><th>Updated preview</th></tr></thead>
+<tbody>
+<tr><td>Home/menu content</td><td>Older headings and copy</td><td>Older headings and copy</td><td class="good">Requested H1s</td></tr>
+<tr><td>Pizza / wings / specials</td><td class="warn">404 / 404 / 404</td><td>200 / 200 / 200</td><td class="good">200 / 200 / 200</td></tr>
+<tr><td>Unknown URL</td><td>404</td><td class="warn">200, generic homepage HTML</td><td class="good">404</td></tr>
+<tr><td>Route canonical in raw HTML</td><td>Mixed slash conventions</td><td class="warn">Homepage canonical on every route sampled</td><td class="good">Correct route-specific URL</td></tr>
+<tr><td>Honey history</td><td class="warn">Honey landing page implies 1963 origin</td><td>Old generic fallback</td><td class="good">1963 restaurant / post-1985 honey</td></tr>
+</tbody></table></div>
+<p>Custom domain: <a href="https://www.jackspizzahyannis.com/">www.jackspizzahyannis.com</a>.
+Published Replit app: <a href="https://jacks-lounge.replit.app/">jacks-lounge.replit.app</a>.
+The custom domain returned <code>Server: GitHub.com</code> and resolves through <code>tdiprete2.github.io</code>. The non-www domain redirects to www.</p>
+<ul>
+<li>The custom-domain robots file and sitemap are real text/XML, not HTML fallbacks. Its sitemap lists specials even though that route currently returns 404; pizza and wings are absent.</li>
+<li>Several old static pages contain an extra homepage H1 inside fallback/no-JavaScript source. The browser-rendered homepage and menu each showed one visible H1, but the raw and rendered headings disagree. This is a source/render consistency issue, not proof of duplicate visible headings.</li>
+<li>The updated preview returned 200 for all eight public routes, one intended fallback H1 per route, route-specific canonical URLs, and a genuine 404 for an unknown URL. The current sitemap covers exactly those public routes.</li>
+<li>The homepage H1 remains “Jack's Lounge - Best Pizza &amp; Wings in Hyannis”; the menu H1 remains “Jack's Lounge Menu”.</li>
+</ul>
+
+<h2>Speed measurements: existing public sites</h2>
+<p>One cold-cache Chromium 152 sample per device/page. Desktop: 1440 × 1000, no artificial throttling. Mobile: 390 × 844, mobile user agent, 4× CPU slowdown, nominal 1.6 Mbps download / 0.75 Mbps upload and 150ms configured latency. Reduced motion was enabled to suppress carousel autoplay. Observation windows: 8 seconds desktop, 16 seconds mobile. These are limited synthetic samples, not user-population results.</p>
+<div class="table"><table>
+<thead><tr><th>Host</th><th>Page</th><th>Device</th><th>First paint (FCP)</th><th>Largest paint (LCP)</th><th>Load event</th><th>CLS</th></tr></thead>
+<tbody>
+<tr><td>Custom domain</td><td>Home</td><td>Desktop</td><td>0.25s</td><td>0.60s</td><td>0.38s</td><td>0.0002</td></tr>
+<tr><td>Custom domain</td><td>Menu</td><td>Desktop</td><td>0.17s</td><td>0.17s</td><td>0.24s</td><td>0.0002</td></tr>
+<tr><td>Custom domain</td><td>Home</td><td>Mobile</td><td>0.76s</td><td>1.39s</td><td>4.26s</td><td>0</td></tr>
+<tr><td>Custom domain</td><td>Menu</td><td>Mobile</td><td>0.75s</td><td>1.43s</td><td>2.91s</td><td>0</td></tr>
+<tr><td>Replit app</td><td>Home</td><td>Desktop</td><td>0.38s</td><td>0.80s</td><td>0.45s</td><td>0.0002</td></tr>
+<tr><td>Replit app</td><td>Menu</td><td>Desktop</td><td>0.16s</td><td>0.28s</td><td>0.35s</td><td>0.0002</td></tr>
+<tr><td>Replit app</td><td>Home</td><td>Mobile</td><td>4.04s</td><td>5.23s</td><td>3.97s</td><td>0</td></tr>
+<tr><td>Replit app</td><td>Menu</td><td>Mobile</td><td>4.03s</td><td>4.72s</td><td>4.00s</td><td>0</td></tr>
+</tbody></table></div>
+<p>The custom-domain desktop home downloaded approximately 11.53 MB of observable resource transfers during the sample. Three featured images accounted for approximately 10.30 MB. Images below the fold may load later, so this is not the page's complete eventual download size.</p>
+
+<h2>Updated production build: local lab</h2>
+<p>The updated Vite production build was served from a temporary local static server, <strong>without HTTP compression</strong>, using the same browser/device profiles. This avoids measuring Vite development overhead but does not reproduce either public host’s CDN, compression, or network path. <strong>Do not treat these rows as a controlled before/after hosting speed comparison.</strong></p>
+<div class="table"><table>
+<thead><tr><th>Page</th><th>Device</th><th>FCP</th><th>LCP</th><th>Load event</th><th>CLS</th><th>Observable transfer</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>Desktop</td><td>0.24s</td><td>0.56s</td><td>0.86s</td><td>0.0002</td><td>2.39 MB</td></tr>
+<tr><td>Menu</td><td>Desktop</td><td>0.17s</td><td>0.39s</td><td>0.31s</td><td>0.0002</td><td>0.44 MB</td></tr>
+<tr><td>Home</td><td>Mobile</td><td>1.99s</td><td>1.99s</td><td>3.71s</td><td>0</td><td>0.95 MB</td></tr>
+<tr><td>Menu</td><td>Mobile</td><td class="warn">4.04s</td><td class="warn">4.04s</td><td>3.18s</td><td>0</td><td>0.44 MB</td></tr>
+</tbody></table></div>
+<p class="notice"><strong>Remaining performance concern:</strong> the menu’s main content still arrives late on this slow-mobile profile. The initial JavaScript/CSS and lazy page loading need further attention if this persists after publishing with the intended host’s compression. The LCP good-experience benchmark is 2.5 seconds; the local menu and existing published Replit mobile samples exceed it. A fast load event does not mean the page is visibly ready.</p>
+<p>No uncaught page exceptions, HTTP error responses, or horizontal overflow appeared in the measured homepage/menu samples. Mobile call and order links were correctly positioned with 48px heights. Lazy images not requested within the observation window were not treated as broken images.</p>
+<p><strong>Limitations:</strong> these are not Lighthouse scores, a formal SEO score, or field Core Web Vitals. Google’s public PageSpeed endpoint returned quota error 429. INP was not measured because no representative interaction set or real-user data was collected. Cross-origin resources may omit transfer sizes; timing varies with network state, connection reuse, and machine load. Repeat measurements on the intended published host before making broad speed claims.</p>
+
+<h2>Data review and next priorities</h2>
+<ol>
+<li><strong>Release consistency:</strong> choose the intended owner-approved publishing path and update the actual custom-domain host. Verify its routes and metadata after publishing. No production changes were made in this work.</li>
+<li><strong>Slow-mobile menu:</strong> repeat a compressed-host measurement, then address initial bundle/CSS and page-loading delay if needed. Do not hide this issue behind the faster desktop numbers.</li>
+<li><strong>Price verification:</strong> menu prices and the displayed honey-pizza prices ($13.25 / $16.75) remain unverified against live SpotOn. No prices were changed. Availability and dietary claims also require restaurant confirmation rather than assumptions.</li>
+<li><strong>Business data:</strong> configured address, phone, and service schedules are consistent in the checked application surfaces. This checks website consistency, not independent verification of current restaurant operations.</li>
+<li><strong>Reviews and ordering:</strong> existing excerpts and ratings were left untouched. External ordering is not itself an SEO penalty; no dedicated order page or embed is planned.</li>
+</ol>
+<h2>Verification and reproducibility</h2>
+<ul>
+<li>TypeScript check passed; all 13 automated checks passed; production build completed and generated eight public route HTML files.</li>
+<li>Visual checks: 320px homepage, 390px menu, and 1440px menu. Existing header and menu drawer retain native links and keyboard focus styling.</li>
+<li>Automated checks cover route canonicalization, fallback headings, menu routes, schedules/schema consistency, sitemap coverage, client metadata updates, direct mobile links, and non-home hero suppression.</li>
+<li>Read-only lab runner: <code>scripts/measure-pages.cjs</code>, with Chromium remote debugging on port 9223. It makes no orders, submits no forms, and reports no credentials.</li>
+<li>Repeatable image optimizer: <code>scripts/optimize-public-food-images.mjs</code>. Smaller assets and original uploads are untouched.</li>
+</ul>
+</main>
+</html>

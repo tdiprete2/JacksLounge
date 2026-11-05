@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { PATHS, SITE } from "@shared/site";
 
 export default function Header() {
@@ -45,9 +45,9 @@ export default function Header() {
         Skip to main content
       </a>
       <header className="sticky top-0 z-50 bg-background border-b border-primary/30">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center">
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 py-3 xl:h-20 xl:flex-row xl:items-center xl:justify-between xl:gap-0 xl:py-0">
+            <div className="flex items-center justify-between xl:justify-start">
               <Link href="/" aria-label="Jack's Lounge - Hyannis MA Pizza Restaurant Home">
                 <picture>
                   <source
@@ -64,7 +64,7 @@ export default function Header() {
                     alt="Jack's Lounge - Best Pizza in Hyannis, MA"
                     width="216"
                     height="56"
-                    className="h-14 w-auto cursor-pointer"
+                    className="h-12 w-auto max-w-[160px] cursor-pointer md:h-14 md:max-w-none"
                     data-testid="img-logo"
                     loading="eager"
                     {...({ fetchpriority: "high" } as any)}
@@ -73,7 +73,7 @@ export default function Header() {
               </Link>
             </div>
 
-            <nav className="hidden md:flex items-center gap-4" aria-label="Main navigation">
+            <nav className="hidden xl:flex items-center gap-4" aria-label="Main navigation">
                 <Link
                   href={PATHS.menu}
                 className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
@@ -153,24 +153,31 @@ export default function Header() {
               </Button>
             </nav>
 
-            <div className="flex md:hidden items-center gap-2">
+            <div className="absolute right-4 top-3 flex xl:hidden items-center gap-2">
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     size="icon"
+                    className="h-11 w-11 shrink-0"
                     data-testid="button-mobile-menu"
                     aria-label="Open mobile menu"
                   >
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetContent
+                  side="right"
+                  className="z-[60] max-h-[100dvh] w-[min(88vw,400px)] max-w-[400px] overflow-y-auto"
+                >
                   <SheetTitle className="sr-only">Jack's Lounge navigation</SheetTitle>
                   <SheetDescription className="sr-only">
                     Open a page or jump to a section of the homepage.
                   </SheetDescription>
-                  <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
+                  <nav
+                    className="mt-8 flex flex-col gap-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
+                    aria-label="Mobile navigation"
+                  >
                     <Link
                       href={PATHS.menu}
                       className="text-lg font-medium text-foreground hover-elevate px-4 py-3 rounded-md"
@@ -241,7 +248,7 @@ export default function Header() {
                     </Link>
                     <Button
                       asChild
-                      className="mt-4"
+                      className="mt-3 min-h-12"
                       size="lg"
                       data-testid="button-order-online-mobile"
                       aria-label="Order food online"
@@ -258,6 +265,27 @@ export default function Header() {
                   </nav>
                 </SheetContent>
               </Sheet>
+            </div>
+            <div className="flex w-full items-stretch gap-2 xl:hidden">
+              <a
+                href={SITE.phoneHref}
+                className="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-md border border-primary/50 bg-card px-2 text-[clamp(.82rem,4vw,1rem)] font-semibold tracking-tight text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={`Call Jack's Lounge at ${SITE.phoneDisplay}`}
+                data-testid="link-mobile-phone"
+              >
+                <Phone aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+                <span className="whitespace-nowrap">{SITE.phoneDisplay}</span>
+              </a>
+              <a
+                href={SITE.orderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 flex-1 items-center justify-center rounded-md bg-primary px-3 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label="Order food online"
+                data-testid="button-mobile-header-order"
+              >
+                Order Online
+              </a>
             </div>
           </div>
         </div>

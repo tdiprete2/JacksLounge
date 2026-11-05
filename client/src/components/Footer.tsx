@@ -33,7 +33,7 @@ export default function Footer() {
             <h3 className="font-serif text-2xl font-bold mb-4" data-testid="text-footer-title">
               Jack's Lounge - Hyannis Pizza & Bar
             </h3>
-            <p className="text-muted-foreground mb-4">Serving Hyannis with signature honey-topped pizzas, crispy bone-in Wings, and Italian favorites since 1963.</p>
+            <p className="text-muted-foreground mb-4">Serving Hyannis since 1963. Enjoy our Famous Honey Pizza, oven-baked wings, and Italian-American favorites.</p>
             <div className="flex flex-col gap-3">
               <a
                 href="https://www.facebook.com/jacksloungehyannis"

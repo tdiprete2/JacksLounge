@@ -150,8 +150,9 @@ export const PUBLIC_ROUTES: readonly RouteSeo[] = [
     heading: "Contact Jack's Lounge",
     summary: "Call (508) 775-0612 or visit 373 West Main Street, Hyannis, MA 02601. Dine-in, takeout and delivery hours differ.",
     fallbackDetails: [
-      "Dine-in hours: Monday 11 AM–10 PM; Tuesday 11 AM–9:30 PM; Wednesday and Thursday 11 AM–10:30 PM; Friday 11 AM–11 PM; Saturday 11 AM–10:30 PM; Sunday 12 PM–9:30 PM.",
-      "Takeout and delivery close earlier on several days. Visit the interactive Contact page or call the restaurant for the complete service-specific schedules.",
+      `Dine-in hours: ${HOURS.dineIn.map(({ day, open, close }) => `${day} ${open}–${close}`).join("; ")}.`,
+      `Takeout hours: ${HOURS.takeout.map(({ day, open, close }) => `${day} ${open}–${close}`).join("; ")}.`,
+      `Delivery hours: ${HOURS.delivery.map(({ day, open, close }) => `${day} ${open}–${close}`).join("; ")}.`,
       "For party trays and large orders, call the restaurant directly. Jack's Lounge does not offer full catering services.",
     ],
   },

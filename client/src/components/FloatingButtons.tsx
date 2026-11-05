@@ -7,25 +7,7 @@ const BRAND_GOLD = "#d4af37";
 export default function FloatingButtons() {
   return (
     <>
-      {/* ── Mobile: full-width sticky "Order Online" bar (hidden on md+) ── */}
-      <a
-            href={SITE.orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Order Online"
-        data-testid="button-mobile-order-bar"
-        className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-3 py-4 shadow-[0_-2px_12px_rgba(0,0,0,0.4)] transition-opacity duration-200 md:hidden"
-        style={{ backgroundColor: BRAND_GOLD }}
-      >
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-          <ShoppingBag className="h-5 w-5 text-black" />
-        </div>
-        <span className="text-base font-bold tracking-wide text-white">
-          Order Online
-        </span>
-      </a>
-
-      {/* ── Desktop: individual floating pills (hidden below md) ── */}
+      {/* Desktop floating pills; mobile ordering is handled by the sticky header. */}
 
       {/* Rewards Button - Bottom Left */}
       <a

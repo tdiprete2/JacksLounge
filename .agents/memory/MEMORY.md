@@ -1,0 +1,1 @@
+- [Ordering scope](ordering-scope.md) — keep direct SpotOn links; no dedicated ordering page or ordering embed.

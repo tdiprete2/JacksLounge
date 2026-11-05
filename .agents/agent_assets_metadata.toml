@@ -7,6 +7,7 @@ uri = "file://exports/jackslounge-project-source.zip"
 type = "unspecified"
 title = "Jack's Lounge project source"
 description = "Application source, public assets, documentation, scripts, configuration, and lockfiles. Secrets, dependencies, caches, build output, Git metadata, and agent state are excluded."
+logical_id = "dce1599b-4d39-4263-947e-995eb6775783"
 
 [[outputs]]
 id = "Qoki1n8b3-17mO-p7o_ca"
@@ -14,3 +15,18 @@ uri = "file://exports/jackslounge-project-assets.zip"
 type = "unspecified"
 title = "Jack's Lounge raw project assets"
 description = "Raw project assets from attached_assets, packaged separately because of their size. Sensitive filename patterns were excluded."
+logical_id = "2ee64371-e43d-4973-ba5e-c32b0ce93798"
+
+[[outputs]]
+id = "kzRpkUNTdSDiNFuGaLGTu"
+uri = "file://reports/website-audit.html"
+type = "html"
+title = "Website speed and SEO audit"
+description = "Public-host findings, mobile navigation improvements, measured load timings, SEO corrections, and remaining priorities. Nothing has been published."
+logical_id = "6851d0b4-4e2b-46fd-96e5-cce2eb2ea099"
+content_hash = "sha256:7ccd543d2e864aa83b3f5c02bc7f9efba1cc4865c2c469c3a2a2b0623e419c14"
+size = 11908
+mtime_ms = 1793846022427
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:25036c7f-222d-4246-8354-ca685dcc711d/6851d0b4-4e2b-46fd-96e5-cce2eb2ea099/1fd5c33e-336c-4301-99e3-087e70a27a7b"
+storage_version_token = "1793846075232462"
+content_type = "text/html"

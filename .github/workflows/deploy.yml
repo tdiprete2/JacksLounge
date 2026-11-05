@@ -36,9 +36,10 @@ jobs:
           # Build frontend only (skip backend build)
           npx vite build --base=/
           # Generate static HTML files for each route
-          node scripts/generate-pages.js
+          npx tsx scripts/generate-pages.ts
         env:
           NODE_ENV: production
+          VITE_ENABLE_ADMIN: "false"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -1,4 +1,5 @@
 import {
+  PATHS,
   canonicalUrl,
   routeFallbackHtml,
   routeStructuredData,
@@ -7,6 +8,13 @@ import {
 
 export function renderRouteHtml(template: string, route: RouteSeo): string {
   const canonical = canonicalUrl(route.path);
+  // Only the homepage uses the carousel. Other routes should not download its
+  // images or briefly display a fullscreen hero while their page chunk loads.
+  if (route.path !== PATHS.home) {
+    template = template
+      .replace(/<link rel="preload" as="image"[^>]*>/g, "")
+      .replace(/<!-- Static hero pre-render:[\s\S]*?(?=<div id="root">)/, "");
+  }
   return template
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${route.title}</title>`)
     .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${route.description}" />`)

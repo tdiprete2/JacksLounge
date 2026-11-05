@@ -1,4 +1,6 @@
-export const updateMetaTags = (config: {
+import { canonicalUrl, getPublicRoute, routeStructuredData } from "@shared/site";
+
+export const updateMetaTags = (pageConfig: {
   title: string;
   description: string;
   canonical?: string;
@@ -6,6 +8,22 @@ export const updateMetaTags = (config: {
   ogDescription?: string;
   ogUrl?: string;
 }) => {
+  // Use the same route data as the server/static build, including after client
+  // navigation. Page-specific legacy copy must not overwrite crawlable metadata.
+  const route = getPublicRoute(window.location.pathname);
+  const config = route ? {
+    ...pageConfig,
+    title: route.title,
+    description: route.description,
+    canonical: canonicalUrl(route.path),
+    ogTitle: route.title,
+    ogDescription: route.description,
+    ogUrl: canonicalUrl(route.path),
+  } : pageConfig;
+  if (route) {
+    const structuredData = document.getElementById("route-structured-data");
+    if (structuredData) structuredData.textContent = JSON.stringify(routeStructuredData(route));
+  }
   // Update title
   document.title = config.title;
 

@@ -162,7 +162,7 @@ export default function Pizza() {
         </script>
       </Helmet>
       <Header />
-      <main>
+      <main id="main-content">
         <section 
           className="relative py-8 md:py-12 px-4"
           style={{

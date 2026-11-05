@@ -216,7 +216,7 @@ export default function Menu() {
         </script>
       </Helmet>
       <Header />
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
           <div className="max-w-4xl mx-auto text-center">
