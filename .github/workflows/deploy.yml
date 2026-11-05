@@ -33,10 +33,9 @@ jobs:
 
       - name: Build for GitHub Pages
         run: |
-          # Build frontend only (skip backend build)
-          npx vite build --base=/
-          # Generate static HTML files for each route
-          npx tsx scripts/generate-pages.ts
+          # Include the menu's build-time HTML as well as browser assets.
+          npm run build:client
+          npm run test:menu-build
         env:
           NODE_ENV: production
           VITE_ENABLE_ADMIN: "false"

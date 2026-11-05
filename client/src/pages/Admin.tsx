@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import FormProviders from "@/components/FormProviders";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,10 @@ interface ContactsResponse {
 }
 
 export default function Admin() {
+  return <FormProviders><AdminPage /></FormProviders>;
+}
+
+function AdminPage() {
   const { toast } = useToast();
   const [password, setPassword] = useState("");
 

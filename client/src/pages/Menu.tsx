@@ -218,10 +218,10 @@ export default function Menu() {
       <Header />
       <main id="main-content">
         {/* Hero Section */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
+        <section className="py-6 md:py-24 px-4 md:px-6 lg:px-8 bg-card">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-menu-hero-title">Jack's Lounge Menu</h1>
-            <p className="text-lg md:text-xl text-foreground/70 mb-8">"Over 60 years serving Hyannis with delicious Italian and American favorites. From our signature Hot Honey Pizza & Honey Pizza to our crispy bone-in chicken wings, every dish is made with care using fresh, quality ingredients. Order online for the best pizza delivery and takeout on Cape Cod."</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 md:mb-6" data-testid="text-menu-hero-title">Jack's Lounge Menu</h1>
+            <p className="text-base md:text-xl text-foreground/70 mb-4 md:mb-8">"Over 60 years serving Hyannis with delicious Italian and American favorites. From our signature Hot Honey Pizza & Honey Pizza to our crispy bone-in chicken wings, every dish is made with care using fresh, quality ingredients. Order online for the best pizza delivery and takeout on Cape Cod."</p>
             <Button
               size="lg"
               asChild
@@ -241,7 +241,7 @@ export default function Menu() {
         </section>
 
         {/* Menu Categories */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
+        <section className="py-6 md:py-24 px-4 md:px-6 lg:px-8 bg-background">
           <div className="max-w-7xl mx-auto">
             <div className="grid gap-16">
               {menuCategories.map((category) => (

@@ -1,16 +1,14 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { useEffect, lazy, Suspense } from "react";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
 import FloatingButtons from "@/components/FloatingButtons";
 import { PATHS } from "@shared/site";
+// Eager on purpose: direct menu visits hydrate the build-time content without
+// waiting for another route chunk. Other pages remain split below.
+import Menu from "@/pages/Menu";
 
 // Lazy load pages for code splitting and better performance
 const HomeLazy = lazy(() => import("@/pages/Home"));
-const MenuLazy = lazy(() => import("@/pages/Menu"));
 const ContactLazy = lazy(() => import("@/pages/Contact"));
 const StoryLazy = lazy(() => import("@/pages/Story"));
 const SpecialsLazy = lazy(() => import("@/pages/Specials"));
@@ -22,7 +20,6 @@ const NotFoundLazy = lazy(() => import("@/pages/not-found"));
 
 // Wrapper components to work with wouter routing
 const Home = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><HomeLazy /></Suspense>;
-const Menu = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><MenuLazy /></Suspense>;
 const Contact = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><ContactLazy /></Suspense>;
 const Story = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><StoryLazy /></Suspense>;
 const Specials = () => <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}><SpecialsLazy /></Suspense>;
@@ -45,9 +42,9 @@ function ScrollToTop() {
   return null;
 }
 
-function Router() {
+function Router({ ssrPath }: { ssrPath?: string }) {
   return (
-    <WouterRouter>
+    <WouterRouter ssrPath={ssrPath}>
       <ScrollToTop />
       <Switch>
         <Route path={PATHS.home} component={Home} />
@@ -65,7 +62,7 @@ function Router() {
   );
 }
 
-function App() {
+function App({ ssrPath }: { ssrPath?: string }) {
   useEffect(() => {
     // Signal React has mounted — CSS hides the static hero placeholder
     document.body.classList.add('react-mounted');
@@ -78,13 +75,8 @@ function App() {
 
   return (
     <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <FloatingButtons />
-          <Router />
-        </TooltipProvider>
-      </QueryClientProvider>
+      <FloatingButtons />
+      <Router ssrPath={ssrPath} />
     </HelmetProvider>
   );
 }

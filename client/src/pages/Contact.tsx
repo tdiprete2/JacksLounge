@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock, Facebook } from "lucide-react";
 import { SiInstagram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
+import FormProviders from "@/components/FormProviders";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -79,6 +80,10 @@ function DeferredMap() {
 }
 
 export default function Contact() {
+  return <FormProviders><ContactPage /></FormProviders>;
+}
+
+function ContactPage() {
   const { toast } = useToast();
 
   useEffect(() => {
