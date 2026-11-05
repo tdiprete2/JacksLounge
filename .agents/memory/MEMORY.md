@@ -2,3 +2,4 @@
 - [Menu delivery constraints](menu-delivery.md) — preserve useful menu content without JavaScript; compare performance on matching compressed builds, not unlike hosts.
 - [Dependency restore policy](dependency-restore.md) — security overrides preserve clean installs under the package firewall; validate lock updates with a fresh restore.
 - [Menu photography](menu-photography.md) — use matching food photos only; keep items text-only when no verified photo exists.
+- [Menu scope](menu-scope.md) — do not add Greek Salad, wraps, or French Dip; Smash Burgers are active but their website addition is deferred.
