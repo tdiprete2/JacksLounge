@@ -30,3 +30,11 @@ test("right drawer fades within the viewport and has a touch-sized close button"
   assert.doesNotMatch(source, /slide-in-from-right|slide-out-to-right/);
   assert.match(source, /SheetPrimitive\.Close className="[^"]*h-11 w-11/);
 });
+
+test("rewards sign-up button is visible on mobile and keeps its SpotOn destination", () => {
+  const source = fs.readFileSync("client/src/components/FloatingButtons.tsx", "utf8");
+  assert.match(source, /href=\{REWARDS_URL\}/);
+  assert.match(source, /data-testid="button-floating-rewards"/);
+  assert.match(source, /bottom-\[max\(1rem,env\(safe-area-inset-bottom\)\)\][^"]*\bflex\b/);
+  assert.doesNotMatch(source.match(/data-testid="button-floating-rewards"[\s\S]*?className="([^"]+)"/)?.[1] ?? "", /\bhidden\b/);
+});
